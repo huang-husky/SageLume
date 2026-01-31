@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+    <title>雪間 - 最小二乘法</title>
+    <subtitle>Kiritan&#x27;s Blog</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://kiritantakechi.github.io/tags/zui-xiao-er-cheng-fa/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://kiritantakechi.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-06-26T22:02:00+08:00</updated>
+    <id>https://kiritantakechi.github.io/tags/zui-xiao-er-cheng-fa/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>线性方程组解法总结</title>
+        <published>2025-06-26T21:01:24+08:00</published>
+        <updated>2025-06-26T22:02:00+08:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://kiritantakechi.github.io/blog/summary-of-linear-system-solutions/"/>
+        <id>https://kiritantakechi.github.io/blog/summary-of-linear-system-solutions/</id>
+        
+        <content type="html" xml:base="https://kiritantakechi.github.io/blog/summary-of-linear-system-solutions/">&lt;p&gt;这是我关于线性代数中两种重要方程组——超定方程组和欠定方程组——的解法学习总结。这两种情况在理论和实际应用（如数据拟合、信号处理）中都非常常见。&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;1-chao-ding-fang-cheng-zu-overdetermined-system&quot;&gt;1. 超定方程组 (Overdetermined System)&lt;&#x2F;h1&gt;
+&lt;p&gt;当线性方程组 $Ax=b$ 中，方程的数量大于未知数的数量时，我们称之为超定方程组。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;矩阵形式&lt;&#x2F;strong&gt;：$A$ 是一个 “瘦高” 型的 $m \times n$ 矩阵，其中 $m &amp;gt; n$。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;解的性质&lt;&#x2F;strong&gt;：通常情况下，由于约束（方程）过多，系统&lt;strong&gt;没有精确解&lt;&#x2F;strong&gt;。向量 $b$ 不在矩阵 $A$ 的列空间中。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;求解目标&lt;&#x2F;strong&gt;：我们不再寻求精确解，而是寻找一个&lt;strong&gt;最优近似解&lt;&#x2F;strong&gt; $\hat{x}$，使得误差向量 $Ax-b$ 的长度（L2范数）最小。这就是著名的&lt;strong&gt;最小二乘法 (Least Squares Method)&lt;&#x2F;strong&gt;。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\min_{\hat{x}} \|A\hat{x} - b\|_2^2
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;核心方法&lt;&#x2F;strong&gt;：该问题的解可以通过&lt;strong&gt;正规方程 (Normal Equation)&lt;&#x2F;strong&gt; 导出。当矩阵 $A$ &lt;strong&gt;列满秩&lt;&#x2F;strong&gt;（即列向量线性无关）时，正规方程为：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+A^T A \hat{x} = A^T b
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;最终解&lt;&#x2F;strong&gt;：通过求解正规方程，我们得到最优解 $\hat{x}$。这个解可以用&lt;strong&gt;左伪逆 (Left Pseudoinverse)&lt;&#x2F;strong&gt; $A^\dag$ 表示。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\hat{x} = (A^T A)^{-1} A^T b = A^\dag b
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;fu-zui-you-jie-de-zheng-ming-fang-fa&quot;&gt;附：最优解的证明方法&lt;&#x2F;h2&gt;
+&lt;p&gt;超定方程的最优解（最小二乘解）可以通过多种方式证明，这里介绍两种核心方法。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;a-wei-ji-fen-tui-dao-derivation-via-calculus&quot;&gt;a) 微积分推导 (Derivation via Calculus)&lt;&#x2F;h3&gt;
+&lt;p&gt;这种方法将问题视为一个求函数最小值的优化问题。目标函数是误差的平方 $f(x) = |Ax-b|^2$。当函数的梯度为零时，我们能找到极值点。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;定义目标函数&lt;&#x2F;strong&gt;：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+f(x) = \|Ax - b\|^2 = \sum_{i=1}^{m} \left( \sum_{j=1}^{n} A_{ij}x_j - b_i \right)^2
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;计算梯度&lt;&#x2F;strong&gt;：我们对 $f(x)$ 求关于向量 $x$ 的梯度 $\nabla f(x)$。这是一个标准的矩阵求导结果。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\nabla f(x) = 2A^T(Ax-b)
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;令梯度为零&lt;&#x2F;strong&gt;：最小值点 $\hat{x}$ 必须满足梯度为零的条件。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\nabla f(\hat{x}) = 2A^T(A\hat{x} - b) = 0
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;求解&lt;&#x2F;strong&gt;：整理上式，我们便得到了正规方程，进而求得最优解。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+A^T A \hat{x} = A^T b \\
+\implies \hat{x} = (A^T A)^{-1} A^T b
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;b-zhi-jie-yan-zheng-direct-verification&quot;&gt;b) 直接验证 (Direct Verification)&lt;&#x2F;h3&gt;
+&lt;p&gt;这种方法更为直接，它首先给出解的形式，然后证明对于任何其他的向量，其误差都更大。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;定义最优解&lt;&#x2F;strong&gt; $\hat{x}$ 满足 $A^T(A\hat{x}-b)=0$。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;展开误差&lt;&#x2F;strong&gt;：对于任意一个n维向量 $x$，我们分析其误差平方 $|Ax-b|^2$。通过引入 $\hat{x}$，我们进行如下代数变形：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\begin{aligned}
+\|Ax - b\|^2 &amp;= \|(Ax - A\hat{x}) + (A\hat{x} - b)\|^2 \\
+&amp;= \|A(x - \hat{x})\|^2 + \|A\hat{x} - b\|^2 + 2(A(x - \hat{x}))^T (A\hat{x} - b) \\
+&amp;= \|A(x - \hat{x})\|^2 + \|A\hat{x} - b\|^2 + 2(x - \hat{x})^T \underbrace{A^T (A\hat{x} - b)}_{=0} \\
+&amp;= \|A(x - \hat{x})\|^2 + \|A\hat{x} - b\|^2
+\end{aligned}
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;得出结论&lt;&#x2F;strong&gt;：我们得到了一个类似勾股定理的优美形式。因为范数的平方 $|A(x - \hat{x})|^2$ 永远大于等于零，所以：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\|Ax - b\|^2 \ge \|A\hat{x} - b\|^2
+$$
+&lt;&#x2F;div&gt;
+
+这就证明了 $\hat{x}$ 确实是最小二乘解。等号仅在 $|A(x - \hat{x})|^2=0$ 时成立。因为 $A$ 的列向量线性无关，这只有在 $x=\hat{x}$ 时才会发生。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h1 id=&quot;2-qian-ding-fang-cheng-zu-underdetermined-system&quot;&gt;2. 欠定方程组 (Underdetermined System)&lt;&#x2F;h1&gt;
+&lt;p&gt;当线性方程组 $Ax=b$ 中，未知数的数量大于方程的数量时，我们称之为欠定方程组。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;矩阵形式&lt;&#x2F;strong&gt;：$A$ 是一个 “矮胖” 型的 $m \times n$ 矩阵，其中 $m &amp;lt; n$。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;解的性质&lt;&#x2F;strong&gt;：通常情况下，由于约束（方程）过少，如果系统有解，则它有&lt;strong&gt;无穷多个解&lt;&#x2F;strong&gt;。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;求解目标&lt;&#x2F;strong&gt;：在无穷多的解中，我们需要一个标准来挑选出“最好”的一个。通常，我们选择那个自身长度（L2范数）最小的解，这被称为&lt;strong&gt;最小范数解 (Minimum Norm Solution)&lt;&#x2F;strong&gt;。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\min_{\hat{x}} \|\hat{x}\|_2^2 \quad \text{subject to} \quad A\hat{x}=b
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;核心方法&lt;&#x2F;strong&gt;：当矩阵 $A$ &lt;strong&gt;行满秩&lt;&#x2F;strong&gt;（即行向量线性无关）时，我们可以保证 $AA^T$ 可逆，从而找到唯一的最小范数解。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;最终解&lt;&#x2F;strong&gt;：最小范数解可以用&lt;strong&gt;右伪逆 (Right Pseudoinverse)&lt;&#x2F;strong&gt; $A^\dag$ 表示。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\hat{x} = A^T (AA^T)^{-1} b = A^\dag b
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;fu-zui-you-jie-de-zheng-ming-fang-fa-1&quot;&gt;附：最优解的证明方法&lt;&#x2F;h2&gt;
+&lt;p&gt;欠定方程的最小范数解可以通过&lt;strong&gt;拉格朗日乘数法 (Method of Lagrange Multipliers)&lt;&#x2F;strong&gt; 优雅地推导出来。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;构造拉格朗日函数&lt;&#x2F;strong&gt;：我们将目标函数 $f(x) = x^Tx$ 和约束条件 $Ax-b=0$ 结合起来，构造拉格朗日函数 $L(x, \lambda)$，其中 $\lambda$ 是一个 $m \times 1$ 的拉格朗日乘数向量。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+L(x, \lambda) = x^T x - \lambda^T(Ax - b)
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;梯度置零&lt;&#x2F;strong&gt;：为了找到极值点，我们将 $L(x, \lambda)$ 分别对 $x$ 和 $\lambda$ 求偏导，并令其为零。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;对 $x$ 求导&lt;&#x2F;strong&gt;：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\nabla_x L(x, \lambda) = 2x - A^T \lambda = 0 \implies x = \frac{1}{2}A^T \lambda
+$$
+&lt;&#x2F;div&gt;
+
+这个重要的结果表明，最小范数解 $\hat{x}$ 必须是 $A^T$ 的列向量的线性组合，即 $\hat{x}$ 必须位于 $A$ 的&lt;strong&gt;行空间&lt;&#x2F;strong&gt;中。为简化表示，令新变量 $z = \frac{1}{2}\lambda$，则 $\hat{x} = A^T z$。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;对 $\lambda$ 求导&lt;&#x2F;strong&gt;：这会自然地得到原始的约束条件。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\nabla_\lambda L(x, \lambda) = -(Ax - b) = 0 \implies Ax = b
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;联立求解&lt;&#x2F;strong&gt;：我们将第3步得到的结果 $\hat{x} = A^T z$ 代入第4步的约束条件中。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+A(A^T z) = b \implies (AA^T)z = b
+$$
+&lt;&#x2F;div&gt;
+
+因为我们假设 $A$ 是行满秩的，所以 $m \times m$ 矩阵 $AA^T$ 是可逆的。因此，我们可以解出 $z$：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+z = (AA^T)^{-1}b
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;得到最终解&lt;&#x2F;strong&gt;：最后，将 $z$ 代回到 $\hat{x} = A^T z$ 的表达式中，就得到了最小范数解 $\hat{x}$ 的最终形式。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\hat{x} = A^T z = A^T(AA^T)^{-1}b
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h1 id=&quot;3-zong-jie-yu-dui-bi&quot;&gt;3. 总结与对比&lt;&#x2F;h1&gt;
+&lt;p&gt;伪逆 $A^\dag$ 为我们提供了一个统一的框架来理解这些“最优解”。它总能根据问题的性质，赋予我们一个有意义的、唯一的答案。&lt;&#x2F;p&gt;
+
+&lt;div class=&quot;table-wrapper&quot;&gt;
+    &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th style=&quot;text-align: left&quot;&gt;特性&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: left&quot;&gt;超定方程 ($m &amp;gt; n$)&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: left&quot;&gt;欠定方程 ($m &amp;lt; n$)&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;矩阵形状&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;瘦高型 (Tall)&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;矮胖型 (Fat)&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;解的性质&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;通常无精确解&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;通常有无穷解&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;求解目标&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;最小化误差 $|Ax-b|$&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;最小化解的范数 $|x|$&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;核心方法&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;最小二乘法&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;最小范数法&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;秩的条件&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;$A$ 列满秩 ($R(A)=n$)&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;$A$ 行满秩 ($R(A)=m$)&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;伪逆公式&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;左伪逆 $A^\dag = (A^T A)^{-1} A^T$&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;右伪逆 $A^\dag = A^T (AA^T)^{-1}$&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;最终解&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;$\hat{x} = A^\dag b$&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;$\hat{x} = A^\dag b$&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+
+&lt;&#x2F;div&gt;
+</content>
+        
+    </entry>
+</feed>

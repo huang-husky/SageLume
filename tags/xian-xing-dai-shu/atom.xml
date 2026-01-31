@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+    <title>雪間 - 线性代数</title>
+    <subtitle>Kiritan&#x27;s Blog</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://kiritantakechi.github.io/tags/xian-xing-dai-shu/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://kiritantakechi.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-06-28T22:44:00+08:00</updated>
+    <id>https://kiritantakechi.github.io/tags/xian-xing-dai-shu/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>切比雪夫不等式推导</title>
+        <published>2025-06-28T22:14:00+08:00</published>
+        <updated>2025-06-28T22:44:00+08:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://kiritantakechi.github.io/blog/chebyshev-inequality-unified-derivation/"/>
+        <id>https://kiritantakechi.github.io/blog/chebyshev-inequality-unified-derivation/</id>
+        
+        <content type="html" xml:base="https://kiritantakechi.github.io/blog/chebyshev-inequality-unified-derivation/">&lt;h1 id=&quot;1-liang-chong-shi-jiao-xia-de-tong-yi-he-xin-si-xiang&quot;&gt;1. 两种视角下的同一核心思想&lt;&#x2F;h1&gt;
+&lt;p&gt;切比雪夫不等式（Chebyshev’s inequality）是数学中一个深刻而不凡的成果。初学者可能会在不同的课程中遇到它“不同”的版本：在线性代数或数据分析中，它描述了一个数据向量的离群值分布；而在概率论中，它则刻画了一个随机变量偏离其均值的概率。&lt;&#x2F;p&gt;
+&lt;p&gt;这两种形式看似不同，但它们本质上是同一数学思想在不同领域的体现。这个核心思想是：&lt;strong&gt;一个系统的整体“能量”或“离散度”，限制了其内部出现极端个体的可能性。&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;本文将带领读者踏上一段有趣的推导之旅，我们将从一个具体、直观的向量形式出发，通过清晰的类比和逻辑演进，最终抵达抽象但更具普适性的概率论形式。这个过程不仅能让我们深刻理解切比雪夫不等式本身，更能揭示数据科学与概率论之间内在的和谐与统一。&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;2-cong-xiang-liang-xing-shi-dao-gai-lu-xing-shi-de-tui-dao&quot;&gt;2. 从向量形式到概率形式的推导&lt;&#x2F;h1&gt;
+&lt;p&gt;下面，我们将开启一段分步的推导旅程，它将清晰地展示向量形式如何自然地“生长”为概率形式。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;1-xiang-liang-xing-shi-de-bu-deng-shi&quot;&gt;1) 向量形式的不等式&lt;&#x2F;h2&gt;
+&lt;p&gt;我们的整个推导始于一个关于有限数据向量的、确定性的不等式。&lt;&#x2F;p&gt;
+&lt;p&gt;假设我们有一个 $n$ 维向量 $x = (x_1, \dots, x_n)$，并设定一个正数阈值 $a &amp;gt; 0$。我们定义 $k$ 为向量 $x$ 中绝对值大于或等于 $a$ 的元素个数。&lt;&#x2F;p&gt;
+&lt;p&gt;一个简单的观察是，如果 $|x_i| \ge a$，那么两边平方可得 $x_i^2 \ge a^2$。因此，向量中同样有 $k$ 个元素的平方值不小于 $a^2$。&lt;&#x2F;p&gt;
+&lt;p&gt;接下来是关键步骤。我们考察向量的L2范数平方，即所有元素平方的总和：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\|x\|^2 = \sum_{i=1}^n x_i^2
+$$
+&lt;&#x2F;div&gt;
+
+我们可以将这个总和拆分为两部分：一部分是那 $k$ 个“大值”元素的平方和，另一部分是剩下 $n-k$ 个“小值”元素的平方和。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\|x\|^2 = \sum_{i \text{ s.t. } |x_i| \ge a} x_i^2 + \sum_{i \text{ s.t. } |x_i| &lt; a} x_i^2
+$$
+&lt;&#x2F;div&gt;
+
+由于平方项永远是非负的，我们可以舍去第二部分（小值之和），这会得到一个不等式：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\|x\|^2 \ge \sum_{i \text{ s.t. } |x_i| \ge a} x_i^2
+$$
+&lt;&#x2F;div&gt;
+
+对于上式右侧的和，我们知道它包含 $k$ 个项，并且其中&lt;strong&gt;每一项&lt;&#x2F;strong&gt;都满足 $x_i^2 \ge a^2$。因此，这 $k$ 项的总和必然大于或等于 $k$ 个 $a^2$ 相加：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\sum_{i \text{ s.t. } |x_i| \ge a} x_i^2 \ge k \cdot a^2
+$$
+&lt;&#x2F;div&gt;
+
+将这两个不等式结合起来，我们就得到了一个连接向量总能量与离群值数量的核心关系：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\|x\|^2 \ge k a^2
+$$
+&lt;&#x2F;div&gt;
+
+对上式进行简单的代数移项，我们便可以得到 $k$ 的上界：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+k \le \frac{\|x\|^2}{a^2}
+$$
+&lt;&#x2F;div&gt;
+
+为了与概率建立联系，我们更关心这些“大值”元素所占的&lt;strong&gt;比例&lt;&#x2F;strong&gt;。将上式两边同时除以向量维度 $n$，得到：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\frac{k}{n} \le \frac{\|x\|^2&#x2F;n}{a^2}
+$$
+&lt;&#x2F;div&gt;
+
+这个结果可以用更直观的&lt;strong&gt;均方根值 (Root Mean Square, RMS)&lt;&#x2F;strong&gt; 来表达。一个向量的RMS值定义为：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\text{rms}(x) = \sqrt{\frac{\|x\|^2}{n}}
+$$
+&lt;&#x2F;div&gt;
+
+因此，$|x|^2&#x2F;n = (\text{rms}(x))^2$。将此代入我们上面的不等式，得到一个非常优雅的形式：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\frac{k}{n} \le \left(\frac{\text{rms}(x)}{a}\right)^2
+$$
+&lt;&#x2F;div&gt;
+
+这个形式告诉我们，数据中“离群值”的比例，受限于其RMS值与我们设定的阈值 $a$ 之比的平方。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-da-jian-gai-nian-de-qiao-liang&quot;&gt;2) 搭建概念的桥梁&lt;&#x2F;h2&gt;
+&lt;p&gt;要从向量世界跨越到概率世界，我们需要一座概念上的桥梁。这个桥梁的核心是&lt;strong&gt;将一个庞大的、有限的数据集，看作是从某个潜在的概率分布中抽取的大量样本&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;根据大数定律，当样本数量 $n$ 趋向于无穷时，样本的统计特性（如平均值、特定事件的频率）会收敛到其背后概率分布的真实参数（如期望值、概率）。&lt;&#x2F;p&gt;
+&lt;p&gt;下表清晰地展示了这种对应关系：&lt;&#x2F;p&gt;
+
+&lt;div class=&quot;table-wrapper&quot;&gt;
+    &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th style=&quot;text-align: left&quot;&gt;向量&#x2F;数据领域 ($n$个元素的向量$x$)&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: left&quot;&gt;概率论领域 (随机变量 $X$)&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;元素的&lt;strong&gt;比例&lt;&#x2F;strong&gt;（经验概率） $\frac{k}{n}$&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;事件发生的&lt;strong&gt;概率&lt;&#x2F;strong&gt; (理论概率) $P(\vert X \vert \ge a)$&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;元素的&lt;strong&gt;均值&lt;&#x2F;strong&gt; $\text{avg}(x) = \frac{1}{n}\sum x_i$&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;期望 (均值)&lt;&#x2F;strong&gt; $\mu = E[X]$&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;均方值&lt;&#x2F;strong&gt; $\frac{1}{n} \vert x \vert ^2 = \frac{1}{n}\sum x_i^2$&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;二阶矩&lt;&#x2F;strong&gt; $E[X^2]$&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;样本方差&lt;&#x2F;strong&gt; $\frac{1}{n}\sum (x_i - \text{avg}(x))^2$&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;方差&lt;&#x2F;strong&gt; $\sigma^2 = \text{Var}(X) = E[(X-\mu)^2]$&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+
+&lt;&#x2F;div&gt;
+&lt;p&gt;有了这座桥梁，我们就可以开始“翻译”我们的不等式了。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;3-tui-dao-gai-lu-lun-xing-shi&quot;&gt;3) 推导概率论形式&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;第一步：推导基础概率形式&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;我们回到向量比例不等式：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\frac{k}{n} \le \frac{\|x\|^2&#x2F;n}{a^2}
+$$
+&lt;&#x2F;div&gt;
+
+应用我们的类比：左边的&lt;strong&gt;比例&lt;&#x2F;strong&gt; $\frac{k}{n}$ 收敛于&lt;strong&gt;概率&lt;&#x2F;strong&gt; $P(|X| \ge a)$；右边的&lt;strong&gt;均方值&lt;&#x2F;strong&gt; $|x|^2&#x2F;n$ 收敛于&lt;strong&gt;二阶矩&lt;&#x2F;strong&gt; $E[X^2]$。进行替换后，我们便得到了切比雪夫不等式的一个基础概率形式：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+P(|X| \ge a) \le \frac{E[X^2]}{a^2}
+$$
+&lt;&#x2F;div&gt;
+
+这个不等式已经是一个有力的概率结论了。它表明，一个随机变量取值远离&lt;strong&gt;原点&lt;&#x2F;strong&gt;的概率，被它的二阶矩（可以理解为围绕原点的“平均能量”）所限制。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;第二步：推导标准形式（均值与方差）&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;在实际应用中，我们更关心的是一个随机变量偏离其&lt;strong&gt;自身均值 $\mu$&lt;&#x2F;strong&gt; 的程度。这里的技巧是&lt;strong&gt;中心化&lt;&#x2F;strong&gt;：我们定义一个均值为零的新随机变量 $Y = X - \mu$，然后将上述基础不等式应用在 $Y$ 上。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+P(|Y| \ge a) \le \frac{E[Y^2]}{a^2}
+$$
+&lt;&#x2F;div&gt;
+
+现在，我们将 $Y$ “翻译”回用 $X$ 表示的形式：$P(|Y| \ge a)$ 变为 $P(|X - \mu| \ge a)$；而 $E[Y^2]$ 变为 $E[(X - \mu)^2]$，这正是&lt;strong&gt;方差&lt;&#x2F;strong&gt; $\text{Var}(X)$（记为 $\sigma^2$）的定义。代入后，我们就得到了切比雪夫不等式的&lt;strong&gt;标准形式&lt;&#x2F;strong&gt;：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+P(|X - \mu| \ge a) \le \frac{\text{Var}(X)}{a^2} = \frac{\sigma^2}{a^2}
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;第三步：得到最终的 $k\sigma$ 形式&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;为了让不等式的应用更具普适性和直观性，我们通常用&lt;strong&gt;标准差 $\sigma$&lt;&#x2F;strong&gt; 作为“一把尺子”来度量偏差。我们设定阈值 $a$ 为 $k$ 个标准差的长度：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+a = k\sigma \quad (k &gt; 0)
+$$
+&lt;&#x2F;div&gt;
+
+将 $a=k\sigma$ 代入标准形式，并进行化简：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+P(|X - \mu| \ge k\sigma) \le \frac{\sigma^2}{(k\sigma)^2} = \frac{\sigma^2}{k^2\sigma^2} = \frac{1}{k^2}
+$$
+&lt;&#x2F;div&gt;
+
+至此，我们得到了概率论中最为人熟知的切比雪夫不等式。
+例如，取 $k=2$，它告诉我们任何随机变量的取值落在其均值2个标准差之外的概率最大不超过 $1&#x2F;4$ (25%)——无论这个随机变量遵循的是正态分布、泊松分布还是任何其他奇特的分布。&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;3-jie-lun&quot;&gt;3. 结论&lt;&#x2F;h1&gt;
+&lt;p&gt;我们从一个关于具体数据向量的简单代数关系出发，通过建立数据统计量与概率论参数之间的桥梁，成功地推导出了一个适用于任何随机变量的、具有普适性的强大不等式。&lt;&#x2F;p&gt;
+&lt;p&gt;这段旅程清晰地揭示了，线性代数中衡量数据“能量”或“离散度”的&lt;strong&gt;范数平方&lt;&#x2F;strong&gt;，与概率论中衡量随机变量“波动性”的&lt;strong&gt;方差&lt;&#x2F;strong&gt;，在数学的骨架上扮演着相同的角色。它们都是同一个核心思想——&lt;strong&gt;整体的集中趋势限制了个体的极端行为&lt;&#x2F;strong&gt;——在不同数学语言下的优美表达。&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh">
+        <title>矩阵求导公式推导</title>
+        <published>2025-06-27T22:00:29+08:00</published>
+        <updated>2025-06-28T00:25:00+08:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://kiritantakechi.github.io/blog/matrix-calculus-proofs/"/>
+        <id>https://kiritantakechi.github.io/blog/matrix-calculus-proofs/</id>
+        
+        <content type="html" xml:base="https://kiritantakechi.github.io/blog/matrix-calculus-proofs/">&lt;p&gt;本文旨在从最基础的导数定义出发，一步步证明那些最常用、最重要的矩阵求导公式。&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;1-he-xin-ding-yi&quot;&gt;1. 核心定义&lt;&#x2F;h1&gt;
+&lt;p&gt;所有证明都将回归到导数的基本定义。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;标量对向量的导数（梯度）&lt;&#x2F;strong&gt;：对于一个标量函数 $f(x)$ 和一个列向量 $x \in \mathbb{R}^n$，其梯度 $\nabla_x f(x)$ 是一个列向量，其第 $k$ 个元素是 $f$ 对 $x$ 第 $k$ 个分量 $x_k$ 的偏导数。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\nabla_x f(x) = \frac{\partial f}{\partial x} = \begin{pmatrix} \frac{\partial f}{\partial x_1} \\ \frac{\partial f}{\partial x_2} \\ \vdots \\ \frac{\partial f}{\partial x_n} \end{pmatrix}
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;标量对矩阵的导数&lt;&#x2F;strong&gt;：对于一个标量函数 $f(X)$ 和一个 $m \times n$ 的矩阵 $X$，其导数是一个与 $X$ 形状相同的矩阵，其 $(k, l)$ 位置的元素是 $f$ 对 $X_{kl}$ 的偏导数。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\left( \frac{\partial f}{\partial X} \right)_{kl} = \frac{\partial f}{\partial X_{kl}}
+$$
+&lt;&#x2F;div&gt;
+
+我们将始终围绕这两个定义展开推导。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h1 id=&quot;2-biao-liang-dui-xiang-liang-qiu-dao-scalar-by-vector&quot;&gt;2. 标量对向量求导 (Scalar-by-Vector)&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;1-xian-xing-xing-shi-nabla-x-a-t-x-a&quot;&gt;1) 线性形式：$\nabla_x (a^T x) = a$&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;证明&lt;&#x2F;strong&gt;：&lt;&#x2F;p&gt;
+&lt;p&gt;设函数 $f(x) = a^T x$，其中 $a$ 和 $x$ 都是 $n \times 1$ 的列向量。我们将 $f(x)$ 展开为求和形式：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+f(x) = a^T x = \sum_{i=1}^{n} a_i x_i = a_1 x_1 + a_2 x_2 + \dots + a_n x_n
+$$
+&lt;&#x2F;div&gt;
+
+计算 $f(x)$ 对 $x$ 的任意分量 $x_k$ 的偏导数：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\frac{\partial f}{\partial x_k} = \frac{\partial}{\partial x_k} \left( \sum_{i=1}^{n} a_i x_i \right) = a_k
+$$
+&lt;&#x2F;div&gt;
+
+这意味着梯度的第 $k$ 个分量就是 $a_k$。我们将所有分量组合回梯度向量中：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\nabla_x f(x) = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix} = a
+$$
+&lt;&#x2F;div&gt;
+
+&lt;strong&gt;证毕。&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-ji-chu-er-ci-xing-nabla-x-x-t-x-2x&quot;&gt;2) 基础二次型：$\nabla_x (x^T x) = 2x$&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;证明&lt;&#x2F;strong&gt;：&lt;&#x2F;p&gt;
+&lt;p&gt;设函数 $f(x) = x^T x$。我们可以将其展开为分量的平方和：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+f(x) = x^T x = \sum_{i=1}^{n} x_i^2 = x_1^2 + x_2^2 + \dots + x_n^2
+$$
+&lt;&#x2F;div&gt;
+
+计算 $f(x)$ 对 $x$ 的任意分量 $x_k$ 的偏导数：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\frac{\partial f}{\partial x_k} = \frac{\partial}{\partial x_k} \left( \sum_{i=1}^{n} x_i^2 \right) = \frac{\partial}{\partial x_k} (x_k^2) = 2x_k
+$$
+&lt;&#x2F;div&gt;
+
+梯度的第 $k$ 个分量是 $2x_k$。我们将所有分量组合回梯度向量：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\nabla_x f(x) = \begin{pmatrix} 2x_1 \\ 2x_2 \\ \vdots \\ 2x_n \end{pmatrix} = 2x
+$$
+&lt;&#x2F;div&gt;
+
+&lt;strong&gt;证毕。&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;3-tong-yong-er-ci-xing-nabla-x-x-t-a-x-a-a-t-x&quot;&gt;3) 通用二次型：$\nabla_x (x^T A x) = (A + A^T)x$&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;证明&lt;&#x2F;strong&gt;：&lt;&#x2F;p&gt;
+&lt;p&gt;设函数 $f(x) = x^T A x$，其中 $A$ 是一个 $n \times n$ 的矩阵。我们可以将其展开为二次型求和形式：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+f(x) = x^T A x = \sum_{i=1}^{n} \sum_{j=1}^{n} A_{ij} x_i x_j
+$$
+&lt;&#x2F;div&gt;
+
+我们计算 $f(x)$ 对 $x$ 的任意分量 $x_k$ 的偏导数。为了清晰地分析，我们将双重求和中与 $x_k$ 相关的项（即 $i=k$ 或 $j=k$ 的项）分离出来。&lt;&#x2F;p&gt;
+&lt;p&gt;这个和式可以被分解为四部分：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;$i=k$ 且 $j=k$ 的项：$A_{kk}x_k^2$&lt;&#x2F;li&gt;
+&lt;li&gt;$i=k$ 但 $j \neq k$ 的项：$\sum_{j \neq k} A_{kj} x_k x_j$&lt;&#x2F;li&gt;
+&lt;li&gt;$j=k$ 但 $i \neq k$ 的项：$\sum_{i \neq k} A_{ik} x_i x_k$&lt;&#x2F;li&gt;
+&lt;li&gt;$i \neq k$ 且 $j \neq k$ 的项：$\sum_{i \neq k} \sum_{j \neq k} A_{ij} x_i x_j$&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;现在我们对 $f(x)$ 关于 $x_k$ 求偏导。只有前三部分包含 $x_k$，第四部分导数为零。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\frac{\partial f}{\partial x_k} = \frac{\partial}{\partial x_k} \left( A_{kk}x_k^2 + \sum_{j \neq k} A_{kj} x_k x_j + \sum_{i \neq k} A_{ik} x_i x_k \right)
+$$
+&lt;&#x2F;div&gt;
+
+分别对三项求导：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\frac{\partial}{\partial x_k}(A_{kk}x_k^2) = 2A_{kk}x_k$&lt;&#x2F;li&gt;
+&lt;li&gt;$\frac{\partial}{\partial x_k}(\sum_{j \neq k} A_{kj} x_k x_j) = \sum_{j \neq k} A_{kj} x_j$&lt;&#x2F;li&gt;
+&lt;li&gt;$\frac{\partial}{\partial x_k}(\sum_{i \neq k} A_{ik} x_i x_k) = \sum_{i \neq k} A_{ik} x_i$&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;将它们加起来：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\frac{\partial f}{\partial x_k} = 2A_{kk}x_k + \sum_{j \neq k} A_{kj} x_j + \sum_{i \neq k} A_{ik} x_i
+$$
+&lt;&#x2F;div&gt;
+
+现在我们进行一个巧妙的重组，把 $2A_{kk}x_k$ 分成两部分：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\frac{\partial f}{\partial x_k} = \left( A_{kk}x_k + \sum_{j \neq k} A_{kj} x_j \right) + \left( A_{kk}x_k + \sum_{i \neq k} A_{ik} x_i \right)
+$$
+&lt;&#x2F;div&gt;
+
+观察括号内的两项：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一项是：$\sum_{j = 1}^{n} A_{kj} x_j$。这正是矩阵向量乘积 $Ax$ 的第 $k$ 个元素，记为 $(Ax)_k$。&lt;&#x2F;li&gt;
+&lt;li&gt;第二项是：$\sum_{i = 1}^{n} A_{ik} x_i$。这可以被看作是 $A$ 的第 $k$ 列与 $x$ 的点积，也就是 $A^T$ 的第 $k$ 行与 $x$ 的点积。这正是矩阵向量乘积 $A^Tx$ 的第 $k$ 个元素，记为 $(A^Tx)_k$。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;所以，梯度的第 $k$ 个分量是：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\frac{\partial f}{\partial x_k} = (Ax)_k + (A^Tx)_k = ((A + A^T)x)_k
+$$
+&lt;&#x2F;div&gt;
+
+将所有分量组合回梯度向量，我们得到：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\nabla_x f(x) = (A + A^T)x
+$$
+&lt;&#x2F;div&gt;
+
+&lt;strong&gt;证毕。&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;3-biao-liang-dui-ju-zhen-qiu-dao-scalar-by-matrix&quot;&gt;3. 标量对矩阵求导 (Scalar-by-Matrix)&lt;&#x2F;h1&gt;
+&lt;p&gt;在掌握了对向量的求导后，我们自然地将这一思想扩展到矩阵。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;1-ji-han-shu-xing-shi-frac-partial-partial-x-text-tr-ax-a-t&quot;&gt;1) 迹函数形式：$\frac{\partial}{\partial X} \text{tr}(AX) = A^T$&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;证明&lt;&#x2F;strong&gt;：&lt;&#x2F;p&gt;
+&lt;p&gt;设函数 $f(X) = \text{tr}(AX)$。其中 $A$ 是 $m \times n$ 矩阵，$X$ 是 $n \times m$ 矩阵。其乘积 $AX$ 是 $m \times m$ 方阵。我们将迹的表达式用求和形式写出：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+f(X) = \text{tr}(AX) = \sum_{i=1}^{m} (AX)_{ii} = \sum_{i=1}^{m} \sum_{j=1}^{n} A_{ij} X_{ji}
+$$
+&lt;&#x2F;div&gt;
+
+我们计算 $f(X)$ 对 $X$ 的任意一个元素 $X_{kl}$ 的偏导数：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\frac{\partial f}{\partial X_{kl}} = \frac{\partial}{\partial X_{kl}} \left( \sum_{i=1}^{m} \sum_{j=1}^{n} A_{ij} X_{ji} \right)
+$$
+&lt;&#x2F;div&gt;
+
+在所有项中，只有当 $X$ 的索引 $(j, i)$ 等于 $(k, l)$ 时，导数才不为零。因此，只有 $A_{lk} X_{kl}$ 这一项对求导有贡献。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\frac{\partial f}{\partial X_{kl}} = A_{lk}
+$$
+&lt;&#x2F;div&gt;
+
+这意味着导数矩阵在 $(k, l)$ 位置的元素是 $A_{lk}$。根据矩阵转置的定义，我们得到：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\frac{\partial f}{\partial X} = A^T
+$$
+&lt;&#x2F;div&gt;
+
+&lt;strong&gt;证毕。&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-xing-lie-shi-xing-shi-frac-partial-partial-x-det-x-det-x-x-1-t&quot;&gt;2) 行列式形式：$\frac{\partial}{\partial X} \det(X) = \det(X)(X^{-1})^T$&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;证明&lt;&#x2F;strong&gt;：&lt;&#x2F;p&gt;
+&lt;p&gt;这个证明需要用到行列式的&lt;strong&gt;拉普拉斯展开&lt;&#x2F;strong&gt;。设 $f(X) = \det(X)$，其中 $X$ 是 $n \times n$ 方阵。我们将行列式沿第 $k$ 行展开：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+f(X) = \det(X) = \sum_{j=1}^{n} X_{kj} C_{kj}
+$$
+&lt;&#x2F;div&gt;
+
+其中 $C_{kj}$ 是元素 $X_{kj}$ 的代数余子式，其值不依赖于 $X_{kj}$。我们对 $X$ 的任意元素 $X_{kl}$ 求偏导：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\frac{\partial f}{\partial X_{kl}} = \frac{\partial}{\partial X_{kl}} \left( \sum_{j=1}^{n} X_{kj} C_{kj} \right) = C_{kl}
+$$
+&lt;&#x2F;div&gt;
+
+因此，导数矩阵就是 $X$ 的代数余子式矩阵 $C$。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\frac{\partial f}{\partial X} = C
+$$
+&lt;&#x2F;div&gt;
+
+根据伴随矩阵求逆的公式 $X^{-1} = \frac{1}{\det(X)} \text{adj}(X)$，以及伴随矩阵是代数余子式矩阵的转置 $\text{adj}(X) = C^T$，我们有：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+C^T = \det(X) X^{-1}
+$$
+&lt;&#x2F;div&gt;
+
+对两边取转置，得到 $C = \det(X) (X^{-1})^T$。所以：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\frac{\partial f}{\partial X} = \det(X) (X^{-1})^T
+$$
+&lt;&#x2F;div&gt;
+
+&lt;strong&gt;证毕。&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;3-dui-shu-xing-lie-shi-xing-shi-frac-partial-partial-x-log-det-x-x-1-t&quot;&gt;3) 对数行列式形式：$\frac{\partial}{\partial X} \log(\det(X)) = (X^{-1})^T$&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;证明&lt;&#x2F;strong&gt;：&lt;&#x2F;p&gt;
+&lt;p&gt;这是一个链式法则的直接应用。设 $f(X) = \log(\det(X))$，并令 $u = \det(X)$。
+根据链式法则：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\frac{\partial f}{\partial X} = \frac{df}{du} \cdot \frac{\partial u}{\partial X}
+$$
+&lt;&#x2F;div&gt;
+
+我们知道 $\frac{df}{du} = \frac{1}{u} = \frac{1}{\det(X)}$，并从上一个证明中知道 $\frac{\partial u}{\partial X} = \det(X)(X^{-1})^T$。
+代入得：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\frac{\partial f}{\partial X} = \frac{1}{\det(X)} \left( \det(X)(X^{-1})^T \right) = (X^{-1})^T
+$$
+&lt;&#x2F;div&gt;
+
+&lt;strong&gt;证毕。&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;4-jie-lun&quot;&gt;4. 结论&lt;&#x2F;h1&gt;
+&lt;p&gt;通过从最基本的偏导数定义出发，我们能够严谨地推导出矩阵求导中的一系列核心公式。理解这些推导过程，不仅能帮助我们记忆公式，更重要的是建立了处理更复杂向量和矩阵函数求导问题的坚实基础。&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh">
+        <title>线性方程组解法总结</title>
+        <published>2025-06-26T21:01:24+08:00</published>
+        <updated>2025-06-26T22:02:00+08:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://kiritantakechi.github.io/blog/summary-of-linear-system-solutions/"/>
+        <id>https://kiritantakechi.github.io/blog/summary-of-linear-system-solutions/</id>
+        
+        <content type="html" xml:base="https://kiritantakechi.github.io/blog/summary-of-linear-system-solutions/">&lt;p&gt;这是我关于线性代数中两种重要方程组——超定方程组和欠定方程组——的解法学习总结。这两种情况在理论和实际应用（如数据拟合、信号处理）中都非常常见。&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;1-chao-ding-fang-cheng-zu-overdetermined-system&quot;&gt;1. 超定方程组 (Overdetermined System)&lt;&#x2F;h1&gt;
+&lt;p&gt;当线性方程组 $Ax=b$ 中，方程的数量大于未知数的数量时，我们称之为超定方程组。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;矩阵形式&lt;&#x2F;strong&gt;：$A$ 是一个 “瘦高” 型的 $m \times n$ 矩阵，其中 $m &amp;gt; n$。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;解的性质&lt;&#x2F;strong&gt;：通常情况下，由于约束（方程）过多，系统&lt;strong&gt;没有精确解&lt;&#x2F;strong&gt;。向量 $b$ 不在矩阵 $A$ 的列空间中。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;求解目标&lt;&#x2F;strong&gt;：我们不再寻求精确解，而是寻找一个&lt;strong&gt;最优近似解&lt;&#x2F;strong&gt; $\hat{x}$，使得误差向量 $Ax-b$ 的长度（L2范数）最小。这就是著名的&lt;strong&gt;最小二乘法 (Least Squares Method)&lt;&#x2F;strong&gt;。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\min_{\hat{x}} \|A\hat{x} - b\|_2^2
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;核心方法&lt;&#x2F;strong&gt;：该问题的解可以通过&lt;strong&gt;正规方程 (Normal Equation)&lt;&#x2F;strong&gt; 导出。当矩阵 $A$ &lt;strong&gt;列满秩&lt;&#x2F;strong&gt;（即列向量线性无关）时，正规方程为：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+A^T A \hat{x} = A^T b
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;最终解&lt;&#x2F;strong&gt;：通过求解正规方程，我们得到最优解 $\hat{x}$。这个解可以用&lt;strong&gt;左伪逆 (Left Pseudoinverse)&lt;&#x2F;strong&gt; $A^\dag$ 表示。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\hat{x} = (A^T A)^{-1} A^T b = A^\dag b
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;fu-zui-you-jie-de-zheng-ming-fang-fa&quot;&gt;附：最优解的证明方法&lt;&#x2F;h2&gt;
+&lt;p&gt;超定方程的最优解（最小二乘解）可以通过多种方式证明，这里介绍两种核心方法。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;a-wei-ji-fen-tui-dao-derivation-via-calculus&quot;&gt;a) 微积分推导 (Derivation via Calculus)&lt;&#x2F;h3&gt;
+&lt;p&gt;这种方法将问题视为一个求函数最小值的优化问题。目标函数是误差的平方 $f(x) = |Ax-b|^2$。当函数的梯度为零时，我们能找到极值点。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;定义目标函数&lt;&#x2F;strong&gt;：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+f(x) = \|Ax - b\|^2 = \sum_{i=1}^{m} \left( \sum_{j=1}^{n} A_{ij}x_j - b_i \right)^2
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;计算梯度&lt;&#x2F;strong&gt;：我们对 $f(x)$ 求关于向量 $x$ 的梯度 $\nabla f(x)$。这是一个标准的矩阵求导结果。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\nabla f(x) = 2A^T(Ax-b)
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;令梯度为零&lt;&#x2F;strong&gt;：最小值点 $\hat{x}$ 必须满足梯度为零的条件。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\nabla f(\hat{x}) = 2A^T(A\hat{x} - b) = 0
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;求解&lt;&#x2F;strong&gt;：整理上式，我们便得到了正规方程，进而求得最优解。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+A^T A \hat{x} = A^T b \\
+\implies \hat{x} = (A^T A)^{-1} A^T b
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;b-zhi-jie-yan-zheng-direct-verification&quot;&gt;b) 直接验证 (Direct Verification)&lt;&#x2F;h3&gt;
+&lt;p&gt;这种方法更为直接，它首先给出解的形式，然后证明对于任何其他的向量，其误差都更大。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;定义最优解&lt;&#x2F;strong&gt; $\hat{x}$ 满足 $A^T(A\hat{x}-b)=0$。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;展开误差&lt;&#x2F;strong&gt;：对于任意一个n维向量 $x$，我们分析其误差平方 $|Ax-b|^2$。通过引入 $\hat{x}$，我们进行如下代数变形：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\begin{aligned}
+\|Ax - b\|^2 &amp;= \|(Ax - A\hat{x}) + (A\hat{x} - b)\|^2 \\
+&amp;= \|A(x - \hat{x})\|^2 + \|A\hat{x} - b\|^2 + 2(A(x - \hat{x}))^T (A\hat{x} - b) \\
+&amp;= \|A(x - \hat{x})\|^2 + \|A\hat{x} - b\|^2 + 2(x - \hat{x})^T \underbrace{A^T (A\hat{x} - b)}_{=0} \\
+&amp;= \|A(x - \hat{x})\|^2 + \|A\hat{x} - b\|^2
+\end{aligned}
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;得出结论&lt;&#x2F;strong&gt;：我们得到了一个类似勾股定理的优美形式。因为范数的平方 $|A(x - \hat{x})|^2$ 永远大于等于零，所以：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\|Ax - b\|^2 \ge \|A\hat{x} - b\|^2
+$$
+&lt;&#x2F;div&gt;
+
+这就证明了 $\hat{x}$ 确实是最小二乘解。等号仅在 $|A(x - \hat{x})|^2=0$ 时成立。因为 $A$ 的列向量线性无关，这只有在 $x=\hat{x}$ 时才会发生。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h1 id=&quot;2-qian-ding-fang-cheng-zu-underdetermined-system&quot;&gt;2. 欠定方程组 (Underdetermined System)&lt;&#x2F;h1&gt;
+&lt;p&gt;当线性方程组 $Ax=b$ 中，未知数的数量大于方程的数量时，我们称之为欠定方程组。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;矩阵形式&lt;&#x2F;strong&gt;：$A$ 是一个 “矮胖” 型的 $m \times n$ 矩阵，其中 $m &amp;lt; n$。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;解的性质&lt;&#x2F;strong&gt;：通常情况下，由于约束（方程）过少，如果系统有解，则它有&lt;strong&gt;无穷多个解&lt;&#x2F;strong&gt;。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;求解目标&lt;&#x2F;strong&gt;：在无穷多的解中，我们需要一个标准来挑选出“最好”的一个。通常，我们选择那个自身长度（L2范数）最小的解，这被称为&lt;strong&gt;最小范数解 (Minimum Norm Solution)&lt;&#x2F;strong&gt;。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\min_{\hat{x}} \|\hat{x}\|_2^2 \quad \text{subject to} \quad A\hat{x}=b
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;核心方法&lt;&#x2F;strong&gt;：当矩阵 $A$ &lt;strong&gt;行满秩&lt;&#x2F;strong&gt;（即行向量线性无关）时，我们可以保证 $AA^T$ 可逆，从而找到唯一的最小范数解。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;最终解&lt;&#x2F;strong&gt;：最小范数解可以用&lt;strong&gt;右伪逆 (Right Pseudoinverse)&lt;&#x2F;strong&gt; $A^\dag$ 表示。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\hat{x} = A^T (AA^T)^{-1} b = A^\dag b
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;fu-zui-you-jie-de-zheng-ming-fang-fa-1&quot;&gt;附：最优解的证明方法&lt;&#x2F;h2&gt;
+&lt;p&gt;欠定方程的最小范数解可以通过&lt;strong&gt;拉格朗日乘数法 (Method of Lagrange Multipliers)&lt;&#x2F;strong&gt; 优雅地推导出来。&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;构造拉格朗日函数&lt;&#x2F;strong&gt;：我们将目标函数 $f(x) = x^Tx$ 和约束条件 $Ax-b=0$ 结合起来，构造拉格朗日函数 $L(x, \lambda)$，其中 $\lambda$ 是一个 $m \times 1$ 的拉格朗日乘数向量。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+L(x, \lambda) = x^T x - \lambda^T(Ax - b)
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;梯度置零&lt;&#x2F;strong&gt;：为了找到极值点，我们将 $L(x, \lambda)$ 分别对 $x$ 和 $\lambda$ 求偏导，并令其为零。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;对 $x$ 求导&lt;&#x2F;strong&gt;：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\nabla_x L(x, \lambda) = 2x - A^T \lambda = 0 \implies x = \frac{1}{2}A^T \lambda
+$$
+&lt;&#x2F;div&gt;
+
+这个重要的结果表明，最小范数解 $\hat{x}$ 必须是 $A^T$ 的列向量的线性组合，即 $\hat{x}$ 必须位于 $A$ 的&lt;strong&gt;行空间&lt;&#x2F;strong&gt;中。为简化表示，令新变量 $z = \frac{1}{2}\lambda$，则 $\hat{x} = A^T z$。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;对 $\lambda$ 求导&lt;&#x2F;strong&gt;：这会自然地得到原始的约束条件。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\nabla_\lambda L(x, \lambda) = -(Ax - b) = 0 \implies Ax = b
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;联立求解&lt;&#x2F;strong&gt;：我们将第3步得到的结果 $\hat{x} = A^T z$ 代入第4步的约束条件中。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+A(A^T z) = b \implies (AA^T)z = b
+$$
+&lt;&#x2F;div&gt;
+
+因为我们假设 $A$ 是行满秩的，所以 $m \times m$ 矩阵 $AA^T$ 是可逆的。因此，我们可以解出 $z$：
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+z = (AA^T)^{-1}b
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;得到最终解&lt;&#x2F;strong&gt;：最后，将 $z$ 代回到 $\hat{x} = A^T z$ 的表达式中，就得到了最小范数解 $\hat{x}$ 的最终形式。
+
+&lt;div class=&quot;math-block&quot;&gt;
+$$
+\hat{x} = A^T z = A^T(AA^T)^{-1}b
+$$
+&lt;&#x2F;div&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h1 id=&quot;3-zong-jie-yu-dui-bi&quot;&gt;3. 总结与对比&lt;&#x2F;h1&gt;
+&lt;p&gt;伪逆 $A^\dag$ 为我们提供了一个统一的框架来理解这些“最优解”。它总能根据问题的性质，赋予我们一个有意义的、唯一的答案。&lt;&#x2F;p&gt;
+
+&lt;div class=&quot;table-wrapper&quot;&gt;
+    &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th style=&quot;text-align: left&quot;&gt;特性&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: left&quot;&gt;超定方程 ($m &amp;gt; n$)&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: left&quot;&gt;欠定方程 ($m &amp;lt; n$)&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;矩阵形状&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;瘦高型 (Tall)&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;矮胖型 (Fat)&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;解的性质&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;通常无精确解&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;通常有无穷解&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;求解目标&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;最小化误差 $|Ax-b|$&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;最小化解的范数 $|x|$&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;核心方法&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;最小二乘法&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;最小范数法&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;秩的条件&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;$A$ 列满秩 ($R(A)=n$)&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;$A$ 行满秩 ($R(A)=m$)&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;伪逆公式&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;左伪逆 $A^\dag = (A^T A)^{-1} A^T$&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;右伪逆 $A^\dag = A^T (AA^T)^{-1}$&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;最终解&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;$\hat{x} = A^\dag b$&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: left&quot;&gt;$\hat{x} = A^\dag b$&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+
+&lt;&#x2F;div&gt;
+</content>
+        
+    </entry>
+</feed>
