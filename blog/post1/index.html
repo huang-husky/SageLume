@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- ========== 修改这里 ========== -->
+  <title>文章标题 | 算海青藜</title>
+  <meta name="description" content="文章简介，一两句话概括。">
+  <!-- ============================== -->
+  
+  <meta name="theme-color" content="#E9546B">
+  
+  <!-- Favicon -->
+  <link rel="manifest" href="https://huang-husky.github.io/SageLume/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://huang-husky.github.io/SageLume/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://huang-husky.github.io/SageLume/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://huang-husky.github.io/SageLume/favicon/favicon.ico">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://huang-husky.github.io/SageLume/style.css">
+  
+  <!-- Scripts -->
+  <script defer src="https://huang-husky.github.io/SageLume/js/remap-headings.js"></script>
+  
+  <!-- 数学公式支持（如果文章不需要公式可以删除这部分） -->
+  <link rel="stylesheet" href="https://huang-husky.github.io/SageLume/temml/Temml-Local.css">
+  <script defer src="https://huang-husky.github.io/SageLume/temml/temml.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      temml.renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},   // 块级公式
+          {left: "$", right: "$", display: false}     // 行内公式
+        ]
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+  
+  <header class="site-header">
+    <div class="site-title">
+      <a href="/">算海青藜</a>
+    </div>
+    <nav class="main-nav">
+      <a href="/">Home</a>
+      <a href="https://huang-husky.github.io/SageLume/about/">About</a>
+      <a href="https://huang-husky.github.io/SageLume/blog/">Blog</a>
+    </nav>
+  </header>
+  
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <!-- ========== 修改这里 ========== -->
+        <h1 class="post-title">文章标题</h1>
+        <div class="post-meta">
+          <span>发布于 2025-01-01</span>
+          <span> • </span>
+          <span>预计阅读 5 分钟</span>
+        </div>
+        <!-- ============================== -->
+      </header>
+      
+      <!-- 目录（可选，不需要可以删除整个 nav 标签） -->
+      <nav class="post-toc">
+        <h3 class="toc-title">目录</h3>
+        <ul>
+          <li><a href="#section-1">1. 第一节标题</a></li>
+          <li><a href="#section-2">2. 第二节标题</a></li>
+          <li><a href="#section-3">3. 总结</a></li>
+        </ul>
+      </nav>
+      
+      <!-- ========== 正文内容 ========== -->
+      <div class="post-content">
+        
+        <h1 id="section-1">1. 第一节标题</h1>
+        <p>这是第一段正文内容。可以包含<strong>粗体</strong>和<em>斜体</em>文字。</p>
+        <p>这是第二段。段落之间用 &lt;p&gt; 标签分隔。</p>
+        
+        <h1 id="section-2">2. 第二节标题</h1>
+        <p>如果需要数学公式，可以这样写：</p>
+        <p>行内公式：质能方程 $E = mc^2$ 是物理学中最著名的公式之一。</p>
+        <p>块级公式（独占一行）：</p>
+        <div class="math-block">
+          $$ \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi} $$
+        </div>
+        
+        <h2>2.1 子标题（如果需要）</h2>
+        <p>这是子节的内容。</p>
+        
+        <h1 id="section-3">3. 总结</h1>
+        <p>这是文章的总结部分。</p>
+        
+      </div>
+      <!-- ============================== -->
+      
+    </article>
+  </main>
+  
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="sakura-separator">
+        <img class="sakura-image" src="https://huang-husky.github.io/SageLume/favicon/favicon.svg" alt="Logo" width="32" height="32">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+</body>
+</html>
