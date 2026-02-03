@@ -1,8 +1,8 @@
 ﻿/* ===== 浅色模式（默认） ===== */
 :root {
   /* 渐变色定义 */
-  --yukima-gradient-start: #f0e68c;  /* 鹅黄 */
-  --yukima-gradient-end: #6b8e23;    /* 草绿 */
+  --yukima-gradient-start: #c9a000;  /* 深鹅黄 */
+  --yukima-gradient-end: #3d7a1a;    /* 深草绿 */
   --yukima-gradient: linear-gradient(135deg, var(--yukima-gradient-start), var(--yukima-gradient-end));
   
   --yukima-bg: #fafdf6;
