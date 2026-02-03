@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>雪間</title>
     <subtitle>Kiritan&#x27;s Blog</subtitle>
-    <link rel="self" type="application/atom+xml" href="https://kiritantakechi.github.io/atom.xml"/>
-    <link rel="alternate" type="text/html" href="https://kiritantakechi.github.io"/>
+    <link rel="self" type="application/atom+xml" href="https://huang-husky.github.io/SageLume/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://huang-husky.github.io/SageLume"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2025-06-28T22:44:00+08:00</updated>
-    <id>https://kiritantakechi.github.io/atom.xml</id>
+    <id>https://huang-husky.github.io/SageLume/atom.xml</id>
     <entry xml:lang="zh">
         <title>切比雪夫不等式推导</title>
         <published>2025-06-28T22:14:00+08:00</published>
@@ -20,10 +20,10 @@
           </name>
         </author>
         
-        <link rel="alternate" type="text/html" href="https://kiritantakechi.github.io/blog/chebyshev-inequality-unified-derivation/"/>
-        <id>https://kiritantakechi.github.io/blog/chebyshev-inequality-unified-derivation/</id>
+        <link rel="alternate" type="text/html" href="https://huang-husky.github.io/SageLume/blog/chebyshev-inequality-unified-derivation/"/>
+        <id>https://huang-husky.github.io/SageLume/blog/chebyshev-inequality-unified-derivation/</id>
         
-        <content type="html" xml:base="https://kiritantakechi.github.io/blog/chebyshev-inequality-unified-derivation/">&lt;h1 id=&quot;1-liang-chong-shi-jiao-xia-de-tong-yi-he-xin-si-xiang&quot;&gt;1. 两种视角下的同一核心思想&lt;&#x2F;h1&gt;
+        <content type="html" xml:base="https://huang-husky.github.io/SageLume/blog/chebyshev-inequality-unified-derivation/">&lt;h1 id=&quot;1-liang-chong-shi-jiao-xia-de-tong-yi-he-xin-si-xiang&quot;&gt;1. 两种视角下的同一核心思想&lt;&#x2F;h1&gt;
 &lt;p&gt;切比雪夫不等式（Chebyshev’s inequality）是数学中一个深刻而不凡的成果。初学者可能会在不同的课程中遇到它“不同”的版本：在线性代数或数据分析中，它描述了一个数据向量的离群值分布；而在概率论中，它则刻画了一个随机变量偏离其均值的概率。&lt;&#x2F;p&gt;
 &lt;p&gt;这两种形式看似不同，但它们本质上是同一数学思想在不同领域的体现。这个核心思想是：&lt;strong&gt;一个系统的整体“能量”或“离散度”，限制了其内部出现极端个体的可能性。&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;本文将带领读者踏上一段有趣的推导之旅，我们将从一个具体、直观的向量形式出发，通过清晰的类比和逻辑演进，最终抵达抽象但更具普适性的概率论形式。这个过程不仅能让我们深刻理解切比雪夫不等式本身，更能揭示数据科学与概率论之间内在的和谐与统一。&lt;&#x2F;p&gt;
@@ -195,10 +195,10 @@ $$
           </name>
         </author>
         
-        <link rel="alternate" type="text/html" href="https://kiritantakechi.github.io/blog/matrix-calculus-proofs/"/>
-        <id>https://kiritantakechi.github.io/blog/matrix-calculus-proofs/</id>
+        <link rel="alternate" type="text/html" href="https://huang-husky.github.io/SageLume/blog/matrix-calculus-proofs/"/>
+        <id>https://huang-husky.github.io/SageLume/blog/matrix-calculus-proofs/</id>
         
-        <content type="html" xml:base="https://kiritantakechi.github.io/blog/matrix-calculus-proofs/">&lt;p&gt;本文旨在从最基础的导数定义出发，一步步证明那些最常用、最重要的矩阵求导公式。&lt;&#x2F;p&gt;
+        <content type="html" xml:base="https://huang-husky.github.io/SageLume/blog/matrix-calculus-proofs/">&lt;p&gt;本文旨在从最基础的导数定义出发，一步步证明那些最常用、最重要的矩阵求导公式。&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;1-he-xin-ding-yi&quot;&gt;1. 核心定义&lt;&#x2F;h1&gt;
 &lt;p&gt;所有证明都将回归到导数的基本定义。&lt;&#x2F;p&gt;
 &lt;ol&gt;
@@ -464,10 +464,10 @@ $$
           </name>
         </author>
         
-        <link rel="alternate" type="text/html" href="https://kiritantakechi.github.io/blog/summary-of-linear-system-solutions/"/>
-        <id>https://kiritantakechi.github.io/blog/summary-of-linear-system-solutions/</id>
+        <link rel="alternate" type="text/html" href="https://huang-husky.github.io/SageLume/blog/summary-of-linear-system-solutions/"/>
+        <id>https://huang-husky.github.io/SageLume/blog/summary-of-linear-system-solutions/</id>
         
-        <content type="html" xml:base="https://kiritantakechi.github.io/blog/summary-of-linear-system-solutions/">&lt;p&gt;这是我关于线性代数中两种重要方程组——超定方程组和欠定方程组——的解法学习总结。这两种情况在理论和实际应用（如数据拟合、信号处理）中都非常常见。&lt;&#x2F;p&gt;
+        <content type="html" xml:base="https://huang-husky.github.io/SageLume/blog/summary-of-linear-system-solutions/">&lt;p&gt;这是我关于线性代数中两种重要方程组——超定方程组和欠定方程组——的解法学习总结。这两种情况在理论和实际应用（如数据拟合、信号处理）中都非常常见。&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;1-chao-ding-fang-cheng-zu-overdetermined-system&quot;&gt;1. 超定方程组 (Overdetermined System)&lt;&#x2F;h1&gt;
 &lt;p&gt;当线性方程组 $Ax=b$ 中，方程的数量大于未知数的数量时，我们称之为超定方程组。&lt;&#x2F;p&gt;
 &lt;ul&gt;
@@ -672,10 +672,10 @@ $$
           </name>
         </author>
         
-        <link rel="alternate" type="text/html" href="https://kiritantakechi.github.io/blog/dirichlet-optimizer-conjecture/"/>
-        <id>https://kiritantakechi.github.io/blog/dirichlet-optimizer-conjecture/</id>
+        <link rel="alternate" type="text/html" href="https://huang-husky.github.io/SageLume/blog/dirichlet-optimizer-conjecture/"/>
+        <id>https://huang-husky.github.io/SageLume/blog/dirichlet-optimizer-conjecture/</id>
         
-        <content type="html" xml:base="https://kiritantakechi.github.io/blog/dirichlet-optimizer-conjecture/">&lt;p&gt;在深度学习领域，自适应优化器（如Adam、RMSprop）的成功证明了为网络中每个参数赋予独立学习率的巨大优势。这些方法通常依赖于梯度的一阶或二阶矩来判断参数的更新状态。我提出了一个不同的思路：能否通过一个更具“几何意义”的量来衡量参数的稳定性，并以此指导学习率的调整？&lt;&#x2F;p&gt;
+        <content type="html" xml:base="https://huang-husky.github.io/SageLume/blog/dirichlet-optimizer-conjecture/">&lt;p&gt;在深度学习领域，自适应优化器（如Adam、RMSprop）的成功证明了为网络中每个参数赋予独立学习率的巨大优势。这些方法通常依赖于梯度的一阶或二阶矩来判断参数的更新状态。我提出了一个不同的思路：能否通过一个更具“几何意义”的量来衡量参数的稳定性，并以此指导学习率的调整？&lt;&#x2F;p&gt;
 &lt;p&gt;这个猜想的核心是利用&lt;strong&gt;狄利克雷能量 (Dirichlet Energy)&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;1-he-xin-gou-xiang-ji-yu-neng-liang-de-zi-gua-ying-xue-xi-lu&quot;&gt;1. 核心构想：基于能量的自适应学习率&lt;&#x2F;h1&gt;
 &lt;p&gt;我的方案可以分解为以下几个步骤：&lt;&#x2F;p&gt;
