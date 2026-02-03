@@ -1,5 +1,5 @@
-﻿:root{
-  /* ===== 浅色模式 - 清新黄绿 ===== */
+﻿/* ===== 浅色模式（默认） ===== */
+:root {
   --yukima-bg: #fafdf6;
   --yukima-text: #5a6a5a;
   --yukima-strong: #3d4a3d;
@@ -81,66 +81,106 @@
   --yukima-width-content: 800px
 }
 
-@media (prefers-color-scheme: dark){
-  :root{
-    /* ===== 深色模式 - 墨绿夜色 ===== */
-    --yukima-bg: #1a2318;
-    --yukima-text: #b8c9a8;
-    --yukima-strong: #d4e0c8;
-    --yukima-title: #a4d65e;
-    --yukima-border: #2d3a2a;
-    --yukima-border-hover: #3d4a3a;
-    --yukima-shadow: rgba(0, 0, 0, 0.25);
-    --yukima-shadow-hover: rgba(0, 0, 0, 0.4);
-    --yukima-link: #9ccc65;
-    --yukima-link-hover: #c5e1a5;
-    --yukima-button-bg: #7cb342;
-    --yukima-button-bg-hover: #9ccc65;
-    --yukima-button-text: #1a2318;
-    --yukima-button-text-hover: var(--yukima-button-text);
-    --yukima-button-border: var(--yukima-button-bg);
-    --yukima-button-border-hover: var(--yukima-button-bg-hover);
-    --yukima-glow: #7cb342;
-    --yukima-component-bg: rgba(100, 140, 80, 0.12);
-    --yukima-component-bg-hover: rgba(100, 140, 80, 0.22);
-    --yukima-component-border: transparent;
-    --yukima-component-border-hover: var(--yukima-border-hover);
-    --yukima-component-shadow-hover: var(--yukima-shadow);
-    --yukima-toc-bg: rgba(45, 58, 42, 0.6);
-    --yukima-toc-border: var(--yukima-border);
-    --yukima-code-bg: #232b22;
-    --yukima-code-border: #3d4a3a;
-    --yukima-code-shadow: rgba(0, 0, 0, 0.3);
-    --yukima-code-shadow-hover: rgba(0, 0, 0, 0.4);
-    --yukima-code-text: #b8c9a8;
-    --yukima-code-comment: #6a7a6a;
-    --yukima-code-keyword: #a4d65e;
-    --yukima-code-function: #7aa2f7;
-    --yukima-code-string: #9ccc65;
-    --yukima-code-number: #ffc107;
-    --yukima-code-type: #e0af68;
-    --yukima-code-variable: #f7768e;
-    --yukima-code-operator: #73daca;
-    --yukima-plotly-bg: rgba(35, 43, 34, 0.9);
-    --yukima-plotly-font-color: #b8c9a8;
-    --yukima-plotly-title-color: #a4d65e;
-    --yukima-plotly-grid-color: #2d3a2a;
-    --yukima-plotly-axis-color: #3d4a3a;
-    --yukima-plotly-legend-bg: rgba(26, 35, 24, 0.5);
-    --yukima-plotly-legend-border: #2d3a2a;
-    --yukima-plotly-trace-1: #9ccc65;
-    --yukima-plotly-trace-2: #7aa2f7;
-    --yukima-plotly-trace-3: #ffc107;
-    --yukima-plotly-trace-4: #a4d65e
-  }
+/* ===== 深色模式 ===== */
+[data-theme="dark"] {
+  --yukima-bg: #1a2318;
+  --yukima-text: #b8c9a8;
+  --yukima-strong: #d4e0c8;
+  --yukima-title: #a4d65e;
+  --yukima-border: #2d3a2a;
+  --yukima-border-hover: #3d4a3a;
+  --yukima-shadow: rgba(0, 0, 0, 0.25);
+  --yukima-shadow-hover: rgba(0, 0, 0, 0.4);
+  --yukima-link: #9ccc65;
+  --yukima-link-hover: #c5e1a5;
+  --yukima-button-bg: #7cb342;
+  --yukima-button-bg-hover: #9ccc65;
+  --yukima-button-text: #1a2318;
+  --yukima-button-text-hover: var(--yukima-button-text);
+  --yukima-button-border: var(--yukima-button-bg);
+  --yukima-button-border-hover: var(--yukima-button-bg-hover);
+  --yukima-glow: #7cb342;
+  --yukima-component-bg: rgba(100, 140, 80, 0.12);
+  --yukima-component-bg-hover: rgba(100, 140, 80, 0.22);
+  --yukima-component-border: transparent;
+  --yukima-component-border-hover: var(--yukima-border-hover);
+  --yukima-component-shadow-hover: var(--yukima-shadow);
+  --yukima-toc-bg: rgba(45, 58, 42, 0.6);
+  --yukima-toc-border: var(--yukima-border);
+  --yukima-code-bg: #232b22;
+  --yukima-code-border: #3d4a3a;
+  --yukima-code-shadow: rgba(0, 0, 0, 0.3);
+  --yukima-code-shadow-hover: rgba(0, 0, 0, 0.4);
+  --yukima-code-text: #b8c9a8;
+  --yukima-code-comment: #6a7a6a;
+  --yukima-code-keyword: #a4d65e;
+  --yukima-code-function: #7aa2f7;
+  --yukima-code-string: #9ccc65;
+  --yukima-code-number: #ffc107;
+  --yukima-code-type: #e0af68;
+  --yukima-code-variable: #f7768e;
+  --yukima-code-operator: #73daca;
+  --yukima-plotly-bg: rgba(35, 43, 34, 0.9);
+  --yukima-plotly-font-color: #b8c9a8;
+  --yukima-plotly-title-color: #a4d65e;
+  --yukima-plotly-grid-color: #2d3a2a;
+  --yukima-plotly-axis-color: #3d4a3a;
+  --yukima-plotly-legend-bg: rgba(26, 35, 24, 0.5);
+  --yukima-plotly-legend-border: #2d3a2a;
+  --yukima-plotly-trace-1: #9ccc65;
+  --yukima-plotly-trace-2: #7aa2f7;
+  --yukima-plotly-trace-3: #ffc107;
+  --yukima-plotly-trace-4: #a4d65e
 }
 
+/* ===== 切换按钮样式 ===== */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: var(--yukima-component-bg);
+  border: 2px solid var(--yukima-border);
+  border-radius: 50px;
+  padding: 8px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  color: var(--yukima-text);
+  backdrop-filter: blur(10px);
+}
+
+.theme-toggle:hover {
+  border-color: var(--yukima-link);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px var(--yukima-shadow-hover);
+}
+
+.theme-toggle .icon {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .icon {
+  transform: rotate(20deg);
+}
+
+/* 浅色模式显示太阳，深色模式显示月亮 */
+.theme-toggle .sun { display: inline; }
+.theme-toggle .moon { display: none; }
+[data-theme="dark"] .theme-toggle .sun { display: none; }
+[data-theme="dark"] .theme-toggle .moon { display: inline; }
+
+/* ===== 基础样式 ===== */
 *,*::before,*::after{box-sizing:border-box}
-html{background-color:var(--yukima-bg);color:var(--yukima-text);font-family:"Iowan Old Style",Georgia,"Songti SC","SimSun","宋体","Hiragino Mincho ProN","ヒラギノ明朝 ProN","Yu Mincho","游明朝体","MS Mincho","ＭＳ 明朝",serif;font-size:100%;line-height:var(--yukima-line-height-base)}
+html{background-color:var(--yukima-bg);color:var(--yukima-text);font-family:"Iowan Old Style",Georgia,"Songti SC","SimSun","宋体","Hiragino Mincho ProN","ヒラギノ明朝 ProN","Yu Mincho","游明朝体","MS Mincho","ＭＳ 明朝",serif;font-size:100%;line-height:var(--yukima-line-height-base);transition: background-color 0.3s ease, color 0.3s ease}
 body{width:var(--yukima-width-content);max-width:90%;margin:0 auto;padding:var(--yukima-size-4);display:flex;flex-direction:column;min-height:100vh}
 main{flex-grow:1}
 html{font-size:var(--yukima-size-font-base)}
-h1,h2,h3,h4,h5,h6{font-family:"Noto Serif",serif;color:var(--yukima-title);line-height:var(--yukima-line-height-tight);margin:var(--yukima-size-6) 0 var(--yukima-size-4)}
+h1,h2,h3,h4,h5,h6{font-family:"Noto Serif",serif;color:var(--yukima-title);line-height:var(--yukima-line-height-tight);margin:var(--yukima-size-6) 0 var(--yukima-size-4);transition: color 0.3s ease}
 h1{font-size:var(--yukima-size-font-xl)}
 h2{font-size:var(--yukima-size-font-lg)}
 h3{font-size:var(--yukima-size-font-md)}
