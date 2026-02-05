@@ -13,12 +13,15 @@
     <link rel="icon" type="image/svg+xml" href="https://huang-husky.github.io/SageLume/favicon/favicon.svg">
     <link rel="shortcut icon" href="https://huang-husky.github.io/SageLume/favicon/favicon.ico">
     
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Long+Cang&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
-    
     <style>
+        /* ===== 自定义字体 ===== */
+        @font-face {
+            font-family: 'shouxieti';
+            src: url('fonts/shouxieti.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -30,7 +33,7 @@
             height: 100vh;
             overflow: hidden;
             background: #112;
-            font-family: "Noto Serif SC", serif;
+            font-family: 'shouxieti', "Noto Serif SC", serif;
         }
         
         /* Canvas 全屏 */
@@ -66,6 +69,7 @@
             transition: all 0.4s ease;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
+            font-family: 'shouxieti', sans-serif;
         }
         
         .nav-links a:hover {
@@ -172,6 +176,7 @@
             color: rgba(255, 255, 255, 0.4);
             font-size: 0.8rem;
             z-index: 10;
+            font-family: 'shouxieti', sans-serif;
         }
         
         /* 响应式 */
@@ -373,9 +378,9 @@
             tempCanvas.width = width;
             tempCanvas.height = height;
             
-            // 使用更大的字体和手写体
+            // 使用手写体字体
             const fontSize = Math.min(width / 5, 150);
-            tempCtx.font = `${fontSize}px "Ma Shan Zheng", cursive`;
+            tempCtx.font = `${fontSize}px "shouxieti", cursive`;
             tempCtx.textAlign = 'center';
             tempCtx.textBaseline = 'middle';
             tempCtx.fillStyle = '#fff';
@@ -392,7 +397,7 @@
                     const index = (y * width + x) * 4;
                     const alpha = data[index + 3];
                     
-                    // 降低阈值，捕获更多细节
+                    // 降低阈值,捕获更多细节
                     if (alpha > 50) {
                         const color = colors[Math.floor(Math.random() * colors.length)];
                         particles.push(new Particle(x, y, color));
@@ -455,6 +460,7 @@
         });
         
         initCanvas();
+        // 等待字体加载完成后再生成粒子
         document.fonts.ready.then(() => {
             generateParticles();
             animate();
