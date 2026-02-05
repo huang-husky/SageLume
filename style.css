@@ -260,7 +260,7 @@ pre code{padding:0;border:none;background:none;font-size:inherit}
 .hljs-symbol,.hljs-bullet{color:var(--yukima-code-operator)}
 .plotly-chart{margin:var(--yukima-size-8) 0;border:var(--yukima-size-border-width) solid var(--yukima-code-border);border-radius:var(--yukima-radius-md);overflow:hidden;background-color:var(--yukima-code-bg);box-shadow:0 var(--yukima-size-1) var(--yukima-size-2) var(--yukima-code-shadow);transition:all .3s ease;display:flex;justify-content:center;align-items:stretch}
 .plotly-chart:hover{transform:translateY(calc(var(--yukima-size-0)*-1));box-shadow:0 var(--yukima-size-2) var(--yukima-size-4) var(--yukima-code-shadow-hover);border-color:var(--yukima-border-hover)}
-.plotly-error{padding:var(--yukima-size-6);background-color:var(--yukima-code-bg);font-family:"Noto Serif",serif;text-align:center;width:100%}
+.plotly-error{padding:var(--yukima-size-6);background-color:var(--yukima-code-bg);font-family: 'Long Cang', 'Noto Serif SC', cursive;text-align:center;width:100%}
 .plotly-error p{margin:0;line-height:var(--yukima-line-height-base)}
 .post-item>a{display:block;padding:var(--yukima-size-6);margin-bottom:var(--yukima-size-6);border-radius:var(--yukima-radius-md);background-color:var(--yukima-component-bg);border-width:var(--yukima-size-border-width);border-style:solid;border-color:var(--yukima-component-border);transition:all .3s ease}
 .post-item>a:hover{background-color:var(--yukima-component-bg-hover);border-color:var(--yukima-component-border-hover);transform:translateY(calc(var(--yukima-size-1)*-1));box-shadow:var(--yukima-component-shadow-hover)}
