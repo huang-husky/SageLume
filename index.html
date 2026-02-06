@@ -29,7 +29,18 @@
             font-family: 'STXingkai', "Noto Serif SC", serif;
         }
         
-        /* Canvas 全屏 */
+        /* 几何动画背景 - 最底层 */
+        #geometry-bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: all;
+        }
+        
+        /* 粒子文字画布 - 上层 */
         #particle-canvas {
             position: fixed;
             top: 0;
@@ -37,6 +48,7 @@
             width: 100%;
             height: 100%;
             z-index: 1;
+            pointer-events: none;
         }
         
         /* 导航链接 - 底部居中 */
@@ -191,7 +203,10 @@
     </style>
 </head>
 <body>
-    <!-- 粒子画布 -->
+    <!-- 几何动画背景 - 最底层 -->
+    <canvas id="geometry-bg-canvas"></canvas>
+    
+    <!-- 粒子文字画布 - 上层 -->
     <canvas id="particle-canvas"></canvas>
     
     <!-- 导航链接 -->
@@ -384,13 +399,8 @@
         }
         
         function animate() {
+            // 使用透明背景,让下层的几何动画可见
             ctx.clearRect(0, 0, width, height);
-            
-            const gradient = ctx.createRadialGradient(width/2, height/2, 0, width/2, height/2, width/2);
-            gradient.addColorStop(0, '#1a2a1a');
-            gradient.addColorStop(1, '#0d1117');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, width, height);
             
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
@@ -500,5 +510,8 @@
         // 启动时钟
         startTime();
     </script>
+    
+    <!-- 几何背景动画 -->
+    <script src="js/geometry-background.js"></script>
 </body>
 </html>
