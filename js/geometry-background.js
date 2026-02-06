@@ -1,7 +1,4 @@
-// ==========================================
-// 几何背景动画 - 测试版本
-// ==========================================
-
+// 几何背景动画 - 测试版
 console.log('🚀 geometry-background.js 开始加载');
 
 class GeometryBackground {
@@ -58,7 +55,7 @@ class GeometryBackground {
       this.points.push({
         x: Math.random() * this.width,
         y: Math.random() * this.height,
-        vx: (Math.random() - 0.5) * 2,  // 加快速度便于看到移动
+        vx: (Math.random() - 0.5) * 2,
         vy: (Math.random() - 0.5) * 2,
         radius: Math.random() * 3 + 2,
         color: this.colors[Math.floor(Math.random() * this.colors.length)]
@@ -93,7 +90,7 @@ class GeometryBackground {
     
     this.ctx.beginPath();
     this.ctx.strokeStyle = gradient;
-    this.ctx.lineWidth = 3;  // 更粗,更明显
+    this.ctx.lineWidth = 3; 
     this.ctx.moveTo(p1.x, p1.y);
     this.ctx.lineTo(p2.x, p2.y);
     this.ctx.stroke();
@@ -112,11 +109,6 @@ class GeometryBackground {
   
   animate() {
     this.frameCount++;
-    
-    // 每60帧输出一次日志
-    if (this.frameCount % 60 === 0) {
-      console.log('🎬 动画运行中... 帧数:', this.frameCount, '鼠标:', this.mouse.x, this.mouse.y);
-    }
     
     // 清除画布(半透明产生拖尾)
     this.ctx.fillStyle = 'rgba(13, 17, 23, 0.1)';
@@ -187,14 +179,14 @@ class GeometryBackground {
       this.mouse.y = null;
     });
     
-    // 测试:点击canvas时输出日志
+    // log
     this.canvas.addEventListener('click', (e) => {
       console.log('🖱️ Canvas被点击!', e.clientX, e.clientY);
     });
   }
 }
 
-// 初始化
+// 初始化log
 console.log('📦 geometry-background.js 已加载');
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
