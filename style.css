@@ -1,11 +1,4 @@
-﻿@font-face {
-    font-family: 'shouxieti';
-    src: url('../fonts/shouxieti.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-/* ===== 浅色模式（默认） ===== */
+﻿/* ===== 浅色模式（默认） ===== */
 :root {
   /* 渐变色定义 */
   --yukima-gradient-start: #c9a000;  /* 深鹅黄 */
