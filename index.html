@@ -306,7 +306,6 @@
     <p class="copyright">© 2026 z-o-s</p>
     
     <script>
-        // ===== 粒子文字动画 =====
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         
@@ -314,7 +313,6 @@
         let particles = [];
         let mouse = { x: null, y: null, radius: 100 };
         
-        // 主题色 - 鹅黄草绿渐变
         const colors = [
             '#c5e1a5', '#aed581', '#9ccc65', '#8bc34a',
             '#fff59d', '#fff176', '#ffee58', '#ffeb3b'
@@ -331,7 +329,6 @@
                 this.y = Math.random() * height;
                 this.targetX = x;
                 this.targetY = y;
-                // 粒子更小，显示更精细
                 this.size = Math.random() * 1.5 + 1;
                 this.color = color;
                 this.baseX = x;
@@ -350,7 +347,6 @@
             }
             
             update() {
-                // 不受鼠标影响,直接回归原位
                 if (this.x !== this.baseX) {
                     let dx = this.x - this.baseX;
                     this.x -= dx / 10;
@@ -370,7 +366,6 @@
             tempCanvas.width = width;
             tempCanvas.height = height;
             
-            // 使用手写体字体
             const fontSize = Math.min(width / 5, 150);
             tempCtx.font = `bold ${fontSize}px "STXingkai", "STKaiti", "Microsoft YaHei", serif`;
             tempCtx.textAlign = 'center';
@@ -381,7 +376,7 @@
             const imageData = tempCtx.getImageData(0, 0, width, height);
             const data = imageData.data;
             
-            // 减小采样间隔，防止笔画缺失
+            // 减小采样间隔
             const gap = 3;
             
             for (let y = 0; y < height; y += gap) {
@@ -389,7 +384,7 @@
                     const index = (y * width + x) * 4;
                     const alpha = data[index + 3];
                     
-                    // 降低阈值,捕获更多细节
+                    // 降低阈值
                     if (alpha > 50) {
                         const color = colors[Math.floor(Math.random() * colors.length)];
                         particles.push(new Particle(x, y, color));
@@ -399,7 +394,7 @@
         }
         
         function animate() {
-            // 使用透明背景,让下层的几何动画可见
+            // 使用透明背景
             ctx.clearRect(0, 0, width, height);
             
             for (let i = 0; i < particles.length; i++) {
