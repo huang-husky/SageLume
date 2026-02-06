@@ -312,3 +312,25 @@ pre code{padding:0;border:none;background:none;font-size:inherit}
 .error-message p{font-size:var(--yukima-size-font-base);color:var(--yukima-text);background:none;-webkit-background-clip:unset;background-clip:unset}
 .error-link{display:inline-block;margin-top:var(--yukima-size-8);padding:var(--yukima-size-3) var(--yukima-size-6);border-radius:var(--yukima-radius-md);font-weight:bold;text-decoration:none;transition:all .3s ease;background:var(--yukima-gradient);-webkit-background-clip:unset;background-clip:unset;color:var(--yukima-button-text)}
 .error-link:hover{transform:translateY(calc(var(--yukima-size-1)*-1));box-shadow:var(--yukima-shadow-hover);filter:brightness(1.1)}
+
+/* ==========================================
+   粒子背景样式
+   ========================================== */
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;  /* 最底层,作为背景 */
+  pointer-events: none;  /* 不捕获鼠标事件 */
+}
+
+/* 确保其他内容在粒子背景之上 */
+.nav-links,
+.clock-container,
+.copyright {
+  position: relative;
+  z-index: 10;
+}
