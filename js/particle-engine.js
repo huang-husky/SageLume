@@ -1,7 +1,4 @@
-// ==========================================
-// 粒子引擎 - 核心逻辑
-// ==========================================
-
+// 粒子引擎
 class Particle {
   constructor(x, y, color) {
     this.x = Math.random() * window.innerWidth;

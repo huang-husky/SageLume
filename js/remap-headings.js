@@ -1,5 +1,3 @@
-// static/js/remap-headings.js
-
 // 当整个页面的DOM内容都加载完毕后执行
 document.addEventListener("DOMContentLoaded", function () {
   // 找到我们存放文章正文的容器
