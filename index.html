@@ -329,7 +329,7 @@
                 this.baseX = x;
                 this.baseY = y;
                 this.density = Math.random() * 30 + 1;
-                this.alpha = Math.random() * 0.5 + 0.5;
+                this.alpha = 0.85
             }
             
             draw() {
@@ -366,7 +366,7 @@
                     }
                 }
                 
-                this.alpha = 0.5 + Math.sin(Date.now() * 0.003 + this.baseX * 0.01) * 0.3;
+               
             }
         }
         
@@ -379,28 +379,40 @@
             tempCanvas.height = height;
             
             // 使用手写体字体
-            const fontSize = Math.min(width / 5, 150);
-            tempCtx.font = `${fontSize}px "shouxieti", cursive`;
+            // 1. 使用更大的字号绘制,再缩放
+            const baseFontSize = Math.min(width / 5, 150);
+            const renderScale = 2; // 放大2倍渲染
+            const fontSize = baseFontSize * renderScale;
+
+            tempCanvas.width = width * renderScale;
+            tempCanvas.height = height * renderScale;
+
+            // 2. 开启抗锯齿,让字体边缘更平滑
+            tempCtx.imageSmoothingEnabled = true;
+            tempCtx.imageSmoothingQuality = 'high';
+
+            // 3. 使用系统楷体(笔画更清晰)
+            tempCtx.font = `bold ${fontSize}px "STKaiti", "KaiTi", "SimKai", serif`;
             tempCtx.textAlign = 'center';
             tempCtx.textBaseline = 'middle';
             tempCtx.fillStyle = '#fff';
-            tempCtx.fillText('算海青藜', width / 2, height / 2 - 30);
-            
-            const imageData = tempCtx.getImageData(0, 0, width, height);
+            tempCtx.fillText('算海青藜', (width * renderScale) / 2, (height * renderScale) / 2 - 30);
+
+            const imageData = tempCtx.getImageData(0, 0, width * renderScale, height * renderScale);
             const data = imageData.data;
-            
-            // 减小采样间隔，防止笔画缺失
-            const gap = 3;
-            
-            for (let y = 0; y < height; y += gap) {
-                for (let x = 0; x < width; x += gap) {
-                    const index = (y * width + x) * 4;
+
+            // 4. gap保持4,但用缩放后的坐标
+            const gap = 4;
+
+            for (let y = 0; y < height * renderScale; y += gap) {
+                for (let x = 0; x < width * renderScale; x += gap) {
+                    const index = (y * width * renderScale + x) * 4;
                     const alpha = data[index + 3];
                     
-                    // 降低阈值,捕获更多细节
-                    if (alpha > 50) {
+                    if (alpha > 80) {  // 稍微提高阈值
                         const color = colors[Math.floor(Math.random() * colors.length)];
-                        particles.push(new Particle(x, y, color));
+                        // 缩回原始尺寸
+                        particles.push(new Particle(x / renderScale, y / renderScale, color));
                     }
                 }
             }
