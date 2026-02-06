@@ -384,7 +384,7 @@
             tempCtx.textAlign = 'center';
             tempCtx.textBaseline = 'middle';
             tempCtx.fillStyle = '#fff';
-            tempCtx.fillText('算海青藜', width / 2, height / 2 - 30);
+            tempCtx.fillText('算海·青藜', width / 2, height / 2 - 30);
             
             const imageData = tempCtx.getImageData(0, 0, width, height);
             const data = imageData.data;
@@ -426,13 +426,17 @@
         
         function connectParticles() {
             const maxDistance = 20;  // 更短的连线距离
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
+            const maxDistanceSquared = maxDistance * maxDistance; // 预计算平方值
+            const step = 3; // 每隔3个粒子才参与连线计算,大幅减少计算量
+            
+            for (let i = 0; i < particles.length; i += step) {
+                for (let j = i + step; j < particles.length; j += step) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const distanceSquared = dx * dx + dy * dy; // 先不开方,直接比较平方值
                     
-                    if (distance < maxDistance) {
+                    if (distanceSquared < maxDistanceSquared) {
+                        const distance = Math.sqrt(distanceSquared); // 只在需要时才开方
                         ctx.beginPath();
                         ctx.strokeStyle = `rgba(197, 225, 165, ${0.15 * (1 - distance / maxDistance)})`;
                         ctx.lineWidth = 0.3;
