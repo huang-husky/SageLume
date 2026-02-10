@@ -220,6 +220,15 @@ a:hover{
   text-shadow: 0 0 8px var(--yukima-glow);
 }
 
+.giscus {
+    margin-top: 3rem;
+}
+
+/* 让评论区容器与你的博客风格统一 */
+.giscus-frame {
+    border-radius: 8px;
+}
+
 p,ul,ol{margin-top:0;margin-bottom:var(--yukima-size-5)}
 blockquote{margin:0 0 var(--yukima-size-5) 0;padding-left:var(--yukima-size-6);border-left-width:var(--yukima-size-border-width-lg);border-left-style:solid;border-left-color:var(--yukima-border);color:var(--yukima-text)}
 hr{border:none;border-top-width:var(--yukima-size-border-width);border-top-style:solid;border-top-color:var(--yukima-border);margin:var(--yukima-size-8) 0}
