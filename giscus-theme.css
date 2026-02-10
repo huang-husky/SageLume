@@ -1,27 +1,22 @@
 /* 浅色模式 */
 :root {
-  --color-prettylights-syntax-comment: #6a737d;
-  --color-prettylights-syntax-constant: #005cc5;
-  --color-prettylights-syntax-entity: #6f42c1;
-  --color-prettylights-syntax-keyword: #d73a49;
+  /* 主背景改成米黄色调，接近博客背景 */
+  --color-canvas-default: #fefef5;
+  --color-canvas-subtle: #f8f6eb;
+  --color-border-default: #d4c9a8;
+  --color-border-muted: #e8e0c8;
   
-  /* 主要背景和边框 */
-  --color-canvas-default: #fefef8;
-  --color-canvas-subtle: #f6f8f0;
-  --color-border-default: #c9d1b8;
-  --color-border-muted: #e1e8d8;
+  /* 文字用深绿色 */
+  --color-fg-default: #3a4a3a;
+  --color-fg-muted: #6b7a6b;
   
-  /* 文字颜色 */
-  --color-fg-default: #2c3e2c;
-  --color-fg-muted: #586958;
+  /* 链接和强调色 */
+  --color-accent-fg: #8fad4a;
+  --color-accent-emphasis: #7c9c3d;
   
-  /* 按钮和链接 - 使用你的黄绿渐变色 */
-  --color-accent-fg: #7c9c3d;
-  --color-accent-emphasis: #8fad4a;
-  
-  /* 输入框 */
-  --color-input-bg: #ffffff;
-  --color-input-border: #b8c99a;
+  /* 输入框背景微黄 */
+  --color-input-bg: #fffef8;
+  --color-input-border: #c9d1a8;
 }
 
 /* 深色模式 */
