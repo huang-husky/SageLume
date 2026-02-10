@@ -1,0 +1,64 @@
+/* 浅色模式 */
+:root {
+  --color-prettylights-syntax-comment: #6a737d;
+  --color-prettylights-syntax-constant: #005cc5;
+  --color-prettylights-syntax-entity: #6f42c1;
+  --color-prettylights-syntax-keyword: #d73a49;
+  
+  /* 主要背景和边框 */
+  --color-canvas-default: #fefef8;
+  --color-canvas-subtle: #f6f8f0;
+  --color-border-default: #c9d1b8;
+  --color-border-muted: #e1e8d8;
+  
+  /* 文字颜色 */
+  --color-fg-default: #2c3e2c;
+  --color-fg-muted: #586958;
+  
+  /* 按钮和链接 - 使用你的黄绿渐变色 */
+  --color-accent-fg: #7c9c3d;
+  --color-accent-emphasis: #8fad4a;
+  
+  /* 输入框 */
+  --color-input-bg: #ffffff;
+  --color-input-border: #b8c99a;
+}
+
+/* 深色模式 */
+.dark {
+  --color-canvas-default: #1a1f1a;
+  --color-canvas-subtle: #242b24;
+  --color-border-default: #3d4a3d;
+  --color-border-muted: #2d362d;
+  
+  --color-fg-default: #d4e4d4;
+  --color-fg-muted: #a0b8a0;
+  
+  --color-accent-fg: #a8c970;
+  --color-accent-emphasis: #bdd896;
+  
+  --color-input-bg: #2a322a;
+  --color-input-border: #4a5a4a;
+}
+
+/* 自定义评论框样式 */
+.gsc-comment-box-tabs {
+  border-color: var(--color-border-default);
+}
+
+.gsc-comment-box-textarea {
+  background: var(--color-input-bg);
+  border-color: var(--color-input-border);
+  color: var(--color-fg-default);
+}
+
+/* 评论按钮 */
+.gsc-comment-box-btn-primary {
+  background: linear-gradient(135deg, #f4e04d 0%, #a4c670 100%);
+  border: none;
+  color: #2c3e2c;
+}
+
+.gsc-comment-box-btn-primary:hover {
+  opacity: 0.9;
+}
