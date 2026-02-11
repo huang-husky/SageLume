@@ -1,5 +1,9 @@
+// ===== 测试用完整代码 =====
+console.log('✅ daily-quote.js 文件已加载');
+
 class DailyQuote {
   constructor() {
+    console.log('✅ DailyQuote 构造函数执行');
     this.storageKey = 'dailyQuoteData';
     this.init();
   }
@@ -17,28 +21,51 @@ class DailyQuote {
   }
 
   async init() {
+    console.log('✅ init 方法开始执行');
+    
     const today = this.getTodayDate();
+    console.log('📅 今天日期:', today);
+    
     const stored = localStorage.getItem(this.storageKey);
+    console.log('💾 localStorage内容:', stored);
+    
     const data = stored ? JSON.parse(stored) : null;
+    console.log('📦 解析后的数据:', data);
 
     // 如果今天已显示过且用户关闭了，就不再显示
     if (data && data.date === today && data.closed) {
+      console.log('⚠️ 今天已经关闭过，不再显示');
       return;
     }
 
-    // 获取句子库
-    const response = await fetch('data/daily-quotes.json');
-    const quotesData = await response.json();
+    console.log('🔍 开始获取句子库...');
     
-    // 用今天日期作为种子选择句子
-    const dateNumber = new Date(today).getTime();
-    const index = Math.floor(this.seededRandom(dateNumber) * quotesData.quotes.length);
-    const quote = quotesData.quotes[index];
-
-    this.showQuote(quote, today);
+    try {
+      // 获取句子库
+      const response = await fetch('data/daily-quotes.json');
+      console.log('📡 fetch响应状态:', response.status);
+      
+      const quotesData = await response.json();
+      console.log('📚 句子库数据:', quotesData);
+      
+      // 用今天日期作为种子选择句子
+      const dateNumber = new Date(today).getTime();
+      const index = Math.floor(this.seededRandom(dateNumber) * quotesData.quotes.length);
+      const quote = quotesData.quotes[index];
+      
+      console.log('🎯 选中的句子索引:', index);
+      console.log('💬 选中的句子:', quote);
+      
+      this.showQuote(quote, today);
+    } catch (error) {
+      console.error('❌ 获取句子时出错:', error);
+    }
   }
 
   showQuote(quote, date) {
+    console.log('✅ showQuote 方法执行');
+    console.log('💬 要显示的句子:', quote);
+    
     const popup = document.createElement('div');
     popup.className = 'daily-quote-popup';
     popup.innerHTML = `
@@ -49,12 +76,17 @@ class DailyQuote {
     `;
 
     document.body.appendChild(popup);
+    console.log('📌 弹窗已添加到DOM');
 
     // 触发动画
-    setTimeout(() => popup.classList.add('show'), 100);
+    setTimeout(() => {
+      popup.classList.add('show');
+      console.log('✨ 动画class已添加');
+    }, 100);
 
     // 关闭按钮
     popup.querySelector('.quote-close').addEventListener('click', () => {
+      console.log('🔘 关闭按钮被点击');
       popup.classList.remove('show');
       setTimeout(() => popup.remove(), 300);
       
@@ -63,11 +95,20 @@ class DailyQuote {
         date: date,
         closed: true
       }));
+      console.log('💾 已保存关闭状态到localStorage');
     });
   }
 }
 
 // 页面加载后初始化
-window.addEventListener('load', () => {
+console.log('⏳ 等待页面加载完成...');
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('✅ DOMContentLoaded 事件触发');
+    new DailyQuote();
+  });
+} else {
+  console.log('✅ DOM已就绪，直接执行');
   new DailyQuote();
-});
+}
