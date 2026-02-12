@@ -1,114 +1,112 @@
-// ===== 测试用完整代码 =====
-console.log('✅ daily-quote.js 文件已加载');
-
-class DailyQuote {
-  constructor() {
-    console.log('✅ DailyQuote 构造函数执行');
-    this.storageKey = 'dailyQuoteData';
-    this.init();
-  }
-
-  // 获取今天的日期字符串（用作种子）
-  getTodayDate() {
-    const today = new Date();
-    return `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
-  }
-
-  // 基于日期的伪随机数生成
-  seededRandom(seed) {
-    let x = Math.sin(seed) * 10000;
-    return x - Math.floor(x);
-  }
-
-  async init() {
-    console.log('✅ init 方法开始执行');
-    
-    const today = this.getTodayDate();
-    console.log('📅 今天日期:', today);
-    
-    const stored = localStorage.getItem(this.storageKey);
-    console.log('💾 localStorage内容:', stored);
-    
-    const data = stored ? JSON.parse(stored) : null;
-    console.log('📦 解析后的数据:', data);
-
-    // 如果今天已显示过且用户关闭了，就不再显示
-    if (data && data.date === today && data.closed) {
-      console.log('⚠️ 今天已经关闭过，不再显示');
-      return;
-    }
-
-    console.log('🔍 开始获取句子库...');
-    
-    try {
-      // 获取句子库
-      const response = await fetch('data/daily-quotes.json');
-      console.log('📡 fetch响应状态:', response.status);
-      
-      const quotesData = await response.json();
-      console.log('📚 句子库数据:', quotesData);
-      
-      // 用今天日期作为种子选择句子
-      const dateNumber = new Date(today).getTime();
-      const index = Math.floor(this.seededRandom(dateNumber) * quotesData.quotes.length);
-      const quote = quotesData.quotes[index];
-      
-      console.log('🎯 选中的句子索引:', index);
-      console.log('💬 选中的句子:', quote);
-      
-      this.showQuote(quote, today);
-    } catch (error) {
-      console.error('❌ 获取句子时出错:', error);
-    }
-  }
-
-  showQuote(quote, date) {
-    console.log('✅ showQuote 方法执行');
-    console.log('💬 要显示的句子:', quote);
-    
-    const popup = document.createElement('div');
-    popup.className = 'daily-quote-popup';
-    popup.innerHTML = `
-      <div class="quote-content">
-        <p class="quote-text">${quote}</p>
-        <button class="quote-close">×</button>
-      </div>
-    `;
-
-    document.body.appendChild(popup);
-    console.log('📌 弹窗已添加到DOM');
-
-    // 触发动画
-    setTimeout(() => {
-      popup.classList.add('show');
-      console.log('✨ 动画class已添加');
-    }, 100);
-
-    // 关闭按钮
-    popup.querySelector('.quote-close').addEventListener('click', () => {
-      console.log('🔘 关闭按钮被点击');
-      popup.classList.remove('show');
-      setTimeout(() => popup.remove(), 300);
-      
-      // 记录今天已关闭
-      localStorage.setItem(this.storageKey, JSON.stringify({
-        date: date,
-        closed: true
-      }));
-      console.log('💾 已保存关闭状态到localStorage');
-    });
-  }
+// 注入样式
+const style = document.createElement('style');
+style.textContent = `
+.daily-quote-popup {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  width: 300px !important;
+  background: linear-gradient(135deg, #f0f4e8 0%, #fffef7 100%) !important;
+  border-left: 4px solid #8b9f6e !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  padding: 20px !important;
+  opacity: 0 !important;
+  transform: translateY(-20px) !important;
+  transition: all 0.3s ease !important;
+  z-index: 99999 !important;
 }
 
-// 页面加载后初始化
-console.log('⏳ 等待页面加载完成...');
+.daily-quote-popup.show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    console.log('✅ DOMContentLoaded 事件触发');
-    new DailyQuote();
+.quote-content {
+  position: relative !important;
+}
+
+.quote-text {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  color: #333 !important;
+  margin: 0 !important;
+  padding-right: 20px !important;
+}
+
+.quote-close {
+  position: absolute !important;
+  top: -10px !important;
+  right: -10px !important;
+  background: #8b9f6e !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+  cursor: pointer !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+  transition: background 0.2s !important;
+}
+
+.quote-close:hover {
+  background: #6d7d56 !important;
+}
+`;
+document.head.appendChild(style);
+
+// 句子库
+const quotes = [
+  "锐锋产乎钝石，明火炽乎暗木，贵珠出乎贱蚌，美玉出乎丑蹼。",
+  "当筵意气凌九霄，星离雨散不终朝，分飞楚关山水遇。",
+  "疏影横斜水清浅，暗香浮动月黄昏。",
+  "其始来也，耀乎若白日初出照屋梁；其少进也，皎若明月舒其光。",
+  "舍近谋远者，劳而无功；舍远谋近者，逸而有终。",
+  "菊暗荷枯一夜霜。新苞绿叶照林光。竹篱茅舍出青黄。",
+  "天行健，君子以自强不息。",
+  "铅刀有干将之志，萤烛希日月之光。",
+  "书应读通彻，志当存高远。",
+  "天时人事日相催，冬至阳生春又来。",
+  "带长铗之陆离兮，冠切云之崔嵬，被明月兮佩宝璐。",
+  "春夏之交，草木际天；秋冬雪月，千里一色；风雨晦明之间，俯仰百变。",
+  "必有容，德乃大；必有忍，事乃济。",
+  "盘薄万古，邈然星河，凭天霓以结峰，倚斗极而横嶂。",
+  "小雪晴沙不作泥，疏帘红日弄朝晖。",
+  "独立小桥风满袖，平林新月人归后。",
+  "尘世难逢开口笑，菊花须插满头归。",
+  "鸿飞冥冥日月白，青枫叶赤天雨霜。"
+];
+
+// 随机选择一句
+function showRandomQuote() {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  const quote = quotes[randomIndex];
+  
+  const popup = document.createElement('div');
+  popup.className = 'daily-quote-popup';
+  popup.innerHTML = `
+    <div class="quote-content">
+      <p class="quote-text">${quote}</p>
+      <button class="quote-close">×</button>
+    </div>
+  `;
+  
+  document.body.appendChild(popup);
+  
+  // 触发动画
+  setTimeout(() => popup.classList.add('show'), 100);
+  
+  // 关闭按钮
+  popup.querySelector('.quote-close').addEventListener('click', () => {
+    popup.classList.remove('show');
+    setTimeout(() => popup.remove(), 300);
   });
+}
+
+// 页面加载完成后显示
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', showRandomQuote);
 } else {
-  console.log('✅ DOM已就绪，直接执行');
-  new DailyQuote();
+  showRandomQuote();
 }
