@@ -5,7 +5,7 @@ style.textContent = `
   position: fixed !important;
   top: 20px !important;
   right: 20px !important;
-  width: 300px !important;
+  width: 330px !important;
   background: linear-gradient(135deg, #f0f4e8 0%, #fffef7 100%) !important;
   border-left: 4px solid #8b9f6e !important;
   border-radius: 8px !important;
