@@ -1,0 +1,267 @@
+/* ===== 离散数学笔记专用样式 ===== */
+
+/* 章节列表容器 */
+.chapter-list {
+  max-width: var(--yukima-width-content);
+  margin: 0 auto;
+}
+
+/* 章节分组 */
+.chapter-section {
+  margin-bottom: var(--yukima-size-10);
+}
+
+.section-title {
+  font-size: var(--yukima-size-font-lg);
+  color: var(--yukima-title);
+  margin-bottom: var(--yukima-size-4);
+  padding-bottom: var(--yukima-size-2);
+  border-bottom: 2px solid var(--yukima-border);
+  font-family: 'Noto Serif', serif;
+}
+
+/* 章节项 */
+.chapter-item {
+  display: flex;
+  align-items: center;
+  gap: var(--yukima-size-4);
+  padding: var(--yukima-size-4);
+  margin-bottom: var(--yukima-size-2);
+  border-radius: var(--yukima-radius-md);
+  background-color: var(--yukima-component-bg);
+  border: var(--yukima-size-border-width) solid var(--yukima-component-border);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.chapter-item.available {
+  cursor: pointer;
+}
+
+.chapter-item.available:hover {
+  background-color: var(--yukima-component-bg-hover);
+  border-color: var(--yukima-component-border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 var(--yukima-size-2) var(--yukima-size-4) var(--yukima-shadow-hover);
+}
+
+.chapter-item.unavailable {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chapter-number {
+  flex-shrink: 0;
+  width: 80px;
+  font-weight: bold;
+  font-size: var(--yukima-size-font-sm);
+  color: var(--yukima-link);
+  font-family: 'Noto Serif', serif;
+}
+
+.chapter-title {
+  flex-grow: 1;
+  font-size: var(--yukima-size-font-base);
+  color: var(--yukima-strong);
+  font-family: 'Noto Serif', serif;
+}
+
+.chapter-status {
+  flex-shrink: 0;
+  font-size: var(--yukima-size-font-xs);
+  padding: var(--yukima-size-1) var(--yukima-size-2);
+  border-radius: var(--yukima-radius-sm);
+  font-weight: 500;
+}
+
+.chapter-item.available .chapter-status {
+  background-color: var(--yukima-link);
+  color: var(--yukima-button-text);
+}
+
+.chapter-item.unavailable .chapter-status {
+  background-color: var(--yukima-border);
+  color: var(--yukima-text);
+}
+
+/* ===== PDF查看器样式 ===== */
+
+/* 面包屑导航 */
+.breadcrumb {
+  margin-bottom: var(--yukima-size-4);
+  text-align: center;
+}
+
+.breadcrumb a {
+  display: inline-block;
+  padding: var(--yukima-size-2) var(--yukima-size-4);
+  background-color: var(--yukima-component-bg);
+  border-radius: var(--yukima-radius-sm);
+  text-decoration: none;
+  color: var(--yukima-link);
+  font-size: var(--yukima-size-font-sm);
+  transition: all 0.2s ease;
+}
+
+.breadcrumb a:hover {
+  background-color: var(--yukima-component-bg-hover);
+  transform: translateX(-4px);
+}
+
+/* PDF查看器容器 */
+.pdf-viewer-container {
+  width: 100%;
+  max-width: var(--yukima-width-content);
+  margin: var(--yukima-size-8) auto;
+  border: var(--yukima-size-border-width) solid var(--yukima-border);
+  border-radius: var(--yukima-radius-md);
+  overflow: hidden;
+  background-color: var(--yukima-code-bg);
+  box-shadow: 0 var(--yukima-size-2) var(--yukima-size-4) var(--yukima-shadow);
+}
+
+.pdf-viewer {
+  width: 100%;
+  height: 80vh;
+  min-height: 600px;
+  border: none;
+  display: block;
+}
+
+/* 下载区域 */
+.pdf-download-section {
+  text-align: center;
+  margin: var(--yukima-size-8) auto;
+  padding: var(--yukima-size-6);
+  max-width: var(--yukima-width-text-prose);
+}
+
+.pdf-download-btn {
+  display: inline-block;
+  padding: var(--yukima-size-3) var(--yukima-size-8);
+  background: var(--yukima-gradient);
+  color: var(--yukima-button-text);
+  text-decoration: none;
+  border-radius: var(--yukima-radius-md);
+  font-size: var(--yukima-size-font-base);
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 var(--yukima-size-1) var(--yukima-size-3) var(--yukima-shadow);
+}
+
+.pdf-download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 var(--yukima-size-2) var(--yukima-size-6) var(--yukima-shadow-hover);
+  filter: brightness(1.1);
+}
+
+.download-tip {
+  margin-top: var(--yukima-size-3);
+  font-size: var(--yukima-size-font-xs);
+  color: var(--yukima-text);
+  opacity: 0.7;
+}
+
+/* 章节导航 */
+.chapter-navigation {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--yukima-size-4);
+  margin: var(--yukima-size-10) auto;
+  padding: var(--yukima-size-6);
+  max-width: var(--yukima-width-content);
+  border-top: var(--yukima-size-border-width) solid var(--yukima-border);
+  border-bottom: var(--yukima-size-border-width) solid var(--yukima-border);
+}
+
+.nav-prev,
+.nav-next,
+.nav-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--yukima-size-3);
+  border-radius: var(--yukima-radius-md);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  min-height: 60px;
+}
+
+.nav-prev,
+.nav-next {
+  background-color: var(--yukima-component-bg);
+  border: var(--yukima-size-border-width) solid var(--yukima-component-border);
+  color: var(--yukima-link);
+}
+
+.nav-prev:hover,
+.nav-next:hover {
+  background-color: var(--yukima-component-bg-hover);
+  border-color: var(--yukima-component-border-hover);
+}
+
+.nav-prev.disabled,
+.nav-next.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-center {
+  background: var(--yukima-gradient);
+  color: var(--yukima-button-text);
+  font-weight: bold;
+}
+
+.nav-center:hover {
+  transform: scale(1.05);
+  box-shadow: 0 var(--yukima-size-1) var(--yukima-size-3) var(--yukima-shadow-hover);
+}
+
+.nav-prev span,
+.nav-next span,
+.nav-center span {
+  font-size: var(--yukima-size-font-sm);
+}
+
+.nav-next small {
+  font-size: var(--yukima-size-font-xs);
+  margin-top: var(--yukima-size-1);
+  opacity: 0.8;
+}
+
+/* ===== 响应式设计 ===== */
+@media (max-width: 768px) {
+  .chapter-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--yukima-size-2);
+  }
+
+  .chapter-number {
+    width: auto;
+  }
+
+  .pdf-viewer {
+    height: 60vh;
+    min-height: 400px;
+  }
+
+  .chapter-navigation {
+    grid-template-columns: 1fr;
+    gap: var(--yukima-size-2);
+  }
+
+  .nav-prev {
+    order: 3;
+  }
+
+  .nav-center {
+    order: 1;
+  }
+
+  .nav-next {
+    order: 2;
+  }
+}
