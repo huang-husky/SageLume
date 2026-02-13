@@ -1,0 +1,93 @@
+/* ===== 博客搜索框样式 ===== */
+/* 暂时移除搜索功能 */
+
+/* ===== 专题标签样式 ===== */
+.topics-section {
+  max-width: var(--yukima-width-content);
+  margin: 0 auto var(--yukima-size-10);
+  padding: 0 var(--yukima-size-4);
+}
+
+.topics-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--yukima-size-2);
+  justify-content: center;
+  padding: var(--yukima-size-5);
+  background-color: var(--yukima-toc-bg);
+  border: var(--yukima-size-border-width) solid var(--yukima-toc-border);
+  border-radius: var(--yukima-radius-md);
+  box-shadow: 0 var(--yukima-size-1) var(--yukima-size-2) var(--yukima-shadow);
+}
+
+.topic-tag {
+  display: inline-block;
+  padding: var(--yukima-size-1) var(--yukima-size-4);
+  background-color: var(--yukima-link);
+  border: none;
+  border-radius: 16px;
+  font-family: 'Noto Serif', serif;
+  font-size: var(--yukima-size-font-sm);
+  color: var(--yukima-button-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.topic-tag:hover {
+  background-color: var(--yukima-link-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px var(--yukima-shadow-hover);
+}
+
+.topic-tag.active {
+  background: var(--yukima-gradient);
+  font-weight: bold;
+  box-shadow: 0 2px 8px var(--yukima-shadow-hover);
+}
+
+/* ===== 文章列表区域 ===== */
+.post-list-section {
+  max-width: var(--yukima-width-content);
+  margin: 0 auto;
+  padding: 0 var(--yukima-size-4);
+}
+
+.post-list-title {
+  text-align: center;
+  font-size: var(--yukima-size-font-lg);
+  margin-bottom: var(--yukima-size-6);
+  padding-top: var(--yukima-size-8);
+  border-top: var(--yukima-size-border-width) solid var(--yukima-border);
+  color: var(--yukima-title);
+  font-family: 'Noto Serif', serif;
+}
+
+/* ===== 响应式设计 ===== */
+@media (max-width: 768px) {
+  .topics-tags {
+    padding: var(--yukima-size-3);
+    gap: var(--yukima-size-2);
+  }
+  
+  .topic-tag {
+    padding: var(--yukima-size-1) var(--yukima-size-3);
+    font-size: var(--yukima-size-font-xs);
+  }
+}
+
+/* ===== 平滑滚动 ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== 搜索高亮 ===== */
+.highlight {
+  background: var(--yukima-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}

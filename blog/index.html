@@ -21,10 +21,12 @@
   
   <!-- Styles -->
   <link rel="stylesheet" href="https://huang-husky.github.io/SageLume/style.css">
+  <link rel="stylesheet" href="https://huang-husky.github.io/SageLume/blog-enhanced.css">
   
   <!-- Scripts -->
   <script src="https://huang-husky.github.io/SageLume/js/theme-toggle.js"></script>
   <script defer src="https://huang-husky.github.io/SageLume/js/remap-headings.js"></script>
+  <script defer src="https://huang-husky.github.io/SageLume/js/blog-search.js"></script>
 </head>
 
 <body>
@@ -55,85 +57,91 @@
         <h1 class="section-title">内容索引</h1>
       </header>
       
-      <div class="post-list">
-        <!-- 文章列表，添加新文章时复制下面的模板 -->
-        
-        <!-- 示例（添加新文章时复制这段）:
-        <article class="post-item">
-          <a href="https://huang-husky.github.io/SageLume/blog/post1/">
-            <h2 class="post-item-title">文章标题</h2>
-            <div class="post-item-meta">
-              <span>2026-02-01</span>
-              <span> • </span>
-              <span>预计阅读 X 分钟</span>
-            </div>
-            <p class="post-item-description">
-              文章简介，一两句话概括内容。
-            </p>
-          </a>
-        </article>
-        -->
+      <!-- 专题标签 -->
+      <section class="topics-section">
+        <div class="topics-tags">
+          <button class="topic-tag active" data-topic="all">
+            #全部
+          </button>
+          <button class="topic-tag" data-topic="math">
+            #数学
+          </button>
+          <button class="topic-tag" data-topic="discrete">
+            #离散数学
+          </button>
+          <button class="topic-tag" data-topic="finance">
+            #金融
+          </button>
+          <button class="topic-tag" data-topic="philosophy">
+            #杂识
+          </button>
+        </div>
+      </section>
 
-        <article class="post-item">
-          <a href="https://huang-husky.github.io/SageLume/blog/post4/">
-            <h2 class="post-item-title">Pale Blue Pot</h2>
-            <div class="post-item-meta">
-                <span>2026-02-11</span>
+      <!-- 文章列表 -->
+      <section class="post-list-section">
+        <h2 class="post-list-title">最近文章</h2>
+        <div class="post-list" id="post-list">
+          
+          <article class="post-item" data-tags="杂识">
+            <a href="https://huang-husky.github.io/SageLume/blog/post4/">
+              <h2 class="post-item-title">Pale Blue Pot</h2>
+              <div class="post-item-meta">
+                  <span>2026-02-11</span>
+                  <span> • </span>
+                  <span>预计阅读 5 分钟</span>
+              </div>
+              <p class="post-item-description">
+                  我们由星辰所著,如今眺望群星。
+              </p>
+            </a>
+          </article>
+
+          <article class="post-item" data-tags="金融">
+            <a href="https://huang-husky.github.io/SageLume/blog/post3/">
+              <h2 class="post-item-title">牛奶可乐金融学①</h2>
+              <div class="post-item-meta">
+                  <span>2026-02-08</span>
+                  <span> • </span>
+                  <span>预计阅读 28 分钟</span>
+              </div>
+              <p class="post-item-description">
+                  通俗易懂的金融芝士块
+              </p>
+            </a>
+          </article>
+
+          <article class="post-item" data-tags="数学">
+            <a href="https://huang-husky.github.io/SageLume/blog/post2/">
+              <h2 class="post-item-title">线性代数期末作业</h2>
+              <div class="post-item-meta">
+                <span>2025-06-04</span>
                 <span> • </span>
-                <span>预计阅读 5 分钟</span>
-            </div>
-            <p class="post-item-description">
-                我们由星辰所著，如今眺望群星。
-            </p>
-          </a>
-        </article>
+                <span>预计阅读 16 分钟</span>
+              </div>
+              <p class="post-item-description">
+                向量组的线性相关性判别方法与证明技巧探究
+              </p>
+            </a>
+          </article>
 
-        <article class="post-item">
-          <a href="https://huang-husky.github.io/SageLume/blog/post3/">
-            <h2 class="post-item-title">牛奶可乐金融学①</h2>
-            <div class="post-item-meta">
-                <span>2026-02-08</span>
-                <span> • </span>
-                <span>预计阅读 36 分钟</span>
-            </div>
-            <p class="post-item-description">
-                通俗易懂的金融芝士块
-            </p>
-          </a>
-        </article>
+          <article class="post-item" data-tags="杂识">
+            <a href="https://huang-husky.github.io/SageLume/blog/post1/">
+              <h2 class="post-item-title">修心</h2>
+              <div class="post-item-meta">
+                  <span>2026-02-03</span>
+                  <span> • </span>
+                  <span>预计阅读 3 分钟</span>
+              </div>
+              <p class="post-item-description">
+                  真正的修行,从不是活成完美的圣人,而是修出一颗刚柔并济的心。
+              </p>
+            </a>
+          </article>
 
-        <article class="post-item">
-          <a href="https://huang-husky.github.io/SageLume/blog/post2/">
-            <h2 class="post-item-title">线性代数期末作业</h2>
-            <div class="post-item-meta">
-              <span>2025-06-04</span>
-              <span> • </span>
-              <span>预计阅读 16 分钟</span>
-            </div>
-            <p class="post-item-description">
-              向量组的线性相关性判别方法与证明技巧探究
-            </p>
-          </a>
-        </article>
-
-        <article class="post-item">
-          <a href="https://huang-husky.github.io/SageLume/blog/post1/">
-            <h2 class="post-item-title">修心</h2>
-            <div class="post-item-meta">
-                <span>2026-02-03</span>
-                <span> • </span>
-                <span>预计阅读 3 分钟</span>
-            </div>
-            <p class="post-item-description">
-                真正的修行，从不是活成完美的圣人，而是修出一颗刚柔并济的心。
-            </p>
-          </a>
-        </article>
-
-      </div>
+        </div>
+      </section>
     </div>
-
-    
   </main>
   
   <footer class="site-footer">
