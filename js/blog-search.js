@@ -57,7 +57,7 @@
       'math': ['数学', '线性代数'],
       'discrete': ['离散数学', '离散'],
       'finance': ['金融', '投资', '理财'],
-      'philosophy': ['哲学', '修养', '思考', '个人成长']
+      'zazhi': ['杂识']
     };
     
     const keywords = topicKeywords[topic] || [];

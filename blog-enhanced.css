@@ -1,6 +1,3 @@
-/* ===== 博客搜索框样式 ===== */
-/* 暂时移除搜索功能 */
-
 /* ===== 专题标签样式 ===== */
 .topics-section {
   max-width: var(--yukima-width-content);
@@ -26,7 +23,7 @@
   background-color: var(--yukima-link);
   border: none;
   border-radius: 16px;
-  font-family: 'Noto Serif', serif;
+  font-family: 'LiShu', serif;
   font-size: var(--yukima-size-font-sm);
   color: var(--yukima-button-text);
   cursor: pointer;
