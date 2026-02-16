@@ -1,47 +1,94 @@
 // 网站统计功能
 document.addEventListener('DOMContentLoaded', function() {
     
+    // 数字滚动动画函数
+    function animateNumber(element, target, duration = 1000, suffix = '') {
+        if (!element) return;
+        
+        const start = 0;
+        const startTime = performance.now();
+        
+        function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // 使用缓动函数（easeOutQuart）
+            const easeProgress = 1 - Math.pow(1 - progress, 4);
+            const current = Math.floor(start + (target - start) * easeProgress);
+            
+            element.textContent = current + suffix;
+            
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                element.textContent = target + suffix;
+            }
+        }
+        
+        requestAnimationFrame(update);
+    }
+    
     // 计算文章总数
-    // 方法1：从页面上的文章列表直接统计
     const articles = document.querySelectorAll('.post-item');
     const articleCount = articles.length;
     
-    // 更新文章数目
+    // 更新文章数目（带动画）
     const articleCountEl = document.getElementById('article-count');
     if (articleCountEl) {
-        articleCountEl.textContent = articleCount;
+        setTimeout(() => animateNumber(articleCountEl, articleCount, 800), 100);
     }
     
     // 计算总字数（估算）
-    // 这里使用一个简化的估算方法：每篇文章的预计阅读时间
     let totalWords = 0;
     articles.forEach(article => {
         const metaText = article.querySelector('.post-item-meta')?.textContent || '';
-        // 匹配 "预计阅读 X 分钟" 的模式
         const match = metaText.match(/预计阅读\s*(\d+)\s*分钟/);
         if (match) {
             const minutes = parseInt(match[1]);
-            // 假设阅读速度为 300字/分钟
-            totalWords += minutes * 300;
+            totalWords += minutes * 300; // 假设阅读速度为 300字/分钟
         }
     });
     
-    // 格式化字数显示（例如：4.6k）
+    // 格式化字数并显示动画
     const totalWordsEl = document.getElementById('total-words');
     if (totalWordsEl) {
-        if (totalWords >= 1000) {
-            totalWordsEl.textContent = (totalWords / 1000).toFixed(1) + 'k';
-        } else {
-            totalWordsEl.textContent = totalWords.toString();
+        setTimeout(() => {
+            if (totalWords >= 1000) {
+                const kValue = Math.floor(totalWords / 100) / 10; // 保留一位小数
+                animateNumberWithDecimal(totalWordsEl, kValue, 'k', 1000);
+            } else {
+                animateNumber(totalWordsEl, totalWords, 1000);
+            }
+        }, 200);
+    }
+    
+    // 带小数的数字动画
+    function animateNumberWithDecimal(element, target, suffix = '', duration = 1000) {
+        if (!element) return;
+        
+        const start = 0;
+        const startTime = performance.now();
+        
+        function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easeProgress = 1 - Math.pow(1 - progress, 4);
+            const current = (start + (target - start) * easeProgress).toFixed(1);
+            
+            element.textContent = current + suffix;
+            
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            }
         }
+        
+        requestAnimationFrame(update);
     }
     
     // 计算最后更新时间
-    // 从文章列表中获取最新的日期
     let latestDate = null;
     articles.forEach(article => {
         const metaText = article.querySelector('.post-item-meta')?.textContent || '';
-        // 匹配日期格式 YYYY-MM-DD
         const dateMatch = metaText.match(/(\d{4}-\d{2}-\d{2})/);
         if (dateMatch) {
             const date = new Date(dateMatch[1]);
@@ -49,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 latestDate = date;
             }
         }
-        // 处理 "today" 或包含 "~today" 的情况
         if (metaText.includes('today')) {
             latestDate = new Date();
         }
@@ -59,7 +105,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const lastUpdateEl = document.getElementById('last-update');
     if (lastUpdateEl && latestDate) {
         const updateText = formatTimeAgo(latestDate);
-        lastUpdateEl.textContent = updateText;
+        setTimeout(() => {
+            lastUpdateEl.style.opacity = '0';
+            setTimeout(() => {
+                lastUpdateEl.textContent = updateText;
+                lastUpdateEl.style.transition = 'opacity 0.5s ease';
+                lastUpdateEl.style.opacity = '1';
+            }, 100);
+        }, 500);
     }
     
     // 时间格式化函数
@@ -79,12 +132,45 @@ document.addEventListener('DOMContentLoaded', function() {
         return years + '年前';
     }
     
-    // 不蒜子加载完成后的处理（可选）
-    // 监听不蒜子的加载，如果10秒后还没加载成功，显示提示
+    // 不蒜子数据监听
+    // 使用MutationObserver监听不蒜子数据变化，添加动画
+    const uvEl = document.getElementById('busuanzi_value_site_uv');
+    const pvEl = document.getElementById('busuanzi_value_site_pv');
+    
+    if (uvEl) {
+        const uvObserver = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList' && uvEl.textContent !== '-') {
+                    const value = parseInt(uvEl.textContent);
+                    if (!isNaN(value)) {
+                        uvEl.textContent = '-';
+                        setTimeout(() => animateNumber(uvEl, value, 1200), 300);
+                        uvObserver.disconnect();
+                    }
+                }
+            });
+        });
+        uvObserver.observe(uvEl, { childList: true, characterData: true, subtree: true });
+    }
+    
+    if (pvEl) {
+        const pvObserver = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList' && pvEl.textContent !== '-') {
+                    const value = parseInt(pvEl.textContent);
+                    if (!isNaN(value)) {
+                        pvEl.textContent = '-';
+                        setTimeout(() => animateNumber(pvEl, value, 1400), 400);
+                        pvObserver.disconnect();
+                    }
+                }
+            });
+        });
+        pvObserver.observe(pvEl, { childList: true, characterData: true, subtree: true });
+    }
+    
+    // 超时后显示加载提示
     setTimeout(function() {
-        const uvEl = document.getElementById('busuanzi_value_site_uv');
-        const pvEl = document.getElementById('busuanzi_value_site_pv');
-        
         if (uvEl && uvEl.textContent === '-') {
             uvEl.textContent = '加载中...';
         }
