@@ -1,4 +1,4 @@
-// 网站统计功能
+// blog-statistic
 document.addEventListener('DOMContentLoaded', function() {
     
     // 数字滚动动画函数
@@ -28,17 +28,17 @@ document.addEventListener('DOMContentLoaded', function() {
         requestAnimationFrame(update);
     }
     
-    // 计算文章总数
+    // article-amount
     const articles = document.querySelectorAll('.post-item');
     const articleCount = articles.length;
     
-    // 更新文章数目（带动画）
+    // update-article-amount
     const articleCountEl = document.getElementById('article-count');
     if (articleCountEl) {
         setTimeout(() => animateNumber(articleCountEl, articleCount, 800), 100);
     }
     
-    // 计算总字数（估算）
+    // 计text-amount（估算）
     let totalWords = 0;
     articles.forEach(article => {
         const metaText = article.querySelector('.post-item-meta')?.textContent || '';
@@ -95,9 +95,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!latestDate || date > latestDate) {
                 latestDate = date;
             }
-        }
-        if (metaText.includes('today')) {
-            latestDate = new Date();
         }
     });
     
