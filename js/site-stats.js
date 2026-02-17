@@ -96,6 +96,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 latestDate = date;
             }
         }
+        if (metaText.includes('today')) {
+            latestDate = new Date();
+        }
     });
     
     // 更新最后更新时间
