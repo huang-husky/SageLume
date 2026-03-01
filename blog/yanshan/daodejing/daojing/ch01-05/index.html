@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--
+  ★★★ 使用此模板时，修改以下三处 ★★★
+  1. <title> 改为当前章组标题
+  2. .ys-tag-line / .ys-title / .ys-desc 改为对应章范围
+  3. 底部 chapters 数组填入章节数据（格式见注释）
+  -->
+  <title>第一章—第五章 · 道经 · 砚山 | SageLume</title>
+  <meta name="theme-color" content="#6b8e23" />
+  <link rel="manifest"      href="https://huang-husky.github.io/SageLume/favicon/site.webmanifest" />
+  <link rel="apple-touch-icon" href="https://huang-husky.github.io/SageLume/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/svg+xml" href="https://huang-husky.github.io/SageLume/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="https://huang-husky.github.io/SageLume/favicon/favicon.ico" />
+  <link rel="stylesheet" href="https://huang-husky.github.io/SageLume/style.css" />
+  <script src="https://huang-husky.github.io/SageLume/js/theme-toggle.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ys-bg:       #f5f0e8;  --ys-paper:    #faf7f0;
+      --ys-ink:      #2c2417;  --ys-ink-lt:   #6a5d4a;  --ys-ink-fd: #a8997e;
+      --ys-sage:     #5a7a5e;  --ys-sage-dk:  #3d5940;  --ys-sage-bg: rgba(90,122,94,.08);
+      --ys-amber:    #c8902a;  --ys-amber-bg: rgba(200,144,42,.10);
+      --ys-zhu:      #c0392b;  --ys-zhu-bg:   rgba(192,57,43,.07);
+      --ys-border:   #d4c9b0;  --ys-shadow:   rgba(44,36,23,.12);
+      --ys-popup-bg: #fffdf6;
+      --char-size: 2.5rem; --pin-size: .63rem; --gap: 11px;
+    }
+    [data-theme="dark"] {
+      --ys-bg:       #1a1812;  --ys-paper:    #221f16;
+      --ys-ink:      #e8e0cc;  --ys-ink-lt:   #a09078;  --ys-ink-fd: #5c5040;
+      --ys-sage:     #7aaa7e;  --ys-sage-dk:  #9fcfa3;  --ys-sage-bg: rgba(122,170,126,.08);
+      --ys-amber:    #d4a84b;  --ys-amber-bg: rgba(212,168,75,.10);
+      --ys-zhu:      #e05a4a;  --ys-zhu-bg:   rgba(224,90,74,.07);
+      --ys-border:   #3a3428;  --ys-shadow:   rgba(0,0,0,.4);
+      --ys-popup-bg: #2a2519;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    .ys-body { background: var(--ys-bg); font-family: 'Noto Serif SC', serif; }
+    .ys-body::before {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: repeating-linear-gradient(0deg, transparent, transparent 36px,
+        rgba(180,160,120,.05) 36px, rgba(180,160,120,.05) 37px);
+    }
+
+    /* 面包屑 */
+    .breadcrumb {
+      position: relative; z-index: 1; max-width: 840px; margin: 0 auto;
+      padding: 14px 24px 0; font-family: 'Noto Sans SC', sans-serif;
+      font-size: .72rem; color: var(--ys-ink-lt); letter-spacing: .05em;
+    }
+    .breadcrumb a { color: var(--ys-sage); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 5px; opacity: .4; }
+
+    /* Banner */
+    .ys-banner {
+      position: relative; z-index: 1; text-align: center;
+      padding: 28px 24px 22px; border-bottom: 1px solid var(--ys-border);
+      background: linear-gradient(to bottom, var(--ys-paper), transparent);
+    }
+    .ys-tag-line { font-family: 'Noto Sans SC', sans-serif; font-size: .7rem; letter-spacing: .2em; color: var(--ys-amber); margin-bottom: 5px; }
+    .ys-title    { font-size: 1.7rem; font-weight: 700; letter-spacing: .2em; color: var(--ys-sage-dk); }
+    .ys-divider  { width: 44px; height: 1px; margin: 10px auto; background: linear-gradient(to right, transparent, var(--ys-amber), transparent); }
+    .ys-desc     { font-size: .8rem; color: var(--ys-ink-fd); letter-spacing: .08em; }
+    .legend {
+      max-width: 840px; margin: 16px auto 0; display: flex; gap: 16px; flex-wrap: wrap;
+      justify-content: center; font-family: 'Noto Sans SC', sans-serif; font-size: .7rem; color: var(--ys-ink-lt);
+    }
+    .legend-item { display: flex; align-items: center; gap: 4px; }
+    .ldot { width: 13px; height: 13px; border-radius: 2px; display: inline-block; }
+    .ldot-zhu   { background: var(--ys-zhu-bg);   border: 1px solid var(--ys-zhu); }
+    .ldot-note  { background: var(--ys-sage-bg);  border: 1px solid var(--ys-sage); }
+    .ldot-speak { background: var(--ys-amber-bg); border: 1px solid var(--ys-amber); }
+
+    /* 主体 — 底部留空给播放条 */
+    .ys-main { position: relative; z-index: 1; max-width: 840px; margin: 0 auto; padding: 36px 24px 120px; }
+
+    /* 章组导航 */
+    .chapter-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 28px; font-family: 'Noto Sans SC', sans-serif; font-size: .75rem;
+    }
+    .nav-btn {
+      display: inline-flex; align-items: center;
+      color: var(--ys-sage); text-decoration: none; padding: 5px 10px;
+      border: 1px solid var(--ys-border); border-radius: 3px;
+      transition: border-color .2s, background .2s;
+    }
+    .nav-btn:hover { border-color: var(--ys-sage); background: var(--ys-sage-bg); }
+    .nav-btn.disabled { color: var(--ys-border); pointer-events: none; }
+    .nav-btn.prev::before { content: '‹ '; }
+    .nav-btn.next::after  { content: ' ›'; }
+    .nav-center { color: var(--ys-ink-lt); letter-spacing: .05em; }
+
+    /* ── 章节块 ── */
+    .sentence-block {
+      background: var(--ys-paper); border: 1px solid var(--ys-border); border-radius: 4px;
+      padding: 30px 26px 22px; margin-bottom: 20px;
+      box-shadow: 0 2px 8px var(--ys-shadow); position: relative;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    /* 朗读中 — 金色边框 */
+    .sentence-block.reading {
+      border-color: var(--ys-amber);
+      box-shadow: 0 2px 8px var(--ys-shadow), 0 0 0 2px rgba(200,144,42,.15);
+    }
+    .sentence-block::before {
+      content: attr(data-index); position: absolute; top: 10px; left: 14px;
+      font-size: .62rem; color: var(--ys-ink-fd); font-family: 'Noto Sans SC', sans-serif;
+    }
+
+    /* 朗读按钮（章节右上角） */
+    .read-btn {
+      position: absolute; top: 8px; right: 12px;
+      background: none; border: 1px solid var(--ys-border); border-radius: 3px;
+      padding: 3px 9px; font-family: 'Noto Sans SC', sans-serif;
+      font-size: .65rem; color: var(--ys-ink-fd); cursor: pointer;
+      display: inline-flex; align-items: center; gap: 4px;
+      transition: border-color .2s, color .2s, background .2s;
+    }
+    .read-btn:hover { border-color: var(--ys-amber); color: var(--ys-amber); background: var(--ys-amber-bg); }
+    .read-btn.active { border-color: var(--ys-amber); color: var(--ys-amber); background: var(--ys-amber-bg); }
+
+    /* ── 注音字符行 ── */
+    .char-row { display: flex; flex-wrap: wrap; gap: var(--gap); align-items: flex-end; margin-bottom: 18px; }
+    .char-unit { display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 42px; }
+    .char-pin {
+      font-family: 'Noto Sans SC', sans-serif; font-size: var(--pin-size);
+      color: var(--ys-ink-fd); letter-spacing: .02em; line-height: 1.3;
+      text-align: center; white-space: nowrap; min-height: 1em; transition: color .15s;
+    }
+    .char-box {
+      width: 46px; height: 46px; border: 1px solid var(--ys-border); border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: var(--char-size); line-height: 1; position: relative;
+      transition: background .15s, border-color .15s, transform .15s, box-shadow .15s;
+      background: transparent; user-select: none; cursor: default;
+    }
+
+    /* 朗读跟读高亮 */
+    .char-box.speaking {
+      background: var(--ys-amber-bg) !important;
+      border-color: var(--ys-amber) !important;
+      box-shadow: 0 0 10px rgba(200,144,42,.4);
+      transform: scale(1.12);
+    }
+    .char-unit.speaking-unit .char-pin { color: var(--ys-amber); }
+
+    /* 标点 */
+    .char-unit.punct .char-pin { opacity: 0; }
+    .char-unit.punct .char-box { border-color: transparent; font-size: 1.6rem; color: var(--ys-ink-lt); }
+    /* 通假/异读 */
+    .char-unit.zhu .char-box { color: var(--ys-zhu); background: var(--ys-zhu-bg); border-color: rgba(192,57,43,.25); cursor: pointer; }
+    .char-unit.zhu .char-box:hover { transform: scale(1.08); border-color: var(--ys-zhu); }
+    /* 重点词 */
+    .char-unit.note .char-box { color: var(--ys-sage-dk); background: var(--ys-sage-bg); border-color: rgba(90,122,94,.25); cursor: pointer; }
+    .char-unit.note .char-box:hover { transform: scale(1.08); border-color: var(--ys-sage); }
+    /* 角标 */
+    .char-unit.zhu .char-box::after,
+    .char-unit.note .char-box::after { content: '◇'; position: absolute; top: 2px; right: 3px; font-size: .42rem; opacity: .5; }
+
+    /* ── 译文/讲义 ── */
+    .sentence-footer {
+      border-top: 1px dashed var(--ys-border); padding-top: 12px;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    }
+    .translation { font-size: .8rem; color: var(--ys-ink-lt); line-height: 1.9; letter-spacing: .05em; flex: 1; }
+    .toggle-note {
+      background: none; border: 1px solid var(--ys-border); border-radius: 2px;
+      padding: 3px 9px; font-family: 'Noto Sans SC', sans-serif; font-size: .68rem;
+      color: var(--ys-ink-fd); cursor: pointer; white-space: nowrap;
+      transition: border-color .2s, color .2s;
+    }
+    .toggle-note:hover { border-color: var(--ys-sage); color: var(--ys-sage); }
+    .expand-note { display: none; margin-top: 10px; font-size: .78rem; color: var(--ys-ink-lt); line-height: 1.9; border-left: 2px solid var(--ys-sage); padding-left: 11px; letter-spacing: .04em; }
+    .expand-note.open { display: block; }
+
+    /* ════════════════════════════════════
+       底部朗读播放条
+    ════════════════════════════════════ */
+    .read-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+      background: var(--ys-paper); border-top: 1px solid var(--ys-border);
+      box-shadow: 0 -4px 20px var(--ys-shadow);
+      padding: 10px 20px 14px;
+      display: none; align-items: center; gap: 14px; flex-wrap: wrap;
+      font-family: 'Noto Sans SC', sans-serif;
+    }
+    .read-bar.visible { display: flex; }
+
+    .rb-title { font-size: .72rem; color: var(--ys-ink-lt); letter-spacing: .05em; flex-shrink: 0; }
+    .rb-title b { color: var(--ys-amber); }
+    .rb-progress { font-size: .65rem; color: var(--ys-ink-fd); min-width: 48px; flex-shrink: 0; }
+
+    .rb-controls { display: flex; gap: 7px; }
+    .rb-btn {
+      background: none; border: 1px solid var(--ys-border); border-radius: 3px;
+      padding: 5px 11px; font-size: .72rem; color: var(--ys-ink-lt); cursor: pointer;
+      display: flex; align-items: center; gap: 3px;
+      transition: border-color .2s, color .2s, background .2s;
+    }
+    .rb-btn:hover        { border-color: var(--ys-sage); color: var(--ys-sage); background: var(--ys-sage-bg); }
+    .rb-btn.rb-stop:hover{ border-color: var(--ys-zhu);  color: var(--ys-zhu);  background: var(--ys-zhu-bg); }
+
+    .rb-speed { display: flex; align-items: center; gap: 6px; margin-left: auto; flex-shrink: 0; }
+    .rb-speed label { font-size: .65rem; color: var(--ys-ink-fd); }
+    .rb-speed input[type=range] { width: 76px; accent-color: var(--ys-amber); cursor: pointer; }
+    .rb-speed .sp-val { font-size: .65rem; color: var(--ys-amber); min-width: 28px; }
+
+    /* ── 批注弹窗 ── */
+    .popup-overlay { display: none; position: fixed; inset: 0; z-index: 100; }
+    .popup-overlay.show { display: block; }
+    .popup-card {
+      position: fixed; background: var(--ys-popup-bg); border: 1px solid var(--ys-border);
+      border-radius: 6px; padding: 16px 18px 14px; min-width: 190px; max-width: 280px;
+      box-shadow: 0 8px 28px var(--ys-shadow); z-index: 101;
+      animation: popIn .14s ease; font-family: 'Noto Serif SC', serif;
+    }
+    @keyframes popIn { from { opacity:0; transform:translateY(5px) scale(.96); } to { opacity:1; transform:none; } }
+    .popup-char { font-size: 2rem; font-weight: 700; margin-bottom: 6px; line-height: 1; }
+    .popup-char.is-zhu  { color: var(--ys-zhu); }
+    .popup-char.is-note { color: var(--ys-sage-dk); }
+    .popup-pin  { font-family: 'Noto Sans SC', sans-serif; font-size: .68rem; color: var(--ys-ink-fd); margin-bottom: 8px; letter-spacing: .08em; }
+    .popup-hr   { height: 1px; background: var(--ys-border); margin: 8px 0; }
+    .popup-type { font-family: 'Noto Sans SC', sans-serif; font-size: .62rem; letter-spacing: .08em; padding: 1px 5px; border-radius: 2px; margin-bottom: 7px; display: inline-block; }
+    .type-zhu  { background: var(--ys-zhu-bg);  color: var(--ys-zhu); }
+    .type-note { background: var(--ys-sage-bg); color: var(--ys-sage); }
+    .popup-body { font-size: .8rem; color: var(--ys-ink-lt); line-height: 1.85; letter-spacing: .04em; }
+    .popup-close { position: absolute; top: 7px; right: 9px; background: none; border: none; cursor: pointer; color: var(--ys-ink-fd); font-size: .85rem; transition: color .2s; }
+    .popup-close:hover { color: var(--ys-ink); }
+
+    @media (max-width: 480px) {
+      :root { --char-size: 1.9rem; --gap: 7px; }
+      .char-box { width: 38px; height: 38px; }
+      .sentence-block { padding: 22px 14px 16px; }
+      .rb-speed { display: none; }
+      .rb-progress { display: none; }
+    }
+  </style>
+</head>
+<body class="ys-body">
+
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+  <a class="skip-to-content" href="#ys-main">跳至内容</a>
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://huang-husky.github.io/SageLume/">
+        <img src="https://huang-husky.github.io/SageLume/favicon/logo-header.png" alt="算海青藜" height="96" style="vertical-align:middle;" />
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://huang-husky.github.io/SageLume/">Home</a>
+      <a href="https://huang-husky.github.io/SageLume/about/">About</a>
+      <a href="https://huang-husky.github.io/SageLume/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <div class="breadcrumb">
+    <a href="../../../index.html">砚山</a><span>›</span>
+    <a href="../../index.html">道德经</a><span>›</span>
+    <a href="../index.html">道经</a><span>›</span>
+    第一章—第五章
+  </div>
+
+  <div class="ys-banner">
+    <div class="ys-tag-line">《道德经》· 道经 · 第一章—第五章</div>
+    <h1 class="ys-title">道可道，非常道</h1>
+    <div class="ys-divider"></div>
+    <p class="ys-desc">老子 · 道家经典 · 背记注音版</p>
+    <div class="legend">
+      <span class="legend-item"><span class="ldot ldot-zhu"></span>异读字 / 通假字</span>
+      <span class="legend-item"><span class="ldot ldot-note"></span>重点词·点击批注</span>
+      <span class="legend-item"><span class="ldot ldot-speak"></span>朗读跟读高亮</span>
+    </div>
+  </div>
+
+  <main class="ys-main" id="ys-main">
+    <div class="chapter-nav">
+      <span class="nav-btn disabled prev">上一组</span>
+      <span class="nav-center">道经 第 1/8 组</span>
+      <a class="nav-btn next" href="../ch06-10/index.html">下一组</a>
+    </div>
+
+    <!-- ─── 第一章 ─── data-ch 必须与 chapters 数组下标一致 -->
+    <div class="sentence-block" data-index="第 一 章" data-ch="0">
+      <button class="read-btn" onclick="startRead(0, this)">▶ 朗读</button>
+      <div class="char-row" id="c1"></div>
+      <div class="sentence-footer">
+        <div class="translation">【在此填写第一章译文】</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">【在此填写第一章详注】</div>
+    </div>
+
+    <!-- ─── 第二章 ─── -->
+    <div class="sentence-block" data-index="第 二 章" data-ch="1">
+      <button class="read-btn" onclick="startRead(1, this)">▶ 朗读</button>
+      <div class="char-row" id="c2"></div>
+      <div class="sentence-footer">
+        <div class="translation">【第二章译文】</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">【第二章详注】</div>
+    </div>
+
+    <!-- ─── 第三章 ─── -->
+    <div class="sentence-block" data-index="第 三 章" data-ch="2">
+      <button class="read-btn" onclick="startRead(2, this)">▶ 朗读</button>
+      <div class="char-row" id="c3"></div>
+      <div class="sentence-footer">
+        <div class="translation">【第三章译文】</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">【第三章详注】</div>
+    </div>
+
+    <!-- ─── 第四章 ─── -->
+    <div class="sentence-block" data-index="第 四 章" data-ch="3">
+      <button class="read-btn" onclick="startRead(3, this)">▶ 朗读</button>
+      <div class="char-row" id="c4"></div>
+      <div class="sentence-footer">
+        <div class="translation">【第四章译文】</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">【第四章详注】</div>
+    </div>
+
+    <!-- ─── 第五章 ─── -->
+    <div class="sentence-block" data-index="第 五 章" data-ch="4">
+      <button class="read-btn" onclick="startRead(4, this)">▶ 朗读</button>
+      <div class="char-row" id="c5"></div>
+      <div class="sentence-footer">
+        <div class="translation">【第五章译文】</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">【第五章详注】</div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://huang-husky.github.io/SageLume/favicon/logo-footer.png" alt="算海青藜" height="48" />
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <!-- ══ 底部播放条 ══ -->
+  <div class="read-bar" id="readBar">
+    <div class="rb-title">▶ <b id="rbChTitle">—</b></div>
+    <div class="rb-progress" id="rbProgress"></div>
+    <div class="rb-controls">
+      <button class="rb-btn" id="rbPause" onclick="togglePause()">⏸ 暂停</button>
+      <button class="rb-btn rb-stop" onclick="stopRead()">⏹ 停止</button>
+    </div>
+    <div class="rb-speed">
+      <label>语速</label>
+      <input type="range" id="speedSlider" min="0.5" max="1.8" step="0.1" value="0.9"
+             oninput="onSpeedChange(this.value)" />
+      <span class="sp-val" id="speedLabel">0.9×</span>
+    </div>
+  </div>
+
+  <!-- 批注弹窗 -->
+  <div class="popup-overlay" id="overlay"></div>
+  <div class="popup-card" id="popupCard" style="display:none;">
+    <button class="popup-close" id="popupClose">✕</button>
+    <div class="popup-char" id="popupChar"></div>
+    <div class="popup-pin"  id="popupPin"></div>
+    <div class="popup-hr"></div>
+    <span class="popup-type" id="popupType"></span>
+    <div class="popup-body" id="popupBody"></div>
+  </div>
+
+  <script>
+  /* ════════════════════════════════════════════════════════════
+     ★ 数据填写区 ★
+
+     字段说明：
+       c     汉字或标点
+       p     拼音（标点写 ''）
+       type  'normal' | 'zhu' | 'note' | 'punct'
+       read  TTS 替换发音字，通假/异读时填
+             例: c:'说', read:'悦'  → 屏幕显示"说"，TTS 读"悦"
+       note  type 为 zhu/note 时填写批注文字
+  ════════════════════════════════════════════════════════════ */
+  const chapters = [
+
+    /* ── 第一章 ── */
+    [
+      { c:'道', p:'dào',   type:'note',   note:'【道】老子哲学核心概念，既是宇宙本体，又是万物运行规律，不可言说却无处不在。' },
+      { c:'可', p:'kě',    type:'normal' },
+      { c:'道', p:'dào',   type:'note',   note:'【道（动词）】说、言说之意，与前"道"同字异义，顶真修辞。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'非', p:'fēi',   type:'normal' },
+      { c:'常', p:'cháng', type:'note',   note:'【常】永恒、恒久，非副词"经常"，是全篇关键字义辨析。' },
+      { c:'道', p:'dào',   type:'normal' },
+      { c:'；', p:'',      type:'punct' },
+      { c:'名', p:'míng',  type:'normal' },
+      { c:'可', p:'kě',    type:'normal' },
+      { c:'名', p:'míng',  type:'note',   note:'【名（动词）】命名、称呼，名词活用为动词，与"道可道"对称。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'非', p:'fēi',   type:'normal' },
+      { c:'常', p:'cháng', type:'normal' },
+      { c:'名', p:'míng',  type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'无', p:'wú',    type:'note',   note:'【无】超越感官、无形无象的本体状态，天地产生之前的混沌原初，非虚无。' },
+      { c:'名', p:'míng',  type:'normal' },
+      { c:'天', p:'tiān',  type:'normal' },
+      { c:'地', p:'dì',    type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'始', p:'shǐ',   type:'note',   note:'【始】本始、起点，"无名天地之始"即道之无名无形是天地的开端。' },
+      { c:'；', p:'',      type:'punct' },
+      { c:'有', p:'yǒu',   type:'note',   note:'【有】与"无"相对，有形有象、可感知的存在状态，是万物显现的根源。' },
+      { c:'名', p:'míng',  type:'normal' },
+      { c:'万', p:'wàn',   type:'normal' },
+      { c:'物', p:'wù',    type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'母', p:'mǔ',    type:'note',   note:'【母】根源、母体，以"母"喻"有"，万物从"有"中孕育而出。' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'故', p:'gù',    type:'normal' },
+      { c:'常', p:'cháng', type:'normal' },
+      { c:'无', p:'wú',    type:'normal' },
+      { c:'欲', p:'yù',    type:'note',   note:'【欲】执念、欲望。"常无欲"即保持虚静无执，方能观察道的精妙。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'观', p:'guān',  type:'normal' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'妙', p:'miào',  type:'note',   note:'【妙】道之精微奥秘，无欲则静则能观玄妙。' },
+      { c:'；', p:'',      type:'punct' },
+      { c:'常', p:'cháng', type:'normal' },
+      { c:'有', p:'yǒu',   type:'normal' },
+      { c:'欲', p:'yù',    type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'观', p:'guān',  type:'normal' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'徼', p:'jiào',  type:'note',   note:'【徼】音jiào，边际、端倪，道在万物上显现的迹象，生僻字需记字音。' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'此', p:'cǐ',    type:'normal' },
+      { c:'两', p:'liǎng', type:'normal' },
+      { c:'者', p:'zhě',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'同', p:'tóng',  type:'normal' },
+      { c:'出', p:'chū',   type:'normal' },
+      { c:'而', p:'ér',    type:'normal' },
+      { c:'异', p:'yì',    type:'normal' },
+      { c:'名', p:'míng',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'同', p:'tóng',  type:'normal' },
+      { c:'谓', p:'wèi',   type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'玄', p:'xuán',  type:'note',   note:'【玄】深黑色，引申为幽深莫测，道家以"玄"象征道的不可言说与深邃。' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'玄', p:'xuán',  type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'又', p:'yòu',   type:'normal' },
+      { c:'玄', p:'xuán',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'众', p:'zhòng', type:'normal' },
+      { c:'妙', p:'miào',  type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'门', p:'mén',   type:'note',   note:'【门】入口、门径，以"门"收尾，暗示道是通向一切理解的入口而非终点。' },
+      { c:'。', p:'',      type:'punct' },
+    ],
+
+    /* ── 第二至五章 — 待填写 ── */
+    [], [], [], [],
+  ];
+
+  /* ════════════════════════════════════
+     渲染引擎
+  ════════════════════════════════════ */
+  const chapterBoxes = [];   // chapterBoxes[i] = 该章所有字格 [{box, unit, item}, ...]
+
+  function render(id, data) {
+    const row   = document.getElementById(id);
+    const boxes = [];
+    if (!row || !data.length) { chapterBoxes.push(boxes); return; }
+    data.forEach(item => {
+      const unit = document.createElement('div');
+      unit.className = 'char-unit' + (item.type !== 'normal' ? ' ' + item.type : '');
+      const pin = document.createElement('div');
+      pin.className = 'char-pin';
+      pin.textContent = item.p || '';
+      const box = document.createElement('div');
+      box.className = 'char-box';
+      box.textContent = item.c;
+      if (item.note && (item.type === 'zhu' || item.type === 'note')) {
+        box.addEventListener('click', e => { e.stopPropagation(); showPopup(item, box); });
+      }
+      unit.appendChild(pin);
+      unit.appendChild(box);
+      row.appendChild(unit);
+      boxes.push({ box, unit, item });
+    });
+    chapterBoxes.push(boxes);
+  }
+  chapters.forEach((data, i) => render('c' + (i + 1), data));
+
+  /* ════════════════════════════════════
+     ★ 朗读引擎
+  ════════════════════════════════════ */
+  const chapterNames = ['第一章','第二章','第三章','第四章','第五章'];
+  let currentChIdx   = -1;
+  let currentReadBtn = null;
+  let currentBlock   = null;
+  let lastHL         = null;   // 上次高亮的 {box, unit}
+  let isPaused       = false;
+  let readSpeed      = 0.9;
+
+  /**
+   * buildSpeech(chIdx)
+   * 返回 { text, map }
+   *   text — 喂给 TTS 的字符串（通假字已替换）
+   *   map  — text 每个位置对应的 DOM {box,unit}，标点位置为 null
+   */
+  function buildSpeech(chIdx) {
+    const boxes = chapterBoxes[chIdx];
+    if (!boxes || !boxes.length) return null;
+    let text = '';
+    const map = [];
+    boxes.forEach(({ box, unit, item }) => {
+      const ch = item.read || item.c;   // 有 read 则用替换字
+      text += ch;
+      map.push(item.type === 'punct' ? null : { box, unit });
+    });
+    return { text, map };
+  }
+
+  function startRead(chIdx, btn) {
+    // 点当前章 → 暂停/继续
+    if (currentChIdx === chIdx && speechSynthesis.speaking) {
+      togglePause(); return;
+    }
+    stopRead();   // 先停前一章
+
+    const speech = buildSpeech(chIdx);
+    if (!speech || !speech.text.trim()) {
+      alert('本章暂无内容，请先填写数据。'); return;
+    }
+
+    currentChIdx   = chIdx;
+    currentReadBtn = btn;
+    currentBlock   = document.querySelector(`.sentence-block[data-ch="${chIdx}"]`);
+    isPaused       = false;
+
+    btn.textContent = '⏸ 朗读中';
+    btn.classList.add('active');
+    if (currentBlock) currentBlock.classList.add('reading');
+
+    // 更新播放条
+    document.getElementById('rbChTitle').textContent   = chapterNames[chIdx] || `第${chIdx+1}章`;
+    document.getElementById('rbProgress').textContent  = `0 / ${speech.text.length}`;
+    document.getElementById('rbPause').textContent     = '⏸ 暂停';
+    document.getElementById('readBar').classList.add('visible');
+
+    // 构建 Utterance
+    const utter  = new SpeechSynthesisUtterance(speech.text);
+    utter.lang   = 'zh-CN';
+    utter.rate   = readSpeed;
+    utter.pitch  = 1.0;
+
+    // 优先选中文声音
+    const voices = speechSynthesis.getVoices();
+    const zhV    = voices.find(v => v.lang === 'zh-CN') || voices.find(v => v.lang.startsWith('zh'));
+    if (zhV) utter.voice = zhV;
+
+    /* 跟读高亮
+       boundary 事件的 charIndex 指向当前朗读位置在 text 中的偏移
+       Chrome/Edge 对中文每字触发一次，Firefox 可能以词为单位，Safari 支持较新版本
+    */
+    utter.addEventListener('boundary', e => {
+      const idx = e.charIndex;
+      highlightChar(idx, speech.map);
+      document.getElementById('rbProgress').textContent = `${idx + 1} / ${speech.text.length}`;
+    });
+
+    utter.addEventListener('end',   () => { clearHL(); resetBtn(); hideBar(); currentChIdx = -1; });
+    utter.addEventListener('error', () => { clearHL(); resetBtn(); hideBar(); });
+
+    speechSynthesis.speak(utter);
+  }
+
+  function highlightChar(idx, map) {
+    clearHL();
+    const t = map[idx];
+    if (!t) return;
+    t.box.classList.add('speaking');
+    t.unit.classList.add('speaking-unit');
+    lastHL = t;
+    t.box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+  function clearHL() {
+    if (lastHL) {
+      lastHL.box.classList.remove('speaking');
+      lastHL.unit.classList.remove('speaking-unit');
+      lastHL = null;
+    }
+  }
+  function resetBtn() {
+    if (currentReadBtn) {
+      currentReadBtn.textContent = '▶ 朗读';
+      currentReadBtn.classList.remove('active');
+      currentReadBtn = null;
+    }
+    if (currentBlock) { currentBlock.classList.remove('reading'); currentBlock = null; }
+  }
+  function hideBar() { document.getElementById('readBar').classList.remove('visible'); isPaused = false; }
+
+  function togglePause() {
+    const pb = document.getElementById('rbPause');
+    if (isPaused) {
+      speechSynthesis.resume();
+      isPaused = false;
+      pb.textContent = '⏸ 暂停';
+      if (currentReadBtn) currentReadBtn.textContent = '⏸ 朗读中';
+    } else {
+      speechSynthesis.pause();
+      isPaused = true;
+      pb.textContent = '▶ 继续';
+      if (currentReadBtn) currentReadBtn.textContent = '▶ 已暂停';
+    }
+  }
+
+  function stopRead() {
+    speechSynthesis.cancel();
+    clearHL(); resetBtn(); hideBar();
+    currentChIdx = -1;
+  }
+
+  function onSpeedChange(val) {
+    readSpeed = parseFloat(val);
+    document.getElementById('speedLabel').textContent = readSpeed.toFixed(1) + '×';
+    // 若正在朗读则重启（语速变更需重新 speak）
+    if (currentChIdx >= 0 && speechSynthesis.speaking) {
+      const ci = currentChIdx, rb = currentReadBtn;
+      stopRead();
+      setTimeout(() => startRead(ci, rb), 80);
+    }
+  }
+
+  // 声音列表异步加载时自动触发
+  if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = () => {};
+  window.addEventListener('beforeunload', () => speechSynthesis.cancel());
+
+  /* ════════════════════════════════════
+     批注弹窗
+  ════════════════════════════════════ */
+  const overlay    = document.getElementById('overlay');
+  const popup      = document.getElementById('popupCard');
+  const popupChar  = document.getElementById('popupChar');
+  const popupPin   = document.getElementById('popupPin');
+  const popupType  = document.getElementById('popupType');
+  const popupBody  = document.getElementById('popupBody');
+  const popupClose = document.getElementById('popupClose');
+
+  function showPopup(item, el) {
+    popupChar.textContent = item.c;
+    popupChar.className   = 'popup-char is-' + item.type;
+    popupPin.textContent  = item.p ? `/ ${item.p} /` : '';
+    popupType.className   = 'popup-type type-' + item.type;
+    popupType.textContent = item.type === 'zhu' ? '异读 / 通假字' : '重点词·批注';
+    popupBody.textContent = item.note;
+    popup.style.display   = 'block';
+    const r  = el.getBoundingClientRect();
+    let top  = r.bottom + 8, left = r.left;
+    const pw = popup.offsetWidth, ph = popup.offsetHeight;
+    if (left + pw > window.innerWidth  - 12) left = window.innerWidth  - pw - 12;
+    if (top  + ph > window.innerHeight - 12) top  = r.top - ph - 8;
+    popup.style.top  = top  + 'px';
+    popup.style.left = left + 'px';
+    overlay.classList.add('show');
+  }
+  function closePopup() { popup.style.display = 'none'; overlay.classList.remove('show'); }
+  overlay.addEventListener('click', closePopup);
+  popupClose.addEventListener('click', closePopup);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
+  /* ════════════════════════════════════
+     讲义折叠
+  ════════════════════════════════════ */
+  function toggleNote(btn) {
+    const note = btn.parentElement.nextElementSibling;
+    const open = note.classList.toggle('open');
+    btn.textContent = open ? '收起讲义 ∧' : '展开讲义 ∨';
+  }
+  </script>
+</body>
+</html>

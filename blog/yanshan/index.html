@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>砚山 · 读书记 | SageLume</title>
+  <meta name="theme-color" content="#6b8e23" />
+
+  <!-- Favicon（与主站一致） -->
+  <link rel="manifest"      href="https://huang-husky.github.io/SageLume/favicon/site.webmanifest" />
+  <link rel="apple-touch-icon" href="https://huang-husky.github.io/SageLume/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/svg+xml" href="https://huang-husky.github.io/SageLume/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="https://huang-husky.github.io/SageLume/favicon/favicon.ico" />
+
+  <!-- 主站 CSS（保持导航栏、footer 与站点一致） -->
+  <link rel="stylesheet" href="https://huang-husky.github.io/SageLume/style.css" />
+
+  <!-- 主站主题切换脚本 -->
+  <script src="https://huang-husky.github.io/SageLume/js/theme-toggle.js"></script>
+
+  <!-- 砚山专属字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet" />
+
+  <!-- 砚山专属样式 -->
+  <style>
+    /* ── 宣纸底纹变量（在主站 CSS 变量之上叠加） ── */
+    :root {
+      --ys-bg:        #f5f0e8;
+      --ys-paper:     #faf7f0;
+      --ys-ink:       #2c2417;
+      --ys-ink-lt:    #5c5040;
+      --ys-sage:      #5a7a5e;
+      --ys-sage-dk:   #3d5940;
+      --ys-amber:     #c8902a;
+      --ys-zhu:       #c0392b;
+      --ys-border:    #d4c9b0;
+      --ys-shadow:    rgba(44,36,23,.12);
+    }
+    [data-theme="dark"] {
+      --ys-bg:        #1a1812;
+      --ys-paper:     #221f16;
+      --ys-ink:       #e8e0cc;
+      --ys-ink-lt:    #a09078;
+      --ys-sage:      #7aaa7e;
+      --ys-sage-dk:   #9fcfa3;
+      --ys-amber:     #d4a84b;
+      --ys-zhu:       #e05a4a;
+      --ys-border:    #3a3428;
+      --ys-shadow:    rgba(0,0,0,.4);
+    }
+
+    /* 砚山内容区覆盖背景 */
+    .ys-body { background: var(--ys-bg); font-family: 'Noto Serif SC', serif; }
+
+    /* 宣纸格纹 */
+    .ys-body::before {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(180,160,120,.06) 28px, rgba(180,160,120,.06) 29px),
+        repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(180,160,120,.04) 28px, rgba(180,160,120,.04) 29px);
+    }
+
+    /* ── 砚山 Banner ── */
+    .ys-banner {
+      position: relative; z-index: 1;
+      text-align: center; padding: 48px 24px 36px;
+      border-bottom: 1px solid var(--ys-border);
+      background: linear-gradient(to bottom, var(--ys-paper), transparent);
+    }
+    .ys-pinyin {
+      font-family: 'Noto Sans SC', sans-serif; font-size: .85rem;
+      letter-spacing: .4em; color: var(--ys-ink-lt); margin-bottom: 6px;
+    }
+    .ys-title {
+      font-size: 3rem; font-weight: 700; letter-spacing: .25em;
+      color: var(--ys-sage-dk); text-shadow: 2px 2px 0 rgba(90,122,94,.15);
+    }
+    .ys-divider {
+      width: 60px; height: 2px; margin: 16px auto;
+      background: linear-gradient(to right, transparent, var(--ys-amber), transparent);
+    }
+    .ys-sub { font-size: .9rem; color: var(--ys-ink-lt); letter-spacing: .1em; }
+
+    /* ── 书架区 ── */
+    .ys-main {
+      position: relative; z-index: 1;
+      max-width: 900px; margin: 0 auto; padding: 44px 24px 80px;
+    }
+    .shelf-label {
+      font-size: .72rem; letter-spacing: .25em; color: var(--ys-ink-lt);
+      margin-bottom: 18px; display: flex; align-items: center; gap: 12px;
+    }
+    .shelf-label::after { content: ''; flex: 1; height: 1px; background: var(--ys-border); }
+
+    .book-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 18px; margin-bottom: 44px;
+    }
+    .book-card {
+      background: var(--ys-paper); border: 1px solid var(--ys-border); border-radius: 4px;
+      padding: 26px 22px 20px; text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; gap: 9px;
+      position: relative; overflow: hidden;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+      box-shadow: 0 2px 8px var(--ys-shadow);
+    }
+    .book-card::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+      background: var(--ys-sage); transition: width .2s;
+    }
+    .book-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px var(--ys-shadow); border-color: var(--ys-sage); }
+    .book-card:hover::before { width: 5px; }
+    .book-card.disabled { opacity: .5; cursor: default; pointer-events: none; }
+
+    .book-source { font-size: .68rem; letter-spacing: .12em; color: var(--ys-amber); font-family: 'Noto Sans SC', sans-serif; }
+    .book-title  { font-size: 1.25rem; font-weight: 600; letter-spacing: .1em; color: var(--ys-sage-dk); }
+    .book-excerpt{ font-size: .8rem; color: var(--ys-ink-lt); line-height: 1.8; letter-spacing: .05em; }
+    .book-excerpt .zhu { color: var(--ys-zhu); }
+    .book-meta   { display: flex; align-items: center; justify-content: space-between; font-size: .7rem; color: var(--ys-ink-lt); font-family: 'Noto Sans SC', sans-serif; margin-top: 4px; }
+    .book-tags   { display: flex; gap: 5px; flex-wrap: wrap; }
+    .tag { background: rgba(90,122,94,.1); border: 1px solid rgba(90,122,94,.25); border-radius: 2px; padding: 1px 6px; font-size: .65rem; color: var(--ys-sage); }
+
+    .coming-soon { text-align: center; padding: 36px; border: 1px dashed var(--ys-border); border-radius: 4px; color: var(--ys-ink-lt); font-size: .88rem; letter-spacing: .1em; }
+  </style>
+</head>
+<body class="ys-body">
+
+  <!-- ── 主站通用 Header ── -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+  <a class="skip-to-content" href="#ys-main">跳至内容</a>
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://huang-husky.github.io/SageLume/">
+        <img src="https://huang-husky.github.io/SageLume/favicon/logo-header.png" alt="算海青藜" height="96" style="vertical-align:middle;" />
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://huang-husky.github.io/SageLume/">Home</a>
+      <a href="https://huang-husky.github.io/SageLume/about/">About</a>
+      <a href="https://huang-husky.github.io/SageLume/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <!-- ── 砚山 Banner ── -->
+  <div class="ys-banner">
+    <div class="ys-pinyin">yàn shān</div>
+    <h1 class="ys-title">砚山</h1>
+    <div class="ys-divider"></div>
+    <p class="ys-sub">研墨读书 · 背记中国古典</p>
+  </div>
+
+  <!-- ── 书架 ── -->
+  <main class="ys-main" id="ys-main">
+
+    <div class="shelf-label">道家</div>
+    <div class="book-grid">
+      <a class="book-card" href="daodejing/index.html">
+        <span class="book-source">《道德经》· 老子</span>
+        <div class="book-title">道德经</div>
+        <div class="book-excerpt">道经三十七章 · 德经四十四章</div>
+        <div class="book-meta">
+          <div class="book-tags"><span class="tag">道经</span><span class="tag">德经</span><span class="tag">注音全文</span></div>
+          <span>共81章</span>
+        </div>
+      </a>
+      <!-- 新增典籍在此复制 .book-card -->
+    </div>
+
+    <div class="shelf-label">儒家</div>
+    <div class="book-grid">
+      <div class="coming-soon">✦ 敬请期待 ✦</div>
+    </div>
+
+    <div class="shelf-label">宇宙深处……</div>
+    <div class="book-grid">
+      <div class="coming-soon">✦ 敬请期待 ✦</div>
+    </div>
+
+  </main>
+
+  <!-- ── 主站通用 Footer ── -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://huang-husky.github.io/SageLume/favicon/logo-footer.png" alt="算海青藜" height="48" />
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+</body>
+</html>
