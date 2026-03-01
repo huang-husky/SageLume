@@ -3,12 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!--
-  ★★★ 使用此模板时，修改以下三处 ★★★
-  1. <title> 改为当前章组标题
-  2. .ys-tag-line / .ys-title / .ys-desc 改为对应章范围
-  3. 底部 chapters 数组填入章节数据（格式见注释）
-  -->
   <title>第一章—第五章 · 道经 · 砚山 | SageLume</title>
   <meta name="theme-color" content="#6b8e23" />
   <link rel="manifest"      href="https://huang-husky.github.io/SageLume/favicon/site.webmanifest" />
@@ -46,8 +40,6 @@
       background-image: repeating-linear-gradient(0deg, transparent, transparent 36px,
         rgba(180,160,120,.05) 36px, rgba(180,160,120,.05) 37px);
     }
-
-    /* 面包屑 */
     .breadcrumb {
       position: relative; z-index: 1; max-width: 840px; margin: 0 auto;
       padding: 14px 24px 0; font-family: 'Noto Sans SC', sans-serif;
@@ -56,8 +48,6 @@
     .breadcrumb a { color: var(--ys-sage); text-decoration: none; }
     .breadcrumb a:hover { text-decoration: underline; }
     .breadcrumb span { margin: 0 5px; opacity: .4; }
-
-    /* Banner */
     .ys-banner {
       position: relative; z-index: 1; text-align: center;
       padding: 28px 24px 22px; border-bottom: 1px solid var(--ys-border);
@@ -76,11 +66,7 @@
     .ldot-zhu   { background: var(--ys-zhu-bg);   border: 1px solid var(--ys-zhu); }
     .ldot-note  { background: var(--ys-sage-bg);  border: 1px solid var(--ys-sage); }
     .ldot-speak { background: var(--ys-amber-bg); border: 1px solid var(--ys-amber); }
-
-    /* 主体 — 底部留空给播放条 */
     .ys-main { position: relative; z-index: 1; max-width: 840px; margin: 0 auto; padding: 36px 24px 120px; }
-
-    /* 章组导航 */
     .chapter-nav {
       display: flex; justify-content: space-between; align-items: center;
       margin-bottom: 28px; font-family: 'Noto Sans SC', sans-serif; font-size: .75rem;
@@ -96,15 +82,12 @@
     .nav-btn.prev::before { content: '‹ '; }
     .nav-btn.next::after  { content: ' ›'; }
     .nav-center { color: var(--ys-ink-lt); letter-spacing: .05em; }
-
-    /* ── 章节块 ── */
     .sentence-block {
       background: var(--ys-paper); border: 1px solid var(--ys-border); border-radius: 4px;
       padding: 30px 26px 22px; margin-bottom: 20px;
       box-shadow: 0 2px 8px var(--ys-shadow); position: relative;
       transition: border-color .3s, box-shadow .3s;
     }
-    /* 朗读中 — 金色边框 */
     .sentence-block.reading {
       border-color: var(--ys-amber);
       box-shadow: 0 2px 8px var(--ys-shadow), 0 0 0 2px rgba(200,144,42,.15);
@@ -113,8 +96,6 @@
       content: attr(data-index); position: absolute; top: 10px; left: 14px;
       font-size: .62rem; color: var(--ys-ink-fd); font-family: 'Noto Sans SC', sans-serif;
     }
-
-    /* 朗读按钮（章节右上角） */
     .read-btn {
       position: absolute; top: 8px; right: 12px;
       background: none; border: 1px solid var(--ys-border); border-radius: 3px;
@@ -125,8 +106,6 @@
     }
     .read-btn:hover { border-color: var(--ys-amber); color: var(--ys-amber); background: var(--ys-amber-bg); }
     .read-btn.active { border-color: var(--ys-amber); color: var(--ys-amber); background: var(--ys-amber-bg); }
-
-    /* ── 注音字符行 ── */
     .char-row { display: flex; flex-wrap: wrap; gap: var(--gap); align-items: flex-end; margin-bottom: 18px; }
     .char-unit { display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 42px; }
     .char-pin {
@@ -141,8 +120,6 @@
       transition: background .15s, border-color .15s, transform .15s, box-shadow .15s;
       background: transparent; user-select: none; cursor: default;
     }
-
-    /* 朗读跟读高亮 */
     .char-box.speaking {
       background: var(--ys-amber-bg) !important;
       border-color: var(--ys-amber) !important;
@@ -150,21 +127,14 @@
       transform: scale(1.12);
     }
     .char-unit.speaking-unit .char-pin { color: var(--ys-amber); }
-
-    /* 标点 */
     .char-unit.punct .char-pin { opacity: 0; }
     .char-unit.punct .char-box { border-color: transparent; font-size: 1.6rem; color: var(--ys-ink-lt); }
-    /* 通假/异读 */
     .char-unit.zhu .char-box { color: var(--ys-zhu); background: var(--ys-zhu-bg); border-color: rgba(192,57,43,.25); cursor: pointer; }
     .char-unit.zhu .char-box:hover { transform: scale(1.08); border-color: var(--ys-zhu); }
-    /* 重点词 */
     .char-unit.note .char-box { color: var(--ys-sage-dk); background: var(--ys-sage-bg); border-color: rgba(90,122,94,.25); cursor: pointer; }
     .char-unit.note .char-box:hover { transform: scale(1.08); border-color: var(--ys-sage); }
-    /* 角标 */
     .char-unit.zhu .char-box::after,
     .char-unit.note .char-box::after { content: '◇'; position: absolute; top: 2px; right: 3px; font-size: .42rem; opacity: .5; }
-
-    /* ── 译文/讲义 ── */
     .sentence-footer {
       border-top: 1px dashed var(--ys-border); padding-top: 12px;
       display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: wrap;
@@ -179,10 +149,6 @@
     .toggle-note:hover { border-color: var(--ys-sage); color: var(--ys-sage); }
     .expand-note { display: none; margin-top: 10px; font-size: .78rem; color: var(--ys-ink-lt); line-height: 1.9; border-left: 2px solid var(--ys-sage); padding-left: 11px; letter-spacing: .04em; }
     .expand-note.open { display: block; }
-
-    /* ════════════════════════════════════
-       底部朗读播放条
-    ════════════════════════════════════ */
     .read-bar {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
       background: var(--ys-paper); border-top: 1px solid var(--ys-border);
@@ -192,11 +158,9 @@
       font-family: 'Noto Sans SC', sans-serif;
     }
     .read-bar.visible { display: flex; }
-
     .rb-title { font-size: .72rem; color: var(--ys-ink-lt); letter-spacing: .05em; flex-shrink: 0; }
     .rb-title b { color: var(--ys-amber); }
     .rb-progress { font-size: .65rem; color: var(--ys-ink-fd); min-width: 48px; flex-shrink: 0; }
-
     .rb-controls { display: flex; gap: 7px; }
     .rb-btn {
       background: none; border: 1px solid var(--ys-border); border-radius: 3px;
@@ -206,13 +170,10 @@
     }
     .rb-btn:hover        { border-color: var(--ys-sage); color: var(--ys-sage); background: var(--ys-sage-bg); }
     .rb-btn.rb-stop:hover{ border-color: var(--ys-zhu);  color: var(--ys-zhu);  background: var(--ys-zhu-bg); }
-
     .rb-speed { display: flex; align-items: center; gap: 6px; margin-left: auto; flex-shrink: 0; }
     .rb-speed label { font-size: .65rem; color: var(--ys-ink-fd); }
     .rb-speed input[type=range] { width: 76px; accent-color: var(--ys-amber); cursor: pointer; }
     .rb-speed .sp-val { font-size: .65rem; color: var(--ys-amber); min-width: 28px; }
-
-    /* ── 批注弹窗 ── */
     .popup-overlay { display: none; position: fixed; inset: 0; z-index: 100; }
     .popup-overlay.show { display: block; }
     .popup-card {
@@ -233,7 +194,6 @@
     .popup-body { font-size: .8rem; color: var(--ys-ink-lt); line-height: 1.85; letter-spacing: .04em; }
     .popup-close { position: absolute; top: 7px; right: 9px; background: none; border: none; cursor: pointer; color: var(--ys-ink-fd); font-size: .85rem; transition: color .2s; }
     .popup-close:hover { color: var(--ys-ink); }
-
     @media (max-width: 480px) {
       :root { --char-size: 1.9rem; --gap: 7px; }
       .char-box { width: 38px; height: 38px; }
@@ -289,59 +249,54 @@
       <a class="nav-btn next" href="../ch06-10/index.html">下一组</a>
     </div>
 
-    <!-- ─── 第一章 ─── data-ch 必须与 chapters 数组下标一致 -->
     <div class="sentence-block" data-index="第 一 章" data-ch="0">
       <button class="read-btn" onclick="startRead(0, this)">▶ 朗读</button>
       <div class="char-row" id="c1"></div>
       <div class="sentence-footer">
-        <div class="translation">【在此填写第一章译文】</div>
+        <div class="translation">道，可以言说的，就不是永恒之道；名，可以命名的，就不是永恒之名。无，是天地产生的本始；有，是万物生成的根源。所以，常保持虚静无欲，才能观察道的精妙；常带着欲念，只能看到道的边际表象。这两者同出一源而名称不同，都可称作"玄"。玄而又玄，是一切奥妙的门径。</div>
         <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
       </div>
-      <div class="expand-note">【在此填写第一章详注】</div>
+      <div class="expand-note">本章是全书总纲，核心在于"不可言说"。老子首先指出道超越语言概念的本质——一旦被命名，就已非道的本体。"无"与"有"并非矛盾对立，而是同一本体（道）的两种显现维度："无"指道之虚寂本体，"有"指道在万物上的显现。"常无欲"与"常有欲"则对应两种认识路径：前者观道之本质（妙），后者观道之迹象（徼）。最后以"玄之又玄"收尾，强调道的无限深邃，语言只是入门的手指，而非月亮本身。</div>
     </div>
 
-    <!-- ─── 第二章 ─── -->
     <div class="sentence-block" data-index="第 二 章" data-ch="1">
       <button class="read-btn" onclick="startRead(1, this)">▶ 朗读</button>
       <div class="char-row" id="c2"></div>
       <div class="sentence-footer">
-        <div class="translation">【第二章译文】</div>
+        <div class="translation">天下都知道美之所以为美，丑的概念便随之产生；都知道善之所以为善，不善的概念便随之确立。所以，有与无相互生成，难与易相互促成，长与短相互比较，高与下相互倾依，音与声相互呼应，前与后相互跟随——这是永恒的规律。因此，圣人以无为的态度处世，推行不言的教化；任万物自然生长而不横加干涉，生养万物而不据为己有，有所作为而不自恃其功，大功告成而不居功自傲。正因为不居功，功德反而永远不会失去。</div>
         <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
       </div>
-      <div class="expand-note">【第二章详注】</div>
+      <div class="expand-note">本章承接第一章"有无"之辨，展开老子辩证哲学的具体内容。前半段以六组对立概念说明：任何价值判断一旦树立，其对立面便同时诞生。后半段以圣人为榜样示范"无为而治"的三个核心原则：不辞（不干涉自然）、不有（不占有成果）、不恃（不依功自傲）。末句"夫唯弗居，是以不去"是老子典型的悖论式智慧：越不执取，反而越能长存。朗读字音处理：恶→务（wù）、和→贺（hè）、处→楚（chǔ），均已用同音字替换，确保TTS发音准确。</div>
     </div>
 
-    <!-- ─── 第三章 ─── -->
     <div class="sentence-block" data-index="第 三 章" data-ch="2">
       <button class="read-btn" onclick="startRead(2, this)">▶ 朗读</button>
       <div class="char-row" id="c3"></div>
       <div class="sentence-footer">
-        <div class="translation">【第三章译文】</div>
+        <div class="translation">不崇尚贤能之名，使百姓不因争名而相互倾轧；不以稀有之物为贵，使百姓不因贪货而沦为盗贼；不炫示足以引发欲望的事物，使百姓的心志不被扰乱。因此，圣人治理天下，使人心虚静，使腹中充实，使志气柔弱，使筋骨强健。常使百姓没有机巧之知、没有贪念之欲，使那些有机心的人不敢妄加作为。以无为处世，则没有什么治理不好的。</div>
         <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
       </div>
-      <div class="expand-note">【第三章详注】</div>
+      <div class="expand-note">本章是老子政治哲学的核心表达。"不尚贤、不贵货、不见可欲"三个"不"字，是治理的前提——不人为制造欲望的诱因。"虚心、实腹、弱志、强骨"四句是对人本需求的重新排序：满足身体（腹、骨）的真实需要，减少精神上（心、志）的过度攀比。"无知无欲"之"知"，指机巧心计而非自然智慧。末句"为无为，则无不治"以双重否定强调无为并非无能，而是最高效的治理境界。通假字"见"通"现"读xiàn，朗读已以"现"字替换，确保TTS发音正确。</div>
     </div>
 
-    <!-- ─── 第四章 ─── -->
     <div class="sentence-block" data-index="第 四 章" data-ch="3">
       <button class="read-btn" onclick="startRead(3, this)">▶ 朗读</button>
       <div class="char-row" id="c4"></div>
       <div class="sentence-footer">
-        <div class="translation">【第四章译文】</div>
+        <div class="translation">道，是虚空的，然而使用它却永无穷尽。深邃啊，像是万物的宗主；澄澈幽深啊，若有若无地存在着。它锉去锋锐，解开纷结，调和光芒，混同尘埃。渊深啊，像是永远存在。我不知道它是从何而来，似乎在上帝之前便已存在。</div>
         <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
       </div>
-      <div class="expand-note">【第四章详注】</div>
+      <div class="expand-note">本章专论道的本体特质。"冲"字（虚空）是全章之眼：道因虚空而无限，就像空杯才能盛水。"渊兮似万物之宗"点出道的超越性。中间四句"挫锐、解纷、和光、同尘"后世称为"和光同尘"，描述道圆融不露的处世方式。末句"象帝之先"是全章最大胆的论断：道甚至先于上帝而存在，将道置于一切神学概念之上。本章无通假/异读字，朗读直接使用原文，无需替换。生僻字：湛（zhàn）须牢记字音。</div>
     </div>
 
-    <!-- ─── 第五章 ─── -->
     <div class="sentence-block" data-index="第 五 章" data-ch="4">
       <button class="read-btn" onclick="startRead(4, this)">▶ 朗读</button>
       <div class="char-row" id="c5"></div>
       <div class="sentence-footer">
-        <div class="translation">【第五章译文】</div>
+        <div class="translation">天地没有偏私的仁爱，对待万物如同对待刍狗一般；圣人没有偏私的仁爱，对待百姓也如同对待刍狗一般。天地之间，不正像一架风箱吗？虽然空虚，却永不穷竭；越是鼓动，风气越是涌出。话说得越多，越会理屈词穷；不如守持中道、保持虚静。</div>
         <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
       </div>
-      <div class="expand-note">【第五章详注】</div>
+      <div class="expand-note">本章"不仁"并非残忍，而是天地超越人情的客观中立——天地让万物自生自灭，不因偏爱而干预。"刍狗"是祭祀用草狗，使用时郑重，用完即弃，正是"无执无偏"的象征。"橐籥"（风箱）比喻精妙：虚空是产出的前提，动则愈出说明虚空并非死寂。末句"多言数穷，不如守中"将哲理落实到言行：言语越繁，离道越远。朗读字音处理：屈→竭（本字，TTS读jié，为现代最接近古音jué的处理）；数→朔（shuò），用同音字替换，避免TTS误读为shù。</div>
     </div>
   </main>
 
@@ -354,7 +309,6 @@
     </div>
   </footer>
 
-  <!-- ══ 底部播放条 ══ -->
   <div class="read-bar" id="readBar">
     <div class="rb-title">▶ <b id="rbChTitle">—</b></div>
     <div class="rb-progress" id="rbProgress"></div>
@@ -370,7 +324,6 @@
     </div>
   </div>
 
-  <!-- 批注弹窗 -->
   <div class="popup-overlay" id="overlay"></div>
   <div class="popup-card" id="popupCard" style="display:none;">
     <button class="popup-close" id="popupClose">✕</button>
@@ -382,60 +335,62 @@
   </div>
 
   <script>
-  /* ════════════════════════════════════════════════════════════
-     ★ 数据填写区 ★
-
-     字段说明：
-       c     汉字或标点
-       p     拼音（标点写 ''）
-       type  'normal' | 'zhu' | 'note' | 'punct'
-       read  TTS 替换发音字，通假/异读时填
-             例: c:'说', read:'悦'  → 屏幕显示"说"，TTS 读"悦"
-       note  type 为 zhu/note 时填写批注文字
-  ════════════════════════════════════════════════════════════ */
+  /*
+   * ★ read 字段策略 ★
+   *
+   * TTS 无法通过字形判断多音字/通假字读音，必须用同音替代字绕过歧义。
+   * 凡需要特殊读音的字，均用与目标读音完全相同的替代字喂给 TTS：
+   *
+   *   恶  wù  → read:'务'   务(wù) 同音，TTS 无歧义
+   *   和  hè  → read:'贺'   贺(hè) 同音，TTS 无歧义
+   *   处  chǔ → read:'楚'   楚(chǔ)同音，TTS 无歧义
+   *   见→现  → read:'现'   现(xiàn)本字唯一读音，正确
+   *   数  shuò→ read:'朔'   朔(shuò)同音，TTS 无歧义
+   *   屈→竭  → read:'竭'   竭(jié) 现代音，为最接近古音jué的可行处理
+   */
   const chapters = [
 
-    /* ── 第一章 ── */
+    /* ══════════════ 第一章 ══════════════ */
     [
-      { c:'道', p:'dào',   type:'note',   note:'【道】老子哲学核心概念，既是宇宙本体，又是万物运行规律，不可言说却无处不在。' },
+      { c:'道', p:'dào',   type:'note',  note:'【道】老子哲学核心概念，既是宇宙本体，又是万物运行规律，不可言说却无处不在。' },
       { c:'可', p:'kě',    type:'normal' },
-      { c:'道', p:'dào',   type:'note',   note:'【道（动词）】说、言说之意，与前"道"同字异义，顶真修辞。' },
+      { c:'道', p:'dào',   type:'note',  note:'【道（动词）】说、言说之意，与前"道"同字异义，顶真修辞。' },
       { c:'，', p:'',      type:'punct' },
       { c:'非', p:'fēi',   type:'normal' },
-      { c:'常', p:'cháng', type:'note',   note:'【常】永恒、恒久，非副词"经常"，是全篇关键字义辨析。' },
+      { c:'常', p:'cháng', type:'note',  note:'【常】永恒、恒久，非副词"经常"，是全篇关键字义辨析。' },
       { c:'道', p:'dào',   type:'normal' },
       { c:'；', p:'',      type:'punct' },
       { c:'名', p:'míng',  type:'normal' },
       { c:'可', p:'kě',    type:'normal' },
-      { c:'名', p:'míng',  type:'note',   note:'【名（动词）】命名、称呼，名词活用为动词，与"道可道"对称。' },
+      { c:'名', p:'míng',  type:'note',  note:'【名（动词）】命名、称呼，名词活用为动词，与"道可道"对称。' },
       { c:'，', p:'',      type:'punct' },
       { c:'非', p:'fēi',   type:'normal' },
       { c:'常', p:'cháng', type:'normal' },
       { c:'名', p:'míng',  type:'normal' },
       { c:'。', p:'',      type:'punct' },
-      { c:'无', p:'wú',    type:'note',   note:'【无】超越感官、无形无象的本体状态，天地产生之前的混沌原初，非虚无。' },
+      { c:'无', p:'wú',    type:'note',  note:'【无】超越感官、无形无象的本体状态，天地产生之前的混沌原初，非虚无。' },
       { c:'名', p:'míng',  type:'normal' },
       { c:'天', p:'tiān',  type:'normal' },
       { c:'地', p:'dì',    type:'normal' },
       { c:'之', p:'zhī',   type:'normal' },
-      { c:'始', p:'shǐ',   type:'note',   note:'【始】本始、起点，"无名天地之始"即道之无名无形是天地的开端。' },
+      { c:'始', p:'shǐ',   type:'note',  note:'【始】本始、起点，"无名天地之始"即道之无名无形是天地的开端。' },
       { c:'；', p:'',      type:'punct' },
-      { c:'有', p:'yǒu',   type:'note',   note:'【有】与"无"相对，有形有象、可感知的存在状态，是万物显现的根源。' },
+      { c:'有', p:'yǒu',   type:'note',  note:'【有】与"无"相对，有形有象、可感知的存在状态，是万物显现的根源。' },
       { c:'名', p:'míng',  type:'normal' },
       { c:'万', p:'wàn',   type:'normal' },
       { c:'物', p:'wù',    type:'normal' },
       { c:'之', p:'zhī',   type:'normal' },
-      { c:'母', p:'mǔ',    type:'note',   note:'【母】根源、母体，以"母"喻"有"，万物从"有"中孕育而出。' },
+      { c:'母', p:'mǔ',    type:'note',  note:'【母】根源、母体，以"母"喻"有"，万物从"有"中孕育而出。' },
       { c:'。', p:'',      type:'punct' },
       { c:'故', p:'gù',    type:'normal' },
       { c:'常', p:'cháng', type:'normal' },
       { c:'无', p:'wú',    type:'normal' },
-      { c:'欲', p:'yù',    type:'note',   note:'【欲】执念、欲望。"常无欲"即保持虚静无执，方能观察道的精妙。' },
+      { c:'欲', p:'yù',    type:'note',  note:'【欲】执念、欲望。"常无欲"即保持虚静无执，方能观察道的精妙。' },
       { c:'，', p:'',      type:'punct' },
       { c:'以', p:'yǐ',    type:'normal' },
       { c:'观', p:'guān',  type:'normal' },
       { c:'其', p:'qí',    type:'normal' },
-      { c:'妙', p:'miào',  type:'note',   note:'【妙】道之精微奥秘，无欲则静则能观玄妙。' },
+      { c:'妙', p:'miào',  type:'note',  note:'【妙】道之精微奥秘，无欲则静则能观玄妙。' },
       { c:'；', p:'',      type:'punct' },
       { c:'常', p:'cháng', type:'normal' },
       { c:'有', p:'yǒu',   type:'normal' },
@@ -444,7 +399,7 @@
       { c:'以', p:'yǐ',    type:'normal' },
       { c:'观', p:'guān',  type:'normal' },
       { c:'其', p:'qí',    type:'normal' },
-      { c:'徼', p:'jiào',  type:'note',   note:'【徼】音jiào，边际、端倪，道在万物上显现的迹象，生僻字需记字音。' },
+      { c:'徼', p:'jiào',  type:'note',  note:'【徼】音jiào，边际、端倪，道在万物上显现的迹象，生僻字需记字音。' },
       { c:'。', p:'',      type:'punct' },
       { c:'此', p:'cǐ',    type:'normal' },
       { c:'两', p:'liǎng', type:'normal' },
@@ -459,7 +414,7 @@
       { c:'同', p:'tóng',  type:'normal' },
       { c:'谓', p:'wèi',   type:'normal' },
       { c:'之', p:'zhī',   type:'normal' },
-      { c:'玄', p:'xuán',  type:'note',   note:'【玄】深黑色，引申为幽深莫测，道家以"玄"象征道的不可言说与深邃。' },
+      { c:'玄', p:'xuán',  type:'note',  note:'【玄】深黑色，引申为幽深莫测，道家以"玄"象征道的不可言说与深邃。' },
       { c:'。', p:'',      type:'punct' },
       { c:'玄', p:'xuán',  type:'normal' },
       { c:'之', p:'zhī',   type:'normal' },
@@ -469,18 +424,321 @@
       { c:'众', p:'zhòng', type:'normal' },
       { c:'妙', p:'miào',  type:'normal' },
       { c:'之', p:'zhī',   type:'normal' },
-      { c:'门', p:'mén',   type:'note',   note:'【门】入口、门径，以"门"收尾，暗示道是通向一切理解的入口而非终点。' },
+      { c:'门', p:'mén',   type:'note',  note:'【门】入口、门径，以"门"收尾，暗示道是通向一切理解的入口而非终点。' },
       { c:'。', p:'',      type:'punct' },
     ],
 
-    /* ── 第二至五章 — 待填写 ── */
-    [], [], [], [],
+    /* ══════════════ 第二章 ══════════════
+       恶(wù)→务  和(hè)→贺  处(chǔ)→楚
+    ════════════════════════════════════ */
+    [
+      { c:'天', p:'tiān',  type:'normal' },
+      { c:'下', p:'xià',   type:'normal' },
+      { c:'皆', p:'jiē',   type:'normal' },
+      { c:'知', p:'zhī',   type:'normal' },
+      { c:'美', p:'měi',   type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'为', p:'wéi',   type:'normal' },
+      { c:'美', p:'měi',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'斯', p:'sī',    type:'note',  note:'【斯】连词，义为"则、于是"，文言中表承接，引出相反结果——美一旦被标榜，丑便随之产生。' },
+      { c:'恶', p:'wù',    type:'zhu',   read:'务', note:'【恶】此处读wù，意为"丑陋"，与"美"相对。朗读以"务"（wù）替换，避免TTS误读为è（邪恶）。' },
+      { c:'已', p:'yǐ',    type:'note',  note:'【已】语气词，义同"矣"，表示确定语气，全句意为：丑的概念就确立了。' },
+      { c:'；', p:'',      type:'punct' },
+      { c:'皆', p:'jiē',   type:'normal' },
+      { c:'知', p:'zhī',   type:'normal' },
+      { c:'善', p:'shàn',  type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'为', p:'wéi',   type:'normal' },
+      { c:'善', p:'shàn',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'斯', p:'sī',    type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'善', p:'shàn',  type:'normal' },
+      { c:'已', p:'yǐ',    type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'故', p:'gù',    type:'normal' },
+      { c:'有', p:'yǒu',   type:'normal' },
+      { c:'无', p:'wú',    type:'normal' },
+      { c:'相', p:'xiāng', type:'normal' },
+      { c:'生', p:'shēng', type:'note',  note:'【相生】相互生成、相互依存。有与无、难与易等，均是对立面的互根，体现老子辩证哲学的核心。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'难', p:'nán',   type:'normal' },
+      { c:'易', p:'yì',    type:'normal' },
+      { c:'相', p:'xiāng', type:'normal' },
+      { c:'成', p:'chéng', type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'长', p:'cháng', type:'normal' },
+      { c:'短', p:'duǎn',  type:'normal' },
+      { c:'相', p:'xiāng', type:'normal' },
+      { c:'较', p:'jiào',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'高', p:'gāo',   type:'normal' },
+      { c:'下', p:'xià',   type:'normal' },
+      { c:'相', p:'xiāng', type:'normal' },
+      { c:'倾', p:'qīng',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'音', p:'yīn',   type:'note',  note:'【音声相和】音为乐音，声为自然之声，合而相应，又一对辩证统一的关系。' },
+      { c:'声', p:'shēng', type:'normal' },
+      { c:'相', p:'xiāng', type:'normal' },
+      { c:'和', p:'hè',    type:'zhu',   read:'贺', note:'【和】此处读hè，意为"应和、唱和"。朗读以"贺"（hè）替换，避免TTS误读为常见读音hé（和谐）。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'前', p:'qián',  type:'normal' },
+      { c:'后', p:'hòu',   type:'normal' },
+      { c:'相', p:'xiāng', type:'normal' },
+      { c:'随', p:'suí',   type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'是', p:'shì',   type:'normal' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'圣', p:'shèng', type:'normal' },
+      { c:'人', p:'rén',   type:'normal' },
+      { c:'处', p:'chǔ',   type:'zhu',   read:'楚', note:'【处】此处读chǔ，动词，意为"从事、处置"。朗读以"楚"（chǔ）替换，避免TTS误读为名词chù。' },
+      { c:'无', p:'wú',    type:'normal' },
+      { c:'为', p:'wéi',   type:'note',  note:'【无为】道家核心概念，非"不作为"，而是顺应自然规律，不以私欲强行干预事物的自然进程。' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'事', p:'shì',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'行', p:'xíng',  type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'言', p:'yán',   type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'教', p:'jiào',  type:'normal' },
+      { c:'；', p:'',      type:'punct' },
+      { c:'万', p:'wàn',   type:'normal' },
+      { c:'物', p:'wù',    type:'normal' },
+      { c:'作', p:'zuò',   type:'normal' },
+      { c:'焉', p:'yān',   type:'note',  note:'【焉】兼词，相当于"于此"，万物在道中自然生长运作之意，非疑问词。' },
+      { c:'而', p:'ér',    type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'辞', p:'cí',    type:'note',  note:'【不辞】不推辞、不拒绝，圣人任万物自然生发，不加干预阻拦。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'生', p:'shēng', type:'normal' },
+      { c:'而', p:'ér',    type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'有', p:'yǒu',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'为', p:'wéi',   type:'normal' },
+      { c:'而', p:'ér',    type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'恃', p:'shì',   type:'note',  note:'【恃】依赖、自恃居功，"为而不恃"即有所作为却不以此自居、自傲。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'功', p:'gōng',  type:'normal' },
+      { c:'成', p:'chéng', type:'normal' },
+      { c:'而', p:'ér',    type:'normal' },
+      { c:'弗', p:'fú',    type:'note',  note:'【弗】否定词，义同"不"，先秦书面语常用，较"不"更古雅正式。' },
+      { c:'居', p:'jū',    type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'夫', p:'fú',    type:'note',  note:'【夫】句首发语词，音fú，无实义，引起下文议论，切勿读作"丈夫"之fū。' },
+      { c:'唯', p:'wéi',   type:'normal' },
+      { c:'弗', p:'fú',    type:'normal' },
+      { c:'居', p:'jū',    type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'是', p:'shì',   type:'normal' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'去', p:'qù',    type:'note',  note:'【不去】功德不会离去、不会消失。正因不据功为己有，反而长存，是老子"曲则全"辩证逻辑的体现。' },
+      { c:'。', p:'',      type:'punct' },
+    ],
+
+    /* ══════════════ 第三章 ══════════════
+       见→现(xiàn)  read:'现'（本字即唯一读音，正确）
+    ════════════════════════════════════ */
+    [
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'尚', p:'shàng', type:'note',  note:'【尚】崇尚、推崇，此处作动词，"不尚贤"即不过分标榜贤能之名，以防民众因名利而相互争夺。' },
+      { c:'贤', p:'xián',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'使', p:'shǐ',   type:'normal' },
+      { c:'民', p:'mín',   type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'争', p:'zhēng', type:'normal' },
+      { c:'；', p:'',      type:'punct' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'贵', p:'guì',   type:'note',  note:'【贵】意动用法，以……为贵、视……为珍贵，此处为动词活用，非形容词。' },
+      { c:'难', p:'nán',   type:'normal' },
+      { c:'得', p:'dé',    type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'货', p:'huò',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'使', p:'shǐ',   type:'normal' },
+      { c:'民', p:'mín',   type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'为', p:'wéi',   type:'normal' },
+      { c:'盗', p:'dào',   type:'normal' },
+      { c:'；', p:'',      type:'punct' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'见', p:'xiàn',  type:'zhu',   read:'现', note:'【见】通"现"，音xiàn，意为"显现、展示"。朗读以本字"现"替换，避免TTS误读为jiàn（看见）。' },
+      { c:'可', p:'kě',    type:'normal' },
+      { c:'欲', p:'yù',    type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'使', p:'shǐ',   type:'normal' },
+      { c:'民', p:'mín',   type:'normal' },
+      { c:'心', p:'xīn',   type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'乱', p:'luàn',  type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'是', p:'shì',   type:'normal' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'圣', p:'shèng', type:'normal' },
+      { c:'人', p:'rén',   type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'治', p:'zhì',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'虚', p:'xū',    type:'note',  note:'【虚其心】使内心虚静空明，去除过多的欲念与成见，"虚"是道家修养的核心工夫，非"空洞"之贬义。' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'心', p:'xīn',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'实', p:'shí',   type:'normal' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'腹', p:'fù',    type:'note',  note:'【实其腹】使腹部充实饱足，指满足百姓基本的生存物质需求，老子重朴素实用而轻虚名浮利。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'弱', p:'ruò',   type:'normal' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'志', p:'zhì',   type:'note',  note:'【弱其志】减弱过强的个人野心与争强之志，使人不因名利扰动内心。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'强', p:'qiáng', type:'normal' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'骨', p:'gǔ',    type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'常', p:'cháng', type:'normal' },
+      { c:'使', p:'shǐ',   type:'normal' },
+      { c:'民', p:'mín',   type:'normal' },
+      { c:'无', p:'wú',    type:'normal' },
+      { c:'知', p:'zhī',   type:'normal' },
+      { c:'无', p:'wú',    type:'normal' },
+      { c:'欲', p:'yù',    type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'使', p:'shǐ',   type:'normal' },
+      { c:'夫', p:'fú',    type:'normal' },
+      { c:'智', p:'zhì',   type:'note',  note:'【智者】有机巧心计之人，老子并非反对智慧，而是警惕以私智扰乱自然秩序者。' },
+      { c:'者', p:'zhě',   type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'敢', p:'gǎn',   type:'normal' },
+      { c:'为', p:'wéi',   type:'normal' },
+      { c:'也', p:'yě',    type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'为', p:'wéi',   type:'normal' },
+      { c:'无', p:'wú',    type:'normal' },
+      { c:'为', p:'wéi',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'则', p:'zé',    type:'normal' },
+      { c:'无', p:'wú',    type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'治', p:'zhì',   type:'note',  note:'【无不治】双重否定表强烈肯定，以无为之道达到无不治的境界，是全章哲学结语。' },
+      { c:'。', p:'',      type:'punct' },
+    ],
+
+    /* ══════════════ 第四章 ══════════════
+       无通假/异读字，全章无需 read 字段
+    ════════════════════════════════════ */
+    [
+      { c:'道', p:'dào',   type:'normal' },
+      { c:'冲', p:'chōng', type:'note',  note:'【冲】虚空、中空之义，古写作"盅"，形如空杯。喻道体虚空无形，非"冲动、冲击"之义。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'而', p:'ér',    type:'normal' },
+      { c:'用', p:'yòng',  type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'或', p:'huò',   type:'note',  note:'【或】副词，有时、或者，强调道用之无穷无尽，持续而难以穷竭。' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'盈', p:'yíng',  type:'note',  note:'【不盈】不满溢、不穷竭，道虽空虚却无限充盈，永远不会被用完，与"冲"形成呼应。' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'渊', p:'yuān',  type:'note',  note:'【渊兮】深不可测的样子，"兮"为语气助词，多见于先秦诗赋，形容道之深邃悠远。' },
+      { c:'兮', p:'xī',    type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'似', p:'sì',    type:'normal' },
+      { c:'万', p:'wàn',   type:'normal' },
+      { c:'物', p:'wù',    type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'宗', p:'zōng',  type:'note',  note:'【宗】宗主、根本，道是万物的共同祖先与终极根源，一切有形之物皆从此出。' },
+      { c:'；', p:'',      type:'punct' },
+      { c:'湛', p:'zhàn',  type:'note',  note:'【湛】音zhàn，深清澄澈之貌，形容道幽深透明、若有若无，生僻字，务必记字音。' },
+      { c:'兮', p:'xī',    type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'似', p:'sì',    type:'normal' },
+      { c:'或', p:'huò',   type:'normal' },
+      { c:'存', p:'cún',   type:'note',  note:'【似或存】像是存在，又像是不存在，描写道若隐若现、难以捉摸的神秘特质。' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'吾', p:'wú',    type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'知', p:'zhī',   type:'normal' },
+      { c:'谁', p:'shuí',  type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'子', p:'zǐ',    type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'象', p:'xiàng', type:'note',  note:'【象】此处义为"在……之前"，道先于上帝而存在，以此凸显道之先验性与终极地位。' },
+      { c:'帝', p:'dì',    type:'note',  note:'【帝】上古天神、上帝，老子言道甚至在天帝之前，表明道是比神更根本的存在，是全章最高潮的论断。' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'先', p:'xiān',  type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+    ],
+
+    /* ══════════════ 第五章 ══════════════
+       屈→竭(jié)  read:'竭'
+       数(shuò)    read:'朔'
+    ════════════════════════════════════ */
+    [
+      { c:'天', p:'tiān',  type:'normal' },
+      { c:'地', p:'dì',    type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'仁', p:'rén',   type:'note',  note:'【不仁】非"残忍"，而是超越人情偏私，对万物一视同仁、不加偏爱，是客观中立的自然法则，与儒家"仁"形成深刻对话。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'万', p:'wàn',   type:'normal' },
+      { c:'物', p:'wù',    type:'normal' },
+      { c:'为', p:'wéi',   type:'normal' },
+      { c:'刍', p:'chú',   type:'note',  note:'【刍狗】音chú gǒu，用草束扎成的祭祀用狗，祭前尊贵、祭后废弃，喻天地视万物各适其位，无有偏私。' },
+      { c:'狗', p:'gǒu',   type:'normal' },
+      { c:'；', p:'',      type:'punct' },
+      { c:'圣', p:'shèng', type:'normal' },
+      { c:'人', p:'rén',   type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'仁', p:'rén',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'百', p:'bǎi',   type:'normal' },
+      { c:'姓', p:'xìng',  type:'normal' },
+      { c:'为', p:'wéi',   type:'normal' },
+      { c:'刍', p:'chú',   type:'normal' },
+      { c:'狗', p:'gǒu',   type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'天', p:'tiān',  type:'normal' },
+      { c:'地', p:'dì',    type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'间', p:'jiān',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'犹', p:'yóu',   type:'note',  note:'【犹】好像、如同，引出比喻，是文言中常见的比喻引词。' },
+      { c:'橐', p:'tuó',   type:'note',  note:'【橐籥】音tuó yuè，古代鼓风用皮囊（风箱），中空方能鼓风不止，以此喻天地虚空而生生不息，字生僻，须记字音。' },
+      { c:'籥', p:'yuè',   type:'normal' },
+      { c:'乎', p:'hū',    type:'normal' },
+      { c:'？', p:'',      type:'punct' },
+      { c:'虚', p:'xū',    type:'normal' },
+      { c:'而', p:'ér',    type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'屈', p:'jué',   type:'zhu',   read:'竭', note:'【屈】通"竭"，音jué，穷竭、耗尽之义。朗读以"竭"替换，TTS读jié，为现代最接近古音jué的可行处理方案。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'动', p:'dòng',  type:'normal' },
+      { c:'而', p:'ér',    type:'normal' },
+      { c:'愈', p:'yù',    type:'note',  note:'【愈出】越来越多地涌出，运动越频繁产出越多，天地之间生生不息，与"虚而不屈"互文呼应。' },
+      { c:'出', p:'chū',   type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'多', p:'duō',   type:'normal' },
+      { c:'言', p:'yán',   type:'normal' },
+      { c:'数', p:'shuò',  type:'zhu',   read:'朔', note:'【数】此处读shuò，意为"屡次、频繁"。朗读以"朔"（shuò）替换，避免TTS误读为数字之shù。' },
+      { c:'穷', p:'qióng', type:'note',  note:'【穷】困窘、山穷水尽，言多必失，频繁言说反而使理屈辞穷，暗合"守中"的实践要求。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'如', p:'rú',    type:'normal' },
+      { c:'守', p:'shǒu',  type:'normal' },
+      { c:'中', p:'zhōng', type:'note',  note:'【守中】守持中道、保持内心虚静，不以多言扰乱自然。"中"即道之中枢，是全章实践总结，也呼应"橐籥"之中空意象。' },
+      { c:'。', p:'',      type:'punct' },
+    ],
   ];
 
   /* ════════════════════════════════════
      渲染引擎
   ════════════════════════════════════ */
-  const chapterBoxes = [];   // chapterBoxes[i] = 该章所有字格 [{box, unit, item}, ...]
+  const chapterBoxes = [];
 
   function render(id, data) {
     const row   = document.getElementById(id);
@@ -508,29 +766,23 @@
   chapters.forEach((data, i) => render('c' + (i + 1), data));
 
   /* ════════════════════════════════════
-     ★ 朗读引擎
+     朗读引擎
   ════════════════════════════════════ */
   const chapterNames = ['第一章','第二章','第三章','第四章','第五章'];
   let currentChIdx   = -1;
   let currentReadBtn = null;
   let currentBlock   = null;
-  let lastHL         = null;   // 上次高亮的 {box, unit}
+  let lastHL         = null;
   let isPaused       = false;
   let readSpeed      = 0.9;
 
-  /**
-   * buildSpeech(chIdx)
-   * 返回 { text, map }
-   *   text — 喂给 TTS 的字符串（通假字已替换）
-   *   map  — text 每个位置对应的 DOM {box,unit}，标点位置为 null
-   */
   function buildSpeech(chIdx) {
     const boxes = chapterBoxes[chIdx];
     if (!boxes || !boxes.length) return null;
     let text = '';
     const map = [];
     boxes.forEach(({ box, unit, item }) => {
-      const ch = item.read || item.c;   // 有 read 则用替换字
+      const ch = item.read || item.c;   // ← 有 read 则用替代字喂给 TTS
       text += ch;
       map.push(item.type === 'punct' ? null : { box, unit });
     });
@@ -538,56 +790,39 @@
   }
 
   function startRead(chIdx, btn) {
-    // 点当前章 → 暂停/继续
     if (currentChIdx === chIdx && speechSynthesis.speaking) {
       togglePause(); return;
     }
-    stopRead();   // 先停前一章
-
+    stopRead();
     const speech = buildSpeech(chIdx);
     if (!speech || !speech.text.trim()) {
       alert('本章暂无内容，请先填写数据。'); return;
     }
-
     currentChIdx   = chIdx;
     currentReadBtn = btn;
     currentBlock   = document.querySelector(`.sentence-block[data-ch="${chIdx}"]`);
     isPaused       = false;
-
     btn.textContent = '⏸ 朗读中';
     btn.classList.add('active');
     if (currentBlock) currentBlock.classList.add('reading');
-
-    // 更新播放条
-    document.getElementById('rbChTitle').textContent   = chapterNames[chIdx] || `第${chIdx+1}章`;
-    document.getElementById('rbProgress').textContent  = `0 / ${speech.text.length}`;
-    document.getElementById('rbPause').textContent     = '⏸ 暂停';
+    document.getElementById('rbChTitle').textContent  = chapterNames[chIdx] || `第${chIdx+1}章`;
+    document.getElementById('rbProgress').textContent = `0 / ${speech.text.length}`;
+    document.getElementById('rbPause').textContent    = '⏸ 暂停';
     document.getElementById('readBar').classList.add('visible');
-
-    // 构建 Utterance
     const utter  = new SpeechSynthesisUtterance(speech.text);
     utter.lang   = 'zh-CN';
     utter.rate   = readSpeed;
     utter.pitch  = 1.0;
-
-    // 优先选中文声音
     const voices = speechSynthesis.getVoices();
     const zhV    = voices.find(v => v.lang === 'zh-CN') || voices.find(v => v.lang.startsWith('zh'));
     if (zhV) utter.voice = zhV;
-
-    /* 跟读高亮
-       boundary 事件的 charIndex 指向当前朗读位置在 text 中的偏移
-       Chrome/Edge 对中文每字触发一次，Firefox 可能以词为单位，Safari 支持较新版本
-    */
     utter.addEventListener('boundary', e => {
       const idx = e.charIndex;
       highlightChar(idx, speech.map);
       document.getElementById('rbProgress').textContent = `${idx + 1} / ${speech.text.length}`;
     });
-
     utter.addEventListener('end',   () => { clearHL(); resetBtn(); hideBar(); currentChIdx = -1; });
     utter.addEventListener('error', () => { clearHL(); resetBtn(); hideBar(); });
-
     speechSynthesis.speak(utter);
   }
 
@@ -641,7 +876,6 @@
   function onSpeedChange(val) {
     readSpeed = parseFloat(val);
     document.getElementById('speedLabel').textContent = readSpeed.toFixed(1) + '×';
-    // 若正在朗读则重启（语速变更需重新 speak）
     if (currentChIdx >= 0 && speechSynthesis.speaking) {
       const ci = currentChIdx, rb = currentReadBtn;
       stopRead();
@@ -649,7 +883,6 @@
     }
   }
 
-  // 声音列表异步加载时自动触发
   if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = () => {};
   window.addEventListener('beforeunload', () => speechSynthesis.cancel());
 
