@@ -21,6 +21,103 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="https://huang-husky.github.io/SageLume/style.css">
+
+    <style>
+        /* ===== About 页两栏布局 ===== */
+        .about-layout {
+            display: flex;
+            gap: 2.5rem;
+            align-items: flex-start;
+            margin-top: 1.5rem;
+        }
+
+        /* 左侧个人卡片 */
+        .about-sidebar {
+            flex: 0 0 200px;
+            position: sticky;
+            top: 5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(180, 200, 120, 0.15);
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
+        }
+
+        .about-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(180, 200, 120, 0.35);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-avatar:hover {
+            transform: scale(1.04);
+            box-shadow: 0 6px 28px rgba(0, 0, 0, 0.45);
+        }
+
+        .about-sidebar-name {
+            font-family: 'Noto Serif', serif;
+            font-size: 1rem;
+            color: var(--color-accent, #c8d96e);
+            letter-spacing: 0.1em;
+            text-align: center;
+        }
+
+        .about-sidebar-divider {
+            width: 60%;
+            height: 1px;
+            background: rgba(180, 200, 120, 0.2);
+        }
+
+        .about-email-link {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.82rem;
+            color: var(--color-text-muted, #9aaa70);
+            text-decoration: none;
+            word-break: break-all;
+            text-align: center;
+            transition: color 0.2s ease;
+        }
+
+        .about-email-link:hover {
+            color: var(--color-accent, #c8d96e);
+        }
+
+        .about-email-link .email-icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* 右侧正文 */
+        .about-main {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* 移动端：转为上下堆叠 */
+        @media (max-width: 700px) {
+            .about-layout {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-sidebar {
+                position: static;
+                flex: none;
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+    </style>
     
     <!-- Scripts -->
     <script src="https://huang-husky.github.io/SageLume/js/theme-toggle.js"></script>
@@ -70,20 +167,44 @@
                     </li>
                 </ul>
             </nav>
-            
-            <!-- Post content -->
-            <div class="post-content">
-                <h1 id="1-guan-yu-zuo-zhe">算海青藜</h1>
-                
-                <p>在计算机与金融的十字路口<br>种下思想的种子。</p>
-                
-                <p>数学是语言的骨架<br>代码是思考的回响<br>经济是世界的呼吸。</p>
-                
-                <p>这里<br>是思想的草纸<br>也是灵感的栖所。</p>
-                
-                <p>若你路过<br>不妨小坐<br>共饮一盏知识的茶。</p>
-                <p>好吧错了<br>其实是不务正业游民一只(•́ω•̀ ٥)</p>
+
+            <!-- 两栏布局容器 -->
+            <div class="about-layout">
+
+                <!-- 左侧：个人卡片 -->
+                <aside class="about-sidebar">
+                    <img
+                        class="about-avatar"
+                        src="![图片描述](https://cdn.jsdelivr.net/gh/huang-husky/ImageBedd@main/hht.png)"
+                        alt="算海青藜头像"
+                    >
+                    <span class="about-sidebar-name">算海青藜</span>
+                    <div class="about-sidebar-divider"></div>
+                    <a class="about-email-link" href="mailto:2705313273@qq.com">
+                        <span class="email-icon">✉️</span>
+                        2705313273@qq.com
+                    </a>
+                </aside>
+
+                <!-- 右侧：正文内容 -->
+                <div class="about-main">
+                    <div class="post-content">
+                        <h1 id="1-guan-yu-zuo-zhe">算海青藜</h1>
+                        
+                        <p>在计算机与金融的十字路口<br>种下思想的种子。</p>
+                        
+                        <p>数学是语言的骨架<br>代码是思考的回响<br>经济是世界的呼吸。</p>
+                        
+                        <p>这里<br>是思想的草纸<br>也是灵感的栖所。</p>
+                        
+                        <p>若你路过<br>不妨小坐<br>共饮一盏知识的茶。</p>
+                        <p>好吧错了<br>其实是不务正业游民一只(•́ω•̀ ٥)</p>
+                    </div>
+                </div>
+
             </div>
+            <!-- end about-layout -->
+
         </article>
     </main>
     
