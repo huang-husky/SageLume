@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第十一章—第十五章 · 道经 · 砚山 | SageLume</title>
+  <meta name="theme-color" content="#6b8e23" />
+  <link rel="manifest"      href="https://huang-husky.github.io/SageLume/favicon/site.webmanifest" />
+  <link rel="apple-touch-icon" href="https://huang-husky.github.io/SageLume/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/svg+xml" href="https://huang-husky.github.io/SageLume/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="https://huang-husky.github.io/SageLume/favicon/favicon.ico" />
+  <link rel="stylesheet" href="https://huang-husky.github.io/SageLume/style.css" />
+  <script src="https://huang-husky.github.io/SageLume/js/theme-toggle.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ys-bg:#f5f0e8; --ys-paper:#faf7f0;
+      --ys-ink:#2c2417; --ys-ink-lt:#6a5d4a; --ys-ink-fd:#a8997e;
+      --ys-sage:#5a7a5e; --ys-sage-dk:#3d5940; --ys-sage-bg:rgba(90,122,94,.08);
+      --ys-amber:#c8902a; --ys-amber-bg:rgba(200,144,42,.10);
+      --ys-zhu:#c0392b; --ys-zhu-bg:rgba(192,57,43,.07);
+      --ys-border:#d4c9b0; --ys-shadow:rgba(44,36,23,.12);
+      --ys-popup-bg:#fffdf6;
+      --char-size:2.5rem; --pin-size:.63rem; --gap:11px;
+    }
+    [data-theme="dark"] {
+      --ys-bg:#1a1812; --ys-paper:#221f16;
+      --ys-ink:#e8e0cc; --ys-ink-lt:#a09078; --ys-ink-fd:#5c5040;
+      --ys-sage:#7aaa7e; --ys-sage-dk:#9fcfa3; --ys-sage-bg:rgba(122,170,126,.08);
+      --ys-amber:#d4a84b; --ys-amber-bg:rgba(212,168,75,.10);
+      --ys-zhu:#e05a4a; --ys-zhu-bg:rgba(224,90,74,.07);
+      --ys-border:#3a3428; --ys-shadow:rgba(0,0,0,.4);
+      --ys-popup-bg:#2a2519;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    .ys-body{background:var(--ys-bg);font-family:'Noto Serif SC',serif;}
+    .ys-body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+      background-image:repeating-linear-gradient(0deg,transparent,transparent 36px,rgba(180,160,120,.05) 36px,rgba(180,160,120,.05) 37px);}
+    .breadcrumb{position:relative;z-index:1;max-width:840px;margin:0 auto;padding:14px 24px 0;
+      font-family:'Noto Sans SC',sans-serif;font-size:.72rem;color:var(--ys-ink-lt);letter-spacing:.05em;}
+    .breadcrumb a{color:var(--ys-sage);text-decoration:none;}
+    .breadcrumb a:hover{text-decoration:underline;}
+    .breadcrumb span{margin:0 5px;opacity:.4;}
+    .ys-banner{position:relative;z-index:1;text-align:center;padding:28px 24px 22px;
+      border-bottom:1px solid var(--ys-border);background:linear-gradient(to bottom,var(--ys-paper),transparent);}
+    .ys-tag-line{font-family:'Noto Sans SC',sans-serif;font-size:.7rem;letter-spacing:.2em;color:var(--ys-amber);margin-bottom:5px;}
+    .ys-title{font-size:1.7rem;font-weight:700;letter-spacing:.2em;color:var(--ys-sage-dk);}
+    .ys-divider{width:44px;height:1px;margin:10px auto;background:linear-gradient(to right,transparent,var(--ys-amber),transparent);}
+    .ys-desc{font-size:.8rem;color:var(--ys-ink-fd);letter-spacing:.08em;}
+    .legend{max-width:840px;margin:16px auto 0;display:flex;gap:16px;flex-wrap:wrap;
+      justify-content:center;font-family:'Noto Sans SC',sans-serif;font-size:.7rem;color:var(--ys-ink-lt);}
+    .legend-item{display:flex;align-items:center;gap:4px;}
+    .ldot{width:13px;height:13px;border-radius:2px;display:inline-block;}
+    .ldot-zhu{background:var(--ys-zhu-bg);border:1px solid var(--ys-zhu);}
+    .ldot-note{background:var(--ys-sage-bg);border:1px solid var(--ys-sage);}
+    .ldot-speak{background:var(--ys-amber-bg);border:1px solid var(--ys-amber);}
+    .ys-main{position:relative;z-index:1;max-width:840px;margin:0 auto;padding:36px 24px 120px;}
+    .chapter-nav{display:flex;justify-content:space-between;align-items:center;
+      margin-bottom:28px;font-family:'Noto Sans SC',sans-serif;font-size:.75rem;}
+    .nav-btn{display:inline-flex;align-items:center;color:var(--ys-sage);text-decoration:none;
+      padding:5px 10px;border:1px solid var(--ys-border);border-radius:3px;transition:border-color .2s,background .2s;}
+    .nav-btn:hover{border-color:var(--ys-sage);background:var(--ys-sage-bg);}
+    .nav-btn.disabled{color:var(--ys-border);pointer-events:none;}
+    .nav-btn.prev::before{content:'‹ ';}
+    .nav-btn.next::after{content:' ›';}
+    .nav-center{color:var(--ys-ink-lt);letter-spacing:.05em;}
+    .sentence-block{background:var(--ys-paper);border:1px solid var(--ys-border);border-radius:4px;
+      padding:30px 26px 22px;margin-bottom:20px;box-shadow:0 2px 8px var(--ys-shadow);
+      position:relative;transition:border-color .3s,box-shadow .3s;}
+    .sentence-block.reading{border-color:var(--ys-amber);
+      box-shadow:0 2px 8px var(--ys-shadow),0 0 0 2px rgba(200,144,42,.15);}
+    .sentence-block::before{content:attr(data-index);position:absolute;top:10px;left:14px;
+      font-size:.62rem;color:var(--ys-ink-fd);font-family:'Noto Sans SC',sans-serif;}
+    .read-btn{position:absolute;top:8px;right:12px;background:none;border:1px solid var(--ys-border);
+      border-radius:3px;padding:3px 9px;font-family:'Noto Sans SC',sans-serif;font-size:.65rem;
+      color:var(--ys-ink-fd);cursor:pointer;display:inline-flex;align-items:center;gap:4px;
+      transition:border-color .2s,color .2s,background .2s;}
+    .read-btn:hover{border-color:var(--ys-amber);color:var(--ys-amber);background:var(--ys-amber-bg);}
+    .read-btn.active{border-color:var(--ys-amber);color:var(--ys-amber);background:var(--ys-amber-bg);}
+    .char-row{display:flex;flex-wrap:wrap;gap:var(--gap);align-items:flex-end;margin-bottom:18px;}
+    .char-unit{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:42px;}
+    .char-pin{font-family:'Noto Sans SC',sans-serif;font-size:var(--pin-size);color:var(--ys-ink-fd);
+      letter-spacing:.02em;line-height:1.3;text-align:center;white-space:nowrap;min-height:1em;transition:color .15s;}
+    .char-box{width:46px;height:46px;border:1px solid var(--ys-border);border-radius:3px;
+      display:flex;align-items:center;justify-content:center;font-size:var(--char-size);
+      line-height:1;position:relative;background:transparent;user-select:none;cursor:default;
+      transition:background .15s,border-color .15s,transform .15s,box-shadow .15s;}
+    .char-box.speaking{background:var(--ys-amber-bg)!important;border-color:var(--ys-amber)!important;
+      box-shadow:0 0 10px rgba(200,144,42,.4);transform:scale(1.12);}
+    .char-unit.speaking-unit .char-pin{color:var(--ys-amber);}
+    .char-unit.punct .char-pin{opacity:0;}
+    .char-unit.punct .char-box{border-color:transparent;font-size:1.6rem;color:var(--ys-ink-lt);}
+    .char-unit.zhu .char-box{color:var(--ys-zhu);background:var(--ys-zhu-bg);border-color:rgba(192,57,43,.25);cursor:pointer;}
+    .char-unit.zhu .char-box:hover{transform:scale(1.08);border-color:var(--ys-zhu);}
+    .char-unit.note .char-box{color:var(--ys-sage-dk);background:var(--ys-sage-bg);border-color:rgba(90,122,94,.25);cursor:pointer;}
+    .char-unit.note .char-box:hover{transform:scale(1.08);border-color:var(--ys-sage);}
+    .char-unit.zhu .char-box::after,.char-unit.note .char-box::after{content:'◇';position:absolute;top:2px;right:3px;font-size:.42rem;opacity:.5;}
+    .sentence-footer{border-top:1px dashed var(--ys-border);padding-top:12px;
+      display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+    .translation{font-size:.8rem;color:var(--ys-ink-lt);line-height:1.9;letter-spacing:.05em;flex:1;}
+    .toggle-note{background:none;border:1px solid var(--ys-border);border-radius:2px;padding:3px 9px;
+      font-family:'Noto Sans SC',sans-serif;font-size:.68rem;color:var(--ys-ink-fd);cursor:pointer;
+      white-space:nowrap;transition:border-color .2s,color .2s;}
+    .toggle-note:hover{border-color:var(--ys-sage);color:var(--ys-sage);}
+    .expand-note{display:none;margin-top:10px;font-size:.78rem;color:var(--ys-ink-lt);line-height:1.9;
+      border-left:2px solid var(--ys-sage);padding-left:11px;letter-spacing:.04em;}
+    .expand-note.open{display:block;}
+    .read-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--ys-paper);
+      border-top:1px solid var(--ys-border);box-shadow:0 -4px 20px var(--ys-shadow);
+      padding:10px 20px 14px;display:none;align-items:center;gap:14px;flex-wrap:wrap;
+      font-family:'Noto Sans SC',sans-serif;}
+    .read-bar.visible{display:flex;}
+    .rb-title{font-size:.72rem;color:var(--ys-ink-lt);letter-spacing:.05em;flex-shrink:0;}
+    .rb-title b{color:var(--ys-amber);}
+    .rb-progress{font-size:.65rem;color:var(--ys-ink-fd);min-width:48px;flex-shrink:0;}
+    .rb-controls{display:flex;gap:7px;}
+    .rb-btn{background:none;border:1px solid var(--ys-border);border-radius:3px;padding:5px 11px;
+      font-size:.72rem;color:var(--ys-ink-lt);cursor:pointer;display:flex;align-items:center;gap:3px;
+      transition:border-color .2s,color .2s,background .2s;}
+    .rb-btn:hover{border-color:var(--ys-sage);color:var(--ys-sage);background:var(--ys-sage-bg);}
+    .rb-btn.rb-stop:hover{border-color:var(--ys-zhu);color:var(--ys-zhu);background:var(--ys-zhu-bg);}
+    .rb-speed{display:flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0;}
+    .rb-speed label{font-size:.65rem;color:var(--ys-ink-fd);}
+    .rb-speed input[type=range]{width:76px;accent-color:var(--ys-amber);cursor:pointer;}
+    .rb-speed .sp-val{font-size:.65rem;color:var(--ys-amber);min-width:28px;}
+    .popup-overlay{display:none;position:fixed;inset:0;z-index:100;}
+    .popup-overlay.show{display:block;}
+    .popup-card{position:fixed;background:var(--ys-popup-bg);border:1px solid var(--ys-border);
+      border-radius:6px;padding:16px 18px 14px;min-width:190px;max-width:280px;
+      box-shadow:0 8px 28px var(--ys-shadow);z-index:101;animation:popIn .14s ease;font-family:'Noto Serif SC',serif;}
+    @keyframes popIn{from{opacity:0;transform:translateY(5px) scale(.96);}to{opacity:1;transform:none;}}
+    .popup-char{font-size:2rem;font-weight:700;margin-bottom:6px;line-height:1;}
+    .popup-char.is-zhu{color:var(--ys-zhu);}
+    .popup-char.is-note{color:var(--ys-sage-dk);}
+    .popup-pin{font-family:'Noto Sans SC',sans-serif;font-size:.68rem;color:var(--ys-ink-fd);margin-bottom:8px;letter-spacing:.08em;}
+    .popup-hr{height:1px;background:var(--ys-border);margin:8px 0;}
+    .popup-type{font-family:'Noto Sans SC',sans-serif;font-size:.62rem;letter-spacing:.08em;padding:1px 5px;border-radius:2px;margin-bottom:7px;display:inline-block;}
+    .type-zhu{background:var(--ys-zhu-bg);color:var(--ys-zhu);}
+    .type-note{background:var(--ys-sage-bg);color:var(--ys-sage);}
+    .popup-body{font-size:.8rem;color:var(--ys-ink-lt);line-height:1.85;letter-spacing:.04em;}
+    .popup-close{position:absolute;top:7px;right:9px;background:none;border:none;cursor:pointer;color:var(--ys-ink-fd);font-size:.85rem;transition:color .2s;}
+    .popup-close:hover{color:var(--ys-ink);}
+    @media(max-width:480px){
+      :root{--char-size:1.9rem;--gap:7px;}
+      .char-box{width:38px;height:38px;}
+      .sentence-block{padding:22px 14px 16px;}
+      .rb-speed,.rb-progress{display:none;}
+    }
+  </style>
+</head>
+<body class="ys-body">
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span><span class="icon moon">🌙</span>
+  </button>
+  <a class="skip-to-content" href="#ys-main">跳至内容</a>
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://huang-husky.github.io/SageLume/">
+        <img src="https://huang-husky.github.io/SageLume/favicon/logo-header.png" alt="算海青藜" height="96" style="vertical-align:middle;" />
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://huang-husky.github.io/SageLume/">Home</a>
+      <a href="https://huang-husky.github.io/SageLume/about/">About</a>
+      <a href="https://huang-husky.github.io/SageLume/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <div class="breadcrumb">
+    <a href="../../../index.html">砚山</a><span>›</span>
+    <a href="../../index.html">道德经</a><span>›</span>
+    <a href="../index.html">道经</a><span>›</span>
+    第十一章—第十五章
+  </div>
+
+  <div class="ys-banner">
+    <div class="ys-tag-line">《道德经》· 道经 · 第十一章—第十五章</div>
+    <h1 class="ys-title">无之以为用</h1>
+    <div class="ys-divider"></div>
+    <p class="ys-desc">老子 · 道家经典 · 背记注音版</p>
+    <div class="legend">
+      <span class="legend-item"><span class="ldot ldot-zhu"></span>异读字 / 通假字</span>
+      <span class="legend-item"><span class="ldot ldot-note"></span>重点词·点击批注</span>
+      <span class="legend-item"><span class="ldot ldot-speak"></span>朗读跟读高亮</span>
+    </div>
+  </div>
+
+  <main class="ys-main" id="ys-main">
+    <div class="chapter-nav">
+      <a class="nav-btn prev" href="../ch06-10/index.html">上一组</a>
+      <span class="nav-center">道经 第 3/8 组</span>
+      <a class="nav-btn next" href="../ch16-20/index.html">下一组</a>
+    </div>
+
+    <!-- 第十一章 -->
+    <div class="sentence-block" data-index="第 十 一 章" data-ch="0">
+      <button class="read-btn" onclick="startRead(0,this)">▶ 朗读</button>
+      <div class="char-row" id="c1"></div>
+      <div class="sentence-footer">
+        <div class="translation">三十根辐条汇聚于轮毂，正是毂中的空心处，才有车的功用。和泥制陶，正是器皿中空之处，才有器的功用。凿门开窗建成房屋，正是其中的空间，才有室的功用。所以“有”提供便利，“无”才是真正的功用所在。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章以车毂、陶器、房室三例说明"有"与"无"的辩证关系。有形的"有"（辐、埴、木石）提供结构，但真正产生使用价值的是其中的"空"——轮毂之孔、器皿之空、室内之间。这并非神秘主义，而是老子对结构与功能关系的深刻洞察：形体是条件，虚空才是功用的真正载体。"无"不是虚无，而是使"有"得以发挥作用的根本前提，与第一章"有无相生"一脉相承。</div>
+    </div>
+
+    <!-- 第十二章 -->
+    <div class="sentence-block" data-index="第 十 二 章" data-ch="1">
+      <button class="read-btn" onclick="startRead(1,this)">▶ 朗读</button>
+      <div class="char-row" id="c2"></div>
+      <div class="sentence-footer">
+        <div class="translation">五色使人眼花缭乱，五音使人耳聋，五味使人口舌败坏，驰骋田猎使人心志狂乱，稀有之物使人行为失当。因此圣人只求腹中充实而不追逐耳目之欲，舍弃那个（外感刺激），取用这个（内在充实）。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章批判感官享乐主义，以五色、五音、五味、田猎、难得之货分别对应视、听、味、行、欲五个层面，指出过度的外感刺激必然导致身心损伤。"爽"此处义为"败坏"，与今义相反，是理解本章的关键。圣人"为腹不为目"，以内在的充实（腹）对抗外在的感官贪求（目），"去彼取此"是全章的实践落脚点——彼指目、感官欲求，此指腹、内在满足。</div>
+    </div>
+
+    <!-- 第十三章 -->
+    <div class="sentence-block" data-index="第 十 三 章" data-ch="2">
+      <button class="read-btn" onclick="startRead(2,this)">▶ 朗读</button>
+      <div class="char-row" id="c3"></div>
+      <div class="sentence-footer">
+        <div class="translation">宠与辱都令人惊惶，重视大患犹如重视自身。何谓"宠辱若惊"？受宠本处卑下之位，得之惊喜，失之惊恐，故曰宠辱若惊。何谓"贵大患若身"？我之所以有大患，是因为我有此身（私我之念）；若无私身，我还有什么患？所以，能以无私之心治理天下者，可以将天下寄托于他；能以无私之爱对待天下者，可以将天下托付于他。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章哲理曲折。"宠辱若惊"揭示：无论得宠得辱，本质上都是受他人控制的被动处境，得失皆非自主，故同为患。"宠为下"指受宠者处于卑下受施之位，这并非轻视宠爱，而是指出其不自由的本质。"贵大患若身"的论证更深：患的根源在于"有身"——执着于私我；推至极限，无私则无患，无私者方可担当天下。全章逻辑：宠辱皆患→患源于私身→无私方可托付天下，是老子无私哲学从个人修养推至政治实践的完整论证链。</div>
+    </div>
+
+    <!-- 第十四章 -->
+    <div class="sentence-block" data-index="第 十 四 章" data-ch="3">
+      <button class="read-btn" onclick="startRead(3,this)">▶ 朗读</button>
+      <div class="char-row" id="c4"></div>
+      <div class="sentence-footer">
+        <div class="translation">看它看不见，名曰"夷"；听它听不到，名曰"希"；触摸它抓不住，名曰"微"。此三者无法追究穷尽，故混而为一。它的上面不明亮，它的下面不幽暗，绵延不绝却无法名状，最终复归于无物之境。这叫做没有形状的形状、没有实物的意象，是谓"惚恍"。迎之不见其首，随之不见其尾。把握古代的道，用以驾驭今日的现实。能够认识古代的本始，这就叫做道的纲纪。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章尝试用语言描述不可名状的道，形成层层否定的结构：不可见（夷）、不可闻（希）、不可触（微），三者混而为一，既无明亮之上也无幽暗之下，绵延无名。"惚恍"即恍惚，是道的感知状态，也见于第二十一章"恍兮惚兮"。末段转向实践意义：正因道无形无迹，才能超越时间，以古道驾驭当下现实。"道纪"即道的根本规律，"执古之道，以御今之有"是全章最具实践价值的论断。</div>
+    </div>
+
+    <!-- 第十五章 -->
+    <div class="sentence-block" data-index="第 十 五 章" data-ch="4">
+      <button class="read-btn" onclick="startRead(4,this)">▶ 朗读</button>
+      <div class="char-row" id="c5"></div>
+      <div class="sentence-footer">
+        <div class="translation">古代善于体道的人，微妙深玄，通达无碍，深邃到无法认识。正因无法认识，只能勉强为之描摹：谨慎啊，像冬天徒步过河；迟疑啊，像害怕四面邻敌；端庄啊，像宾客在座；消融啊，像冰雪将要融化；质朴啊，像未经雕琢的原木；空阔啊，像幽深的山谷；浑然啊，像浑浊的水。谁能在浑浊中静定下来，慢慢使之澄清？谁能在安稳中长久运动，慢慢使之生发？保守此道者，不求盈满。正因为不盈满，所以能日益磨损而不必焕然一新。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章以七个"兮"字比喻描摹体道者的外在形态，诗经遗风明显。七种形象从谨慎（豫、犹）→端庄（俨）→流动（涣）→朴厚（敦）→空阔（旷）→浑全（浑），是道之柔弱、朴素、虚静在人身上的具体体现。"强为之容"中"强"读qiǎng，勉强之义。末段"孰能浊以静之徐清"另辟一境：不强行使其清澄，而是在静中自然澄清，体现无为而成的实践逻辑。"弊不新成"：弊义旧损，不求焕然一新，顺其自然损益，是返璞归真的最终指向，与第二十八章"复归于朴"呼应。</div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://huang-husky.github.io/SageLume/favicon/logo-footer.png" alt="算海青藜" height="48" />
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <div class="read-bar" id="readBar">
+    <div class="rb-title">▶ <b id="rbChTitle">—</b></div>
+    <div class="rb-progress" id="rbProgress"></div>
+    <div class="rb-controls">
+      <button class="rb-btn" id="rbPause" onclick="togglePause()">⏸ 暂停</button>
+      <button class="rb-btn rb-stop" onclick="stopRead()">⏹ 停止</button>
+    </div>
+    <div class="rb-speed">
+      <label>语速</label>
+      <input type="range" id="speedSlider" min="0.5" max="1.8" step="0.1" value="0.9" oninput="onSpeedChange(this.value)" />
+      <span class="sp-val" id="speedLabel">0.9×</span>
+    </div>
+  </div>
+
+  <div class="popup-overlay" id="overlay"></div>
+  <div class="popup-card" id="popupCard" style="display:none;">
+    <button class="popup-close" id="popupClose">✕</button>
+    <div class="popup-char" id="popupChar"></div>
+    <div class="popup-pin"  id="popupPin"></div>
+    <div class="popup-hr"></div>
+    <span class="popup-type" id="popupType"></span>
+    <div class="popup-body" id="popupBody"></div>
+  </div>
+
+  <script>
+  
+  const chapters = [
+
+    /* ══════════════ 第十一章 ══════════════ */
+    [
+      { c:'三', p:'sān',   type:'normal' },
+      { c:'十', p:'shí',   type:'normal' },
+      { c:'辐', p:'fú',    type:'note',  note:'辐条，连接轮毂与轮圈的木条，此处“三十”为虚数，泛指多数。' },
+      { c:'共', p:'gòng',  type:'normal' },
+      { c:'一', p:'yī',    type:'normal' },
+      { c:'毂', p:'gǔ',    type:'zhu',   read:'鼓', note:'音gǔ，轮毂，车轮中心圆木，中有孔以纳轴。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'当', p:'dāng',  type:'note',  note:'介词，在……的地方。' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'无', p:'wú',    type:'note',  note:'毂中的空心处，“无”在此具体指物理上的空间，是功用得以实现的条件。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'有', p:'yǒu',   type:'normal' },
+      { c:'车', p:'chē',   type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'用', p:'yòng',  type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'埏', p:'shān',  type:'zhu',   read:'山', note:'音shān，和泥，与"埴"合用，动词。' },
+      { c:'埴', p:'zhí',   type:'note',  note:'音zhí，黏土，“埏埴”即和泥制陶器。' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'为', p:'wéi',   type:'normal' },
+      { c:'器', p:'qì',    type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'当', p:'dāng',  type:'normal' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'无', p:'wú',    type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'有', p:'yǒu',   type:'normal' },
+      { c:'器', p:'qì',    type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'用', p:'yòng',  type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'凿', p:'záo',   type:'note',  note:'动词，开凿，此处指开凿门窗孔洞。' },
+      { c:'户', p:'hù',    type:'normal' },
+      { c:'牖', p:'yǒu',   type:'zhu',   read:'友', note:'音yǒu，窗，生僻字，与"户"（门）合称门窗。' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'为', p:'wéi',   type:'normal' },
+      { c:'室', p:'shì',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'当', p:'dāng',  type:'normal' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'无', p:'wú',    type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'有', p:'yǒu',   type:'normal' },
+      { c:'室', p:'shì',   type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'用', p:'yòng',  type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'故', p:'gù',    type:'normal' },
+      { c:'有', p:'yǒu',   type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'为', p:'wéi',   type:'normal' },
+      { c:'利', p:'lì',    type:'note',  note:'便利、利用，指"有"（形体结构）所提供的实用条件。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'无', p:'wú',    type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'为', p:'wéi',   type:'normal' },
+      { c:'用', p:'yòng',  type:'note',  note:'真正的功用，全章结穴处："无"才是使"有"得以发挥效用的根本，与第四章"冲而用之不盈"同理。' },
+      { c:'。', p:'',      type:'punct' },
+    ],
+
+    /* ══════════════ 第十二章 ══════════════
+       畋(tián) → read:'田'
+    ════════════════════════════════════ */
+    [
+      { c:'五', p:'wǔ',    type:'note',  note:'五色（青黄赤白黑）、五音（宫商角徵羽）、五味（酸甜苦辣咸），均为古代对感官对象的系统分类。' },
+      { c:'色', p:'sè',    type:'normal' },
+      { c:'令', p:'lìng',  type:'normal' },
+      { c:'人', p:'rén',   type:'normal' },
+      { c:'目', p:'mù',    type:'normal' },
+      { c:'盲', p:'máng',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'五', p:'wǔ',    type:'normal' },
+      { c:'音', p:'yīn',   type:'normal' },
+      { c:'令', p:'lìng',  type:'normal' },
+      { c:'人', p:'rén',   type:'normal' },
+      { c:'耳', p:'ěr',    type:'normal' },
+      { c:'聋', p:'lóng',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'五', p:'wǔ',    type:'normal' },
+      { c:'味', p:'wèi',   type:'normal' },
+      { c:'令', p:'lìng',  type:'normal' },
+      { c:'人', p:'rén',   type:'normal' },
+      { c:'口', p:'kǒu',   type:'normal' },
+      { c:'爽', p:'shuǎng', type:'note', note:'此处义为"败坏、损伤"，非今义"爽快"。口爽即口舌感觉受损、失去正常味觉，是理解本章的关键字义。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'驰', p:'chí',   type:'normal' },
+      { c:'骋', p:'chěng', type:'normal' },
+      { c:'畋', p:'tián',  type:'zhu',   read:'田', note:'音tián，打猎，同"田猎"，极生僻字。与"驰骋"连用，指策马驰骋、纵情田猎。' },
+      { c:'猎', p:'liè',   type:'normal' },
+      { c:'令', p:'lìng',  type:'normal' },
+      { c:'人', p:'rén',   type:'normal' },
+      { c:'心', p:'xīn',   type:'normal' },
+      { c:'发', p:'fā',    type:'normal' },
+      { c:'狂', p:'kuáng', type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'难', p:'nán',   type:'normal' },
+      { c:'得', p:'dé',    type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'货', p:'huò',   type:'normal' },
+      { c:'令', p:'lìng',  type:'normal' },
+      { c:'人', p:'rén',   type:'normal' },
+      { c:'行', p:'xíng',  type:'normal' },
+      { c:'妨', p:'fáng',  type:'note',  note:'妨害、失当，"行妨"指行为受到妨害乃至作出越轨之事，与第三章"不贵难得之货，使民不为盗"相呼应。' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'是', p:'shì',   type:'normal' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'圣', p:'shèng', type:'normal' },
+      { c:'人', p:'rén',   type:'normal' },
+      { c:'为', p:'wèi',   type:'normal' },
+      { c:'腹', p:'fù',    type:'note',  note:'内在需求，"为腹"指满足基本的身体需求，是朴素的内在充实，与外在感官刺激（目）相对。' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'为', p:'wèi',   type:'normal' },
+      { c:'目', p:'mù',    type:'note',  note:'耳目感官之欲，"不为目"即不以追逐外感刺激为目的，"腹"与"目"是本章内外两种价值取向的象征。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'故', p:'gù',    type:'normal' },
+      { c:'去', p:'qù',    type:'normal' },
+      { c:'彼', p:'bǐ',    type:'note',  note:'彼指"目"，即外在感官刺激与欲求。' },
+      { c:'取', p:'qǔ',    type:'normal' },
+      { c:'此', p:'cǐ',    type:'note',  note:'此指"腹"，即内在充实与朴素满足，"去彼取此"是全章的实践结语。' },
+      { c:'。', p:'',      type:'punct' },
+    ],
+
+    /* ══════════════ 第十三章 ══════════════
+       无需 read 替换
+    ════════════════════════════════════ */
+    [
+      { c:'宠', p:'chǒng', type:'note',  note:'受宠，此处与"辱"并列，老子认为得宠与受辱同样使人惊惶，因为两者都是被动受制于人的处境。' },
+      { c:'辱', p:'rǔ',    type:'normal' },
+      { c:'若', p:'ruò',   type:'normal' },
+      { c:'惊', p:'jīng',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'贵', p:'guì',   type:'note',  note:'意动用法，以……为贵，重视，视大患犹如重视自身。' },
+      { c:'大', p:'dà',    type:'normal' },
+      { c:'患', p:'huàn',  type:'normal' },
+      { c:'若', p:'ruò',   type:'normal' },
+      { c:'身', p:'shēn',  type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'何', p:'hé',    type:'normal' },
+      { c:'谓', p:'wèi',   type:'normal' },
+      { c:'宠', p:'chǒng', type:'normal' },
+      { c:'辱', p:'rǔ',    type:'normal' },
+      { c:'若', p:'ruò',   type:'normal' },
+      { c:'惊', p:'jīng',  type:'normal' },
+      { c:'？', p:'',      type:'punct' },
+      { c:'宠', p:'chǒng', type:'normal' },
+      { c:'为', p:'wéi',   type:'normal' },
+      { c:'下', p:'xià',   type:'note',  note:'受宠者处于卑下受施之位，意指受宠本身就是一种不自由、受人摆布的处境，故得之失之皆惊。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'得', p:'dé',    type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'若', p:'ruò',   type:'normal' },
+      { c:'惊', p:'jīng',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'失', p:'shī',   type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'若', p:'ruò',   type:'normal' },
+      { c:'惊', p:'jīng',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'是', p:'shì',   type:'normal' },
+      { c:'谓', p:'wèi',   type:'normal' },
+      { c:'宠', p:'chǒng', type:'normal' },
+      { c:'辱', p:'rǔ',    type:'normal' },
+      { c:'若', p:'ruò',   type:'normal' },
+      { c:'惊', p:'jīng',  type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'何', p:'hé',    type:'normal' },
+      { c:'谓', p:'wèi',   type:'normal' },
+      { c:'贵', p:'guì',   type:'normal' },
+      { c:'大', p:'dà',    type:'normal' },
+      { c:'患', p:'huàn',  type:'normal' },
+      { c:'若', p:'ruò',   type:'normal' },
+      { c:'身', p:'shēn',  type:'normal' },
+      { c:'？', p:'',      type:'punct' },
+      { c:'吾', p:'wú',    type:'normal' },
+      { c:'所', p:'suǒ',   type:'normal' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'有', p:'yǒu',   type:'normal' },
+      { c:'大', p:'dà',    type:'normal' },
+      { c:'患', p:'huàn',  type:'normal' },
+      { c:'者', p:'zhě',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'为', p:'wèi',   type:'normal' },
+      { c:'吾', p:'wú',    type:'normal' },
+      { c:'有', p:'yǒu',   type:'normal' },
+      { c:'身', p:'shēn',  type:'note',  note:'"身"指私我执念，"为吾有身"即因为有私我之念。推论：若能忘我无私（无身），则无所谓患。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'及', p:'jí',    type:'note',  note:'假如、等到，连词，表假设，"及吾无身"即若我无私身（无私我）。' },
+      { c:'吾', p:'wú',    type:'normal' },
+      { c:'无', p:'wú',    type:'normal' },
+      { c:'身', p:'shēn',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'吾', p:'wú',    type:'normal' },
+      { c:'有', p:'yǒu',   type:'normal' },
+      { c:'何', p:'hé',    type:'normal' },
+      { c:'患', p:'huàn',  type:'normal' },
+      { c:'？', p:'',      type:'punct' },
+      { c:'故', p:'gù',    type:'normal' },
+      { c:'贵', p:'guì',   type:'normal' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'身', p:'shēn',  type:'normal' },
+      { c:'为', p:'wèi',   type:'normal' },
+      { c:'天', p:'tiān',  type:'normal' },
+      { c:'下', p:'xià',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'若', p:'ruò',   type:'normal' },
+      { c:'可', p:'kě',    type:'normal' },
+      { c:'寄', p:'jì',    type:'note',  note:'寄托、委任，"贵以身为天下"指能以无私之心看待自身与天下的关系，方可将天下寄托于他。' },
+      { c:'天', p:'tiān',  type:'normal' },
+      { c:'下', p:'xià',   type:'normal' },
+      { c:'；', p:'',      type:'punct' },
+      { c:'爱', p:'ài',    type:'normal' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'身', p:'shēn',  type:'normal' },
+      { c:'为', p:'wèi',   type:'normal' },
+      { c:'天', p:'tiān',  type:'normal' },
+      { c:'下', p:'xià',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'若', p:'ruò',   type:'normal' },
+      { c:'可', p:'kě',    type:'normal' },
+      { c:'托', p:'tuō',   type:'note',  note:'托付，与上"寄"义近，无私者方可接受天下的托付，是全章无私哲学推及政治层面的最终结论。' },
+      { c:'天', p:'tiān',  type:'normal' },
+      { c:'下', p:'xià',   type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+    ],
+
+    /* ══════════════ 第十四章 ══════════════
+       皦(jiǎo) → read:'绞'
+    ════════════════════════════════════ */
+    [
+      { c:'视', p:'shì',   type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'见', p:'jiàn',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'名', p:'míng',  type:'normal' },
+      { c:'曰', p:'yuē',   type:'normal' },
+      { c:'夷', p:'yí',    type:'note',  note:'道不可见的状态，义为"平坦无形"，此处专指视之不见这一特质，与希、微合为描述道的三个名号。' },
+      { c:'；', p:'',      type:'punct' },
+      { c:'听', p:'tīng',  type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'闻', p:'wén',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'名', p:'míng',  type:'normal' },
+      { c:'曰', p:'yuē',   type:'normal' },
+      { c:'希', p:'xī',    type:'note',  note:'寂然无声，古义，非"希望"，此处专指道听之不闻的特质，今作"稀"。' },
+      { c:'；', p:'',      type:'punct' },
+      { c:'搏', p:'bó',    type:'note',  note:'触摸、抓握，此处义为用手去抓，非"搏斗"。' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'得', p:'dé',    type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'名', p:'míng',  type:'normal' },
+      { c:'曰', p:'yuē',   type:'normal' },
+      { c:'微', p:'wēi',   type:'note',  note:'精微无形、不可触摸，夷、希、微三者从视、听、触三个感知维度，共同描述道超越感官的本质。' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'此', p:'cǐ',    type:'normal' },
+      { c:'三', p:'sān',   type:'normal' },
+      { c:'者', p:'zhě',   type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'可', p:'kě',    type:'normal' },
+      { c:'致', p:'zhì',   type:'normal' },
+      { c:'诘', p:'jié',   type:'note',  note:'音jié，追问、追究穷尽，"不可致诘"即无法通过感官与逻辑彻底追究，须记字音。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'故', p:'gù',    type:'normal' },
+      { c:'混', p:'hùn',   type:'normal' },
+      { c:'而', p:'ér',    type:'normal' },
+      { c:'为', p:'wéi',   type:'normal' },
+      { c:'一', p:'yī',    type:'note',  note:'混而为一，夷希微三者合为一体，即道，无法分割描述，只能整体把握。' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'上', p:'shàng', type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'皦', p:'jiǎo',  type:'zhu',   read:'绞', note:'音jiǎo，明亮，极生僻字。"其上不皦"即道的上面并不明亮，无高低明暗之分。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'下', p:'xià',   type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'昧', p:'mèi',   type:'note',  note:'幽暗，"不昧"即不幽暗，与上"不皦"呼应，道既无明亮之上也无幽暗之下，超越一切对立。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'绳', p:'shéng', type:'note',  note:'绳绳，连绵不绝之状，形容道延续不断却无法名状，须注意此处为叠字形容词，非"绳子"。' },
+      { c:'绳', p:'shéng', type:'normal' },
+      { c:'兮', p:'xī',    type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'可', p:'kě',    type:'normal' },
+      { c:'名', p:'míng',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'复', p:'fù',    type:'normal' },
+      { c:'归', p:'guī',   type:'normal' },
+      { c:'于', p:'yú',    type:'normal' },
+      { c:'无', p:'wú',    type:'normal' },
+      { c:'物', p:'wù',    type:'note',  note:'"无物"即非具体实物，道最终复归于不可名状的本体状态，"无物"非虚无，而是超越有形存在的本原。' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'是', p:'shì',   type:'normal' },
+      { c:'谓', p:'wèi',   type:'normal' },
+      { c:'无', p:'wú',    type:'normal' },
+      { c:'状', p:'zhuàng', type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'状', p:'zhuàng', type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'无', p:'wú',    type:'normal' },
+      { c:'物', p:'wù',    type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'象', p:'xiàng', type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'是', p:'shì',   type:'normal' },
+      { c:'谓', p:'wèi',   type:'normal' },
+      { c:'惚', p:'hū',    type:'note',  note:'惚恍即恍惚，模糊不清、若有若无的感知状态，是道呈现于人感知中的方式，亦见于第二十一章"恍兮惚兮"。' },
+      { c:'恍', p:'huǎng', type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'迎', p:'yíng',  type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'见', p:'jiàn',  type:'normal' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'首', p:'shǒu',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'随', p:'suí',   type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'见', p:'jiàn',  type:'normal' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'后', p:'hòu',   type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'执', p:'zhí',   type:'normal' },
+      { c:'古', p:'gǔ',    type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'道', p:'dào',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'御', p:'yù',    type:'note',  note:'驾驭、应对，"御今之有"即用来处理今日的现实存在，道超越时间，以古驭今是其实践价值所在。' },
+      { c:'今', p:'jīn',   type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'有', p:'yǒu',   type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'能', p:'néng',  type:'normal' },
+      { c:'知', p:'zhī',   type:'normal' },
+      { c:'古', p:'gǔ',    type:'normal' },
+      { c:'始', p:'shǐ',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'是', p:'shì',   type:'normal' },
+      { c:'谓', p:'wèi',   type:'normal' },
+      { c:'道', p:'dào',   type:'normal' },
+      { c:'纪', p:'jì',    type:'note',  note:'道的纲纪、规律，"道纪"指道作为宇宙本原的根本规律，能把握这一规律，才算真正理解了道。' },
+      { c:'。', p:'',      type:'punct' },
+    ],
+
+    /* ══════════════ 第十五章 ══════════════
+       强(qiǎng) TTS默认读qiáng，此处为勉强之义
+       保险起见标为 zhu 并 read:'抢'（有qiǎng读音）
+    ════════════════════════════════════ */
+    [
+      { c:'古', p:'gǔ',    type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'善', p:'shàn',  type:'normal' },
+      { c:'为', p:'wéi',   type:'normal' },
+      { c:'道', p:'dào',   type:'normal' },
+      { c:'者', p:'zhě',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'微', p:'wēi',   type:'note',  note:'微妙玄通，高度概括体道者的品质：精微（微）、深邃（妙）、幽远（玄）、通达（通），四字呼应下文七个比喻。' },
+      { c:'妙', p:'miào',  type:'normal' },
+      { c:'玄', p:'xuán',  type:'normal' },
+      { c:'通', p:'tōng',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'深', p:'shēn',  type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'可', p:'kě',    type:'normal' },
+      { c:'识', p:'shí',   type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'夫', p:'fú',    type:'normal' },
+      { c:'唯', p:'wéi',   type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'可', p:'kě',    type:'normal' },
+      { c:'识', p:'shí',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'故', p:'gù',    type:'normal' },
+      { c:'强', p:'qiǎng', type:'zhu',   read:'抢', note:'音qiǎng，勉强，"强为之容"即勉强为之描摹形容。TTS默认读qiáng（强壮），此处应读qiǎng（勉强）。' },
+      { c:'为', p:'wéi',   type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'容', p:'róng',  type:'note',  note:'描摹、形容，"为之容"即为道的体现者作一番外貌描摹，引出下文七个"兮"字比喻。' },
+      { c:'：', p:'',      type:'punct' },
+      { c:'豫', p:'yù',    type:'note',  note:'谨慎迟疑之貌，古代以大象（豫）行走谨慎比喻小心的态度，此处形容体道者过河时的警觉。' },
+      { c:'兮', p:'xī',    type:'normal' },
+      { c:'若', p:'ruò',   type:'normal' },
+      { c:'冬', p:'dōng',  type:'normal' },
+      { c:'涉', p:'shè',   type:'note',  note:'徒步渡水，冬日涉川，冰薄水寒，须小心翼翼，以此喻体道者的高度谨慎。' },
+      { c:'川', p:'chuān', type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'犹', p:'yóu',   type:'note',  note:'此处为拟声/状态词，迟疑观望之貌，形容警惕四周的谨慎姿态，非"犹然"之副词。' },
+      { c:'兮', p:'xī',    type:'normal' },
+      { c:'若', p:'ruò',   type:'normal' },
+      { c:'畏', p:'wèi',   type:'normal' },
+      { c:'四', p:'sì',    type:'normal' },
+      { c:'邻', p:'lín',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'俨', p:'yǎn',   type:'note',  note:'音yǎn，端庄恭敬之貌，如宾客在座，保持庄重而不放肆，须记字音。' },
+      { c:'兮', p:'xī',    type:'normal' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'若', p:'ruò',   type:'normal' },
+      { c:'客', p:'kè',    type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'涣', p:'huàn',  type:'note',  note:'音huàn，消融流动之貌，如冰将融化，形容体道者随顺自然、不执不滞的流动状态。' },
+      { c:'兮', p:'xī',    type:'normal' },
+      { c:'若', p:'ruò',   type:'normal' },
+      { c:'冰', p:'bīng',  type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'将', p:'jiāng', type:'normal' },
+      { c:'释', p:'shì',   type:'note',  note:'融化，此处义为冰雪消融，非"解释"。冰释比喻体道者能顺势消融、不固守形态。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'敦', p:'dūn',   type:'note',  note:'音dūn，朴厚笃实之貌，如未经雕琢的原木（朴），形容体道者质朴无华的本真状态。' },
+      { c:'兮', p:'xī',    type:'normal' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'若', p:'ruò',   type:'normal' },
+      { c:'朴', p:'pǔ',    type:'note',  note:'未经加工的原木，道家以"朴"象征本真、质朴未凿的原初状态，与第二十八章"复归于朴"同。' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'旷', p:'kuàng', type:'note',  note:'空阔旷达之貌，如山谷，形容体道者胸怀广阔、虚空无碍，与第六章"谷神不死"的谷之意象呼应。' },
+      { c:'兮', p:'xī',    type:'normal' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'若', p:'ruò',   type:'normal' },
+      { c:'谷', p:'gǔ',    type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'浑', p:'hún',   type:'note',  note:'混沌浑然之貌，如浑浊的水，形容体道者不刻意清明、与物同浑，是"和光同尘"的另一表达。' },
+      { c:'兮', p:'xī',    type:'normal' },
+      { c:'其', p:'qí',    type:'normal' },
+      { c:'若', p:'ruò',   type:'normal' },
+      { c:'浊', p:'zhuó',  type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'孰', p:'shú',   type:'note',  note:'谁，疑问代词，"孰能……"两句以反问句式揭示体道者的境界：不强行改变，而是在静定中自然化成。' },
+      { c:'能', p:'néng',  type:'normal' },
+      { c:'浊', p:'zhuó',  type:'normal' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'静', p:'jìng',  type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'徐', p:'xú',    type:'note',  note:'慢慢地，副词，"徐清""徐生"均强调自然而然、缓慢发生的过程，而非人为强制的即刻转变。' },
+      { c:'清', p:'qīng',  type:'normal' },
+      { c:'？', p:'',      type:'punct' },
+      { c:'孰', p:'shú',   type:'normal' },
+      { c:'能', p:'néng',  type:'normal' },
+      { c:'安', p:'ān',    type:'normal' },
+      { c:'以', p:'yǐ',    type:'normal' },
+      { c:'久', p:'jiǔ',   type:'normal' },
+      { c:'动', p:'dòng',  type:'normal' },
+      { c:'之', p:'zhī',   type:'normal' },
+      { c:'徐', p:'xú',    type:'normal' },
+      { c:'生', p:'shēng', type:'normal' },
+      { c:'？', p:'',      type:'punct' },
+      { c:'保', p:'bǎo',   type:'normal' },
+      { c:'此', p:'cǐ',    type:'normal' },
+      { c:'道', p:'dào',   type:'normal' },
+      { c:'者', p:'zhě',   type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'欲', p:'yù',    type:'normal' },
+      { c:'盈', p:'yíng',  type:'note',  note:'盈满，与第四章"用之不盈"、第九章"持而盈之不如其已"一脉相承，不求满盈是保道的实践关键。' },
+      { c:'。', p:'',      type:'punct' },
+      { c:'夫', p:'fú',    type:'normal' },
+      { c:'唯', p:'wéi',   type:'normal' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'盈', p:'yíng',  type:'normal' },
+      { c:'，', p:'',      type:'punct' },
+      { c:'故', p:'gù',    type:'normal' },
+      { c:'能', p:'néng',  type:'normal' },
+      { c:'弊', p:'bì',    type:'note',  note:'旧损、破旧，"弊不新成"即能以旧损之态存在而不必焕然一新，顺其自然的损益，是返璞归真的最终状态。' },
+      { c:'不', p:'bù',    type:'normal' },
+      { c:'新', p:'xīn',   type:'normal' },
+      { c:'成', p:'chéng', type:'normal' },
+      { c:'。', p:'',      type:'punct' },
+    ],
+  ];
+
+  /* ════════════════════════════════════
+     渲染引擎
+  ════════════════════════════════════ */
+  const chapterBoxes = [];
+  function render(id, data) {
+    const row = document.getElementById(id);
+    const boxes = [];
+    if (!row || !data.length) { chapterBoxes.push(boxes); return; }
+    data.forEach(item => {
+      const unit = document.createElement('div');
+      unit.className = 'char-unit' + (item.type !== 'normal' ? ' ' + item.type : '');
+      const pin = document.createElement('div');
+      pin.className = 'char-pin';
+      pin.textContent = item.p || '';
+      const box = document.createElement('div');
+      box.className = 'char-box';
+      box.textContent = item.c;
+      if (item.note && (item.type === 'zhu' || item.type === 'note')) {
+        box.addEventListener('click', e => { e.stopPropagation(); showPopup(item, box); });
+      }
+      unit.appendChild(pin);
+      unit.appendChild(box);
+      row.appendChild(unit);
+      boxes.push({ box, unit, item });
+    });
+    chapterBoxes.push(boxes);
+  }
+  chapters.forEach((data, i) => render('c' + (i + 1), data));
+
+  /* ════════════════════════════════════
+     朗读引擎
+  ════════════════════════════════════ */
+  const chapterNames = ['第十一章','第十二章','第十三章','第十四章','第十五章'];
+  let currentChIdx = -1, currentReadBtn = null, currentBlock = null;
+  let lastHL = null, isPaused = false, readSpeed = 0.9;
+
+  function buildSpeech(chIdx) {
+    const boxes = chapterBoxes[chIdx];
+    if (!boxes || !boxes.length) return null;
+    let text = '';
+    const map = [];
+    boxes.forEach(({ box, unit, item }) => {
+      text += item.read || item.c;
+      map.push(item.type === 'punct' ? null : { box, unit });
+    });
+    return { text, map };
+  }
+
+  function startRead(chIdx, btn) {
+    if (currentChIdx === chIdx && speechSynthesis.speaking) { togglePause(); return; }
+    stopRead();
+    const speech = buildSpeech(chIdx);
+    if (!speech || !speech.text.trim()) { alert('本章暂无内容。'); return; }
+    currentChIdx = chIdx; currentReadBtn = btn;
+    currentBlock = document.querySelector(`.sentence-block[data-ch="${chIdx}"]`);
+    isPaused = false;
+    btn.textContent = '⏸ 朗读中'; btn.classList.add('active');
+    if (currentBlock) currentBlock.classList.add('reading');
+    document.getElementById('rbChTitle').textContent  = chapterNames[chIdx];
+    document.getElementById('rbProgress').textContent = `0 / ${speech.text.length}`;
+    document.getElementById('rbPause').textContent    = '⏸ 暂停';
+    document.getElementById('readBar').classList.add('visible');
+    const utter = new SpeechSynthesisUtterance(speech.text);
+    utter.lang = 'zh-CN'; utter.rate = readSpeed; utter.pitch = 1.0;
+    const voices = speechSynthesis.getVoices();
+    const zhV = voices.find(v => v.lang === 'zh-CN') || voices.find(v => v.lang.startsWith('zh'));
+    if (zhV) utter.voice = zhV;
+    utter.addEventListener('boundary', e => {
+      highlightChar(e.charIndex, speech.map);
+      document.getElementById('rbProgress').textContent = `${e.charIndex + 1} / ${speech.text.length}`;
+    });
+    utter.addEventListener('end',   () => { clearHL(); resetBtn(); hideBar(); currentChIdx = -1; });
+    utter.addEventListener('error', () => { clearHL(); resetBtn(); hideBar(); });
+    speechSynthesis.speak(utter);
+  }
+
+  function highlightChar(idx, map) {
+    clearHL();
+    const t = map[idx]; if (!t) return;
+    t.box.classList.add('speaking'); t.unit.classList.add('speaking-unit');
+    lastHL = t;
+    t.box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+  function clearHL() {
+    if (lastHL) { lastHL.box.classList.remove('speaking'); lastHL.unit.classList.remove('speaking-unit'); lastHL = null; }
+  }
+  function resetBtn() {
+    if (currentReadBtn) { currentReadBtn.textContent = '▶ 朗读'; currentReadBtn.classList.remove('active'); currentReadBtn = null; }
+    if (currentBlock)   { currentBlock.classList.remove('reading'); currentBlock = null; }
+  }
+  function hideBar() { document.getElementById('readBar').classList.remove('visible'); isPaused = false; }
+
+  function togglePause() {
+    const pb = document.getElementById('rbPause');
+    if (isPaused) {
+      speechSynthesis.resume(); isPaused = false;
+      pb.textContent = '⏸ 暂停';
+      if (currentReadBtn) currentReadBtn.textContent = '⏸ 朗读中';
+    } else {
+      speechSynthesis.pause(); isPaused = true;
+      pb.textContent = '▶ 继续';
+      if (currentReadBtn) currentReadBtn.textContent = '▶ 已暂停';
+    }
+  }
+  function stopRead() {
+    speechSynthesis.cancel(); clearHL(); resetBtn(); hideBar(); currentChIdx = -1;
+  }
+  function onSpeedChange(val) {
+    readSpeed = parseFloat(val);
+    document.getElementById('speedLabel').textContent = readSpeed.toFixed(1) + '×';
+    if (currentChIdx >= 0 && speechSynthesis.speaking) {
+      const ci = currentChIdx, rb = currentReadBtn;
+      stopRead(); setTimeout(() => startRead(ci, rb), 80);
+    }
+  }
+  if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = () => {};
+  window.addEventListener('beforeunload', () => speechSynthesis.cancel());
+
+  /* ════════════════════════════════════
+     批注弹窗
+  ════════════════════════════════════ */
+  const overlay = document.getElementById('overlay');
+  const popup   = document.getElementById('popupCard');
+  const popupChar  = document.getElementById('popupChar');
+  const popupPin   = document.getElementById('popupPin');
+  const popupType  = document.getElementById('popupType');
+  const popupBody  = document.getElementById('popupBody');
+  const popupClose = document.getElementById('popupClose');
+
+  function showPopup(item, el) {
+    popupChar.textContent = item.c;
+    popupChar.className   = 'popup-char is-' + item.type;
+    popupPin.textContent  = item.p ? `/ ${item.p} /` : '';
+    popupType.className   = 'popup-type type-' + item.type;
+    popupType.textContent = item.type === 'zhu' ? '异读 / 通假字' : '重点词·批注';
+    popupBody.textContent = item.note;
+    popup.style.display   = 'block';
+    const r = el.getBoundingClientRect();
+    let top = r.bottom + 8, left = r.left;
+    const pw = popup.offsetWidth, ph = popup.offsetHeight;
+    if (left + pw > window.innerWidth  - 12) left = window.innerWidth  - pw - 12;
+    if (top  + ph > window.innerHeight - 12) top  = r.top - ph - 8;
+    popup.style.top = top + 'px'; popup.style.left = left + 'px';
+    overlay.classList.add('show');
+  }
+  function closePopup() { popup.style.display = 'none'; overlay.classList.remove('show'); }
+  overlay.addEventListener('click', closePopup);
+  popupClose.addEventListener('click', closePopup);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
+  /* ════════════════════════════════════
+     讲义折叠
+  ════════════════════════════════════ */
+  function toggleNote(btn) {
+    const note = btn.parentElement.nextElementSibling;
+    const open = note.classList.toggle('open');
+    btn.textContent = open ? '收起讲义 ∧' : '展开讲义 ∨';
+  }
+  </script>
+</body>
+</html>
