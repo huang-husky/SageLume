@@ -41,12 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 计text-amount（估算）
     let totalWords = 0;
     articles.forEach(article => {
-        const metaText = article.querySelector('.post-item-meta')?.textContent || '';
-        const match = metaText.match(/预计阅读\s*(\d+)\s*分钟/);
-        if (match) {
-            const minutes = parseInt(match[1]);
-            totalWords += minutes * 300; // 假设阅读速度为 300字/分钟
-        }
+        const w = parseInt(article.dataset.words);
+        if (!isNaN(w)) totalWords += w;
     });
     
     // 格式化字数并显示动画
