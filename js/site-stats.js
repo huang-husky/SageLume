@@ -84,15 +84,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // 计算最后更新时间
     let latestDate = null;
     articles.forEach(article => {
-        const metaText = article.querySelector('.post-item-meta')?.textContent || '';
-        const dateMatch = metaText.match(/(\d{4}-\d{2}-\d{2})/);
-        if (dateMatch) {
-            const date = new Date(dateMatch[1]);
-            if (!latestDate || date > latestDate) {
-                latestDate = date;
-            }
+        const d = article.dataset.date;
+        if (d) {
+            const date = new Date(d);
+            if (!latestDate || date > latestDate) latestDate = date;
         }
-        
     });
     
     // 更新最后更新时间
