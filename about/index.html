@@ -55,7 +55,6 @@
         body.light .gallery-label { color:#5a7a1a; opacity:0.9; }
         html[data-theme="light"] .gallery-label-sub,
         body.light .gallery-label-sub { color:#6b8a30; opacity:0.75; }
-        /* 浅色模式：星象盘外圈加一圈浅色描边以融合页面 */
         html[data-theme="light"] .orbital-stage,
         body.light .orbital-stage {
             box-shadow: 0 0 0 1px rgba(107,142,35,0.18), 0 0 40px rgba(0,0,0,0.18);
@@ -78,14 +77,12 @@
                 inset 0 0 80px rgba(0,0,0,0.6);
         }
 
-        /* Canvas 星野（铺满舞台） */
         #starCanvas {
             position:absolute; inset:0;
             border-radius:50%;
             pointer-events:none; z-index:1;
         }
 
-        /* 轨道圈：加上光晕感 */
         .orbit-ring {
             position:absolute; border-radius:50%;
             top:50%; left:50%; transform:translate(-50%,-50%);
@@ -106,7 +103,6 @@
             box-shadow:0 0 6px rgba(180,215,100,0.05);
         }
 
-        /* 中心：脉冲星云 */
         .orbit-center {
             position:absolute; top:50%; left:50%;
             transform:translate(-50%,-50%);
@@ -114,7 +110,6 @@
             display:flex; flex-direction:column; align-items:center; justify-content:center;
             z-index:5; pointer-events:none;
         }
-        /* 多层光晕叠加 */
         .orbit-center::before {
             content:'';
             position:absolute; inset:-20px;
@@ -144,12 +139,10 @@
         .orbit-center-text { font-family:'Noto Serif',serif; font-size:1rem; color:var(--color-accent,#c8d96e); letter-spacing:0.2em; opacity:0.85; text-shadow:0 0 12px rgba(200,220,110,0.5); z-index:1; }
         .orbit-center-en   { font-size:0.42rem; letter-spacing:0.18em; color:var(--color-text-muted,#9aaa70); opacity:0.45; margin-top:3px; z-index:1; }
 
-        /* 旋转容器 */
         .orbit-track { position:absolute; inset:0; animation:orbit-spin 30s linear infinite; transform-origin:center; }
         .orbit-track:hover { animation-play-state:paused; }
         @keyframes orbit-spin { to{ transform:rotate(360deg); } }
 
-        /* 图片卡片 */
         .orbit-item {
             position:absolute; width:88px; height:66px;
             top:50%; left:50%; margin-top:-33px; margin-left:-44px;
@@ -167,7 +160,6 @@
         .orbit-track:hover .orbit-item img { animation-play-state:paused; }
         @keyframes orbit-counter { to{ transform:rotate(-360deg); } }
 
-        /* 灯箱 */
         .gallery-lightbox {
             display:none; position:fixed; inset:0; z-index:9999;
             background:rgba(4,8,3,0.95); backdrop-filter:blur(16px);
@@ -229,7 +221,6 @@
         .xueni-card-tag { font-size:0.68rem; letter-spacing:0.18em; color:var(--color-accent,#c8d96e); opacity:0.55; margin-bottom:0.6rem; }
         .xueni-card-quote { font-family:'Noto Serif',serif; font-size:0.9rem; line-height:1.9; color:var(--color-text,#c8cfa0); margin:0 0 0.6rem; letter-spacing:0.04em; }
         .xueni-card-source { font-size:0.72rem; color:var(--color-text-muted,#9aaa70); opacity:0.65; text-align:right; }
-        /* 浅色模式 */
         html[data-theme="light"] .xueni-card,
         body.light .xueni-card { background:rgba(240,245,225,0.5); border-color:rgba(107,142,35,0.18); }
         html[data-theme="light"] .xueni-card:hover,
@@ -266,7 +257,7 @@
         <article class="post">
             <header class="post-header">
                 <h1 class="post-title">关于本站</h1>
-                <div class="post-meta"><span>预计阅读 1 分钟</span></div>
+                <div class="post-meta"><span>预计阅读 2 分钟</span></div>
             </header>
 
             <nav class="post-toc">
@@ -284,9 +275,9 @@
                     <span class="about-sidebar-name">算海青藜</span>
                     <div class="about-sidebar-divider"></div>
                     <p class="about-sidebar-hint">有话想说？欢迎来信 (｡･∀･)ﾉﾞ  ヾ(^▽^*)</p>
-                    <a class="about-email-link" href="/cdn-cgi/l/email-protection#be8c898e8b8d8f8d8c898dfecfcf90ddd1d3">
+                    <a class="about-email-link" href="mailto:2705313273@qq.com">
                         <span class="email-icon">✉️</span>
-                        <span class="__cf_email__" data-cfemail="e4d6d3d4d1d7d5d7d6d3d7a49595ca878b89">[email&#160;protected]</span>
+                        2705313273@qq.com
                     </a>
                 </aside>
 
@@ -304,21 +295,28 @@
 
             <!-- 星象盘画廊 -->
             <section class="gallery-section" id="2-photo-orbit">
-                <h1 id="2-photo-orbit">浮 光 掠 影</h1>
+                <h2 class="gallery-label">浮 光 掠 影</h2>
+
                 <div class="orbital-stage" id="orbitalStage">
-                    <!-- Canvas 深空星野 -->
                     <canvas id="starCanvas"></canvas>
 
-                <div class="xueni-grid">
-                    
-    
+                    <div class="orbit-ring orbit-ring-outer"></div>
+                    <div class="orbit-ring orbit-ring-mid"></div>
+                    <div class="orbit-ring orbit-ring-inner"></div>
+
+                    <div class="orbit-center">
+                        <span class="orbit-center-text">算海</span>
+                        <span class="orbit-center-en">SAGELUME</span>
+                    </div>
+
+                    <div class="orbit-track" id="orbitTrack"></div>
                 </div>
             </section>
 
             <!-- 雪泥 -->
             <section class="xueni-section" id="3-xue-ni">
                 <div class="xueni-header">
-                    <h1 id="3-xue-ni">雪 泥</h1>
+                    <h2 id="xueni-title">雪 泥</h2>
                 </div>
 
                 <div class="xueni-epigraph">
@@ -343,7 +341,6 @@
                         <p class="xueni-card-tag">Gratitude</p>
                         <p class="xueni-card-quote">感恩帮助过我的人，使我感受善良；感恩伤害过我的人，让我学会坚强。</p>
                     </div>
-
                 </div>
             </section>
         </article>
@@ -364,9 +361,6 @@
     </footer>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // ============================================================
-    //  🌌  星象盘配置
-    // ============================================================
     const GALLERY_IMAGES = [
         { src: "https://cdn.jsdelivr.net/gh/huang-husky/ImageBedd@main/sagelume-about/wangjiangloupark-bamboo.jpg", alt: "1" },
         { src: "https://cdn.jsdelivr.net/gh/huang-husky/ImageBedd@main/sagelume-about/yulan1.jpg", alt: "2" },
@@ -381,7 +375,6 @@
     const R_DESKTOP = 210, R_MOBILE = 125;
 
     (() => {
-        /* ── 1. 图片轨道 ── */
         const track = document.getElementById("orbitTrack");
         const isMob = () => window.innerWidth <= 600;
         const r = isMob() ? R_MOBILE : R_DESKTOP;
@@ -398,7 +391,6 @@
             track.appendChild(wrap);
         });
 
-        /* ── 2. Canvas 深空星野 ── */
         const canvas = document.getElementById("starCanvas");
         const stage  = document.getElementById("orbitalStage");
         const W = stage.offsetWidth, H = stage.offsetHeight;
@@ -494,7 +486,6 @@
         }
         drawStars();
 
-        /* ── 3. 灯箱 ── */
         const lightbox    = document.getElementById("lightbox");
         const lightboxImg = document.getElementById("lightboxImg");
         function openLightbox(src, alt) { lightboxImg.src = src; lightboxImg.alt = alt; lightbox.classList.add("active"); }
