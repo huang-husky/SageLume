@@ -48,8 +48,20 @@
 
         /* ===== 星象盘画廊 ===== */
         .gallery-section { margin-top:5rem; margin-bottom:2rem; text-align:center; }
-        .gallery-label { font-family:'Noto Serif',serif; font-size:0.85rem; letter-spacing:0.35em; color:var(--color-accent,#c8d96e); opacity:0.65; margin-bottom:0.25rem; }
-        .gallery-label-sub { font-size:0.68rem; color:var(--color-text-muted,#9aaa70); opacity:0.4; letter-spacing:0.12em; margin-bottom:3rem; }
+        .gallery-label { font-family:'Noto Serif',serif; font-size:1.05rem; letter-spacing:0.35em; color:var(--color-accent,#c8d96e); opacity:0.85; margin-bottom:0.25rem; }
+        .gallery-label-sub { font-size:0.82rem; color:var(--color-text-muted,#9aaa70); opacity:0.65; letter-spacing:0.12em; margin-bottom:3rem; }
+        /* 浅色模式：星象盘标签强化显示 */
+        html[data-theme="light"] .gallery-label,
+        body.light .gallery-label { color:#5a7a1a; opacity:0.9; }
+        html[data-theme="light"] .gallery-label-sub,
+        body.light .gallery-label-sub { color:#6b8a30; opacity:0.75; }
+        /* 浅色模式：星象盘外圈加一圈浅色描边以融合页面 */
+        html[data-theme="light"] .orbital-stage,
+        body.light .orbital-stage {
+            box-shadow: 0 0 0 1px rgba(107,142,35,0.18), 0 0 40px rgba(0,0,0,0.18);
+        }
+        html[data-theme="light"] .gallery-lightbox-hint,
+        body.light .gallery-lightbox-hint { color:rgba(180,210,100,0.55); }
 
         /* 舞台：深空背景 */
         .orbital-stage {
@@ -182,6 +194,53 @@
             .orbit-center-text{font-size:0.75rem;}
             .orbit-item{width:56px;height:42px;margin-top:-21px;margin-left:-28px;}
         }
+
+        /* ===== 雪泥 ===== */
+        .xueni-section { margin-top:4.5rem; }
+        .xueni-header { text-align:center; margin-bottom:0.4rem; }
+        .xueni-title { font-family:'Noto Serif',serif; font-size:1.05rem; letter-spacing:0.35em; color:var(--color-accent,#c8d96e); opacity:0.85; }
+        .xueni-subtitle { font-size:0.82rem; color:var(--color-text-muted,#9aaa70); opacity:0.65; letter-spacing:0.12em; margin-top:0.15rem; }
+        .xueni-epigraph {
+            margin:1.8rem auto 2.2rem; max-width:480px; text-align:center;
+            padding:1rem 1.5rem;
+            border-top:1px solid rgba(180,200,100,0.18);
+            border-bottom:1px solid rgba(180,200,100,0.18);
+        }
+        .xueni-epigraph p { font-family:'Noto Serif',serif; font-size:0.92rem; line-height:2.0; color:var(--color-text,#c8cfa0); margin:0; letter-spacing:0.06em; }
+        .xueni-epigraph cite { display:block; margin-top:0.5rem; font-size:0.72rem; color:var(--color-text-muted,#9aaa70); opacity:0.7; font-style:normal; letter-spacing:0.08em; }
+        .xueni-grid {
+            display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+            gap:1.2rem; margin-top:1rem;
+        }
+        .xueni-card {
+            padding:1.4rem 1.5rem; border-radius:10px;
+            background:rgba(255,255,255,0.03);
+            border:1px solid rgba(180,200,120,0.13);
+            backdrop-filter:blur(4px);
+            transition:border-color 0.3s, background 0.3s, transform 0.25s;
+            position:relative; overflow:hidden;
+        }
+        .xueni-card::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:2px;
+            background:linear-gradient(135deg, var(--color-accent,#c8d96e), transparent);
+            opacity:0.35; border-radius:10px 10px 0 0;
+        }
+        .xueni-card:hover { border-color:rgba(180,200,120,0.32); background:rgba(255,255,255,0.055); transform:translateY(-2px); }
+        .xueni-card-tag { font-size:0.68rem; letter-spacing:0.18em; color:var(--color-accent,#c8d96e); opacity:0.55; margin-bottom:0.6rem; }
+        .xueni-card-quote { font-family:'Noto Serif',serif; font-size:0.9rem; line-height:1.9; color:var(--color-text,#c8cfa0); margin:0 0 0.6rem; letter-spacing:0.04em; }
+        .xueni-card-source { font-size:0.72rem; color:var(--color-text-muted,#9aaa70); opacity:0.65; text-align:right; }
+        /* 浅色模式 */
+        html[data-theme="light"] .xueni-card,
+        body.light .xueni-card { background:rgba(240,245,225,0.5); border-color:rgba(107,142,35,0.18); }
+        html[data-theme="light"] .xueni-card:hover,
+        body.light .xueni-card:hover { background:rgba(230,240,210,0.7); border-color:rgba(107,142,35,0.32); }
+        html[data-theme="light"] .xueni-title,
+        body.light .xueni-title { color:#5a7a1a; opacity:0.9; }
+        html[data-theme="light"] .xueni-subtitle,
+        body.light .xueni-subtitle { color:#6b8a30; opacity:0.75; }
+        @media(max-width:600px){
+            .xueni-grid { grid-template-columns:1fr; }
+        }
     </style>
 
     <script src="https://huang-husky.github.io/SageLume/js/theme-toggle.js"></script>
@@ -219,6 +278,7 @@
                 <ul>
                     <li><a href="#1-guan-yu-zuo-zhe">1. 关于作者</a></li>
                     <li><a href="#2-photo-orbit">2. 浮光掠影</a></li>
+                    <li><a href="#3-xue-ni">3. 雪泥</a></li>
                 </ul>
             </nav>
 
@@ -228,9 +288,9 @@
                     <span class="about-sidebar-name">算海青藜</span>
                     <div class="about-sidebar-divider"></div>
                     <p class="about-sidebar-hint">有话想说？欢迎来信 (｡･∀･)ﾉﾞ  ヾ(^▽^*)</p>
-                    <a class="about-email-link" href="mailto:2705313273@qq.com">
+                    <a class="about-email-link" href="/cdn-cgi/l/email-protection#be8c898e8b8d8f8d8c898dfecfcf90ddd1d3">
                         <span class="email-icon">✉️</span>
-                        2705313273@qq.com
+                        <span class="__cf_email__" data-cfemail="e4d6d3d4d1d7d5d7d6d3d7a49595ca878b89">[email&#160;protected]</span>
                     </a>
                 </aside>
 
@@ -246,25 +306,20 @@
                 </div>
             </div>
 
-            <!-- 星象盘画廊 -->
-            <section class="gallery-section" id="2-photo-orbit">
-                <p class="gallery-label">浮 光 掠 影</p>
-                <p class="gallery-label-sub">悬停暂停 · 点击放大</p>
+            <!-- 雪泥 -->
+            <section class="xueni-section" id="3-xue-ni">
+                <div class="xueni-header">
+                    <p class="xueni-title">雪 泥</p>
+                </div>
 
-                <div class="orbital-stage" id="orbitalStage">
-                    <!-- Canvas 深空星野 -->
-                    <canvas id="starCanvas"></canvas>
+                <div class="xueni-epigraph">
+                    <p>人生到处知何似<br>应似飞鸿踏雪泥<br>泥上偶然留指爪<br>鸿飞那复计东西</p>
+                    <cite>——苏轼《和子由渑池怀旧》</cite>
+                </div>
 
-                    <div class="orbit-ring orbit-ring-outer"></div>
-                    <div class="orbit-ring orbit-ring-mid"></div>
-                    <div class="orbit-ring orbit-ring-inner"></div>
-
-                    <div class="orbit-center">
-                        <span class="orbit-center-text">算海</span>
-                        <span class="orbit-center-en">SAGELUME</span>
-                    </div>
-
-                    <div class="orbit-track" id="orbitTrack"></div>
+                <div class="xueni-grid">
+                    
+    
                 </div>
             </section>
         </article>
@@ -284,7 +339,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ============================================================
     //  🌌  星象盘配置
     // ============================================================
@@ -328,18 +383,15 @@
         const ctx = canvas.getContext("2d");
         const CX = W / 2, CY = H / 2;
 
-        // 星星数据：三层深度
         const STAR_LAYERS = [
-            { count: 180, minR: 0.4, maxR: 0.9,  alpha: 0.35, twinkleAmp: 0.15 },  // 远景，密集微弱
-            { count: 70,  minR: 0.9, maxR: 1.6,  alpha: 0.60, twinkleAmp: 0.25 },  // 中景
-            { count: 25,  minR: 1.6, maxR: 2.8,  alpha: 0.85, twinkleAmp: 0.40 },  // 近景，稀疏明亮（含星芒）
+            { count: 180, minR: 0.4, maxR: 0.9,  alpha: 0.35, twinkleAmp: 0.15 },
+            { count: 70,  minR: 0.9, maxR: 1.6,  alpha: 0.60, twinkleAmp: 0.25 },
+            { count: 25,  minR: 1.6, maxR: 2.8,  alpha: 0.85, twinkleAmp: 0.40 },
         ];
 
         const stars = [];
-
         STAR_LAYERS.forEach(layer => {
             for (let i = 0; i < layer.count; i++) {
-                // 圆形区域内均匀分布
                 const angle  = Math.random() * 2 * Math.PI;
                 const dist   = Math.sqrt(Math.random()) * (W / 2 - 5);
                 stars.push({
@@ -350,8 +402,7 @@
                     twinkleAmp: layer.twinkleAmp,
                     twinkleSpeed: 0.4 + Math.random() * 1.2,
                     twinkleOffset: Math.random() * Math.PI * 2,
-                    bright: layer.minR > 1.4 && Math.random() < 0.5, // 亮星才有星芒
-                    // 色调：大部分白偏冷，少数暖黄
+                    bright: layer.minR > 1.4 && Math.random() < 0.5,
                     warm: Math.random() < 0.15,
                 });
             }
@@ -360,19 +411,14 @@
         let t = 0;
         function drawStars() {
             ctx.clearRect(0, 0, W, H);
-
             stars.forEach(s => {
                 const flicker = s.baseAlpha + Math.sin(t * s.twinkleSpeed + s.twinkleOffset) * s.twinkleAmp;
                 const alpha   = Math.max(0.05, Math.min(1, flicker));
                 const color   = s.warm ? `rgba(255,235,170,${alpha})` : `rgba(210,230,255,${alpha})`;
-
-                // 星体本身
                 ctx.beginPath();
                 ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
                 ctx.fillStyle = color;
                 ctx.fill();
-
-                // 柔和光晕（所有星）
                 const glow = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 4);
                 glow.addColorStop(0, s.warm ? `rgba(255,235,150,${alpha * 0.4})` : `rgba(180,220,255,${alpha * 0.3})`);
                 glow.addColorStop(1, "rgba(0,0,0,0)");
@@ -380,12 +426,9 @@
                 ctx.arc(s.x, s.y, s.r * 4, 0, Math.PI * 2);
                 ctx.fillStyle = glow;
                 ctx.fill();
-
-                // 十字星芒（仅亮星）
                 if (s.bright) {
                     const armLen = s.r * 10 * alpha;
                     const armAlpha = alpha * 0.55;
-                    // 水平臂
                     const hGrad = ctx.createLinearGradient(s.x - armLen, s.y, s.x + armLen, s.y);
                     hGrad.addColorStop(0,   "rgba(220,240,255,0)");
                     hGrad.addColorStop(0.45, `rgba(220,240,255,${armAlpha * 0.3})`);
@@ -398,8 +441,6 @@
                     ctx.moveTo(s.x - armLen, s.y);
                     ctx.lineTo(s.x + armLen, s.y);
                     ctx.stroke();
-
-                    // 垂直臂
                     const vGrad = ctx.createLinearGradient(s.x, s.y - armLen, s.x, s.y + armLen);
                     vGrad.addColorStop(0,   "rgba(220,240,255,0)");
                     vGrad.addColorStop(0.45, `rgba(220,240,255,${armAlpha * 0.3})`);
@@ -414,20 +455,16 @@
                     ctx.stroke();
                 }
             });
-
-            // 星云状星际介质（整体微弱彩色云气）
             const nebula1 = ctx.createRadialGradient(CX - 60, CY + 40, 0, CX - 60, CY + 40, 160);
             nebula1.addColorStop(0, "rgba(80,140,60,0.04)");
             nebula1.addColorStop(1, "rgba(0,0,0,0)");
             ctx.fillStyle = nebula1;
             ctx.fillRect(0, 0, W, H);
-
             const nebula2 = ctx.createRadialGradient(CX + 70, CY - 50, 0, CX + 70, CY - 50, 130);
             nebula2.addColorStop(0, "rgba(60,80,150,0.035)");
             nebula2.addColorStop(1, "rgba(0,0,0,0)");
             ctx.fillStyle = nebula2;
             ctx.fillRect(0, 0, W, H);
-
             t += 0.016;
             requestAnimationFrame(drawStars);
         }
@@ -437,8 +474,7 @@
         const lightbox    = document.getElementById("lightbox");
         const lightboxImg = document.getElementById("lightboxImg");
         function openLightbox(src, alt) { lightboxImg.src = src; lightboxImg.alt = alt; lightbox.classList.add("active"); }
-        lightbox.addEventListener("click", () => { lightbox.classList.remove("active"); lightboxImg.src = ""; });
-        document.addEventListener("keydown", e => { if (e.key === "Escape") lightbox.classList.remove("active"); });
+        lightbox.addEventListener("click", () => lightbox.classList.remove("active"));
     })();
     </script>
 </body>
