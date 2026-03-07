@@ -1,0 +1,2241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第十六章—第二十章 · 道经 · 砚山 | SageLume</title>
+  <link rel="stylesheet" href="https://huang-husky.github.io/SageLume/style.css" />
+  <script src="https://huang-husky.github.io/SageLume/js/theme-toggle.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root{--ys-bg:#f5f0e8;--ys-paper:#faf7f0;--ys-ink:#2c2417;--ys-ink-lt:#6a5d4a;--ys-ink-fd:#a8997e;--ys-sage:#5a7a5e;--ys-sage-dk:#3d5940;--ys-sage-bg:rgba(90,122,94,.08);--ys-amber:#c8902a;--ys-amber-bg:rgba(200,144,42,.10);--ys-zhu:#c0392b;--ys-zhu-bg:rgba(192,57,43,.07);--ys-border:#d4c9b0;--ys-shadow:rgba(44,36,23,.12);--ys-popup-bg:#fffdf6;--char-size:2.5rem;--pin-size:.63rem;--gap:11px;}
+    [data-theme="dark"]{--ys-bg:#1a1812;--ys-paper:#221f16;--ys-ink:#e8e0cc;--ys-ink-lt:#a09078;--ys-ink-fd:#5c5040;--ys-sage:#7aaa7e;--ys-sage-dk:#9fcfa3;--ys-sage-bg:rgba(122,170,126,.08);--ys-amber:#d4a84b;--ys-amber-bg:rgba(212,168,75,.10);--ys-zhu:#e05a4a;--ys-zhu-bg:rgba(224,90,74,.07);--ys-border:#3a3428;--ys-shadow:rgba(0,0,0,.4);--ys-popup-bg:#2a2519;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    .ys-body{background:var(--ys-bg);font-family:'Noto Serif SC',serif;}
+    .ys-body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:repeating-linear-gradient(0deg,transparent,transparent 36px,rgba(180,160,120,.05) 36px,rgba(180,160,120,.05) 37px);}
+    .breadcrumb{position:relative;z-index:1;max-width:840px;margin:0 auto;padding:14px 24px 0;font-family:'Noto Sans SC',sans-serif;font-size:.72rem;color:var(--ys-ink-lt);letter-spacing:.05em;}
+    .breadcrumb a{color:var(--ys-sage);text-decoration:none;}.breadcrumb a:hover{text-decoration:underline;}.breadcrumb span{margin:0 5px;opacity:.4;}
+    .ys-banner{position:relative;z-index:1;text-align:center;padding:28px 24px 22px;border-bottom:1px solid var(--ys-border);background:linear-gradient(to bottom,var(--ys-paper),transparent);}
+    .ys-tag-line{font-family:'Noto Sans SC',sans-serif;font-size:.7rem;letter-spacing:.2em;color:var(--ys-amber);margin-bottom:5px;}
+    .ys-title{font-size:1.7rem;font-weight:700;letter-spacing:.2em;color:var(--ys-sage-dk);}
+    .ys-divider{width:44px;height:1px;margin:10px auto;background:linear-gradient(to right,transparent,var(--ys-amber),transparent);}
+    .ys-desc{font-size:.8rem;color:var(--ys-ink-fd);letter-spacing:.08em;}
+    .legend{max-width:840px;margin:16px auto 0;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-family:'Noto Sans SC',sans-serif;font-size:.7rem;color:var(--ys-ink-lt);}
+    .legend-item{display:flex;align-items:center;gap:4px;}.ldot{width:13px;height:13px;border-radius:2px;display:inline-block;}
+    .ldot-zhu{background:var(--ys-zhu-bg);border:1px solid var(--ys-zhu);}.ldot-note{background:var(--ys-sage-bg);border:1px solid var(--ys-sage);}.ldot-speak{background:var(--ys-amber-bg);border:1px solid var(--ys-amber);}
+    .ys-main{position:relative;z-index:1;max-width:840px;margin:0 auto;padding:36px 24px 120px;}
+    .chapter-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;font-family:'Noto Sans SC',sans-serif;font-size:.75rem;}
+    .nav-btn{display:inline-flex;align-items:center;color:var(--ys-sage);text-decoration:none;padding:5px 10px;border:1px solid var(--ys-border);border-radius:3px;transition:border-color .2s,background .2s;}
+    .nav-btn:hover{border-color:var(--ys-sage);background:var(--ys-sage-bg);}.nav-btn.prev::before{content:'‹ ';}.nav-btn.next::after{content:' ›';}
+    .nav-center{color:var(--ys-ink-lt);letter-spacing:.05em;}
+    .sentence-block{background:var(--ys-paper);border:1px solid var(--ys-border);border-radius:4px;padding:30px 26px 22px;margin-bottom:20px;box-shadow:0 2px 8px var(--ys-shadow);position:relative;transition:border-color .3s,box-shadow .3s;}
+    .sentence-block.reading{border-color:var(--ys-amber);box-shadow:0 2px 8px var(--ys-shadow),0 0 0 2px rgba(200,144,42,.15);}
+    .sentence-block::before{content:attr(data-index);position:absolute;top:10px;left:14px;font-size:.62rem;color:var(--ys-ink-fd);font-family:'Noto Sans SC',sans-serif;}
+    .read-btn{position:absolute;top:8px;right:12px;background:none;border:1px solid var(--ys-border);border-radius:3px;padding:3px 9px;font-family:'Noto Sans SC',sans-serif;font-size:.65rem;color:var(--ys-ink-fd);cursor:pointer;transition:border-color .2s,color .2s,background .2s;}
+    .read-btn:hover,.read-btn.active{border-color:var(--ys-amber);color:var(--ys-amber);background:var(--ys-amber-bg);}
+    .char-row{display:flex;flex-wrap:wrap;gap:var(--gap);align-items:flex-end;margin-bottom:18px;}
+    .char-unit{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:42px;}
+    .char-pin{font-family:'Noto Sans SC',sans-serif;font-size:var(--pin-size);color:var(--ys-ink-fd);letter-spacing:.02em;line-height:1.3;text-align:center;white-space:nowrap;min-height:1em;transition:color .15s;}
+    .char-box{width:46px;height:46px;border:1px solid var(--ys-border);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:var(--char-size);line-height:1;position:relative;background:transparent;user-select:none;cursor:default;transition:background .15s,border-color .15s,transform .15s,box-shadow .15s;}
+    .char-box.speaking{background:var(--ys-amber-bg)!important;border-color:var(--ys-amber)!important;box-shadow:0 0 10px rgba(200,144,42,.4);transform:scale(1.12);}
+    .char-unit.speaking-unit .char-pin{color:var(--ys-amber);}
+    .char-unit.punct .char-pin{opacity:0;}.char-unit.punct .char-box{border-color:transparent;font-size:1.6rem;color:var(--ys-ink-lt);}
+    .char-unit.zhu .char-box{color:var(--ys-zhu);background:var(--ys-zhu-bg);border-color:rgba(192,57,43,.25);cursor:pointer;}
+    .char-unit.zhu .char-box:hover,.char-unit.note .char-box:hover{transform:scale(1.08);}
+    .char-unit.zhu .char-box:hover{border-color:var(--ys-zhu);}
+    .char-unit.note .char-box{color:var(--ys-sage-dk);background:var(--ys-sage-bg);border-color:rgba(90,122,94,.25);cursor:pointer;}
+    .char-unit.note .char-box:hover{border-color:var(--ys-sage);}
+    .char-unit.zhu .char-box::after,.char-unit.note .char-box::after{content:'◇';position:absolute;top:2px;right:3px;font-size:.42rem;opacity:.5;}
+    .sentence-footer{border-top:1px dashed var(--ys-border);padding-top:12px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+    .translation{font-size:.8rem;color:var(--ys-ink-lt);line-height:1.9;letter-spacing:.05em;flex:1;}
+    .toggle-note{background:none;border:1px solid var(--ys-border);border-radius:2px;padding:3px 9px;font-family:'Noto Sans SC',sans-serif;font-size:.68rem;color:var(--ys-ink-fd);cursor:pointer;white-space:nowrap;transition:border-color .2s,color .2s;}
+    .toggle-note:hover{border-color:var(--ys-sage);color:var(--ys-sage);}
+    .expand-note{display:none;margin-top:10px;font-size:.78rem;color:var(--ys-ink-lt);line-height:1.9;border-left:2px solid var(--ys-sage);padding-left:11px;letter-spacing:.04em;}
+    .expand-note.open{display:block;}
+    .read-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--ys-paper);border-top:1px solid var(--ys-border);box-shadow:0 -4px 20px var(--ys-shadow);padding:10px 20px 14px;display:none;align-items:center;gap:14px;flex-wrap:wrap;font-family:'Noto Sans SC',sans-serif;}
+    .read-bar.visible{display:flex;}.rb-title{font-size:.72rem;color:var(--ys-ink-lt);flex-shrink:0;}.rb-title b{color:var(--ys-amber);}
+    .rb-progress{font-size:.65rem;color:var(--ys-ink-fd);min-width:48px;flex-shrink:0;}.rb-controls{display:flex;gap:7px;}
+    .rb-btn{background:none;border:1px solid var(--ys-border);border-radius:3px;padding:5px 11px;font-size:.72rem;color:var(--ys-ink-lt);cursor:pointer;transition:border-color .2s,color .2s,background .2s;}
+    .rb-btn:hover{border-color:var(--ys-sage);color:var(--ys-sage);background:var(--ys-sage-bg);}.rb-btn.rb-stop:hover{border-color:var(--ys-zhu);color:var(--ys-zhu);}
+    .rb-speed{display:flex;align-items:center;gap:6px;margin-left:auto;}.rb-speed label{font-size:.65rem;color:var(--ys-ink-fd);}
+    .rb-speed input[type=range]{width:76px;accent-color:var(--ys-amber);}.rb-speed .sp-val{font-size:.65rem;color:var(--ys-amber);min-width:28px;}
+    .popup-overlay{display:none;position:fixed;inset:0;z-index:100;}.popup-overlay.show{display:block;}
+    .popup-card{position:fixed;background:var(--ys-popup-bg);border:1px solid var(--ys-border);border-radius:6px;padding:16px 18px 14px;min-width:190px;max-width:280px;box-shadow:0 8px 28px var(--ys-shadow);z-index:101;animation:popIn .14s ease;font-family:'Noto Serif SC',serif;}
+    @keyframes popIn{from{opacity:0;transform:translateY(5px) scale(.96);}to{opacity:1;transform:none;}}
+    .popup-char{font-size:2rem;font-weight:700;margin-bottom:6px;line-height:1;}.popup-char.is-zhu{color:var(--ys-zhu);}.popup-char.is-note{color:var(--ys-sage-dk);}
+    .popup-pin{font-family:'Noto Sans SC',sans-serif;font-size:.68rem;color:var(--ys-ink-fd);margin-bottom:8px;letter-spacing:.08em;}
+    .popup-hr{height:1px;background:var(--ys-border);margin:8px 0;}
+    .popup-type{font-family:'Noto Sans SC',sans-serif;font-size:.62rem;letter-spacing:.08em;padding:1px 5px;border-radius:2px;margin-bottom:7px;display:inline-block;}
+    .type-zhu{background:var(--ys-zhu-bg);color:var(--ys-zhu);}.type-note{background:var(--ys-sage-bg);color:var(--ys-sage);}
+    .popup-body{font-size:.8rem;color:var(--ys-ink-lt);line-height:1.85;letter-spacing:.04em;}
+    .popup-close{position:absolute;top:7px;right:9px;background:none;border:none;cursor:pointer;color:var(--ys-ink-fd);font-size:.85rem;}
+    @media(max-width:480px){:root{--char-size:1.9rem;--gap:7px;}.char-box{width:38px;height:38px;}.rb-speed,.rb-progress{display:none;}}
+  </style>
+</head>
+<body class="ys-body">
+  <button class="theme-toggle" aria-label="切换深浅模式"><span class="icon sun">☀️</span><span class="icon moon">🌙</span></button>
+  <a class="skip-to-content" href="#ys-main">跳至内容</a>
+  <header class="site-header">
+    <div class="site-title"><a href="https://huang-husky.github.io/SageLume/"><img src="https://huang-husky.github.io/SageLume/favicon/logo-header.png" alt="算海青藜" height="96" style="vertical-align:middle;" /></a></div>
+    <nav class="main-nav"><a href="https://huang-husky.github.io/SageLume/">Home</a><a href="https://huang-husky.github.io/SageLume/about/">About</a><a href="https://huang-husky.github.io/SageLume/blog/">Blog</a></nav>
+  </header>
+  <div class="breadcrumb"><a href="../../../index.html">砚山</a><span>›</span><a href="../../index.html">道德经</a><span>›</span><a href="../index.html">道经</a><span>›</span>第十六章—第二十章</div>
+  <div class="ys-banner">
+    <div class="ys-tag-line">《道德经》· 道经 · 第十六章—第二十章</div>
+    <h1 class="ys-title">归根复命</h1>
+    <div class="ys-divider"></div>
+    <p class="ys-desc">老子 · 道家经典 · 背记注音版</p>
+    <div class="legend">
+      <span class="legend-item"><span class="ldot ldot-zhu"></span>异读字 / 通假字</span>
+      <span class="legend-item"><span class="ldot ldot-note"></span>重点词·点击批注</span>
+      <span class="legend-item"><span class="ldot ldot-speak"></span>朗读跟读高亮</span>
+    </div>
+  </div>
+  <main class="ys-main" id="ys-main">
+    <div class="chapter-nav">
+      <a class="nav-btn prev" href="../ch11-15/index.html">上一组</a>
+      <span class="nav-center">道经 第 4/8 组</span>
+      <a class="nav-btn next" href="../ch21-25/index.html">下一组</a>
+    </div>
+    <div class="sentence-block" data-index="第 十 六 章" data-ch="0">
+      <button class="read-btn" onclick="startRead(0,this)">▶ 朗读</button>
+      <div class="char-row" id="c1"></div>
+      <div class="sentence-footer">
+        <div class="translation">尽力使心灵达到虚寂的极点，坚守清静不动摇。万物并发生长，我从中观察其循环往复的规律。万物纷繁茂盛，最终各归其根。归根叫做静，这就是复命。复命就是常，知常叫做明。不知常而妄动，必招凶险。知常则能容，容则公，公则周全，周全则合天，合天则合道，合道则久，终身不殆。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章构建了老子最完整的修道认识论链条。"复命"是归还生命本初状态，返回道体；"知常"是枢纽，能认识万物循环往复的规律，才能包容而不妄动。末段六个"乃"字的连锁推演（容→公→全→天→道→久），是全书逻辑密度最高的段落之一。通假：没通"殁"，mò，终身之义。</div>
+    </div>
+    <div class="sentence-block" data-index="第 十 七 章" data-ch="1">
+      <button class="read-btn" onclick="startRead(1,this)">▶ 朗读</button>
+      <div class="char-row" id="c2"></div>
+      <div class="sentence-footer">
+        <div class="translation">最好的统治者，百姓只知道他的存在；次一等的，百姓亲近称誉他；再次一等的，百姓畏惧他；最下等的，百姓轻侮他。统治者诚信不足，百姓自然不信任他。最好的君主悠然自处，轻易不发号施令。大功告成，百姓都说：我们本来就是这样的。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章以四等统治者的递降描绘政治图谱：太上（无为而治）→亲誉（德治）→畏之（法治）→侮之（暴政）。"贵言"即轻易不开口，与第二章"行不言之教"呼应。"我自然"——百姓感受不到统治的存在，是无为而治的最高境界。本章是老子政治哲学与儒家德治论的关键分野。</div>
+    </div>
+    <div class="sentence-block" data-index="第 十 八 章" data-ch="2">
+      <button class="read-btn" onclick="startRead(2,this)">▶ 朗读</button>
+      <div class="char-row" id="c3"></div>
+      <div class="sentence-footer">
+        <div class="translation">大道被废弃了，才会提倡仁义；智巧机心出现了，才会产生严重虚伪；父子兄弟夫妻不和，才会彰显孝慈；国家昏乱，才会出现忠臣。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章是老子批判儒家名教最锐利的论述，逻辑是"有A则说明缺B"：提倡仁义→大道已废；标榜孝慈→六亲已不和；称颂忠臣→朝政已昏乱。老子并非否定孝慈忠义本身，而是指出：这些德目需要被特别提倡，恰恰证明它们已然匮乏。本章是道家对儒家"名教"的根本性解构。</div>
+    </div>
+    <div class="sentence-block" data-index="第 十 九 章" data-ch="3">
+      <button class="read-btn" onclick="startRead(3,this)">▶ 朗读</button>
+      <div class="char-row" id="c4"></div>
+      <div class="sentence-footer">
+        <div class="translation">抛弃圣明与智巧，百姓可得百倍之利；抛弃仁与义，百姓恢复孝慈本性；抛弃巧诈与私利，盗贼自然消失。此三者若只作为文饰，尚不充分。故令人心有所归：保持纯朴，减少私欲。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章是第十八章的行动版。三组"绝×弃×"覆盖知识（圣智）、道德（仁义）、经济（巧利）三个层面，是对儒家教化体系的系统性否定。"见素抱朴，少私寡欲"是全章的正面结论，也是"返朴归真"思想的最简洁表达。通假：见通"现"，xiàn，显现。</div>
+    </div>
+    <div class="sentence-block" data-index="第 二 十 章" data-ch="4">
+      <button class="read-btn" onclick="startRead(4,this)">▶ 朗读</button>
+      <div class="char-row" id="c5"></div>
+      <div class="sentence-footer">
+        <div class="translation">抛弃浮华学问，就没有忧愁。应诺与呵斥，相差多少？美好与丑恶，差别多大？人们所畏惧的，我也不能不畏惧——世道辽阔，真是没有尽头啊！众人兴高采烈，如享盛宴，如春日登台；唯独我淡泊宁静，浑然无迹，如婴儿尚不会笑；疲惫茫然，似乎无所归宿。众人皆富足有余，唯独我好像有所缺失。我真是一颗愚人之心！俗人精明耀眼，我独昏昧；俗人精察苛刻，我独浑厚迟钝。我的心胸辽阔深沉如大海，飘荡无所止息。众人皆有目的有作为，唯独我愚笨鄙陋。我与众人不同，最珍贵的是以道为食、守持大道之母。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章是全书最具个人色彩的章节，以第一人称"我"与"众人"对照，呈现体道者在世俗眼中的"愚拙"与内在"守道"之间的张力。"食母"是点睛之笔：以道为食、守持道之根本，正是这种表面愚拙的深层原因。通假：孩通"咳"（婴儿笑）；儡通"羸"lěi（疲惫）；飂通"飘"liù（飘荡）；澹dàn（平静宽广）。</div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator"><img class="lume-image" src="https://huang-husky.github.io/SageLume/favicon/logo-footer.png" alt="算海青藜" height="48" /></p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+  <div class="read-bar" id="readBar">
+    <div class="rb-title">▶ <b id="rbChTitle">—</b></div>
+    <div class="rb-progress" id="rbProgress"></div>
+    <div class="rb-controls">
+      <button class="rb-btn" id="rbPause" onclick="togglePause()">⏸ 暂停</button>
+      <button class="rb-btn rb-stop" onclick="stopRead()">⏹ 停止</button>
+    </div>
+    <div class="rb-speed">
+      <label>语速</label>
+      <input type="range" id="speedSlider" min="0.5" max="1.8" step="0.1" value="0.9" oninput="onSpeedChange(this.value)" />
+      <span class="sp-val" id="speedLabel">0.9×</span>
+    </div>
+  </div>
+  <div class="popup-overlay" id="overlay"></div>
+  <div class="popup-card" id="popupCard" style="display:none;">
+    <button class="popup-close" id="popupClose">✕</button>
+    <div class="popup-char" id="popupChar"></div>
+    <div class="popup-pin" id="popupPin"></div>
+    <div class="popup-hr"></div>
+    <span class="popup-type" id="popupType"></span>
+    <div class="popup-body" id="popupBody"></div>
+  </div>
+  <script>
+  const chapters = [
+  [
+    {
+      "c": "致",
+      "p": "zhì",
+      "type": "normal"
+    },
+    {
+      "c": "虚",
+      "p": "xū",
+      "type": "note",
+      "note": "使心灵虚寂，是修道的主动面向，与守静互为表里。"
+    },
+    {
+      "c": "极",
+      "p": "jí",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "守",
+      "p": "shǒu",
+      "type": "normal"
+    },
+    {
+      "c": "静",
+      "p": "jìng",
+      "type": "normal"
+    },
+    {
+      "c": "笃",
+      "p": "dǔ",
+      "type": "note",
+      "note": "笃实坚定，\"守静笃\"强调清静修养的专注与持续，非浅尝辄止。"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "万",
+      "p": "wàn",
+      "type": "normal"
+    },
+    {
+      "c": "物",
+      "p": "wù",
+      "type": "normal"
+    },
+    {
+      "c": "并",
+      "p": "bìng",
+      "type": "note",
+      "note": "并发、同时，\"并作\"即万物同时生长运作。"
+    },
+    {
+      "c": "作",
+      "p": "zuò",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "吾",
+      "p": "wú",
+      "type": "normal"
+    },
+    {
+      "c": "以",
+      "p": "yǐ",
+      "type": "normal"
+    },
+    {
+      "c": "观",
+      "p": "guān",
+      "type": "normal"
+    },
+    {
+      "c": "复",
+      "p": "fù",
+      "type": "note",
+      "note": "循环往复，万物生长消亡归根的周期性规律，与第四十章\"反者道之动\"呼应。"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "夫",
+      "p": "fú",
+      "type": "normal"
+    },
+    {
+      "c": "物",
+      "p": "wù",
+      "type": "normal"
+    },
+    {
+      "c": "芸",
+      "p": "yún",
+      "type": "note",
+      "note": "芸芸，纷繁茂盛之貌。"
+    },
+    {
+      "c": "芸",
+      "p": "yún",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "各",
+      "p": "gè",
+      "type": "normal"
+    },
+    {
+      "c": "复",
+      "p": "fù",
+      "type": "normal"
+    },
+    {
+      "c": "归",
+      "p": "guī",
+      "type": "normal"
+    },
+    {
+      "c": "其",
+      "p": "qí",
+      "type": "normal"
+    },
+    {
+      "c": "根",
+      "p": "gēn",
+      "type": "note",
+      "note": "根本、本源，即道，万物无论如何繁茂，最终回归道，是自然规律的永恒体现。"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "归",
+      "p": "guī",
+      "type": "normal"
+    },
+    {
+      "c": "根",
+      "p": "gēn",
+      "type": "normal"
+    },
+    {
+      "c": "曰",
+      "p": "yuē",
+      "type": "normal"
+    },
+    {
+      "c": "静",
+      "p": "jìng",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "是",
+      "p": "shì",
+      "type": "normal"
+    },
+    {
+      "c": "谓",
+      "p": "wèi",
+      "type": "normal"
+    },
+    {
+      "c": "复",
+      "p": "fù",
+      "type": "normal"
+    },
+    {
+      "c": "命",
+      "p": "mìng",
+      "type": "note",
+      "note": "回归生命的本然状态即复归于道，是道家修炼的根本目标。"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "复",
+      "p": "fù",
+      "type": "normal"
+    },
+    {
+      "c": "命",
+      "p": "mìng",
+      "type": "normal"
+    },
+    {
+      "c": "曰",
+      "p": "yuē",
+      "type": "normal"
+    },
+    {
+      "c": "常",
+      "p": "cháng",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "知",
+      "p": "zhī",
+      "type": "normal"
+    },
+    {
+      "c": "常",
+      "p": "cháng",
+      "type": "normal"
+    },
+    {
+      "c": "曰",
+      "p": "yuē",
+      "type": "normal"
+    },
+    {
+      "c": "明",
+      "p": "míng",
+      "type": "note",
+      "note": "\"知常曰明\"是全章认识论核心：认识万物循环往复之\"常\"，才是真正的智慧。"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "不",
+      "p": "bù",
+      "type": "normal"
+    },
+    {
+      "c": "知",
+      "p": "zhī",
+      "type": "normal"
+    },
+    {
+      "c": "常",
+      "p": "cháng",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "妄",
+      "p": "wàng",
+      "type": "note",
+      "note": "轻率盲目，\"妄作\"即不知常道而盲目行动，必然招致凶险。"
+    },
+    {
+      "c": "作",
+      "p": "zuò",
+      "type": "normal"
+    },
+    {
+      "c": "凶",
+      "p": "xiōng",
+      "type": "normal"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "知",
+      "p": "zhī",
+      "type": "normal"
+    },
+    {
+      "c": "常",
+      "p": "cháng",
+      "type": "normal"
+    },
+    {
+      "c": "容",
+      "p": "róng",
+      "type": "note",
+      "note": "包容，\"容\"是下文六个\"乃\"字连锁的起点：容→公→全→天→道→久。"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "容",
+      "p": "róng",
+      "type": "normal"
+    },
+    {
+      "c": "乃",
+      "p": "nǎi",
+      "type": "normal"
+    },
+    {
+      "c": "公",
+      "p": "gōng",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "公",
+      "p": "gōng",
+      "type": "normal"
+    },
+    {
+      "c": "乃",
+      "p": "nǎi",
+      "type": "normal"
+    },
+    {
+      "c": "全",
+      "p": "quán",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "全",
+      "p": "quán",
+      "type": "normal"
+    },
+    {
+      "c": "乃",
+      "p": "nǎi",
+      "type": "normal"
+    },
+    {
+      "c": "天",
+      "p": "tiān",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "天",
+      "p": "tiān",
+      "type": "normal"
+    },
+    {
+      "c": "乃",
+      "p": "nǎi",
+      "type": "normal"
+    },
+    {
+      "c": "道",
+      "p": "dào",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "道",
+      "p": "dào",
+      "type": "normal"
+    },
+    {
+      "c": "乃",
+      "p": "nǎi",
+      "type": "normal"
+    },
+    {
+      "c": "久",
+      "p": "jiǔ",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "没",
+      "p": "mò",
+      "type": "zhu",
+      "read": "莫",
+      "note": "通\"殁\"，mò，死、终身，\"没身不殆\"即终身都不会有危险。"
+    },
+    {
+      "c": "身",
+      "p": "shēn",
+      "type": "normal"
+    },
+    {
+      "c": "不",
+      "p": "bù",
+      "type": "normal"
+    },
+    {
+      "c": "殆",
+      "p": "dài",
+      "type": "note",
+      "note": "危险，\"不殆\"即不会有危险。"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    }
+  ],
+  [
+    {
+      "c": "太",
+      "p": "tài",
+      "type": "note",
+      "note": "太上，最高，指最理想的统治者，建立下文四等比较的最高标准。"
+    },
+    {
+      "c": "上",
+      "p": "shàng",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "下",
+      "p": "xià",
+      "type": "normal"
+    },
+    {
+      "c": "知",
+      "p": "zhī",
+      "type": "normal"
+    },
+    {
+      "c": "有",
+      "p": "yǒu",
+      "type": "normal"
+    },
+    {
+      "c": "之",
+      "p": "zhī",
+      "type": "normal"
+    },
+    {
+      "c": "；",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "其",
+      "p": "qí",
+      "type": "normal"
+    },
+    {
+      "c": "次",
+      "p": "cì",
+      "type": "note",
+      "note": "次一等，下文三个\"其次\"构成递降结构，从无为之治逐级降至暴政。"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "亲",
+      "p": "qīn",
+      "type": "normal"
+    },
+    {
+      "c": "而",
+      "p": "ér",
+      "type": "normal"
+    },
+    {
+      "c": "誉",
+      "p": "yù",
+      "type": "normal"
+    },
+    {
+      "c": "之",
+      "p": "zhī",
+      "type": "normal"
+    },
+    {
+      "c": "；",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "其",
+      "p": "qí",
+      "type": "normal"
+    },
+    {
+      "c": "次",
+      "p": "cì",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "畏",
+      "p": "wèi",
+      "type": "normal"
+    },
+    {
+      "c": "之",
+      "p": "zhī",
+      "type": "normal"
+    },
+    {
+      "c": "；",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "其",
+      "p": "qí",
+      "type": "normal"
+    },
+    {
+      "c": "次",
+      "p": "cì",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "侮",
+      "p": "wǔ",
+      "type": "normal"
+    },
+    {
+      "c": "之",
+      "p": "zhī",
+      "type": "normal"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "信",
+      "p": "xìn",
+      "type": "normal"
+    },
+    {
+      "c": "不",
+      "p": "bù",
+      "type": "normal"
+    },
+    {
+      "c": "足",
+      "p": "zú",
+      "type": "normal"
+    },
+    {
+      "c": "焉",
+      "p": "yān",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "有",
+      "p": "yǒu",
+      "type": "normal"
+    },
+    {
+      "c": "不",
+      "p": "bù",
+      "type": "normal"
+    },
+    {
+      "c": "信",
+      "p": "xìn",
+      "type": "note",
+      "note": "统治者诚信不足在先，百姓的不信任随之而来，这是因果逻辑。"
+    },
+    {
+      "c": "焉",
+      "p": "yān",
+      "type": "normal"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "悠",
+      "p": "yōu",
+      "type": "note",
+      "note": "悠然自处，\"悠兮其贵言\"描绘太上之君不轻易发号施令的风度。"
+    },
+    {
+      "c": "兮",
+      "p": "xī",
+      "type": "normal"
+    },
+    {
+      "c": "其",
+      "p": "qí",
+      "type": "normal"
+    },
+    {
+      "c": "贵",
+      "p": "guì",
+      "type": "normal"
+    },
+    {
+      "c": "言",
+      "p": "yán",
+      "type": "normal"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "功",
+      "p": "gōng",
+      "type": "normal"
+    },
+    {
+      "c": "成",
+      "p": "chéng",
+      "type": "normal"
+    },
+    {
+      "c": "事",
+      "p": "shì",
+      "type": "normal"
+    },
+    {
+      "c": "遂",
+      "p": "suì",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "百",
+      "p": "bǎi",
+      "type": "normal"
+    },
+    {
+      "c": "姓",
+      "p": "xìng",
+      "type": "normal"
+    },
+    {
+      "c": "皆",
+      "p": "jiē",
+      "type": "normal"
+    },
+    {
+      "c": "谓",
+      "p": "wèi",
+      "type": "normal"
+    },
+    {
+      "c": "：",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "我",
+      "p": "wǒ",
+      "type": "normal"
+    },
+    {
+      "c": "自",
+      "p": "zì",
+      "type": "normal"
+    },
+    {
+      "c": "然",
+      "p": "rán",
+      "type": "note",
+      "note": "\"我自然\"即我们本来就是这样，百姓感知不到统治的存在，是无为而治成功的标志。"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    }
+  ],
+  [
+    {
+      "c": "大",
+      "p": "dà",
+      "type": "normal"
+    },
+    {
+      "c": "道",
+      "p": "dào",
+      "type": "normal"
+    },
+    {
+      "c": "废",
+      "p": "fèi",
+      "type": "note",
+      "note": "废弃，大道一旦废弃，才需要人为倡导仁义，这本身就说明了问题所在。"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "有",
+      "p": "yǒu",
+      "type": "normal"
+    },
+    {
+      "c": "仁",
+      "p": "rén",
+      "type": "normal"
+    },
+    {
+      "c": "义",
+      "p": "yì",
+      "type": "note",
+      "note": "儒家核心德目，需要特别提倡仁义，恰恰说明大道已然匮乏。"
+    },
+    {
+      "c": "；",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "慧",
+      "p": "huì",
+      "type": "note",
+      "note": "聪明智巧，老子认为人为的机巧心智是大伪产生的根源。"
+    },
+    {
+      "c": "智",
+      "p": "zhì",
+      "type": "normal"
+    },
+    {
+      "c": "出",
+      "p": "chū",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "有",
+      "p": "yǒu",
+      "type": "normal"
+    },
+    {
+      "c": "大",
+      "p": "dà",
+      "type": "normal"
+    },
+    {
+      "c": "伪",
+      "p": "wěi",
+      "type": "note",
+      "note": "严重的虚伪，智巧机心越盛，掩饰本性的虚伪越深。"
+    },
+    {
+      "c": "；",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "六",
+      "p": "liù",
+      "type": "note",
+      "note": "六亲，古指父子、兄弟、夫妻，六亲不和方才需要彰显孝慈，同理于大道废则倡仁义。"
+    },
+    {
+      "c": "亲",
+      "p": "qīn",
+      "type": "normal"
+    },
+    {
+      "c": "不",
+      "p": "bù",
+      "type": "normal"
+    },
+    {
+      "c": "和",
+      "p": "hé",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "有",
+      "p": "yǒu",
+      "type": "normal"
+    },
+    {
+      "c": "孝",
+      "p": "xiào",
+      "type": "normal"
+    },
+    {
+      "c": "慈",
+      "p": "cí",
+      "type": "normal"
+    },
+    {
+      "c": "；",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "国",
+      "p": "guó",
+      "type": "normal"
+    },
+    {
+      "c": "家",
+      "p": "jiā",
+      "type": "normal"
+    },
+    {
+      "c": "昏",
+      "p": "hūn",
+      "type": "normal"
+    },
+    {
+      "c": "乱",
+      "p": "luàn",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "有",
+      "p": "yǒu",
+      "type": "normal"
+    },
+    {
+      "c": "忠",
+      "p": "zhōng",
+      "type": "normal"
+    },
+    {
+      "c": "臣",
+      "p": "chén",
+      "type": "note",
+      "note": "忠臣被特别称颂，正因朝政已昏乱——太平之世无需\"忠臣\"这一标签，是本章最深刻的讽喻。"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    }
+  ],
+  [
+    {
+      "c": "绝",
+      "p": "jué",
+      "type": "note",
+      "note": "断绝、彻底抛弃，三组\"绝×弃×\"是对儒家知识、道德、经济三大体系的系统性否定。"
+    },
+    {
+      "c": "圣",
+      "p": "shèng",
+      "type": "normal"
+    },
+    {
+      "c": "弃",
+      "p": "qì",
+      "type": "normal"
+    },
+    {
+      "c": "智",
+      "p": "zhì",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "民",
+      "p": "mín",
+      "type": "normal"
+    },
+    {
+      "c": "利",
+      "p": "lì",
+      "type": "normal"
+    },
+    {
+      "c": "百",
+      "p": "bǎi",
+      "type": "normal"
+    },
+    {
+      "c": "倍",
+      "p": "bèi",
+      "type": "normal"
+    },
+    {
+      "c": "；",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "绝",
+      "p": "jué",
+      "type": "normal"
+    },
+    {
+      "c": "仁",
+      "p": "rén",
+      "type": "normal"
+    },
+    {
+      "c": "弃",
+      "p": "qì",
+      "type": "normal"
+    },
+    {
+      "c": "义",
+      "p": "yì",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "民",
+      "p": "mín",
+      "type": "normal"
+    },
+    {
+      "c": "复",
+      "p": "fù",
+      "type": "normal"
+    },
+    {
+      "c": "孝",
+      "p": "xiào",
+      "type": "normal"
+    },
+    {
+      "c": "慈",
+      "p": "cí",
+      "type": "normal"
+    },
+    {
+      "c": "；",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "绝",
+      "p": "jué",
+      "type": "normal"
+    },
+    {
+      "c": "巧",
+      "p": "qiǎo",
+      "type": "normal"
+    },
+    {
+      "c": "弃",
+      "p": "qì",
+      "type": "normal"
+    },
+    {
+      "c": "利",
+      "p": "lì",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "盗",
+      "p": "dào",
+      "type": "normal"
+    },
+    {
+      "c": "贼",
+      "p": "zéi",
+      "type": "normal"
+    },
+    {
+      "c": "无",
+      "p": "wú",
+      "type": "normal"
+    },
+    {
+      "c": "有",
+      "p": "yǒu",
+      "type": "normal"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "此",
+      "p": "cǐ",
+      "type": "normal"
+    },
+    {
+      "c": "三",
+      "p": "sān",
+      "type": "normal"
+    },
+    {
+      "c": "者",
+      "p": "zhě",
+      "type": "normal"
+    },
+    {
+      "c": "以",
+      "p": "yǐ",
+      "type": "normal"
+    },
+    {
+      "c": "为",
+      "p": "wéi",
+      "type": "normal"
+    },
+    {
+      "c": "文",
+      "p": "wén",
+      "type": "note",
+      "note": "文饰、表面功夫，三者若只停留于言辞层面的提倡，仍嫌不足，需落实于\"见素抱朴\"。"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "不",
+      "p": "bù",
+      "type": "normal"
+    },
+    {
+      "c": "足",
+      "p": "zú",
+      "type": "normal"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "故",
+      "p": "gù",
+      "type": "normal"
+    },
+    {
+      "c": "令",
+      "p": "lìng",
+      "type": "normal"
+    },
+    {
+      "c": "有",
+      "p": "yǒu",
+      "type": "normal"
+    },
+    {
+      "c": "所",
+      "p": "suǒ",
+      "type": "normal"
+    },
+    {
+      "c": "属",
+      "p": "shǔ",
+      "type": "note",
+      "note": "归属、依托，令人心有所归依，引出下文的正面实践。"
+    },
+    {
+      "c": "：",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "见",
+      "p": "xiàn",
+      "type": "zhu",
+      "read": "现",
+      "note": "通\"现\"，xiàn，显现，\"见素\"即显现本真的素朴之态。"
+    },
+    {
+      "c": "素",
+      "p": "sù",
+      "type": "note",
+      "note": "未染色的原丝，象征纯粹未饰的本真状态，\"见素抱朴\"是全章的正面归宿。"
+    },
+    {
+      "c": "抱",
+      "p": "bào",
+      "type": "normal"
+    },
+    {
+      "c": "朴",
+      "p": "pǔ",
+      "type": "note",
+      "note": "未加工的原木，道家以\"朴\"为最高价值，象征质朴未凿的本原状态。"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "少",
+      "p": "shǎo",
+      "type": "normal"
+    },
+    {
+      "c": "私",
+      "p": "sī",
+      "type": "normal"
+    },
+    {
+      "c": "寡",
+      "p": "guǎ",
+      "type": "note",
+      "note": "减少，\"少私寡欲\"是\"见素抱朴\"在内心层面的具体实践。"
+    },
+    {
+      "c": "欲",
+      "p": "yù",
+      "type": "normal"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    }
+  ],
+  [
+    {
+      "c": "绝",
+      "p": "jué",
+      "type": "normal"
+    },
+    {
+      "c": "学",
+      "p": "xué",
+      "type": "note",
+      "note": "指人为的礼仪文饰之学，非一切学问，抛弃机巧之学则无焦虑之忧。"
+    },
+    {
+      "c": "无",
+      "p": "wú",
+      "type": "normal"
+    },
+    {
+      "c": "忧",
+      "p": "yōu",
+      "type": "normal"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "唯",
+      "p": "wéi",
+      "type": "note",
+      "note": "恭敬应诺声，与\"阿\"（粗声呵斥）相对，两者都是回应，相差不大。"
+    },
+    {
+      "c": "之",
+      "p": "zhī",
+      "type": "normal"
+    },
+    {
+      "c": "与",
+      "p": "yǔ",
+      "type": "normal"
+    },
+    {
+      "c": "阿",
+      "p": "ē",
+      "type": "zhu",
+      "read": "婀",
+      "note": "音ē，粗声应答呵斥声。"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "相",
+      "p": "xiāng",
+      "type": "normal"
+    },
+    {
+      "c": "去",
+      "p": "qù",
+      "type": "normal"
+    },
+    {
+      "c": "几",
+      "p": "jǐ",
+      "type": "normal"
+    },
+    {
+      "c": "何",
+      "p": "hé",
+      "type": "normal"
+    },
+    {
+      "c": "？",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "善",
+      "p": "shàn",
+      "type": "normal"
+    },
+    {
+      "c": "之",
+      "p": "zhī",
+      "type": "normal"
+    },
+    {
+      "c": "与",
+      "p": "yǔ",
+      "type": "normal"
+    },
+    {
+      "c": "恶",
+      "p": "è",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "相",
+      "p": "xiāng",
+      "type": "normal"
+    },
+    {
+      "c": "去",
+      "p": "qù",
+      "type": "normal"
+    },
+    {
+      "c": "若",
+      "p": "ruò",
+      "type": "normal"
+    },
+    {
+      "c": "何",
+      "p": "hé",
+      "type": "normal"
+    },
+    {
+      "c": "？",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "人",
+      "p": "rén",
+      "type": "normal"
+    },
+    {
+      "c": "之",
+      "p": "zhī",
+      "type": "normal"
+    },
+    {
+      "c": "所",
+      "p": "suǒ",
+      "type": "normal"
+    },
+    {
+      "c": "畏",
+      "p": "wèi",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "不",
+      "p": "bù",
+      "type": "normal"
+    },
+    {
+      "c": "可",
+      "p": "kě",
+      "type": "normal"
+    },
+    {
+      "c": "不",
+      "p": "bù",
+      "type": "normal"
+    },
+    {
+      "c": "畏",
+      "p": "wèi",
+      "type": "note",
+      "note": "体道者也不能完全无视众人之所畏，是老子少见的对世俗的妥协性承认。"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "荒",
+      "p": "huāng",
+      "type": "note",
+      "note": "辽阔广漠，\"荒兮其未央\"感叹世道的无限辽阔，奠定下文\"我独\"系列的孤独感。"
+    },
+    {
+      "c": "兮",
+      "p": "xī",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "其",
+      "p": "qí",
+      "type": "normal"
+    },
+    {
+      "c": "未",
+      "p": "wèi",
+      "type": "normal"
+    },
+    {
+      "c": "央",
+      "p": "yāng",
+      "type": "note",
+      "note": "尽头，\"未央\"即没有尽头，汉代未央宫取义于此。"
+    },
+    {
+      "c": "哉",
+      "p": "zāi",
+      "type": "normal"
+    },
+    {
+      "c": "！",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "众",
+      "p": "zhòng",
+      "type": "normal"
+    },
+    {
+      "c": "人",
+      "p": "rén",
+      "type": "normal"
+    },
+    {
+      "c": "熙",
+      "p": "xī",
+      "type": "note",
+      "note": "熙熙，喜悦热闹之貌，与\"我独泊兮\"的淡泊形成鲜明对比，是全章\"众人vs我\"对照的起点。"
+    },
+    {
+      "c": "熙",
+      "p": "xī",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "如",
+      "p": "rú",
+      "type": "normal"
+    },
+    {
+      "c": "享",
+      "p": "xiǎng",
+      "type": "normal"
+    },
+    {
+      "c": "太",
+      "p": "tài",
+      "type": "normal"
+    },
+    {
+      "c": "牢",
+      "p": "láo",
+      "type": "note",
+      "note": "古代最高规格祭祀，牛羊猪三牲齐备，\"享太牢\"喻盛大宴飨，形容众人的欢悦满足。"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "如",
+      "p": "rú",
+      "type": "normal"
+    },
+    {
+      "c": "春",
+      "p": "chūn",
+      "type": "normal"
+    },
+    {
+      "c": "登",
+      "p": "dēng",
+      "type": "normal"
+    },
+    {
+      "c": "台",
+      "p": "tái",
+      "type": "normal"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "我",
+      "p": "wǒ",
+      "type": "normal"
+    },
+    {
+      "c": "独",
+      "p": "dú",
+      "type": "note",
+      "note": "\"我独\"是全章核心词组，体道者与世俗众人在外表上格格不入，是道家修道者的必然处境。"
+    },
+    {
+      "c": "泊",
+      "p": "bó",
+      "type": "normal"
+    },
+    {
+      "c": "兮",
+      "p": "xī",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "其",
+      "p": "qí",
+      "type": "normal"
+    },
+    {
+      "c": "未",
+      "p": "wèi",
+      "type": "normal"
+    },
+    {
+      "c": "兆",
+      "p": "zhào",
+      "type": "note",
+      "note": "未有任何迹象征兆，形容体道者浑然无痕、不显山露水的状态。"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "如",
+      "p": "rú",
+      "type": "normal"
+    },
+    {
+      "c": "婴",
+      "p": "yīng",
+      "type": "normal"
+    },
+    {
+      "c": "儿",
+      "p": "ér",
+      "type": "normal"
+    },
+    {
+      "c": "之",
+      "p": "zhī",
+      "type": "normal"
+    },
+    {
+      "c": "未",
+      "p": "wèi",
+      "type": "normal"
+    },
+    {
+      "c": "孩",
+      "p": "hái",
+      "type": "zhu",
+      "read": "孩",
+      "note": "通\"咳\"，婴儿笑，\"未孩\"即尚不会笑的婴儿状态，象征道的原初本真。"
+    },
+    {
+      "c": "；",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "儡",
+      "p": "lěi",
+      "type": "zhu",
+      "read": "磊",
+      "note": "通\"羸\"，lěi，疲惫颓丧之貌，形容体道者外表上的散漫，与众人的精明振奋相对。"
+    },
+    {
+      "c": "儡",
+      "p": "lěi",
+      "type": "normal"
+    },
+    {
+      "c": "兮",
+      "p": "xī",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "若",
+      "p": "ruò",
+      "type": "normal"
+    },
+    {
+      "c": "无",
+      "p": "wú",
+      "type": "normal"
+    },
+    {
+      "c": "所",
+      "p": "suǒ",
+      "type": "normal"
+    },
+    {
+      "c": "归",
+      "p": "guī",
+      "type": "normal"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "众",
+      "p": "zhòng",
+      "type": "normal"
+    },
+    {
+      "c": "人",
+      "p": "rén",
+      "type": "normal"
+    },
+    {
+      "c": "皆",
+      "p": "jiē",
+      "type": "normal"
+    },
+    {
+      "c": "有",
+      "p": "yǒu",
+      "type": "normal"
+    },
+    {
+      "c": "余",
+      "p": "yú",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "而",
+      "p": "ér",
+      "type": "normal"
+    },
+    {
+      "c": "我",
+      "p": "wǒ",
+      "type": "normal"
+    },
+    {
+      "c": "独",
+      "p": "dú",
+      "type": "normal"
+    },
+    {
+      "c": "若",
+      "p": "ruò",
+      "type": "normal"
+    },
+    {
+      "c": "遗",
+      "p": "yí",
+      "type": "note",
+      "note": "有所缺失，读yí，\"若遗\"即好像有所欠缺，与众人\"皆有余\"形成对比。"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "我",
+      "p": "wǒ",
+      "type": "normal"
+    },
+    {
+      "c": "愚",
+      "p": "yú",
+      "type": "note",
+      "note": "愚拙，体道者在世俗眼中显得愚笨，是老子对\"大智若愚\"境界的自述。"
+    },
+    {
+      "c": "人",
+      "p": "rén",
+      "type": "normal"
+    },
+    {
+      "c": "之",
+      "p": "zhī",
+      "type": "normal"
+    },
+    {
+      "c": "心",
+      "p": "xīn",
+      "type": "normal"
+    },
+    {
+      "c": "也",
+      "p": "yě",
+      "type": "normal"
+    },
+    {
+      "c": "哉",
+      "p": "zāi",
+      "type": "normal"
+    },
+    {
+      "c": "！",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "俗",
+      "p": "sú",
+      "type": "normal"
+    },
+    {
+      "c": "人",
+      "p": "rén",
+      "type": "normal"
+    },
+    {
+      "c": "昭",
+      "p": "zhāo",
+      "type": "note",
+      "note": "昭昭，明亮精明之貌，与体道者的昏昧浑厚形成鲜明价值对比。"
+    },
+    {
+      "c": "昭",
+      "p": "zhāo",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "我",
+      "p": "wǒ",
+      "type": "normal"
+    },
+    {
+      "c": "独",
+      "p": "dú",
+      "type": "normal"
+    },
+    {
+      "c": "昏",
+      "p": "hūn",
+      "type": "normal"
+    },
+    {
+      "c": "昏",
+      "p": "hūn",
+      "type": "normal"
+    },
+    {
+      "c": "；",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "俗",
+      "p": "sú",
+      "type": "normal"
+    },
+    {
+      "c": "人",
+      "p": "rén",
+      "type": "normal"
+    },
+    {
+      "c": "察",
+      "p": "chá",
+      "type": "note",
+      "note": "察察，精察苛刻之貌，与体道者的\"闷闷\"（浑厚迟钝）相对。"
+    },
+    {
+      "c": "察",
+      "p": "chá",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "我",
+      "p": "wǒ",
+      "type": "normal"
+    },
+    {
+      "c": "独",
+      "p": "dú",
+      "type": "normal"
+    },
+    {
+      "c": "闷",
+      "p": "mèn",
+      "type": "normal"
+    },
+    {
+      "c": "闷",
+      "p": "mèn",
+      "type": "normal"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "澹",
+      "p": "dàn",
+      "type": "zhu",
+      "read": "淡",
+      "note": "音dàn，平静宽广之貌。\"澹兮其若海\"喻体道者心胸辽阔深沉。"
+    },
+    {
+      "c": "兮",
+      "p": "xī",
+      "type": "normal"
+    },
+    {
+      "c": "其",
+      "p": "qí",
+      "type": "normal"
+    },
+    {
+      "c": "若",
+      "p": "ruò",
+      "type": "normal"
+    },
+    {
+      "c": "海",
+      "p": "hǎi",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "飂",
+      "p": "liù",
+      "type": "zhu",
+      "read": "溜",
+      "note": "通\"飘\"，liù，飘荡不定之貌。"
+    },
+    {
+      "c": "兮",
+      "p": "xī",
+      "type": "normal"
+    },
+    {
+      "c": "若",
+      "p": "ruò",
+      "type": "normal"
+    },
+    {
+      "c": "无",
+      "p": "wú",
+      "type": "normal"
+    },
+    {
+      "c": "所",
+      "p": "suǒ",
+      "type": "normal"
+    },
+    {
+      "c": "止",
+      "p": "zhǐ",
+      "type": "normal"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "众",
+      "p": "zhòng",
+      "type": "normal"
+    },
+    {
+      "c": "人",
+      "p": "rén",
+      "type": "normal"
+    },
+    {
+      "c": "皆",
+      "p": "jiē",
+      "type": "normal"
+    },
+    {
+      "c": "有",
+      "p": "yǒu",
+      "type": "normal"
+    },
+    {
+      "c": "以",
+      "p": "yǐ",
+      "type": "note",
+      "note": "\"有以\"即有所用、有目的、有作为，文言固定结构，与体道者的\"无为\"形成对比。"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "而",
+      "p": "ér",
+      "type": "normal"
+    },
+    {
+      "c": "我",
+      "p": "wǒ",
+      "type": "normal"
+    },
+    {
+      "c": "独",
+      "p": "dú",
+      "type": "normal"
+    },
+    {
+      "c": "顽",
+      "p": "wán",
+      "type": "normal"
+    },
+    {
+      "c": "且",
+      "p": "qiě",
+      "type": "normal"
+    },
+    {
+      "c": "鄙",
+      "p": "bǐ",
+      "type": "normal"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "我",
+      "p": "wǒ",
+      "type": "normal"
+    },
+    {
+      "c": "独",
+      "p": "dú",
+      "type": "normal"
+    },
+    {
+      "c": "异",
+      "p": "yì",
+      "type": "normal"
+    },
+    {
+      "c": "于",
+      "p": "yú",
+      "type": "normal"
+    },
+    {
+      "c": "人",
+      "p": "rén",
+      "type": "normal"
+    },
+    {
+      "c": "，",
+      "p": "",
+      "type": "punct"
+    },
+    {
+      "c": "而",
+      "p": "ér",
+      "type": "normal"
+    },
+    {
+      "c": "贵",
+      "p": "guì",
+      "type": "normal"
+    },
+    {
+      "c": "食",
+      "p": "shí",
+      "type": "note",
+      "note": "以……为食，动词，\"食母\"即以道为食、以道为根本养分。"
+    },
+    {
+      "c": "母",
+      "p": "mǔ",
+      "type": "note",
+      "note": "\"母\"指道，\"贵食母\"是全章\"我独异于人\"的真正原因与归宿，体道者孤独处境的最终注脚。"
+    },
+    {
+      "c": "。",
+      "p": "",
+      "type": "punct"
+    }
+  ]
+];
+
+  const chapterBoxes=[];
+  function render(id,data){const row=document.getElementById(id);const boxes=[];if(!row||!data.length){chapterBoxes.push(boxes);return;}data.forEach(item=>{const unit=document.createElement('div');unit.className='char-unit'+(item.type!=='normal'?' '+item.type:'');const pin=document.createElement('div');pin.className='char-pin';pin.textContent=item.p||'';const box=document.createElement('div');box.className='char-box';box.textContent=item.c;if(item.note&&(item.type==='zhu'||item.type==='note')){box.addEventListener('click',e=>{e.stopPropagation();showPopup(item,box);});}unit.appendChild(pin);unit.appendChild(box);row.appendChild(unit);boxes.push({box,unit,item});});chapterBoxes.push(boxes);}
+  chapters.forEach((data,i)=>render('c'+(i+1),data));
+  const chapterNames=['第十六章','第十七章','第十八章','第十九章','第二十章'];
+  let currentChIdx=-1,currentReadBtn=null,currentBlock=null,lastHL=null,isPaused=false,readSpeed=0.9;
+  function buildSpeech(chIdx){const boxes=chapterBoxes[chIdx];if(!boxes||!boxes.length)return null;let text='';const map=[];boxes.forEach(({box,unit,item})=>{text+=item.read||item.c;map.push(item.type==='punct'?null:{box,unit});});return{text,map};}
+  function startRead(chIdx,btn){if(currentChIdx===chIdx&&speechSynthesis.speaking){togglePause();return;}stopRead();const speech=buildSpeech(chIdx);if(!speech||!speech.text.trim()){alert('本章暂无内容。');return;}currentChIdx=chIdx;currentReadBtn=btn;currentBlock=document.querySelector('.sentence-block[data-ch="'+chIdx+'"]');isPaused=false;btn.textContent='⏸ 朗读中';btn.classList.add('active');if(currentBlock)currentBlock.classList.add('reading');document.getElementById('rbChTitle').textContent=chapterNames[chIdx];document.getElementById('rbProgress').textContent='0 / '+speech.text.length;document.getElementById('rbPause').textContent='⏸ 暂停';document.getElementById('readBar').classList.add('visible');const utter=new SpeechSynthesisUtterance(speech.text);utter.lang='zh-CN';utter.rate=readSpeed;utter.pitch=1.0;const voices=speechSynthesis.getVoices();const zhV=voices.find(v=>v.lang==='zh-CN')||voices.find(v=>v.lang.startsWith('zh'));if(zhV)utter.voice=zhV;utter.addEventListener('boundary',e=>{highlightChar(e.charIndex,speech.map);document.getElementById('rbProgress').textContent=(e.charIndex+1)+' / '+speech.text.length;});utter.addEventListener('end',()=>{clearHL();resetBtn();hideBar();currentChIdx=-1;});utter.addEventListener('error',()=>{clearHL();resetBtn();hideBar();});speechSynthesis.speak(utter);}
+  function highlightChar(idx,map){clearHL();const t=map[idx];if(!t)return;t.box.classList.add('speaking');t.unit.classList.add('speaking-unit');lastHL=t;t.box.scrollIntoView({block:'nearest',behavior:'smooth'});}
+  function clearHL(){if(lastHL){lastHL.box.classList.remove('speaking');lastHL.unit.classList.remove('speaking-unit');lastHL=null;}}
+  function resetBtn(){if(currentReadBtn){currentReadBtn.textContent='▶ 朗读';currentReadBtn.classList.remove('active');currentReadBtn=null;}if(currentBlock){currentBlock.classList.remove('reading');currentBlock=null;}}
+  function hideBar(){document.getElementById('readBar').classList.remove('visible');isPaused=false;}
+  function togglePause(){const pb=document.getElementById('rbPause');if(isPaused){speechSynthesis.resume();isPaused=false;pb.textContent='⏸ 暂停';if(currentReadBtn)currentReadBtn.textContent='⏸ 朗读中';}else{speechSynthesis.pause();isPaused=true;pb.textContent='▶ 继续';if(currentReadBtn)currentReadBtn.textContent='▶ 已暂停';}}
+  function stopRead(){speechSynthesis.cancel();clearHL();resetBtn();hideBar();currentChIdx=-1;}
+  function onSpeedChange(val){readSpeed=parseFloat(val);document.getElementById('speedLabel').textContent=readSpeed.toFixed(1)+'x';if(currentChIdx>=0&&speechSynthesis.speaking){const ci=currentChIdx,rb=currentReadBtn;stopRead();setTimeout(()=>startRead(ci,rb),80);}}
+  if(speechSynthesis.onvoiceschanged!==undefined)speechSynthesis.onvoiceschanged=()=>{};
+  window.addEventListener('beforeunload',()=>speechSynthesis.cancel());
+  const overlay=document.getElementById('overlay'),popup=document.getElementById('popupCard');
+  const popupChar=document.getElementById('popupChar'),popupPin=document.getElementById('popupPin'),popupType=document.getElementById('popupType'),popupBody=document.getElementById('popupBody'),popupClose=document.getElementById('popupClose');
+  function showPopup(item,el){popupChar.textContent=item.c;popupChar.className='popup-char is-'+item.type;popupPin.textContent=item.p?'/ '+item.p+' /':'';popupType.className='popup-type type-'+item.type;popupType.textContent=item.type==='zhu'?'异读 / 通假字':'重点词·批注';popupBody.textContent=item.note;popup.style.display='block';const r=el.getBoundingClientRect();let top=r.bottom+8,left=r.left;const pw=popup.offsetWidth,ph=popup.offsetHeight;if(left+pw>window.innerWidth-12)left=window.innerWidth-pw-12;if(top+ph>window.innerHeight-12)top=r.top-ph-8;popup.style.top=top+'px';popup.style.left=left+'px';overlay.classList.add('show');}
+  function closePopup(){popup.style.display='none';overlay.classList.remove('show');}
+  overlay.addEventListener('click',closePopup);popupClose.addEventListener('click',closePopup);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();});
+  function toggleNote(btn){const note=btn.parentElement.nextElementSibling;const open=note.classList.toggle('open');btn.textContent=open?'收起讲义 ∧':'展开讲义 ∨';}
+  </script>
+</body>
+</html>
