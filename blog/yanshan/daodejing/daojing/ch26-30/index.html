@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第二十六章—第三十章 · 道经 · 砚山 | SageLume</title>
+  <link rel="stylesheet" href="https://huang-husky.github.io/SageLume/style.css" />
+  <script src="https://huang-husky.github.io/SageLume/js/theme-toggle.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root{--ys-bg:#f5f0e8;--ys-paper:#faf7f0;--ys-ink:#2c2417;--ys-ink-lt:#6a5d4a;--ys-ink-fd:#a8997e;--ys-sage:#5a7a5e;--ys-sage-dk:#3d5940;--ys-sage-bg:rgba(90,122,94,.08);--ys-amber:#c8902a;--ys-amber-bg:rgba(200,144,42,.10);--ys-zhu:#c0392b;--ys-zhu-bg:rgba(192,57,43,.07);--ys-border:#d4c9b0;--ys-shadow:rgba(44,36,23,.12);--ys-popup-bg:#fffdf6;--char-size:2.5rem;--pin-size:.63rem;--gap:11px;}
+    [data-theme="dark"]{--ys-bg:#1a1812;--ys-paper:#221f16;--ys-ink:#e8e0cc;--ys-ink-lt:#a09078;--ys-ink-fd:#5c5040;--ys-sage:#7aaa7e;--ys-sage-dk:#9fcfa3;--ys-sage-bg:rgba(122,170,126,.08);--ys-amber:#d4a84b;--ys-amber-bg:rgba(212,168,75,.10);--ys-zhu:#e05a4a;--ys-zhu-bg:rgba(224,90,74,.07);--ys-border:#3a3428;--ys-shadow:rgba(0,0,0,.4);--ys-popup-bg:#2a2519;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    .ys-body{background:var(--ys-bg);font-family:'Noto Serif SC',serif;}
+    .ys-body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:repeating-linear-gradient(0deg,transparent,transparent 36px,rgba(180,160,120,.05) 36px,rgba(180,160,120,.05) 37px);}
+    .breadcrumb{position:relative;z-index:1;max-width:840px;margin:0 auto;padding:14px 24px 0;font-family:'Noto Sans SC',sans-serif;font-size:.72rem;color:var(--ys-ink-lt);letter-spacing:.05em;}
+    .breadcrumb a{color:var(--ys-sage);text-decoration:none;}.breadcrumb a:hover{text-decoration:underline;}.breadcrumb span{margin:0 5px;opacity:.4;}
+    .ys-banner{position:relative;z-index:1;text-align:center;padding:28px 24px 22px;border-bottom:1px solid var(--ys-border);background:linear-gradient(to bottom,var(--ys-paper),transparent);}
+    .ys-tag-line{font-family:'Noto Sans SC',sans-serif;font-size:.7rem;letter-spacing:.2em;color:var(--ys-amber);margin-bottom:5px;}
+    .ys-title{font-size:1.7rem;font-weight:700;letter-spacing:.2em;color:var(--ys-sage-dk);}
+    .ys-divider{width:44px;height:1px;margin:10px auto;background:linear-gradient(to right,transparent,var(--ys-amber),transparent);}
+    .ys-desc{font-size:.8rem;color:var(--ys-ink-fd);letter-spacing:.08em;}
+    .legend{max-width:840px;margin:16px auto 0;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-family:'Noto Sans SC',sans-serif;font-size:.7rem;color:var(--ys-ink-lt);}
+    .legend-item{display:flex;align-items:center;gap:4px;}.ldot{width:13px;height:13px;border-radius:2px;display:inline-block;}
+    .ldot-zhu{background:var(--ys-zhu-bg);border:1px solid var(--ys-zhu);}.ldot-note{background:var(--ys-sage-bg);border:1px solid var(--ys-sage);}.ldot-speak{background:var(--ys-amber-bg);border:1px solid var(--ys-amber);}
+    .ys-main{position:relative;z-index:1;max-width:840px;margin:0 auto;padding:36px 24px 120px;}
+    .chapter-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;font-family:'Noto Sans SC',sans-serif;font-size:.75rem;}
+    .nav-btn{display:inline-flex;align-items:center;color:var(--ys-sage);text-decoration:none;padding:5px 10px;border:1px solid var(--ys-border);border-radius:3px;transition:border-color .2s,background .2s;}
+    .nav-btn:hover{border-color:var(--ys-sage);background:var(--ys-sage-bg);}.nav-btn.prev::before{content:'‹ ';}.nav-btn.next::after{content:' ›';}
+    .nav-center{color:var(--ys-ink-lt);letter-spacing:.05em;}
+    .sentence-block{background:var(--ys-paper);border:1px solid var(--ys-border);border-radius:4px;padding:30px 26px 22px;margin-bottom:20px;box-shadow:0 2px 8px var(--ys-shadow);position:relative;transition:border-color .3s,box-shadow .3s;}
+    .sentence-block.reading{border-color:var(--ys-amber);box-shadow:0 2px 8px var(--ys-shadow),0 0 0 2px rgba(200,144,42,.15);}
+    .sentence-block::before{content:attr(data-index);position:absolute;top:10px;left:14px;font-size:.62rem;color:var(--ys-ink-fd);font-family:'Noto Sans SC',sans-serif;}
+    .read-btn{position:absolute;top:8px;right:12px;background:none;border:1px solid var(--ys-border);border-radius:3px;padding:3px 9px;font-family:'Noto Sans SC',sans-serif;font-size:.65rem;color:var(--ys-ink-fd);cursor:pointer;transition:border-color .2s,color .2s,background .2s;}
+    .read-btn:hover,.read-btn.active{border-color:var(--ys-amber);color:var(--ys-amber);background:var(--ys-amber-bg);}
+    .char-row{display:flex;flex-wrap:wrap;gap:var(--gap);align-items:flex-end;margin-bottom:18px;}
+    .char-unit{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:42px;}
+    .char-pin{font-family:'Noto Sans SC',sans-serif;font-size:var(--pin-size);color:var(--ys-ink-fd);letter-spacing:.02em;line-height:1.3;text-align:center;white-space:nowrap;min-height:1em;transition:color .15s;}
+    .char-box{width:46px;height:46px;border:1px solid var(--ys-border);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:var(--char-size);line-height:1;position:relative;background:transparent;user-select:none;cursor:default;transition:background .15s,border-color .15s,transform .15s,box-shadow .15s;}
+    .char-box.speaking{background:var(--ys-amber-bg)!important;border-color:var(--ys-amber)!important;box-shadow:0 0 10px rgba(200,144,42,.4);transform:scale(1.12);}
+    .char-unit.speaking-unit .char-pin{color:var(--ys-amber);}
+    .char-unit.punct .char-pin{opacity:0;}.char-unit.punct .char-box{border-color:transparent;font-size:1.6rem;color:var(--ys-ink-lt);}
+    .char-unit.zhu .char-box{color:var(--ys-zhu);background:var(--ys-zhu-bg);border-color:rgba(192,57,43,.25);cursor:pointer;}
+    .char-unit.zhu .char-box:hover{transform:scale(1.08);border-color:var(--ys-zhu);}
+    .char-unit.note .char-box{color:var(--ys-sage-dk);background:var(--ys-sage-bg);border-color:rgba(90,122,94,.25);cursor:pointer;}
+    .char-unit.note .char-box:hover{transform:scale(1.08);border-color:var(--ys-sage);}
+    .char-unit.zhu .char-box::after,.char-unit.note .char-box::after{content:'◇';position:absolute;top:2px;right:3px;font-size:.42rem;opacity:.5;}
+    .sentence-footer{border-top:1px dashed var(--ys-border);padding-top:12px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+    .translation{font-size:.8rem;color:var(--ys-ink-lt);line-height:1.9;letter-spacing:.05em;flex:1;}
+    .toggle-note{background:none;border:1px solid var(--ys-border);border-radius:2px;padding:3px 9px;font-family:'Noto Sans SC',sans-serif;font-size:.68rem;color:var(--ys-ink-fd);cursor:pointer;white-space:nowrap;transition:border-color .2s,color .2s;}
+    .toggle-note:hover{border-color:var(--ys-sage);color:var(--ys-sage);}
+    .expand-note{display:none;margin-top:10px;font-size:.78rem;color:var(--ys-ink-lt);line-height:1.9;border-left:2px solid var(--ys-sage);padding-left:11px;letter-spacing:.04em;}
+    .expand-note.open{display:block;}
+    .read-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--ys-paper);border-top:1px solid var(--ys-border);box-shadow:0 -4px 20px var(--ys-shadow);padding:10px 20px 14px;display:none;align-items:center;gap:14px;flex-wrap:wrap;font-family:'Noto Sans SC',sans-serif;}
+    .read-bar.visible{display:flex;}.rb-title{font-size:.72rem;color:var(--ys-ink-lt);flex-shrink:0;}.rb-title b{color:var(--ys-amber);}
+    .rb-progress{font-size:.65rem;color:var(--ys-ink-fd);min-width:48px;flex-shrink:0;}.rb-controls{display:flex;gap:7px;}
+    .rb-btn{background:none;border:1px solid var(--ys-border);border-radius:3px;padding:5px 11px;font-size:.72rem;color:var(--ys-ink-lt);cursor:pointer;transition:border-color .2s,color .2s,background .2s;}
+    .rb-btn:hover{border-color:var(--ys-sage);color:var(--ys-sage);background:var(--ys-sage-bg);}.rb-btn.rb-stop:hover{border-color:var(--ys-zhu);color:var(--ys-zhu);}
+    .rb-speed{display:flex;align-items:center;gap:6px;margin-left:auto;}.rb-speed label{font-size:.65rem;color:var(--ys-ink-fd);}
+    .rb-speed input[type=range]{width:76px;accent-color:var(--ys-amber);}.rb-speed .sp-val{font-size:.65rem;color:var(--ys-amber);min-width:28px;}
+    .popup-overlay{display:none;position:fixed;inset:0;z-index:100;}.popup-overlay.show{display:block;}
+    .popup-card{position:fixed;background:var(--ys-popup-bg);border:1px solid var(--ys-border);border-radius:6px;padding:16px 18px 14px;min-width:190px;max-width:280px;box-shadow:0 8px 28px var(--ys-shadow);z-index:101;animation:popIn .14s ease;font-family:'Noto Serif SC',serif;}
+    @keyframes popIn{from{opacity:0;transform:translateY(5px) scale(.96);}to{opacity:1;transform:none;}}
+    .popup-char{font-size:2rem;font-weight:700;margin-bottom:6px;line-height:1;}.popup-char.is-zhu{color:var(--ys-zhu);}.popup-char.is-note{color:var(--ys-sage-dk);}
+    .popup-pin{font-family:'Noto Sans SC',sans-serif;font-size:.68rem;color:var(--ys-ink-fd);margin-bottom:8px;letter-spacing:.08em;}
+    .popup-hr{height:1px;background:var(--ys-border);margin:8px 0;}
+    .popup-type{font-family:'Noto Sans SC',sans-serif;font-size:.62rem;letter-spacing:.08em;padding:1px 5px;border-radius:2px;margin-bottom:7px;display:inline-block;}
+    .type-zhu{background:var(--ys-zhu-bg);color:var(--ys-zhu);}.type-note{background:var(--ys-sage-bg);color:var(--ys-sage);}
+    .popup-body{font-size:.8rem;color:var(--ys-ink-lt);line-height:1.85;letter-spacing:.04em;}
+    .popup-close{position:absolute;top:7px;right:9px;background:none;border:none;cursor:pointer;color:var(--ys-ink-fd);font-size:.85rem;}
+    @media(max-width:480px){:root{--char-size:1.9rem;--gap:7px;}.char-box{width:38px;height:38px;}.rb-speed,.rb-progress{display:none;}}
+  </style>
+</head>
+<body class="ys-body">
+  <button class="theme-toggle" aria-label="切换深浅模式"><span class="icon sun">☀️</span><span class="icon moon">🌙</span></button>
+  <a class="skip-to-content" href="#ys-main">跳至内容</a>
+  <header class="site-header">
+    <div class="site-title"><a href="https://huang-husky.github.io/SageLume/"><img src="https://huang-husky.github.io/SageLume/favicon/logo-header.png" alt="算海青藜" height="96" style="vertical-align:middle;" /></a></div>
+    <nav class="main-nav"><a href="https://huang-husky.github.io/SageLume/">Home</a><a href="https://huang-husky.github.io/SageLume/about/">About</a><a href="https://huang-husky.github.io/SageLume/blog/">Blog</a></nav>
+  </header>
+  <div class="breadcrumb"><a href="../../../index.html">砚山</a><span>›</span><a href="../../index.html">道德经</a><span>›</span><a href="../index.html">道经</a><span>›</span>第二十六章—第三十章</div>
+  <div class="ys-banner">
+    <div class="ys-tag-line">《道德经》· 道经 · 第二十六章—第三十章</div>
+    <h1 class="ys-title">善行无辙迹</h1>
+    <div class="ys-divider"></div>
+    <p class="ys-desc">老子 · 道家经典 · 背记注音版</p>
+    <div class="legend">
+      <span class="legend-item"><span class="ldot ldot-zhu"></span>异读字 / 通假字</span>
+      <span class="legend-item"><span class="ldot ldot-note"></span>重点词·点击批注</span>
+      <span class="legend-item"><span class="ldot ldot-speak"></span>朗读跟读高亮</span>
+    </div>
+  </div>
+  <main class="ys-main" id="ys-main">
+    <div class="chapter-nav">
+      <a class="nav-btn prev" href="../ch21-25/index.html">上一组</a>
+      <span class="nav-center">道经 第 6/8 组</span>
+      <a class="nav-btn next" href="../ch31-35/index.html">下一组</a>
+    </div>
+
+    <!-- 第二十六章 -->
+    <div class="sentence-block" data-index="第 二 十 六 章" data-ch="0">
+      <button class="read-btn" onclick="startRead(0,this)">▶ 朗读</button>
+      <div class="char-row" id="c1"></div>
+      <div class="sentence-footer">
+        <div class="translation">沉重是轻浮的根本，静定是躁动的主宰。因此圣人终日行进不离辎重（始终持重稳固）。虽然身处荣华壮观之地，却能安然超然处之。然而那些拥有万乘之国的君主，为何却以轻率之身对待天下？轻率便失去根本，躁动便失去主宰。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章以"重—轻""静—躁"两组对立范畴，揭示道的一条基本法则：根本与主宰都在稳重、静定一端。"辎重"意象极具智慧——军队行军无论经过多险峻繁华之处，粮草辎重都不能丢弃，否则全军覆没。老子借此比喻：圣人的"重"与"静"，就是行动的根基。"万乘之主而以身轻天下"是对轻率任性君主的直接批评——统治天下是极重之事，若君主轻举妄动、追逐声色，便如行军丢失辎重，必然"失根"（失去根本）、"失君"（失去主宰）。这一辩证逻辑贯穿《道德经》始终。</div>
+    </div>
+
+    <!-- 第二十七章 -->
+    <div class="sentence-block" data-index="第 二 十 七 章" data-ch="1">
+      <button class="read-btn" onclick="startRead(1,this)">▶ 朗读</button>
+      <div class="char-row" id="c2"></div>
+      <div class="sentence-footer">
+        <div class="translation">善于行走的不留车辙，善于言语的无可指责，善于计算的不用算筹，善于关闭的不用门闩却无法打开，善于捆结的不用绳索却无法解开。因此圣人常善于救助人，故没有被遗弃的人；常善于利用物，故没有被废弃的物。这叫做"袭明"（内隐的智慧）。所以善人是不善之人的老师；不善之人是善人的借鉴。不重视这位老师，不爱惜这一借鉴，即使自以为聪明，实则大迷糊——这叫做精要微妙之道。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">章首连用五个"善……无……"排比，揭示一个核心命题：最高明的技艺是无形迹的——越是高超，越趋于无形，这正是道本身的特质。"常善救人，故无弃人；常善救物，故无弃物"——圣人的治理体现"因材施用"：每一个人、每一件物都能被安置在恰当位置，没有废弃，这是"袭明"的体现：不以外在光芒炫耀，而以内在智慧周全照顾一切。"善人是不善人之师，不善人是善人之资"——二者互为依存，不懂得珍视这种关系，即使自诩聪明，也是真正的大迷误，是老子对"自以为是之智"的深刻批判。</div>
+    </div>
+
+    <!-- 第二十八章 -->
+    <div class="sentence-block" data-index="第 二 十 八 章" data-ch="2">
+      <button class="read-btn" onclick="startRead(2,this)">▶ 朗读</button>
+      <div class="char-row" id="c3"></div>
+      <div class="sentence-footer">
+        <div class="translation">知道雄强，却守持雌柔，就能成为天下的溪谷。成为天下的溪谷，恒常之德便不离散，能复归于婴儿般的纯真。知道光明，却守持暗黑，就能成为天下的法式。成为天下法式，恒常之德便不偏差，能复归于无极。知道荣耀，却守持卑辱，就能成为天下的谷底。成为天下的谷底，恒常之德才充足，能复归于朴素。朴素散开便成为器物，圣人运用它，便成为百官之长。所以，最高明的制度不分割。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章以三个平行句式展开：知雄守雌、知白守黑、知荣守辱，共同指向同一修道方向：明知强大之端，却甘愿守持柔弱之位——这不是无知，而是超越知见后的自觉选择。三组意象各有侧重：谿（溪谷）喻虚下容纳；式（法式）喻不偏不倚；谷（谷底）喻深厚充足。三者统一于"复归"的目标：婴儿、无极、朴——都是道不同层次的表达。"朴散则为器"揭示从道到用的转化路径，圣人以道（朴）统率百官（器），根本精神是"大制不割"——整体的、不强制分裂的秩序。</div>
+    </div>
+
+    <!-- 第二十九章 -->
+    <div class="sentence-block" data-index="第 二 十 九 章" data-ch="3">
+      <button class="read-btn" onclick="startRead(3,this)">▶ 朗读</button>
+      <div class="char-row" id="c4"></div>
+      <div class="sentence-footer">
+        <div class="translation">想要凭借强行作为来掌控天下，我看他是不能成功的。天下是神圣的器物，不可强行作为，不可强行把持。强行作为的必然败坏，强行把持的必然失去。所以事物有的前行有的跟随；有的嘘气有的急吹；有的强壮有的羸弱；有的安稳有的毁坏。因此圣人去除过分，去除奢侈，去除极端。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章是老子反对"有为而治"最直接的政治宣言。"神器"一词点明天下政权的神圣性：它是道的产物，遵循自然规律，不服从任何个人的强制意志。强行为之者败，强行执之者失——这不是诅咒，而是规律。"行/随、觉/吹、强/羸、载/隳"四组对偶揭示万物的自然差异性：世界本来就是多元的，圣人的职责不是强行统一这些差异，而是顺应它们。"去甚、去奢、去泰"三字以减法概括圣人政治原则：执政的最高智慧不是"做什么"，而是"不做什么"，与儒家积极有为形成鲜明对比，是道家无为论的政治实践表达。</div>
+    </div>
+
+    <!-- 第三十章 -->
+    <div class="sentence-block" data-index="第 三 十 章" data-ch="4">
+      <button class="read-btn" onclick="startRead(4,this)">▶ 朗读</button>
+      <div class="char-row" id="c5"></div>
+      <div class="sentence-footer">
+        <div class="translation">以道辅佐君主的人，不凭借武力称霸天下，这样的事情容易遭到还击报应。军队驻扎过的地方，荆棘丛生。大军过后，必有荒年。善于用兵的只求达到目的即止，不凭此追求强大。达到目的后不自矜，不夸耀，不骄傲，是出于不得已而为之，不逞强。事物一旦走向强壮极盛，就会走向衰老，这叫做不合乎道。不合乎道，便会早早消亡。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章是老子反对穷兵黩武的集中论述，给出务实的理由：武力征伐"其事好还"——容易遭到反噬；军队所过之处荆棘丛生；大战之后必有饥荒。这从生态、经济、政治三个维度揭示战争代价。连续五个"果而……"排比确立"不得已用兵"的行为准则——目的达到立刻止步：不矜（不自夸）、不伐（不炫耀）、不骄（不骄傲）、必居（出于不得已）、勿强（不逞强扩张）。结尾以"物壮则老，是谓不道，不道早已"作结，将军事强权结局纳入道的辩证规律中：任何事物走到极度强盛即背离道，必走向衰败——这与第五十八章"祸兮福之所倚"深度呼应，是《道德经》历史哲学的精华。</div>
+    </div>
+
+  </main>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator"><img class="lume-image" src="https://huang-husky.github.io/SageLume/favicon/logo-footer.png" alt="算海青藜" height="48" /></p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+  <div class="read-bar" id="readBar">
+    <div class="rb-title">▶ <b id="rbChTitle">—</b></div>
+    <div class="rb-progress" id="rbProgress"></div>
+    <div class="rb-controls">
+      <button class="rb-btn" id="rbPause" onclick="togglePause()">⏸ 暂停</button>
+      <button class="rb-btn rb-stop" onclick="stopRead()">⏹ 停止</button>
+    </div>
+    <div class="rb-speed">
+      <label>语速</label>
+      <input type="range" id="speedSlider" min="0.5" max="1.8" step="0.1" value="0.9" oninput="onSpeedChange(this.value)" />
+      <span class="sp-val" id="speedLabel">0.9×</span>
+    </div>
+  </div>
+  <div class="popup-overlay" id="overlay"></div>
+  <div class="popup-card" id="popupCard" style="display:none;">
+    <button class="popup-close" id="popupClose">✕</button>
+    <div class="popup-char" id="popupChar"></div>
+    <div class="popup-pin" id="popupPin"></div>
+    <div class="popup-hr"></div>
+    <span class="popup-type" id="popupType"></span>
+    <div class="popup-body" id="popupBody"></div>
+  </div>
+
+  <script>
+  const chapters = [
+  /* ── 第二十六章 ── */
+  [
+    {c:"重",p:"zhòng",type:"note",note:"沉重、持重。与下文\"轻\"相对，是本章核心对立范畴。全章以\"重\"\"静\"为正面，\"轻\"\"躁\"为负面，揭示守重之道。"},
+    {c:"为",p:"wéi",type:"normal"},{c:"轻",p:"qīng",type:"normal"},{c:"根",p:"gēn",type:"normal"},
+    {c:"，",p:"",type:"punct"},
+    {c:"静",p:"jìng",type:"note",note:"静定、沉静。与\"躁\"相对，\"静为躁君\"即静定是躁动的主宰，与\"重为轻根\"构成本章的基本命题。"},
+    {c:"为",p:"wéi",type:"normal"},{c:"躁",p:"zào",type:"normal"},{c:"君",p:"jūn",type:"normal"},
+    {c:"。",p:"",type:"punct"},
+    {c:"是",p:"shì",type:"normal"},{c:"以",p:"yǐ",type:"normal"},{c:"圣",p:"shèng",type:"normal"},
+    {c:"人",p:"rén",type:"normal"},{c:"终",p:"zhōng",type:"normal"},{c:"日",p:"rì",type:"normal"},
+    {c:"行",p:"xíng",type:"normal"},{c:"不",p:"bù",type:"normal"},{c:"离",p:"lí",type:"normal"},
+    {c:"辎",p:"zī",type:"note",note:"辎重（zī zhòng）：军队随行的粮草车辆及物资。圣人终日行不离辎重，比喻始终保持持重沉稳，不因外物浮华而轻举妄动。"},
+    {c:"重",p:"zhòng",type:"normal"},{c:"。",p:"",type:"punct"},
+    {c:"虽",p:"suī",type:"normal"},{c:"有",p:"yǒu",type:"normal"},
+    {c:"荣",p:"róng",type:"note",note:"荣观（róng guān）：华美壮丽的景象，指繁华盛景之处。圣人虽身处荣华，却能燕处超然，不为所动。"},
+    {c:"观",p:"guān",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"燕",p:"yàn",type:"note",note:"燕处（yàn chǔ）：安然栖居，如燕雀之自得。\"燕处超然\"形容圣人置身繁华而内心超脱，不为外物所累。"},
+    {c:"处",p:"chǔ",type:"normal"},{c:"超",p:"chāo",type:"normal"},{c:"然",p:"rán",type:"normal"},
+    {c:"。",p:"",type:"punct"},
+    {c:"奈",p:"nài",type:"normal"},{c:"何",p:"hé",type:"normal"},{c:"万",p:"wàn",type:"normal"},
+    {c:"乘",p:"shèng",type:"zhu",read:"剩",note:"量词，一乘为一辆驷马战车。万乘之主即拥有万辆战车的大国君主，指天子。"},
+    {c:"之",p:"zhī",type:"normal"},{c:"主",p:"zhǔ",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"而",p:"ér",type:"normal"},{c:"以",p:"yǐ",type:"normal"},{c:"身",p:"shēn",type:"normal"},
+    {c:"轻",p:"qīng",type:"normal"},{c:"天",p:"tiān",type:"normal"},{c:"下",p:"xià",type:"normal"},
+    {c:"？",p:"",type:"punct"},
+    {c:"轻",p:"qīng",type:"normal"},{c:"则",p:"zé",type:"normal"},{c:"失",p:"shī",type:"normal"},
+    {c:"根",p:"gēn",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"躁",p:"zào",type:"normal"},{c:"则",p:"zé",type:"normal"},{c:"失",p:"shī",type:"normal"},
+    {c:"君",p:"jūn",type:"note",note:"主宰之位。\"躁则失君\"即躁动便失去对局势的主宰，与首句\"静为躁君\"形成首尾呼应，\"失根\"\"失君\"是对\"重\"\"静\"之道的反证。"},
+    {c:"。",p:"",type:"punct"}
+  ],
+  /* ── 第二十七章 ── */
+  [
+    {c:"善",p:"shàn",type:"normal"},{c:"行",p:"xíng",type:"normal"},{c:"无",p:"wú",type:"normal"},
+    {c:"辙",p:"zhé",type:"note",note:"辙迹：车轮行过的痕迹。\"善行无辙迹\"谓真正善于行走者不留痕迹，喻合道之行自然无为、不留刻意之痕，是本章\"无形之善\"的第一例，与第十七章\"功成而弗居\"同理。"},
+    {c:"迹",p:"jì",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"善",p:"shàn",type:"normal"},{c:"言",p:"yán",type:"normal"},{c:"无",p:"wú",type:"normal"},
+    {c:"瑕",p:"xiá",type:"note",note:"瑕谪（xiá zhé）：过失与指责。瑕，玉上的斑点，引申为缺陷；谪，责备。善言者出口无瑕，无可指摘，是\"无形之善\"的第二例。"},
+    {c:"谪",p:"zhé",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"善",p:"shàn",type:"normal"},{c:"数",p:"shǔ",type:"normal"},{c:"不",p:"bù",type:"normal"},
+    {c:"用",p:"yòng",type:"normal"},
+    {c:"筹",p:"chóu",type:"note",note:"筹策：古代计算用的竹签（筹）和蓍草（策），类似算盘。\"善数不用筹策\"谓真正善于计算者心中自有数，无需外部工具，体现技艺与道合一的最高境界。"},
+    {c:"策",p:"cè",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"善",p:"shàn",type:"normal"},{c:"闭",p:"bì",type:"normal"},{c:"无",p:"wú",type:"normal"},
+    {c:"关",p:"guān",type:"normal"},
+    {c:"楗",p:"jiàn",type:"zhu",read:"健",note:"门闩、顶门的木杠。\"无关楗而不可开\"谓不用门闩却无法打开，喻无形之约束最为牢固，是五善中最富道家意味的一组。"},
+    {c:"而",p:"ér",type:"normal"},{c:"不",p:"bù",type:"normal"},{c:"可",p:"kě",type:"normal"},
+    {c:"开",p:"kāi",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"善",p:"shàn",type:"normal"},{c:"结",p:"jié",type:"normal"},{c:"无",p:"wú",type:"normal"},
+    {c:"绳",p:"shéng",type:"normal"},{c:"约",p:"yuē",type:"normal"},{c:"而",p:"ér",type:"normal"},
+    {c:"不",p:"bù",type:"normal"},{c:"可",p:"kě",type:"normal"},
+    {c:"解",p:"jiě",type:"note",note:"五组\"善……无……而不可……\"构成排比，层层递进，揭示合道之行的共同特征：越是高超，越趋于无形——这正是道本身不可见却不可违的特质。"},
+    {c:"。",p:"",type:"punct"},
+    {c:"是",p:"shì",type:"normal"},{c:"以",p:"yǐ",type:"normal"},{c:"圣",p:"shèng",type:"normal"},
+    {c:"人",p:"rén",type:"normal"},{c:"常",p:"cháng",type:"normal"},{c:"善",p:"shàn",type:"normal"},
+    {c:"救",p:"jiù",type:"normal"},{c:"人",p:"rén",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"故",p:"gù",type:"normal"},{c:"无",p:"wú",type:"normal"},{c:"弃",p:"qì",type:"normal"},
+    {c:"人",p:"rén",type:"normal"},{c:"；",p:"",type:"punct"},
+    {c:"常",p:"cháng",type:"normal"},{c:"善",p:"shàn",type:"normal"},{c:"救",p:"jiù",type:"normal"},
+    {c:"物",p:"wù",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"故",p:"gù",type:"normal"},{c:"无",p:"wú",type:"normal"},{c:"弃",p:"qì",type:"normal"},
+    {c:"物",p:"wù",type:"normal"},{c:"。",p:"",type:"punct"},
+    {c:"是",p:"shì",type:"normal"},{c:"谓",p:"wèi",type:"normal"},
+    {c:"袭",p:"xí",type:"note",note:"袭明：内蕴而不外显的光明智慧。袭，承袭、内含。与\"自见者不明\"相对，袭明是谦退内守的智慧，不炫耀不张扬，却深藏其道，是圣人\"无弃人无弃物\"的根本原因。"},
+    {c:"明",p:"míng",type:"normal"},{c:"。",p:"",type:"punct"},
+    {c:"故",p:"gù",type:"normal"},{c:"善",p:"shàn",type:"normal"},{c:"人",p:"rén",type:"normal"},
+    {c:"者",p:"zhě",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"不",p:"bù",type:"normal"},{c:"善",p:"shàn",type:"normal"},{c:"人",p:"rén",type:"normal"},
+    {c:"之",p:"zhī",type:"normal"},
+    {c:"师",p:"shī",type:"note",note:"老师、榜样。善人是不善之人的老师，体现了老子\"以对立面为用\"的辩证思想——对立双方各有其价值，不可偏废。"},
+    {c:"；",p:"",type:"punct"},
+    {c:"不",p:"bù",type:"normal"},{c:"善",p:"shàn",type:"normal"},{c:"人",p:"rén",type:"normal"},
+    {c:"者",p:"zhě",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"善",p:"shàn",type:"normal"},{c:"人",p:"rén",type:"normal"},{c:"之",p:"zhī",type:"normal"},
+    {c:"资",p:"zī",type:"note",note:"借鉴材料、资取之物。不善之人可作为善人的反面教材，与\"常善救人，故无弃人\"呼应：任何人都有其价值，没有真正意义上的\"无用之人\"。"},
+    {c:"。",p:"",type:"punct"},
+    {c:"不",p:"bù",type:"normal"},{c:"贵",p:"guì",type:"normal"},{c:"其",p:"qí",type:"normal"},
+    {c:"师",p:"shī",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"不",p:"bù",type:"normal"},{c:"爱",p:"ài",type:"normal"},{c:"其",p:"qí",type:"normal"},
+    {c:"资",p:"zī",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"虽",p:"suī",type:"normal"},{c:"智",p:"zhì",type:"normal"},
+    {c:"大",p:"dà",type:"normal"},
+    {c:"迷",p:"mí",type:"note",note:"大迷：真正的大迷糊。不懂得珍视师资辩证关系，即使自以为聪明，实则是最深的迷误，是老子对\"自以为是之智\"的批判，与第十六章\"知常曰明\"形成对照。"},
+    {c:"，",p:"",type:"punct"},
+    {c:"是",p:"shì",type:"normal"},{c:"谓",p:"wèi",type:"normal"},
+    {c:"要",p:"yào",type:"note",note:"要妙：精要微妙之道。领悟师资辩证关系乃道之精髓，是全章的逻辑终点——理解这一辩证关系，才能真正践行\"袭明\"。"},
+    {c:"妙",p:"miào",type:"normal"},{c:"。",p:"",type:"punct"}
+  ],
+  /* ── 第二十八章 ── */
+  [
+    {c:"知",p:"zhī",type:"normal"},{c:"其",p:"qí",type:"normal"},
+    {c:"雄",p:"xióng",type:"note",note:"雄强、刚强。\"知其雄，守其雌\"是本章三组\"知—守\"结构的第一组，知道强大却甘守柔弱，是超越知见之后的自觉选择，而非无知，体现第七十八章\"柔弱者生之徒\"的精神。"},
+    {c:"，",p:"",type:"punct"},
+    {c:"守",p:"shǒu",type:"normal"},{c:"其",p:"qí",type:"normal"},{c:"雌",p:"cí",type:"normal"},
+    {c:"，",p:"",type:"punct"},
+    {c:"为",p:"wéi",type:"normal"},{c:"天",p:"tiān",type:"normal"},{c:"下",p:"xià",type:"normal"},
+    {c:"谿",p:"xī",type:"note",note:"谿（xī），通\"溪\"，山谷间的溪流。溪谷处于低下之位却汇聚百川，喻虚静谦下、广纳万物之德。"},
+    {c:"。",p:"",type:"punct"},
+    {c:"为",p:"wéi",type:"normal"},{c:"天",p:"tiān",type:"normal"},{c:"下",p:"xià",type:"normal"},
+    {c:"谿",p:"xī",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"常",p:"cháng",type:"normal"},{c:"德",p:"dé",type:"normal"},{c:"不",p:"bù",type:"normal"},
+    {c:"离",p:"lí",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"复",p:"fù",type:"normal"},{c:"归",p:"guī",type:"normal"},{c:"于",p:"yú",type:"normal"},
+    {c:"婴",p:"yīng",type:"note",note:"婴儿：道家以婴儿象征未经世俗污染的纯真本性，柔弱、无分别心，最接近道的本然状态。\"复归于婴儿\"是人格修养的最高目标之一，与第十章\"专气致柔，能婴儿乎\"呼应。"},
+    {c:"儿",p:"ér",type:"normal"},{c:"。",p:"",type:"punct"},
+    {c:"知",p:"zhī",type:"normal"},{c:"其",p:"qí",type:"normal"},
+    {c:"白",p:"bái",type:"note",note:"光明、明亮。\"知其白，守其黑\"是第二组，知道光明却守持暗黑，成为天下法式，体现不炫耀光明、以暗守正的处世之道。"},
+    {c:"，",p:"",type:"punct"},
+    {c:"守",p:"shǒu",type:"normal"},{c:"其",p:"qí",type:"normal"},{c:"黑",p:"hēi",type:"normal"},
+    {c:"，",p:"",type:"punct"},
+    {c:"为",p:"wéi",type:"normal"},{c:"天",p:"tiān",type:"normal"},{c:"下",p:"xià",type:"normal"},
+    {c:"式",p:"shì",type:"normal"},{c:"。",p:"",type:"punct"},
+    {c:"为",p:"wéi",type:"normal"},{c:"天",p:"tiān",type:"normal"},{c:"下",p:"xià",type:"normal"},
+    {c:"式",p:"shì",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"常",p:"cháng",type:"normal"},{c:"德",p:"dé",type:"normal"},{c:"不",p:"bù",type:"normal"},
+    {c:"忒",p:"tè",type:"zhu",read:"特",note:"差错、偏失、违背。\"常德不忒\"即恒常之德不发生偏差，始终如一，与\"常德不离\"并列，三组中层次递进。"},
+    {c:"，",p:"",type:"punct"},
+    {c:"复",p:"fù",type:"normal"},{c:"归",p:"guī",type:"normal"},{c:"于",p:"yú",type:"normal"},
+    {c:"无",p:"wú",type:"note",note:"无极：无穷尽、无对立、无界限的终极状态，道的绝对本然。后被宋明理学引申为重要哲学概念。\"复归于无极\"比\"复归于婴儿\"更进一层，直指道的终极本体。"},
+    {c:"极",p:"jí",type:"normal"},{c:"。",p:"",type:"punct"},
+    {c:"知",p:"zhī",type:"normal"},{c:"其",p:"qí",type:"normal"},
+    {c:"荣",p:"róng",type:"note",note:"荣耀、显达。\"知其荣，守其辱\"是第三组，知道荣耀却守持卑辱，为天下谷，是老子以谦卑为道的最深层实践，与第八章\"上善若水\"、第六十六章\"江海所以能为百谷王\"呼应。"},
+    {c:"，",p:"",type:"punct"},
+    {c:"守",p:"shǒu",type:"normal"},{c:"其",p:"qí",type:"normal"},{c:"辱",p:"rǔ",type:"normal"},
+    {c:"，",p:"",type:"punct"},
+    {c:"为",p:"wéi",type:"normal"},{c:"天",p:"tiān",type:"normal"},{c:"下",p:"xià",type:"normal"},
+    {c:"谷",p:"gǔ",type:"normal"},{c:"。",p:"",type:"punct"},
+    {c:"为",p:"wéi",type:"normal"},{c:"天",p:"tiān",type:"normal"},{c:"下",p:"xià",type:"normal"},
+    {c:"谷",p:"gǔ",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"常",p:"cháng",type:"normal"},{c:"德",p:"dé",type:"normal"},{c:"乃",p:"nǎi",type:"normal"},
+    {c:"足",p:"zú",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"复",p:"fù",type:"normal"},{c:"归",p:"guī",type:"normal"},{c:"于",p:"yú",type:"normal"},
+    {c:"朴",p:"pǔ",type:"note",note:"朴（pǔ）：未经雕刻的原木，道家最重要的象征意象，代表自然本真、未经人为加工的原初状态。三组\"复归\"（婴儿→无极→朴）虽词异，实则同指道的本然状态。"},
+    {c:"。",p:"",type:"punct"},
+    {c:"朴",p:"pǔ",type:"note",note:"\"朴散则为器\"：原木分割雕琢成为各种器具，比喻道散化为万物、由整体入具体的过程。与末句\"大制不割\"形成对照：朴是整体，器是分散，圣人用朴（道的整体性）统率各种器（具体事务）。"},
+    {c:"散",p:"sàn",type:"normal"},{c:"则",p:"zé",type:"normal"},{c:"为",p:"wéi",type:"normal"},
+    {c:"器",p:"qì",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"圣",p:"shèng",type:"normal"},{c:"人",p:"rén",type:"normal"},{c:"用",p:"yòng",type:"normal"},
+    {c:"之",p:"zhī",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"则",p:"zé",type:"normal"},{c:"为",p:"wéi",type:"normal"},
+    {c:"官",p:"guān",type:"note",note:"官长：百官之首，各职能部门的领导者。圣人以道（朴）用于治国，则能统率百官，成为最高统领，体现\"朴散为器\"在政治实践中的具体应用。"},
+    {c:"长",p:"zhǎng",type:"normal"},{c:"。",p:"",type:"punct"},
+    {c:"故",p:"gù",type:"normal"},
+    {c:"大",p:"dà",type:"note",note:"大制不割：最高明的制度不分裂、不切割事物的自然整体。\"割\"即强行切分。老子认为真正好的秩序应顺应万物的整体性——这是全章\"守雌守黑守辱\"精神在政治层面的落实，也是对儒家礼制\"分割\"秩序的批评。"},
+    {c:"制",p:"zhì",type:"normal"},{c:"不",p:"bù",type:"normal"},{c:"割",p:"gē",type:"normal"},
+    {c:"。",p:"",type:"punct"}
+  ],
+  /* ── 第二十九章 ── */
+  [
+    {c:"将",p:"jiāng",type:"normal"},{c:"欲",p:"yù",type:"normal"},{c:"取",p:"qǔ",type:"normal"},
+    {c:"天",p:"tiān",type:"normal"},{c:"下",p:"xià",type:"normal"},{c:"而",p:"ér",type:"normal"},
+    {c:"为",p:"wéi",type:"normal"},{c:"之",p:"zhī",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"吾",p:"wú",type:"normal"},{c:"见",p:"jiàn",type:"normal"},{c:"其",p:"qí",type:"normal"},
+    {c:"不",p:"bù",type:"normal"},{c:"得",p:"dé",type:"normal"},
+    {c:"已",p:"yǐ",type:"note",note:"\"吾见其不得已\"：我看他是不能成功的。\"不得已\"此处义为\"不能如愿\"，是老子对强行干预天下者的直接判断，也是全书最明确的政治宣言之一。"},
+    {c:"。",p:"",type:"punct"},
+    {c:"天",p:"tiān",type:"normal"},{c:"下",p:"xià",type:"normal"},
+    {c:"神",p:"shén",type:"note",note:"神器：神圣不可侵犯的器物，此指天下政权。\"神\"强调其超越凡人把控的属性——天下遵循自然规律运行，不是可以人力强取的\"物\"，是本章反对强为的核心依据。"},
+    {c:"器",p:"qì",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"不",p:"bù",type:"normal"},{c:"可",p:"kě",type:"normal"},{c:"为",p:"wéi",type:"normal"},
+    {c:"也",p:"yě",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"不",p:"bù",type:"normal"},{c:"可",p:"kě",type:"normal"},{c:"执",p:"zhí",type:"normal"},
+    {c:"也",p:"yě",type:"normal"},{c:"。",p:"",type:"punct"},
+    {c:"为",p:"wéi",type:"normal"},{c:"者",p:"zhě",type:"normal"},{c:"败",p:"bài",type:"normal"},
+    {c:"之",p:"zhī",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"执",p:"zhí",type:"normal"},{c:"者",p:"zhě",type:"normal"},{c:"失",p:"shī",type:"normal"},
+    {c:"之",p:"zhī",type:"note",note:"\"为者败之，执者失之\"：凡违背道而强行干预者必败，强行把持者必失。这不是诅咒，而是客观规律，与第十七章\"功成事遂，百姓皆谓我自然\"形成对照。"},
+    {c:"。",p:"",type:"punct"},
+    {c:"故",p:"gù",type:"normal"},{c:"物",p:"wù",type:"normal"},
+    {c:"或",p:"huò",type:"normal"},{c:"行",p:"xíng",type:"normal"},
+    {c:"或",p:"huò",type:"normal"},{c:"随",p:"suí",type:"normal"},{c:"；",p:"",type:"punct"},
+    {c:"或",p:"huò",type:"normal"},
+    {c:"觉",p:"jiào",type:"zhu",read:"叫",note:"异读字：此处\"觉\"读jiào（四声），意为嘘气、缓呼气，与\"吹\"（急吹）对举，描述呼吸的两种状态。日常\"觉得\"读jué（二声）。学界主流训诂取\"嘘（缓呼）\"义，故此处为异读。"},
+    {c:"或",p:"huò",type:"normal"},{c:"吹",p:"chuī",type:"normal"},{c:"；",p:"",type:"punct"},
+    {c:"或",p:"huò",type:"normal"},{c:"强",p:"qiáng",type:"normal"},
+    {c:"或",p:"huò",type:"normal"},
+    {c:"羸",p:"léi",type:"zhu",read:"雷",note:"瘦弱、衰弱。\"或强或羸\"即有的强壮有的羸弱，万物差异自然存在，圣人不可强行统一。"},
+    {c:"；",p:"",type:"punct"},
+    {c:"或",p:"huò",type:"normal"},{c:"载",p:"zài",type:"normal"},
+    {c:"或",p:"huò",type:"normal"},
+    {c:"隳",p:"huī",type:"zhu",read:"灰",note:"毁坏、堕毁。此字极生僻，读huī，不可望文生义。\"或载或隳\"即有的安稳承载有的倾覆毁坏，四对对偶揭示万物差异的自然性，圣人无需强行统一。"},
+    {c:"。",p:"",type:"punct"},
+    {c:"是",p:"shì",type:"normal"},{c:"以",p:"yǐ",type:"normal"},{c:"圣",p:"shèng",type:"normal"},
+    {c:"人",p:"rén",type:"normal"},{c:"去",p:"qù",type:"normal"},
+    {c:"甚",p:"shèn",type:"note",note:"甚：过分、过于极端。连用三个\"去\"构成排比，圣人治天下的方法是减法——去除过激、奢靡、骄泰，而非加法式的强为，是老子无为论最明确的政治实践表达。"},
+    {c:"，",p:"",type:"punct"},
+    {c:"去",p:"qù",type:"normal"},
+    {c:"奢",p:"shē",type:"note",note:"奢侈、铺张。去奢即摒弃奢靡，回归简朴，与第十九章\"见素抱朴，少私寡欲\"呼应。"},
+    {c:"，",p:"",type:"punct"},
+    {c:"去",p:"qù",type:"normal"},
+    {c:"泰",p:"tài",type:"note",note:"过于安逸、骄泰放纵。去泰即去除骄奢淫逸之极端状态。甚、奢、泰三者合称，是老子最明确的政治主张：执政的最高智慧不是\"做什么\"，而是\"不做什么\"。"},
+    {c:"。",p:"",type:"punct"}
+  ],
+  /* ── 第三十章 ── */
+  [
+    {c:"以",p:"yǐ",type:"normal"},{c:"道",p:"dào",type:"normal"},{c:"佐",p:"zuǒ",type:"normal"},
+    {c:"人",p:"rén",type:"normal"},{c:"主",p:"zhǔ",type:"normal"},{c:"者",p:"zhě",type:"normal"},
+    {c:"，",p:"",type:"punct"},
+    {c:"不",p:"bù",type:"normal"},{c:"以",p:"yǐ",type:"normal"},{c:"兵",p:"bīng",type:"normal"},
+    {c:"强",p:"qiáng",type:"normal"},{c:"天",p:"tiān",type:"normal"},{c:"下",p:"xià",type:"normal"},
+    {c:"，",p:"",type:"punct"},
+    {c:"其",p:"qí",type:"normal"},{c:"事",p:"shì",type:"normal"},
+    {c:"好",p:"hǎo",type:"zhu",read:"好",note:"副词，意为\"容易\"\"往往\"。\"其事好还\"即用兵之事容易遭到反弹报应。"},
+    {c:"还",p:"huán",type:"note",note:"还（huán）：回返、反弹，引申为报应与反噬。\"其事好还\"是老子对武力征伐规律性后果的描述：穷兵黩武必然遭到反报，这是道的规律，不是主观道德评判。"},
+    {c:"。",p:"",type:"punct"},
+    {c:"师",p:"shī",type:"normal"},{c:"之",p:"zhī",type:"normal"},{c:"所",p:"suǒ",type:"normal"},
+    {c:"处",p:"chǔ",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"荆",p:"jīng",type:"note",note:"荆棘：带刺的灌木杂草，生于荒废之地。军队驻扎过的地方土地荒芜，只剩荆棘，生动揭示战争对土地和生态的破坏，是老子反战哲学的务实论证。"},
+    {c:"棘",p:"jí",type:"normal"},{c:"生",p:"shēng",type:"normal"},{c:"焉",p:"yān",type:"normal"},
+    {c:"。",p:"",type:"punct"},
+    {c:"大",p:"dà",type:"normal"},{c:"军",p:"jūn",type:"normal"},{c:"之",p:"zhī",type:"normal"},
+    {c:"后",p:"hòu",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"必",p:"bì",type:"normal"},{c:"有",p:"yǒu",type:"normal"},
+    {c:"凶",p:"xiōng",type:"note",note:"凶年：庄稼失收的荒年、饥荒之年。战争破坏农业生产导致饥荒——老子以此揭示战争的深层代价，将政治批判落实到民生层面，超越了单纯的道德说教。"},
+    {c:"年",p:"nián",type:"normal"},{c:"。",p:"",type:"punct"},
+    {c:"善",p:"shàn",type:"normal"},{c:"有",p:"yǒu",type:"normal"},
+    {c:"果",p:"guǒ",type:"note",note:"果：达到目的、取得效果。\"善有果而已\"谓善于用兵者只求达到目的即止，不追求扩大战果、炫耀武力。\"不得已\"用兵是最低限度原则，达到目的立即停手，这是本章最重要的用兵准则。"},
+    {c:"而",p:"ér",type:"normal"},{c:"已",p:"yǐ",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"不",p:"bù",type:"normal"},{c:"以",p:"yǐ",type:"normal"},{c:"取",p:"qǔ",type:"normal"},
+    {c:"强",p:"qiáng",type:"normal"},{c:"。",p:"",type:"punct"},
+    {c:"果",p:"guǒ",type:"normal"},{c:"而",p:"ér",type:"normal"},{c:"勿",p:"wù",type:"normal"},
+    {c:"矜",p:"jīn",type:"note",note:"矜（jīn）：自夸、骄矜。\"果而勿矜\"即达到目的后不要自我夸耀。连续五个\"果而……\"的排比确立用兵行为准则：目的一旦达到立刻止步——不矜、不伐、不骄、必居（出于不得已）、勿强，这五条戒律的核心是将军事视为最后手段。"},
+    {c:"，",p:"",type:"punct"},
+    {c:"果",p:"guǒ",type:"normal"},{c:"而",p:"ér",type:"normal"},{c:"勿",p:"wù",type:"normal"},
+    {c:"伐",p:"fá",type:"note",note:"夸耀、宣扬功绩。\"果而勿伐\"即取胜后不炫耀战功，与第二十二章\"不自伐，故有功\"相呼应，功成而不居是道家处世的一贯原则。"},
+    {c:"，",p:"",type:"punct"},
+    {c:"果",p:"guǒ",type:"normal"},{c:"而",p:"ér",type:"normal"},{c:"勿",p:"wù",type:"normal"},
+    {c:"骄",p:"jiāo",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"果",p:"guǒ",type:"normal"},{c:"而",p:"ér",type:"normal"},{c:"必",p:"bì",type:"normal"},
+    {c:"居",p:"jū",type:"note",note:"居：处于此位，意为出于不得已而为之。\"果而必居\"即所取得的战果是出于不得已，非主动追求，强调用兵动机的被动性与防御性，是道家反战哲学的核心立场。"},
+    {c:"，",p:"",type:"punct"},
+    {c:"果",p:"guǒ",type:"normal"},{c:"而",p:"ér",type:"normal"},{c:"勿",p:"wù",type:"normal"},
+    {c:"强",p:"qiáng",type:"normal"},{c:"。",p:"",type:"punct"},
+    {c:"物",p:"wù",type:"normal"},
+    {c:"壮",p:"zhuàng",type:"note",note:"壮：强盛到极点。\"物壮则老\"是老子最重要的辩证法命题之一：事物一旦走向极度强盛，便开始走向衰老死亡——盛极必衰，这与第四十章\"反者道之动\"及第五十八章\"祸兮福之所倚\"深度呼应。"},
+    {c:"则",p:"zé",type:"normal"},{c:"老",p:"lǎo",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"是",p:"shì",type:"normal"},{c:"谓",p:"wèi",type:"normal"},
+    {c:"不",p:"bù",type:"note",note:"不道：不合于道，违背道的规律。强盛到极点的事物本身就是\"不道\"——偏离了道的中正平衡。\"不道早已\"即不合道者便会提前消亡，将军事强权的结局纳入道的辩证规律中，是全书历史哲学的精华。"},
+    {c:"道",p:"dào",type:"normal"},{c:"，",p:"",type:"punct"},
+    {c:"不",p:"bù",type:"normal"},{c:"道",p:"dào",type:"normal"},{c:"早",p:"zǎo",type:"normal"},
+    {c:"已",p:"yǐ",type:"normal"},{c:"。",p:"",type:"punct"}
+  ]
+  ];
+
+  const chapterBoxes=[];
+  function render(id,data){const row=document.getElementById(id);const boxes=[];if(!row||!data.length){chapterBoxes.push(boxes);return;}data.forEach(item=>{const unit=document.createElement('div');unit.className='char-unit'+(item.type!=='normal'?' '+item.type:'');const pin=document.createElement('div');pin.className='char-pin';pin.textContent=item.p||'';const box=document.createElement('div');box.className='char-box';box.textContent=item.c;if(item.note&&(item.type==='zhu'||item.type==='note')){box.addEventListener('click',e=>{e.stopPropagation();showPopup(item,box);});}unit.appendChild(pin);unit.appendChild(box);row.appendChild(unit);boxes.push({box,unit,item});});chapterBoxes.push(boxes);}
+  chapters.forEach((data,i)=>render('c'+(i+1),data));
+  const chapterNames=['第二十六章','第二十七章','第二十八章','第二十九章','第三十章'];
+  let currentChIdx=-1,currentReadBtn=null,currentBlock=null,lastHL=null,isPaused=false,readSpeed=0.9;
+  function buildSpeech(chIdx){const boxes=chapterBoxes[chIdx];if(!boxes||!boxes.length)return null;let text='';const map=[];boxes.forEach(({box,unit,item})=>{text+=item.read||item.c;map.push(item.type==='punct'?null:{box,unit});});return{text,map};}
+  function startRead(chIdx,btn){if(currentChIdx===chIdx&&speechSynthesis.speaking){togglePause();return;}stopRead();const speech=buildSpeech(chIdx);if(!speech||!speech.text.trim()){alert('本章暂无内容。');return;}currentChIdx=chIdx;currentReadBtn=btn;currentBlock=document.querySelector('.sentence-block[data-ch="'+chIdx+'"]');isPaused=false;btn.textContent='⏸ 朗读中';btn.classList.add('active');if(currentBlock)currentBlock.classList.add('reading');document.getElementById('rbChTitle').textContent=chapterNames[chIdx];document.getElementById('rbProgress').textContent='0 / '+speech.text.length;document.getElementById('rbPause').textContent='⏸ 暂停';document.getElementById('readBar').classList.add('visible');const utter=new SpeechSynthesisUtterance(speech.text);utter.lang='zh-CN';utter.rate=readSpeed;utter.pitch=1.0;const voices=speechSynthesis.getVoices();const zhV=voices.find(v=>v.lang==='zh-CN')||voices.find(v=>v.lang.startsWith('zh'));if(zhV)utter.voice=zhV;utter.addEventListener('boundary',e=>{highlightChar(e.charIndex,speech.map);document.getElementById('rbProgress').textContent=(e.charIndex+1)+' / '+speech.text.length;});utter.addEventListener('end',()=>{clearHL();resetBtn();hideBar();currentChIdx=-1;});utter.addEventListener('error',()=>{clearHL();resetBtn();hideBar();});speechSynthesis.speak(utter);}
+  function highlightChar(idx,map){clearHL();const t=map[idx];if(!t)return;t.box.classList.add('speaking');t.unit.classList.add('speaking-unit');lastHL=t;t.box.scrollIntoView({block:'nearest',behavior:'smooth'});}
+  function clearHL(){if(lastHL){lastHL.box.classList.remove('speaking');lastHL.unit.classList.remove('speaking-unit');lastHL=null;}}
+  function resetBtn(){if(currentReadBtn){currentReadBtn.textContent='▶ 朗读';currentReadBtn.classList.remove('active');currentReadBtn=null;}if(currentBlock){currentBlock.classList.remove('reading');currentBlock=null;}}
+  function hideBar(){document.getElementById('readBar').classList.remove('visible');isPaused=false;}
+  function togglePause(){const pb=document.getElementById('rbPause');if(isPaused){speechSynthesis.resume();isPaused=false;pb.textContent='⏸ 暂停';if(currentReadBtn)currentReadBtn.textContent='⏸ 朗读中';}else{speechSynthesis.pause();isPaused=true;pb.textContent='▶ 继续';if(currentReadBtn)currentReadBtn.textContent='▶ 已暂停';}}
+  function stopRead(){speechSynthesis.cancel();clearHL();resetBtn();hideBar();currentChIdx=-1;}
+  function onSpeedChange(val){readSpeed=parseFloat(val);document.getElementById('speedLabel').textContent=readSpeed.toFixed(1)+'x';if(currentChIdx>=0&&speechSynthesis.speaking){const ci=currentChIdx,rb=currentReadBtn;stopRead();setTimeout(()=>startRead(ci,rb),80);}}
+  if(speechSynthesis.onvoiceschanged!==undefined)speechSynthesis.onvoiceschanged=()=>{};
+  window.addEventListener('beforeunload',()=>speechSynthesis.cancel());
+  const overlay=document.getElementById('overlay'),popup=document.getElementById('popupCard');
+  const popupChar=document.getElementById('popupChar'),popupPin=document.getElementById('popupPin'),popupType=document.getElementById('popupType'),popupBody=document.getElementById('popupBody'),popupClose=document.getElementById('popupClose');
+  function showPopup(item,el){popupChar.textContent=item.c;popupChar.className='popup-char is-'+item.type;popupPin.textContent=item.p?'/ '+item.p+' /':'';popupType.className='popup-type type-'+item.type;popupType.textContent=item.type==='zhu'?'异读 / 通假字':'重点词·批注';popupBody.textContent=item.note;popup.style.display='block';const r=el.getBoundingClientRect();let top=r.bottom+8,left=r.left;const pw=popup.offsetWidth,ph=popup.offsetHeight;if(left+pw>window.innerWidth-12)left=window.innerWidth-pw-12;if(top+ph>window.innerHeight-12)top=r.top-ph-8;popup.style.top=top+'px';popup.style.left=left+'px';overlay.classList.add('show');}
+  function closePopup(){popup.style.display='none';overlay.classList.remove('show');}
+  overlay.addEventListener('click',closePopup);popupClose.addEventListener('click',closePopup);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();});
+  function toggleNote(btn){const note=btn.parentElement.nextElementSibling;const open=note.classList.toggle('open');btn.textContent=open?'收起讲义 ∧':'展开讲义 ∨';}
+  </script>
+</body>
+</html>
