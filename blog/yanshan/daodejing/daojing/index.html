@@ -61,7 +61,7 @@
     }
     .progress-label { display: flex; justify-content: space-between; margin-bottom: 7px; }
     .progress-track { background: var(--ys-border); border-radius: 2px; height: 4px; }
-    .progress-fill  { background: var(--ys-sage); border-radius: 2px; height: 4px; width: 81%; /* 30/37 已完成 */ transition: width .4s; }
+    .progress-fill  { background: var(--ys-sage); border-radius: 2px; height: 4px; width: 100%; /* 37/37 已完成 */ transition: width .4s; }
 
     /* 章组卡片网格 */
     .group-grid {
@@ -137,7 +137,7 @@
     <div class="progress-bar-wrap">
       <div class="progress-label">
         <span>整理进度</span>
-        <span>30 / 37 章</span>
+        <span>37 / 37 章</span>
       </div>
       <div class="progress-track"><div class="progress-fill"></div></div>
     </div>
@@ -221,20 +221,30 @@
       </a>
 
       <!-- 第7组 第31—35章 -->
-      <div class="group-card disabled">
+      <a class="group-card done" href="ch31-35/index.html">
         <div class="group-range">第三十一章 — 第三十五章</div>
         <div class="group-title">夫佳兵者，不祥之器</div>
         <div class="group-excerpt">夫佳兵者，不祥之器，物或恶之……</div>
-        <div class="group-tags"><span class="tag tag-wip">整理中</span></div>
-      </div>
+        <div class="group-tags">
+          <span class="tag">注音</span>
+          <span class="tag">通假</span>
+          <span class="tag">朗读</span>
+          <span class="tag">ch31~35</span>
+        </div>
+      </a>
 
-      <!-- 第8组 第36—37章（不足5章） -->
-      <div class="group-card disabled">
+      <!-- 第8组 第36—37章-->
+      <a class="group-card done" href="ch36-37/index.html">
         <div class="group-range">第三十六章 — 第三十七章</div>
         <div class="group-title">将欲歙之</div>
         <div class="group-excerpt">将欲歙之，必固张之。道常无为而无不为……</div>
-        <div class="group-tags"><span class="tag tag-wip">整理中</span></div>
-      </div>
+        <div class="group-tags">
+          <span class="tag">注音</span>
+          <span class="tag">通假</span>
+          <span class="tag">朗读</span>
+          <span class="tag">ch36~37</span>
+        </div>
+      </a>
 
     </div>
     <!-- 评论区 -->
