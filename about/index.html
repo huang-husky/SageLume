@@ -221,10 +221,50 @@
         .xueni-card-tag { font-size:0.68rem; letter-spacing:0.18em; color:var(--color-accent,#c8d96e); opacity:0.55; margin-bottom:0.6rem; }
         .xueni-card-quote { font-family:'Noto Serif',serif; font-size:0.9rem; line-height:1.9; color:var(--color-text,#c8cfa0); margin:0 0 0.6rem; letter-spacing:0.04em; }
         .xueni-card-source { font-size:0.72rem; color:var(--color-text-muted,#9aaa70); opacity:0.65; text-align:right; }
+
+        /* ===== 浅色模式：雪泥区块全量覆写 ===== */
+        html[data-theme="light"] .xueni-title,
+        body.light .xueni-title { color:#3d5c0a; opacity:0.9; }
+
+        html[data-theme="light"] .xueni-subtitle,
+        body.light .xueni-subtitle { color:#556b20; opacity:0.85; }
+
+        html[data-theme="light"] .xueni-epigraph,
+        body.light .xueni-epigraph {
+            border-top-color:rgba(90,120,30,0.32);
+            border-bottom-color:rgba(90,120,30,0.32);
+        }
+        html[data-theme="light"] .xueni-epigraph p,
+        body.light .xueni-epigraph p { color:#1e2e08; }
+
+        html[data-theme="light"] .xueni-epigraph cite,
+        body.light .xueni-epigraph cite { color:#556b20; opacity:0.90; }
+
         html[data-theme="light"] .xueni-card,
-        body.light .xueni-card { background:rgba(240,245,225,0.5); border-color:rgba(107,142,35,0.18); }
+        body.light .xueni-card {
+            background:rgba(235,243,210,0.80);
+            border-color:rgba(90,125,25,0.30);
+            box-shadow:0 2px 10px rgba(80,110,20,0.07);
+        }
         html[data-theme="light"] .xueni-card:hover,
-        body.light .xueni-card:hover { background:rgba(230,240,210,0.7); border-color:rgba(107,142,35,0.32); }
+        body.light .xueni-card:hover {
+            background:rgba(220,235,192,0.95);
+            border-color:rgba(90,125,25,0.50);
+        }
+        html[data-theme="light"] .xueni-card::before,
+        body.light .xueni-card::before {
+            background:linear-gradient(135deg, #7aaa20, transparent);
+            opacity:0.45;
+        }
+        html[data-theme="light"] .xueni-card-tag,
+        body.light .xueni-card-tag { color:#4a6b10; opacity:1; }
+
+        html[data-theme="light"] .xueni-card-quote,
+        body.light .xueni-card-quote { color:#1e2e08; }
+
+        html[data-theme="light"] .xueni-card-source,
+        body.light .xueni-card-source { color:#556b20; opacity:0.85; }
+
         @media(max-width:600px){
             .xueni-grid { grid-template-columns:1fr; }
         }
