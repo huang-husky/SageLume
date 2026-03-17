@@ -135,106 +135,6 @@
         .xueni-card-quote { font-family:'Noto Serif',serif; font-size:0.9rem; line-height:1.9; color:var(--color-text,#c8cfa0); margin:0 0 0.6rem; letter-spacing:0.04em; }
         .xueni-card-source { font-size:0.72rem; color:var(--color-text-muted,#9aaa70); opacity:0.65; text-align:right; }
 
-<<<<<<< HEAD
-        /* 浅色模式：雪泥增强对比度 */
-        html[data-theme="light"] .xueni-title, body.light .xueni-title { color:#2e4a06; opacity:1; font-weight:700; }
-        html[data-theme="light"] .xueni-subtitle, body.light .xueni-subtitle { color:#3d5c0a; opacity:1; }
-        html[data-theme="light"] .xueni-epigraph, body.light .xueni-epigraph { border-top-color:rgba(60,90,15,0.45); border-bottom-color:rgba(60,90,15,0.45); background:rgba(230,242,200,0.55); border-radius:6px; padding:1.2rem 1.8rem; }
-        html[data-theme="light"] .xueni-epigraph p, body.light .xueni-epigraph p { color:#141f04; font-weight:500; }
-        html[data-theme="light"] .xueni-epigraph cite, body.light .xueni-epigraph cite { color:#344d09; opacity:1; font-weight:500; }
-        html[data-theme="light"] .xueni-card, body.light .xueni-card { background:#f3f8e8; border:1px solid rgba(65,100,15,0.30); box-shadow:0 2px 12px rgba(50,85,8,0.10); backdrop-filter:none; }
-        html[data-theme="light"] .xueni-card:hover, body.light .xueni-card:hover { background:#eaf4d2; border-color:rgba(65,100,15,0.55); box-shadow:0 4px 20px rgba(50,85,8,0.18); }
-        html[data-theme="light"] .xueni-card::before, body.light .xueni-card::before { background:linear-gradient(135deg, #5a9a10, transparent); opacity:0.6; }
-        html[data-theme="light"] .xueni-card-tag, body.light .xueni-card-tag { color:#2e5205; opacity:1; font-weight:700; letter-spacing:0.22em; }
-        html[data-theme="light"] .xueni-card-quote, body.light .xueni-card-quote { color:#111c04; font-weight:500; }
-        html[data-theme="light"] .xueni-card-source, body.light .xueni-card-source { color:#3a5a0a; opacity:1; }
-        @media(max-width:600px){ .xueni-grid { grid-template-columns:1fr; } }
-
-        /* =============================================
-           青藜装饰 — 两侧植物摇曳
-        ============================================= */
-
-        /* 容器：覆盖整个雪泥 section 宽度 */
-        .xueni-botanicals {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            pointer-events: none;
-            overflow: visible;
-            z-index: 0;
-        }
-        /* 让内容在装饰上方 */
-        .xueni-header, .xueni-epigraph, .xueni-grid, #firefly-canvas {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* ---- 左侧植株 ---- */
-        .botanical-left {
-            position: absolute;
-            left: -90px;
-            bottom: -20px;
-            width: 160px;
-            height: 420px;
-            transform-origin: bottom center;
-        }
-        /* ---- 右侧植株 ---- */
-        .botanical-right {
-            position: absolute;
-            right: -90px;
-            bottom: -20px;
-            width: 160px;
-            height: 420px;
-            transform-origin: bottom center;
-            transform: scaleX(-1); /* 镜像 */
-        }
-
-        /* 整株慢摇 */
-        .botanical-left  { animation: sway-left  6s ease-in-out infinite; }
-        .botanical-right { animation: sway-right 7.5s ease-in-out infinite 0.8s; }
-
-        @keyframes sway-left {
-            0%, 100% { transform: rotate(0deg); }
-            30%       { transform: rotate(1.8deg); }
-            70%       { transform: rotate(-2.5deg); }
-        }
-        @keyframes sway-right {
-            0%, 100% { transform: scaleX(-1) rotate(0deg); }
-            30%       { transform: scaleX(-1) rotate(2deg); }
-            70%       { transform: scaleX(-1) rotate(-1.6deg); }
-        }
-
-        /* 叶片独立抖动 */
-        .leaf-sway-a { animation: leaf-a 4s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
-        .leaf-sway-b { animation: leaf-b 5s ease-in-out infinite 0.5s; transform-box: fill-box; transform-origin: 50% 100%; }
-        .leaf-sway-c { animation: leaf-c 3.8s ease-in-out infinite 1.2s; transform-box: fill-box; transform-origin: 50% 100%; }
-        .leaf-sway-d { animation: leaf-d 4.6s ease-in-out infinite 0.3s; transform-box: fill-box; transform-origin: 50% 100%; }
-        .leaf-sway-e { animation: leaf-e 5.2s ease-in-out infinite 0.9s; transform-box: fill-box; transform-origin: 50% 100%; }
-
-        @keyframes leaf-a { 0%,100%{transform:rotate(0deg)} 40%{transform:rotate(4deg)} 75%{transform:rotate(-5deg)} }
-        @keyframes leaf-b { 0%,100%{transform:rotate(0deg)} 35%{transform:rotate(-6deg)} 68%{transform:rotate(4.5deg)} }
-        @keyframes leaf-c { 0%,100%{transform:rotate(0deg)} 45%{transform:rotate(5.5deg)} 80%{transform:rotate(-4deg)} }
-        @keyframes leaf-d { 0%,100%{transform:rotate(0deg)} 38%{transform:rotate(-3.5deg)} 72%{transform:rotate(5deg)} }
-        @keyframes leaf-e { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(6deg)} 85%{transform:rotate(-3deg)} }
-
-        /* 萤火 canvas */
-        #firefly-canvas {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* 浅色模式调整植物透明度（ink->watercolor feel） */
-        html[data-theme="light"] .botanical-left,
-        html[data-theme="light"] .botanical-right,
-        body.light .botanical-left,
-        body.light .botanical-right { opacity: 0.75; }
-
-        /* 小屏隐藏两侧装饰 */
-        @media(max-width:860px){
-            .botanical-left, .botanical-right { display: none; }
-=======
         /* ===== 浅色模式：雪泥区块全量覆写 ===== */
         html[data-theme="light"] .xueni-title,
         body.light .xueni-title { color:#3d5c0a; opacity:0.9; }
@@ -280,7 +180,6 @@
 
         @media(max-width:600px){
             .xueni-grid { grid-template-columns:1fr; }
->>>>>>> c264f270bd53c7b2c5a454ce6c049d45d5878bc3
         }
     </style>
 
