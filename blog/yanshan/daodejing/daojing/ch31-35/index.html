@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第三十一章—第三十五章 · 道经 · 砚山 | SageLume</title>
+  <link rel="stylesheet" href="https://huang-husky.github.io/SageLume/style.css" />
+  <script src="https://huang-husky.github.io/SageLume/js/theme-toggle.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root{--ys-bg:#f5f0e8;--ys-paper:#faf7f0;--ys-ink:#2c2417;--ys-ink-lt:#6a5d4a;--ys-ink-fd:#a8997e;--ys-sage:#5a7a5e;--ys-sage-dk:#3d5940;--ys-sage-bg:rgba(90,122,94,.08);--ys-amber:#c8902a;--ys-amber-bg:rgba(200,144,42,.10);--ys-zhu:#c0392b;--ys-zhu-bg:rgba(192,57,43,.07);--ys-border:#d4c9b0;--ys-shadow:rgba(44,36,23,.12);--ys-popup-bg:#fffdf6;--char-size:2.5rem;--pin-size:.63rem;--gap:11px;}
+    [data-theme="dark"]{--ys-bg:#1a1812;--ys-paper:#221f16;--ys-ink:#e8e0cc;--ys-ink-lt:#a09078;--ys-ink-fd:#5c5040;--ys-sage:#7aaa7e;--ys-sage-dk:#9fcfa3;--ys-sage-bg:rgba(122,170,126,.08);--ys-amber:#d4a84b;--ys-amber-bg:rgba(212,168,75,.10);--ys-zhu:#e05a4a;--ys-zhu-bg:rgba(224,90,74,.07);--ys-border:#3a3428;--ys-shadow:rgba(0,0,0,.4);--ys-popup-bg:#2a2519;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    .ys-body{background:var(--ys-bg);font-family:'Noto Serif SC',serif;}
+    .ys-body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:repeating-linear-gradient(0deg,transparent,transparent 36px,rgba(180,160,120,.05) 36px,rgba(180,160,120,.05) 37px);}
+    .breadcrumb{position:relative;z-index:1;max-width:840px;margin:0 auto;padding:14px 24px 0;font-family:'Noto Sans SC',sans-serif;font-size:.72rem;color:var(--ys-ink-lt);letter-spacing:.05em;}
+    .breadcrumb a{color:var(--ys-sage);text-decoration:none;}.breadcrumb a:hover{text-decoration:underline;}.breadcrumb span{margin:0 5px;opacity:.4;}
+    .ys-banner{position:relative;z-index:1;text-align:center;padding:28px 24px 22px;border-bottom:1px solid var(--ys-border);background:linear-gradient(to bottom,var(--ys-paper),transparent);}
+    .ys-tag-line{font-family:'Noto Sans SC',sans-serif;font-size:.7rem;letter-spacing:.2em;color:var(--ys-amber);margin-bottom:5px;}
+    .ys-title{font-size:1.7rem;font-weight:700;letter-spacing:.2em;color:var(--ys-sage-dk);}
+    .ys-divider{width:44px;height:1px;margin:10px auto;background:linear-gradient(to right,transparent,var(--ys-amber),transparent);}
+    .ys-desc{font-size:.8rem;color:var(--ys-ink-fd);letter-spacing:.08em;}
+    .legend{max-width:840px;margin:16px auto 0;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-family:'Noto Sans SC',sans-serif;font-size:.7rem;color:var(--ys-ink-lt);}
+    .legend-item{display:flex;align-items:center;gap:4px;}.ldot{width:13px;height:13px;border-radius:2px;display:inline-block;}
+    .ldot-zhu{background:var(--ys-zhu-bg);border:1px solid var(--ys-zhu);}.ldot-note{background:var(--ys-sage-bg);border:1px solid var(--ys-sage);}.ldot-speak{background:var(--ys-amber-bg);border:1px solid var(--ys-amber);}
+    .ys-main{position:relative;z-index:1;max-width:840px;margin:0 auto;padding:36px 24px 120px;}
+    .chapter-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;font-family:'Noto Sans SC',sans-serif;font-size:.75rem;}
+    .nav-btn{display:inline-flex;align-items:center;color:var(--ys-sage);text-decoration:none;padding:5px 10px;border:1px solid var(--ys-border);border-radius:3px;transition:border-color .2s,background .2s;}
+    .nav-btn:hover{border-color:var(--ys-sage);background:var(--ys-sage-bg);}.nav-btn.prev::before{content:'\u2039 ';}.nav-btn.next::after{content:' \u203a';}
+    .nav-center{color:var(--ys-ink-lt);letter-spacing:.05em;}
+    .sentence-block{background:var(--ys-paper);border:1px solid var(--ys-border);border-radius:4px;padding:30px 26px 22px;margin-bottom:20px;box-shadow:0 2px 8px var(--ys-shadow);position:relative;transition:border-color .3s,box-shadow .3s;}
+    .sentence-block.reading{border-color:var(--ys-amber);box-shadow:0 2px 8px var(--ys-shadow),0 0 0 2px rgba(200,144,42,.15);}
+    .sentence-block::before{content:attr(data-index);position:absolute;top:10px;left:14px;font-size:.62rem;color:var(--ys-ink-fd);font-family:'Noto Sans SC',sans-serif;}
+    .read-btn{position:absolute;top:8px;right:12px;background:none;border:1px solid var(--ys-border);border-radius:3px;padding:3px 9px;font-family:'Noto Sans SC',sans-serif;font-size:.65rem;color:var(--ys-ink-fd);cursor:pointer;transition:border-color .2s,color .2s,background .2s;}
+    .read-btn:hover,.read-btn.active{border-color:var(--ys-amber);color:var(--ys-amber);background:var(--ys-amber-bg);}
+    .char-row{display:flex;flex-wrap:wrap;gap:var(--gap);align-items:flex-end;margin-bottom:18px;}
+    .char-unit{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:42px;}
+    .char-pin{font-family:'Noto Sans SC',sans-serif;font-size:var(--pin-size);color:var(--ys-ink-fd);letter-spacing:.02em;line-height:1.3;text-align:center;white-space:nowrap;min-height:1em;transition:color .15s;}
+    .char-box{width:46px;height:46px;border:1px solid var(--ys-border);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:var(--char-size);line-height:1;position:relative;background:transparent;user-select:none;cursor:default;transition:background .15s,border-color .15s,transform .15s,box-shadow .15s;}
+    .char-box.speaking{background:var(--ys-amber-bg)!important;border-color:var(--ys-amber)!important;box-shadow:0 0 10px rgba(200,144,42,.4);transform:scale(1.12);}
+    .char-unit.speaking-unit .char-pin{color:var(--ys-amber);}
+    .char-unit.punct .char-pin{opacity:0;}.char-unit.punct .char-box{border-color:transparent;font-size:1.6rem;color:var(--ys-ink-lt);}
+    .char-unit.zhu .char-box{color:var(--ys-zhu);background:var(--ys-zhu-bg);border-color:rgba(192,57,43,.25);cursor:pointer;}
+    .char-unit.zhu .char-box:hover{transform:scale(1.08);border-color:var(--ys-zhu);}
+    .char-unit.note .char-box{color:var(--ys-sage-dk);background:var(--ys-sage-bg);border-color:rgba(90,122,94,.25);cursor:pointer;}
+    .char-unit.note .char-box:hover{transform:scale(1.08);border-color:var(--ys-sage);}
+    .char-unit.zhu .char-box::after,.char-unit.note .char-box::after{content:'\u25c7';position:absolute;top:2px;right:3px;font-size:.42rem;opacity:.5;}
+    .sentence-footer{border-top:1px dashed var(--ys-border);padding-top:12px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+    .translation{font-size:.8rem;color:var(--ys-ink-lt);line-height:1.9;letter-spacing:.05em;flex:1;}
+    .toggle-note{background:none;border:1px solid var(--ys-border);border-radius:2px;padding:3px 9px;font-family:'Noto Sans SC',sans-serif;font-size:.68rem;color:var(--ys-ink-fd);cursor:pointer;white-space:nowrap;transition:border-color .2s,color .2s;}
+    .toggle-note:hover{border-color:var(--ys-sage);color:var(--ys-sage);}
+    .expand-note{display:none;margin-top:10px;font-size:.78rem;color:var(--ys-ink-lt);line-height:1.9;border-left:2px solid var(--ys-sage);padding-left:11px;letter-spacing:.04em;}
+    .expand-note.open{display:block;}
+    .read-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--ys-paper);border-top:1px solid var(--ys-border);box-shadow:0 -4px 20px var(--ys-shadow);padding:10px 20px 14px;display:none;align-items:center;gap:14px;flex-wrap:wrap;font-family:'Noto Sans SC',sans-serif;}
+    .read-bar.visible{display:flex;}.rb-title{font-size:.72rem;color:var(--ys-ink-lt);flex-shrink:0;}.rb-title b{color:var(--ys-amber);}
+    .rb-progress{font-size:.65rem;color:var(--ys-ink-fd);min-width:48px;flex-shrink:0;}.rb-controls{display:flex;gap:7px;}
+    .rb-btn{background:none;border:1px solid var(--ys-border);border-radius:3px;padding:5px 11px;font-size:.72rem;color:var(--ys-ink-lt);cursor:pointer;transition:border-color .2s,color .2s,background .2s;}
+    .rb-btn:hover{border-color:var(--ys-sage);color:var(--ys-sage);background:var(--ys-sage-bg);}.rb-btn.rb-stop:hover{border-color:var(--ys-zhu);color:var(--ys-zhu);}
+    .rb-speed{display:flex;align-items:center;gap:6px;margin-left:auto;}.rb-speed label{font-size:.65rem;color:var(--ys-ink-fd);}
+    .rb-speed input[type=range]{width:76px;accent-color:var(--ys-amber);}.rb-speed .sp-val{font-size:.65rem;color:var(--ys-amber);min-width:28px;}
+    .popup-overlay{display:none;position:fixed;inset:0;z-index:100;}.popup-overlay.show{display:block;}
+    .popup-card{position:fixed;background:var(--ys-popup-bg);border:1px solid var(--ys-border);border-radius:6px;padding:16px 18px 14px;min-width:190px;max-width:280px;box-shadow:0 8px 28px var(--ys-shadow);z-index:101;animation:popIn .14s ease;font-family:'Noto Serif SC',serif;}
+    @keyframes popIn{from{opacity:0;transform:translateY(5px) scale(.96);}to{opacity:1;transform:none;}}
+    .popup-char{font-size:2rem;font-weight:700;margin-bottom:6px;line-height:1;}.popup-char.is-zhu{color:var(--ys-zhu);}.popup-char.is-note{color:var(--ys-sage-dk);}
+    .popup-pin{font-family:'Noto Sans SC',sans-serif;font-size:.68rem;color:var(--ys-ink-fd);margin-bottom:8px;letter-spacing:.08em;}
+    .popup-hr{height:1px;background:var(--ys-border);margin:8px 0;}
+    .popup-type{font-family:'Noto Sans SC',sans-serif;font-size:.62rem;letter-spacing:.08em;padding:1px 5px;border-radius:2px;margin-bottom:7px;display:inline-block;}
+    .type-zhu{background:var(--ys-zhu-bg);color:var(--ys-zhu);}.type-note{background:var(--ys-sage-bg);color:var(--ys-sage);}
+    .popup-body{font-size:.8rem;color:var(--ys-ink-lt);line-height:1.85;letter-spacing:.04em;}
+    .popup-close{position:absolute;top:7px;right:9px;background:none;border:none;cursor:pointer;color:var(--ys-ink-fd);font-size:.85rem;}
+    @media(max-width:480px){:root{--char-size:1.9rem;--gap:7px;}.char-box{width:38px;height:38px;}.rb-speed,.rb-progress{display:none;}}
+  </style>
+</head>
+<body class="ys-body">
+  <button class="theme-toggle" aria-label="切换深浅模式"><span class="icon sun">&#9728;&#65039;</span><span class="icon moon">&#127769;</span></button>
+  <a class="skip-to-content" href="#ys-main">跳至内容</a>
+  <header class="site-header">
+    <div class="site-title"><a href="https://huang-husky.github.io/SageLume/"><img src="https://huang-husky.github.io/SageLume/favicon/logo-header.png" alt="算海青藜" height="96" style="vertical-align:middle;" /></a></div>
+    <nav class="main-nav"><a href="https://huang-husky.github.io/SageLume/">Home</a><a href="https://huang-husky.github.io/SageLume/about/">About</a><a href="https://huang-husky.github.io/SageLume/blog/">Blog</a></nav>
+  </header>
+  <div class="breadcrumb"><a href="../../../index.html">砚山</a><span>›</span><a href="../../index.html">道德经</a><span>›</span><a href="../index.html">道经</a><span>›</span>第三十一章—第三十五章</div>
+  <div class="ys-banner">
+    <div class="ys-tag-line">《道德经》· 道经 · 第三十一章—第三十五章</div>
+    <h1 class="ys-title">死而不亡者寿</h1>
+    <div class="ys-divider"></div>
+    <p class="ys-desc">老子 · 道家经典 · 背记注音版</p>
+    <div class="legend">
+      <span class="legend-item"><span class="ldot ldot-zhu"></span>异读字 / 通假字</span>
+      <span class="legend-item"><span class="ldot ldot-note"></span>重点词·点击批注</span>
+      <span class="legend-item"><span class="ldot ldot-speak"></span>朗读跟读高亮</span>
+    </div>
+  </div>
+  <main class="ys-main" id="ys-main">
+    <div class="chapter-nav">
+      <a class="nav-btn prev" href="../ch26-30/index.html">上一组</a>
+      <span class="nav-center">道经 第 7/8 组</span>
+      <a class="nav-btn next" href="../ch36-37/index.html">下一组</a>
+    </div>
+
+    <div class="sentence-block" data-index="第 三 十 一 章" data-ch="0">
+      <button class="read-btn" onclick="startRead(0,this)">▶ 朗读</button>
+      <div class="char-row" id="c1"></div>
+      <div class="sentence-footer">
+        <div class="translation">兵器是不祥之物，万物都厌恶它，有道者不使用它。君子平居以左为贵，用兵则以右为贵。兵器不祥，非君子之物，不得已而用之，应以恬淡为最高原则。胜利了也不以为美，而以胜利为美的，就是以杀人为乐的人。以杀人为乐的人，是不可能得志于天下的。吉事尚左，凶事尚右。偏将军居左，上将军居右——即以丧礼对待之。杀伤众多生命，应以哀痛悲泣来面对；战争胜利了，要以丧礼来处置。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章是老子最集中的反战论述，以礼制逻辑（而非道德说教）论证战争的凶险属性：兵器属于右（凶位），是礼制体系中已有的定性，圣人不过是遵循这一礼制。"乐杀人者则不可得志于天下"是政治层面的反战论证：嗜杀者失民心、失天下，这是不以道德而以政治规律立论。最动人之处在结尾：以丧礼处待战争，以哀悲泣之——这将战争的本质从"胜利事件"还原为"死亡事件"，是老子人道主义精神的极致表达，也是全书最具震撼力的章节之一。</div>
+    </div>
+
+    <div class="sentence-block" data-index="第 三 十 二 章" data-ch="1">
+      <button class="read-btn" onclick="startRead(1,this)">▶ 朗读</button>
+      <div class="char-row" id="c2"></div>
+      <div class="sentence-footer">
+        <div class="translation">道永远没有固定的名称，朴虽然看似微小，天下却没有什么能使它臣服。侯王若能守持它，万物将自然归顺。天地相合，降下甘露，百姓无需任何命令，自然均匀分布。开始制定制度时，名分便随之产生；名分既已有了，就应该知道适可而止；知道适可而止，便可以不陷入危险。道在天下，就像溪谷之于江海一样（自然汇聚）。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章以"道常无名"开篇，与第一章"名可名，非常名"呼应，构成首尾对称的无名论。"朴虽小，天下莫能臣"揭示道隐而有力的悖论：看似微不足道，却是任何力量都无法征服的根本。政治论述部分（侯王守之，万物自宾；甘露自均）展现道化政治的理想图景：无为而治，天地相合，万物自然得其所。"始制有名，知止可以不殆"是对制度化社会的警示：制度是必要的，但必须知道边界，名分不可无限膨胀。结尾以"川谷之于江海"的比喻收束，将道的归聚性以最优美的方式呈现。</div>
+    </div>
+
+    <div class="sentence-block" data-index="第 三 十 三 章" data-ch="2">
+      <button class="read-btn" onclick="startRead(2,this)">▶ 朗读</button>
+      <div class="char-row" id="c3"></div>
+      <div class="sentence-footer">
+        <div class="translation">认识他人的是智，认识自我的是明。战胜他人的有力，战胜自我的才是强。知道满足的富有，勉力实践的有志向。不偏离自己本分的能长久。形体死去而道（精神）不消亡的，才是真正的长寿。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章是《道德经》中最精炼、最富名言密度的一章，每一句都是独立的道德命题。全章以三组对比（知人/自知、胜人/自胜、知足/强行）推进，共同方向是：外在→内在，世俗标准→道家标准。核心逻辑是将价值判断的基准从"他者"转向"自我"：认识自我比认识他人更难、更重要；战胜自我比战胜他人更有力量。"死而不亡者寿"是全章最深刻、也是全书最具哲学张力的命题之一：它将"寿"的定义彻底从肉体寿命转移到精神（道）的永续，与第十六章"没身不殆"共同构成老子超越性生死观的核心表达。</div>
+    </div>
+
+    <div class="sentence-block" data-index="第 三 十 四 章" data-ch="3">
+      <button class="read-btn" onclick="startRead(3,this)">▶ 朗读</button>
+      <div class="char-row" id="c4"></div>
+      <div class="sentence-footer">
+        <div class="translation">大道广泛流布，可左可右。万物依赖它生长而道不推辞，功成了却不居功自名。覆盖养育万物却不以主宰自居，常处无欲状态，可以称之为小；万物归向它却不以主宰自居，可以称之为大。正因为始终不自以为大，所以才能成就它的伟大。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章是老子对道之"大小"辩证的集中论述，结构精妙：先以道的行为描绘（不辞、弗名、不为主），再以"小"与"大"的双重命名揭示其辩证本质。"可名于小"与"可名为大"并不矛盾——道因谦退无欲而"小"，因万物归向而"大"，二者统一于"不自以为大"的根本态度。结尾"以其终不自为大，故能成其大"是全章逻辑的收束，也是道家"反者道之动"、"以退为进"哲学的最高艺术表达，与第八章"夫唯不争，故天下莫能与之争"、第二十二章"不自见，故明"等章节构成完整的辩证命题网络。</div>
+    </div>
+
+    <div class="sentence-block" data-index="第 三 十 五 章" data-ch="4">
+      <button class="read-btn" onclick="startRead(4,this)">▶ 朗读</button>
+      <div class="char-row" id="c5"></div>
+      <div class="sentence-footer">
+        <div class="translation">把握大道，天下自然归向。归向而不受伤害，安宁平和泰然。音乐与美食，能让路过的行人驻足。道说出来，平淡得毫无味道，看它看不见，听它听不到，用它却用不尽。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章以"执大象，天下往"开篇，提出道化政治的最简原则：把握道，天下自然归向，无需强制。"安平太"三字是最精简的政治理想描述。中段以"乐与饵，过客止"引入对比：感官享受（音乐与美食）能吸引人驻足，但道却"淡乎无味，视之不足见，听之不足闻"——道无法诉诸感官，却"用之不足既"，永用不竭。这是老子论道最精彩的逆向论证：感官不可及，实用无限量；越平淡，越持久。三组"不足"排比，以道的感知局限性衬托其实用无限性，是对第一章"道可道，非常道"在具体感知层面的最佳注脚。</div>
+    </div>
+
+  </main>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator"><img class="lume-image" src="https://huang-husky.github.io/SageLume/favicon/logo-footer.png" alt="算海青藜" height="48" /></p>
+      <p>&#169; 2026 z-o-s</p>
+    </div>
+  </footer>
+  <div class="read-bar" id="readBar">
+    <div class="rb-title">&#9654; <b id="rbChTitle">&#8212;</b></div>
+    <div class="rb-progress" id="rbProgress"></div>
+    <div class="rb-controls">
+      <button class="rb-btn" id="rbPause" onclick="togglePause()">&#9208; 暂停</button>
+      <button class="rb-btn rb-stop" onclick="stopRead()">&#9209; 停止</button>
+    </div>
+    <div class="rb-speed">
+      <label>语速</label>
+      <input type="range" id="speedSlider" min="0.5" max="1.8" step="0.1" value="0.9" oninput="onSpeedChange(this.value)" />
+      <span class="sp-val" id="speedLabel">0.9&#215;</span>
+    </div>
+  </div>
+  <div class="popup-overlay" id="overlay"></div>
+  <div class="popup-card" id="popupCard" style="display:none;">
+    <button class="popup-close" id="popupClose">&#10005;</button>
+    <div class="popup-char" id="popupChar"></div>
+    <div class="popup-pin" id="popupPin"></div>
+    <div class="popup-hr"></div>
+    <span class="popup-type" id="popupType"></span>
+    <div class="popup-body" id="popupBody"></div>
+  </div>
+  <script>
+  const chapters = [[{"c":"夫","p":"fú","type":"normal"},{"c":"兵","p":"bīng","type":"note","note":"兵器、武力。\"兵者不祥之器\"是全章的核心命题，老子以礼制语言从正面界定战争属性，为后文\"不得已而用之\"的用兵准则提供依据。"},{"c":"者","p":"zhě","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"不","p":"bù","type":"normal"},{"c":"祥","p":"xiáng","type":"note","note":"吉祥。\"不祥\"即凶险、不吉，是礼制体系中对战争属性的定性。老子不从道德立场，而从礼制角度论证兵器的凶险，更具说服力。"},{"c":"之","p":"zhī","type":"normal"},{"c":"器","p":"qì","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"物","p":"wù","type":"normal"},{"c":"或","p":"huò","type":"normal"},{"c":"恶","p":"wù","type":"zhu","read":"务","note":"异读字：此处\"恶\"读wù（四声），动词，厌恶、憎恶，非善恶之è（二声）。\"物或恶之\"谓万物都厌恶它（兵器），是宇宙层面对战争的普遍排斥。"},{"c":"之","p":"zhī","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"故","p":"gù","type":"normal"},{"c":"有","p":"yǒu","type":"normal"},{"c":"道","p":"dào","type":"normal"},{"c":"者","p":"zhě","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"处","p":"chǔ","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"君","p":"jūn","type":"normal"},{"c":"子","p":"zǐ","type":"normal"},{"c":"居","p":"jū","type":"normal"},{"c":"则","p":"zé","type":"normal"},{"c":"贵","p":"guì","type":"note","note":"以……为贵，重视、尊崇，动词。本章以左右之礼区分吉凶：居处尚左（阳），用兵尚右（阴）。兵器属于右（凶），这是老子借用礼制符号系统论证战争凶险属性的核心逻辑。"},{"c":"左","p":"zuǒ","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"用","p":"yòng","type":"normal"},{"c":"兵","p":"bīng","type":"normal"},{"c":"则","p":"zé","type":"normal"},{"c":"贵","p":"guì","type":"normal"},{"c":"右","p":"yòu","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"兵","p":"bīng","type":"normal"},{"c":"者","p":"zhě","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"祥","p":"xiáng","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"器","p":"qì","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"非","p":"fēi","type":"normal"},{"c":"君","p":"jūn","type":"normal"},{"c":"子","p":"zǐ","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"器","p":"qì","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"不","p":"bù","type":"normal"},{"c":"得","p":"dé","type":"normal"},{"c":"已","p":"yǐ","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"用","p":"yòng","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"恬","p":"tián","type":"note","note":"恬淡（tián dàn）：宁静淡泊，不以战争为荣。\"恬淡为上\"即即使迫不得已用兵，也应保持宁静淡泊的心态，绝不以杀伐为快事，这是老子对\"不得已\"用兵者的最高道德要求。"},{"c":"淡","p":"dàn","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"上","p":"shàng","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"胜","p":"shèng","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"美","p":"měi","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"而","p":"ér","type":"normal"},{"c":"美","p":"měi","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"者","p":"zhě","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"是","p":"shì","type":"normal"},{"c":"乐","p":"lè","type":"note","note":"乐（lè），喜好、以……为乐，动词。\"乐杀人\"即以杀戮为乐，是老子最严厉谴责的心态。赞美战争胜利者，就是以杀人为乐者——老子以此将所有人二分：不得已用兵者与嗜杀者。"},{"c":"杀","p":"shā","type":"normal"},{"c":"人","p":"rén","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"夫","p":"fú","type":"normal"},{"c":"乐","p":"lè","type":"normal"},{"c":"杀","p":"shā","type":"normal"},{"c":"人","p":"rén","type":"normal"},{"c":"者","p":"zhě","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"则","p":"zé","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"可","p":"kě","type":"normal"},{"c":"得","p":"dé","type":"normal"},{"c":"志","p":"zhì","type":"normal"},{"c":"于","p":"yú","type":"normal"},{"c":"天","p":"tiān","type":"normal"},{"c":"下","p":"xià","type":"normal"},{"c":"矣","p":"yǐ","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"吉","p":"jí","type":"normal"},{"c":"事","p":"shì","type":"normal"},{"c":"尚","p":"shàng","type":"normal"},{"c":"左","p":"zuǒ","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"凶","p":"xiōng","type":"normal"},{"c":"事","p":"shì","type":"normal"},{"c":"尚","p":"shàng","type":"normal"},{"c":"右","p":"yòu","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"偏","p":"piān","type":"note","note":"偏将军：副将，级别低于上将军。此处以\"偏将军居左，上将军居右\"说明：即便在军队内部，主将（权力更大者）也处于凶位（右），表明战争本质上是凶事，权力越大，凶险责任越重。"},{"c":"将","p":"jiāng","type":"normal"},{"c":"军","p":"jūn","type":"normal"},{"c":"居","p":"jū","type":"normal"},{"c":"左","p":"zuǒ","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"上","p":"shàng","type":"normal"},{"c":"将","p":"jiāng","type":"normal"},{"c":"军","p":"jūn","type":"normal"},{"c":"居","p":"jū","type":"normal"},{"c":"右","p":"yòu","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"言","p":"yán","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"丧","p":"sāng","type":"zhu","read":"桑","note":"异读字：\"丧礼\"中的\"丧\"读sāng（一声），指丧葬礼仪。\"丧失\"\"沮丧\"读sàng（四声）。\"以丧礼处之\"谓以办丧事的礼仪来对待战争——胜利不是庆功之事，而应以哀悼心态处之。"},{"c":"礼","p":"lǐ","type":"normal"},{"c":"处","p":"chǔ","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"杀","p":"shā","type":"normal"},{"c":"人","p":"rén","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"众","p":"zhòng","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"以","p":"yǐ","type":"normal"},{"c":"哀","p":"āi","type":"note","note":"哀悲：深沉的哀恸。\"以哀悲泣之\"是全章最动人之处：杀伤众多生命，应当以哀痛悲泣来面对，而非庆功宴饮。这是老子人道主义精神的极致表达。"},{"c":"悲","p":"bēi","type":"normal"},{"c":"泣","p":"qì","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"；","p":"","type":"punct"},{"c":"战","p":"zhàn","type":"normal"},{"c":"胜","p":"shèng","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"以","p":"yǐ","type":"normal"},{"c":"丧","p":"sāng","type":"zhu","read":"桑","note":"同上，丧礼之\"丧\"读sāng（一声）。\"战胜以丧礼处之\"与\"以哀悲泣之\"呼应，双重强调：战争的胜利不值得庆贺，应以丧礼（哀悼之礼）处之，这是全章最核心的道德命题。"},{"c":"礼","p":"lǐ","type":"normal"},{"c":"处","p":"chǔ","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"。","p":"","type":"punct"}],[{"c":"道","p":"dào","type":"normal"},{"c":"常","p":"cháng","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"名","p":"míng","type":"note","note":"\"道常无名\"：道永远没有固定的名称。与第一章\"名可名，非常名\"呼应，道的无名性是其超越一切概念的根本属性，也是无法被任何力量臣服的原因。"},{"c":"，","p":"","type":"punct"},{"c":"朴","p":"pǔ","type":"note","note":"朴：未经雕刻的原木，道的本然状态的象征（见第二十八章）。此处\"朴虽小\"是说道的本然虽然看似微小、不显眼，但天下没有什么能使它臣服，展现道的隐而有力。"},{"c":"虽","p":"suī","type":"normal"},{"c":"小","p":"xiǎo","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"天","p":"tiān","type":"normal"},{"c":"下","p":"xià","type":"normal"},{"c":"莫","p":"mò","type":"normal"},{"c":"能","p":"néng","type":"normal"},{"c":"臣","p":"chén","type":"note","note":"臣：使……臣服，动词，使动用法。\"莫能臣\"即没有什么力量能使道臣服于自己，强调道的绝对自主性和超越性，是对任何权力企图把握道的否定。"},{"c":"也","p":"yě","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"侯","p":"hóu","type":"normal"},{"c":"王","p":"wáng","type":"normal"},{"c":"若","p":"ruò","type":"normal"},{"c":"能","p":"néng","type":"normal"},{"c":"守","p":"shǒu","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"万","p":"wàn","type":"normal"},{"c":"物","p":"wù","type":"normal"},{"c":"将","p":"jiāng","type":"normal"},{"c":"自","p":"zì","type":"normal"},{"c":"宾","p":"bīn","type":"note","note":"宾：归顺、宾服，自宾即自然归顺。\"万物将自宾\"是本章政治论的核心：侯王守道，万物自然归顺，无需强制——与第十七章\"功成事遂，百姓皆谓我自然\"同理，是无为而治的政治效果描述。"},{"c":"。","p":"","type":"punct"},{"c":"天","p":"tiān","type":"normal"},{"c":"地","p":"dì","type":"normal"},{"c":"相","p":"xiāng","type":"normal"},{"c":"合","p":"hé","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"以","p":"yǐ","type":"normal"},{"c":"降","p":"jiàng","type":"normal"},{"c":"甘","p":"gān","type":"normal"},{"c":"露","p":"lù","type":"note","note":"甘露：甘美的露水，古代认为是祥瑞之象征，天地和谐时自然降临。\"天地相合，以降甘露\"比喻道化运行时天地自然和谐、万物自然受益的状态，是对无为而治最生动的自然类比。"},{"c":"，","p":"","type":"punct"},{"c":"民","p":"mín","type":"normal"},{"c":"莫","p":"mò","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"令","p":"lìng","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"自","p":"zì","type":"normal"},{"c":"均","p":"jūn","type":"note","note":"均：均匀、公平分布。\"民莫之令而自均\"即百姓无需任何命令，甘露自然均匀降落——这是以自然现象喻无为而治的社会效果：不发号施令，反而实现最公平的分配。"},{"c":"。","p":"","type":"punct"},{"c":"始","p":"shǐ","type":"normal"},{"c":"制","p":"zhì","type":"normal"},{"c":"有","p":"yǒu","type":"normal"},{"c":"名","p":"míng","type":"note","note":"\"始制有名\"：开始建立制度时，名分便随之产生。这是道散化为器的过程，有名是有为社会秩序的开端，但也是道之无名纯粹性开始流失的起点，故需\"知止\"。"},{"c":"，","p":"","type":"punct"},{"c":"名","p":"míng","type":"normal"},{"c":"亦","p":"yì","type":"normal"},{"c":"既","p":"jì","type":"normal"},{"c":"有","p":"yǒu","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"夫","p":"fú","type":"normal"},{"c":"亦","p":"yì","type":"normal"},{"c":"将","p":"jiāng","type":"normal"},{"c":"知","p":"zhī","type":"normal"},{"c":"止","p":"zhǐ","type":"note","note":"知止：知道停止、知道适可而止。名分制度一旦建立，就需要知道何处为止，不可无限膨胀——这是老子对礼制社会\"过度命名\"倾向的警示，与第四十四章\"知止不殆\"呼应。"},{"c":"，","p":"","type":"punct"},{"c":"知","p":"zhī","type":"normal"},{"c":"止","p":"zhǐ","type":"normal"},{"c":"可","p":"kě","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"殆","p":"dài","type":"note","note":"殆：危险、危殆。\"知止可以不殆\"即知道适可而止便可避免危险，与第四十四章\"知足者富，强行者有志，不失其所者久\"共同构成老子\"知止\"哲学的完整表达。"},{"c":"。","p":"","type":"punct"},{"c":"譬","p":"pì","type":"note","note":"譬：比喻，引出类比的逻辑词。\"譬道之在天下，犹川谷之于江海\"是全章最优美的比喻：道之于天下，如同溪谷之于江海——道无所不在却不自张，万物归向道如百川归海，与第六十六章\"江海所以能为百谷王\"深度呼应。"},{"c":"道","p":"dào","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"在","p":"zài","type":"normal"},{"c":"天","p":"tiān","type":"normal"},{"c":"下","p":"xià","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"犹","p":"yóu","type":"normal"},{"c":"川","p":"chuān","type":"normal"},{"c":"谷","p":"gǔ","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"于","p":"yú","type":"normal"},{"c":"江","p":"jiāng","type":"normal"},{"c":"海","p":"hǎi","type":"normal"},{"c":"。","p":"","type":"punct"}],[{"c":"知","p":"zhī","type":"normal"},{"c":"人","p":"rén","type":"normal"},{"c":"者","p":"zhě","type":"normal"},{"c":"智","p":"zhì","type":"note","note":"智：世俗层面的聪明智慧，向外认知的能力。与下文\"明\"相对，知人（认识他人）是向外的、较低层次的智慧——这是老子\"自知之明\"哲学的起点，将内圣（自知）置于外王（知人）之上。"},{"c":"，","p":"","type":"punct"},{"c":"自","p":"zì","type":"normal"},{"c":"知","p":"zhī","type":"normal"},{"c":"者","p":"zhě","type":"normal"},{"c":"明","p":"míng","type":"note","note":"明：超越普通智慧的内在洞见，\"明\"比\"智\"层次更高。自知者明，即能认识自我者才具备真正的智慧——与第十六章\"知常曰明\"呼应，\"明\"在道家是认识道之根本的最高认知状态。"},{"c":"。","p":"","type":"punct"},{"c":"胜","p":"shèng","type":"normal"},{"c":"人","p":"rén","type":"normal"},{"c":"者","p":"zhě","type":"normal"},{"c":"有","p":"yǒu","type":"normal"},{"c":"力","p":"lì","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"自","p":"zì","type":"normal"},{"c":"胜","p":"shèng","type":"normal"},{"c":"者","p":"zhě","type":"normal"},{"c":"强","p":"qiáng","type":"note","note":"强（qiáng）：真正的强大，内在超越的力量。自胜——克服自身欲望、弱点、惰性——才是\"强\"，胜人只是有外在\"力\"。这组对比是本章最深刻的道德判断，将内在修炼置于外在征服之上。"},{"c":"。","p":"","type":"punct"},{"c":"知","p":"zhī","type":"normal"},{"c":"足","p":"zú","type":"normal"},{"c":"者","p":"zhě","type":"normal"},{"c":"富","p":"fù","type":"note","note":"富：真正的富足。知足者富——满足于自己已有的，才是真正富有。是老子对\"财富\"的根本性重定义：富不在外物多寡，而在内心的满足程度，与第四十四章\"知足者富\"完全一致。"},{"c":"，","p":"","type":"punct"},{"c":"强","p":"qiǎng","type":"zhu","read":"抢","note":"异读字：此处\"强\"读qiǎng（三声），副词，勉力、努力不懈。与上文\"自胜者强\"的强（qiáng，二声，强大）形成对比：一为形容词（强大），一为副词（勉力而行）。\"强行者有志\"即坚持力行者有志向。"},{"c":"行","p":"xíng","type":"normal"},{"c":"者","p":"zhě","type":"normal"},{"c":"有","p":"yǒu","type":"normal"},{"c":"志","p":"zhì","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"不","p":"bù","type":"normal"},{"c":"失","p":"shī","type":"normal"},{"c":"其","p":"qí","type":"normal"},{"c":"所","p":"suǒ","type":"normal"},{"c":"者","p":"zhě","type":"normal"},{"c":"久","p":"jiǔ","type":"note","note":"久：长久持续。\"不失其所\"即不偏离自身的本分与位置，守住本真之所——这是从空间维度论述持久之道，与\"知止\"呼应：知道自己的位置，便能长久。"},{"c":"。","p":"","type":"punct"},{"c":"死","p":"sǐ","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"亡","p":"wáng","type":"note","note":"亡：消亡、消失。\"死而不亡者寿\"是全章最深刻的命题：形体死去而道（精神、价值）不消亡，才是真正意义上的长寿。这是老子对\"寿\"的根本性重定义，超越肉身生死，指向精神与道的永恒，与第十六章\"没身不殆\"深度呼应。"},{"c":"者","p":"zhě","type":"normal"},{"c":"寿","p":"shòu","type":"note","note":"寿：长寿，此处非指肉体的长寿，而是精神与道德价值的永续。\"死而不亡者寿\"将生死问题彻底转化为道的存续问题，是老子生死观的核心命题，也是本组章节标题\"死而不亡\"的出处。"},{"c":"。","p":"","type":"punct"}],[{"c":"大","p":"dà","type":"normal"},{"c":"道","p":"dào","type":"normal"},{"c":"汜","p":"fàn","type":"zhu","read":"泛","note":"异读生僻字：汜（fàn），通\"泛\"，泛滥、广泛流布。此字生僻，读fàn，不可误读为水名\"sì\"。\"大道汜兮\"即大道广泛流布，无所不在，是全章\"道之大\"的起点陈述，与第二十五章\"大曰逝\"呼应。"},{"c":"兮","p":"xī","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"其","p":"qí","type":"normal"},{"c":"可","p":"kě","type":"normal"},{"c":"左","p":"zuǒ","type":"normal"},{"c":"右","p":"yòu","type":"note","note":"\"其可左右\"：道可以向左向右，无处不在，无所不至，强调道运行的方向性自由——道不局限于任何单一方向，这正是它能成为天下母的原因。"},{"c":"。","p":"","type":"punct"},{"c":"万","p":"wàn","type":"normal"},{"c":"物","p":"wù","type":"normal"},{"c":"恃","p":"shì","type":"note","note":"恃：依赖、依靠，动词。\"万物恃之以生\"即万物依赖道而得以生长，道是万物存在的根本依据。\"而不辞\"即道不推辞、不拒绝，无私地承载一切生命，体现道的包容性与奉献性。"},{"c":"之","p":"zhī","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"生","p":"shēng","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"辞","p":"cí","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"功","p":"gōng","type":"normal"},{"c":"成","p":"chéng","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"弗","p":"fú","type":"normal"},{"c":"名","p":"míng","type":"note","note":"名：居功自名、自我标榜，动词。\"功成而弗名\"即道功成却不居功自名，与第二章\"圣人……功成而弗居\"、第十七章\"功成事遂，百姓皆谓我自然\"构成道家\"无为之功\"的核心命题链。"},{"c":"。","p":"","type":"punct"},{"c":"衣","p":"yì","type":"note","note":"衣（yì）：覆盖、包裹，动词，此处读yì（四声），非\"衣服\"之yī（一声）。\"衣养万物\"即道覆盖养育万物，如衣物包裹护持，是对道母性特质的又一描述，与第一章\"天下母\"、第六章\"玄牝之门\"呼应。"},{"c":"养","p":"yǎng","type":"normal"},{"c":"万","p":"wàn","type":"normal"},{"c":"物","p":"wù","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"主","p":"zhǔ","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"常","p":"cháng","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"欲","p":"yù","type":"note","note":"\"常无欲，可名于小\"：道常处于无欲无求的状态，因此可以称之为小（谦下）。\"小\"与下文\"大\"形成对照：正因为道不自以为大、不争名位，才被称为小；而万物归向它时，又可被称为大——这是老子\"以小成大\"辩证思维的精华。"},{"c":"，","p":"","type":"punct"},{"c":"可","p":"kě","type":"normal"},{"c":"名","p":"míng","type":"normal"},{"c":"于","p":"yú","type":"normal"},{"c":"小","p":"xiǎo","type":"normal"},{"c":"；","p":"","type":"punct"},{"c":"万","p":"wàn","type":"normal"},{"c":"物","p":"wù","type":"normal"},{"c":"归","p":"guī","type":"normal"},{"c":"焉","p":"yān","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"主","p":"zhǔ","type":"note","note":"\"万物归焉而不为主\"：万物都归向道，而道却不以主宰自居，故可名为大。两次\"不为主\"点明道的谦退本性：正是因为不自以为大、不争主宰之位，道才真正成就了其\"大\"——老子辩证法\"以退成进\"的最高体现。"},{"c":"，","p":"","type":"punct"},{"c":"可","p":"kě","type":"normal"},{"c":"名","p":"míng","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"大","p":"dà","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"以","p":"yǐ","type":"normal"},{"c":"其","p":"qí","type":"normal"},{"c":"终","p":"zhōng","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"自","p":"zì","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"大","p":"dà","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"故","p":"gù","type":"normal"},{"c":"能","p":"néng","type":"normal"},{"c":"成","p":"chéng","type":"normal"},{"c":"其","p":"qí","type":"normal"},{"c":"大","p":"dà","type":"note","note":"\"以其终不自为大，故能成其大\"：正因为道始终不以大自居，所以才真正成就了它的伟大。这是全章的逻辑终点，也是道家\"不争之争\"、\"以退为进\"哲学最简洁有力的表达，与第八章\"夫唯不争，故天下莫能与之争\"高度呼应。"},{"c":"。","p":"","type":"punct"}],[{"c":"执","p":"zhí","type":"normal"},{"c":"大","p":"dà","type":"normal"},{"c":"象","p":"xiàng","type":"note","note":"大象：大道的无形之象，道的整体运行形态。\"执大象\"即把握大道——\"象\"不是具体形象，而是道化形于无形的规律性显现，与第十四章\"无状之状，无物之象\"呼应。执大象者，天下自然归往。"},{"c":"，","p":"","type":"punct"},{"c":"天","p":"tiān","type":"normal"},{"c":"下","p":"xià","type":"normal"},{"c":"往","p":"wǎng","type":"note","note":"往：归往、前往。\"天下往\"即天下万民自然归向。把握大道者，不需要强制，万民自然归顺，与第三十二章\"万物将自宾\"同理，是无为而治最理想的政治效果描述。"},{"c":"。","p":"","type":"punct"},{"c":"往","p":"wǎng","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"害","p":"hài","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"安","p":"ān","type":"normal"},{"c":"平","p":"píng","type":"normal"},{"c":"太","p":"tài","type":"note","note":"太：安泰、泰然，通\"泰\"。\"安平太\"三字描述天下归往之后的状态：安宁、平和、泰然。帛书本或作\"安平大\"，但\"太（泰）\"更能凸显社会大治的境界，是老子政治理想的简洁表达。"},{"c":"。","p":"","type":"punct"},{"c":"乐","p":"yuè","type":"zhu","read":"月","note":"异读字：此处\"乐\"读yuè（四声），指音乐，与\"饵\"（美食）并列，代表一切感官享受。日常\"快乐\"读lè，二者声调相同但音节不同，yuè为音乐，lè为快乐。\"乐与饵\"即音乐与美食，是世俗享乐的代表。"},{"c":"与","p":"yǔ","type":"normal"},{"c":"饵","p":"ěr","type":"note","note":"饵（ěr）：美食、食饵，引申为一切物质享乐。\"乐与饵，过客止\"：音乐与美食能让路过的行人驻足停留，以此对比道的\"淡乎无味\"——感官刺激能吸引人，道却需要更深的领悟才能把握。"},{"c":"，","p":"","type":"punct"},{"c":"过","p":"guò","type":"normal"},{"c":"客","p":"kè","type":"normal"},{"c":"止","p":"zhǐ","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"道","p":"dào","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"出","p":"chū","type":"normal"},{"c":"口","p":"kǒu","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"淡","p":"dàn","type":"note","note":"淡：平淡，没有刺激性。\"淡乎其无味\"描述道言说出来时的特质——平淡无奇，毫无刺激性，与\"乐与饵\"的感官诱惑形成鲜明对比。老子以此揭示：道的吸引力不在于感官刺激，而在于无穷的实用性（用之不足既）。"},{"c":"乎","p":"hū","type":"normal"},{"c":"其","p":"qí","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"味","p":"wèi","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"视","p":"shì","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"足","p":"zú","type":"normal"},{"c":"见","p":"jiàn","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"听","p":"tīng","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"足","p":"zú","type":"normal"},{"c":"闻","p":"wén","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"用","p":"yòng","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"足","p":"zú","type":"normal"},{"c":"既","p":"jì","type":"note","note":"既：穷尽、用尽。\"用之不足既\"即道用之不尽，永远不会耗竭——视之不见、听之不闻（感官层面的局限），却用之不竭（实用层面的无限），三组\"不足\"构成排比，以道的感知局限性衬托其实用无限性，是老子论道最精彩的逆向论证。"},{"c":"。","p":"","type":"punct"}]];
+  const chapterBoxes=[];
+  function render(id,data){const row=document.getElementById(id);const boxes=[];if(!row||!data.length){chapterBoxes.push(boxes);return;}data.forEach(item=>{const unit=document.createElement('div');unit.className='char-unit'+(item.type!=='normal'?' '+item.type:'');const pin=document.createElement('div');pin.className='char-pin';pin.textContent=item.p||'';const box=document.createElement('div');box.className='char-box';box.textContent=item.c;if(item.note&&(item.type==='zhu'||item.type==='note')){box.addEventListener('click',e=>{e.stopPropagation();showPopup(item,box);});}unit.appendChild(pin);unit.appendChild(box);row.appendChild(unit);boxes.push({box,unit,item});});chapterBoxes.push(boxes);}
+  chapters.forEach((data,i)=>render('c'+(i+1),data));
+  const chapterNames=['第三十一章','第三十二章','第三十三章','第三十四章','第三十五章'];
+  let currentChIdx=-1,currentReadBtn=null,currentBlock=null,lastHL=null,isPaused=false,readSpeed=0.9;
+  function buildSpeech(chIdx){const boxes=chapterBoxes[chIdx];if(!boxes||!boxes.length)return null;let text='';const map=[];boxes.forEach(({box,unit,item})=>{text+=item.read||item.c;map.push(item.type==='punct'?null:{box,unit});});return{text,map};}
+  function startRead(chIdx,btn){if(currentChIdx===chIdx&&speechSynthesis.speaking){togglePause();return;}stopRead();const speech=buildSpeech(chIdx);if(!speech||!speech.text.trim()){alert('本章暂无内容。');return;}currentChIdx=chIdx;currentReadBtn=btn;currentBlock=document.querySelector('.sentence-block[data-ch="'+chIdx+'"]');isPaused=false;btn.textContent='⏸ 朗读中';btn.classList.add('active');if(currentBlock)currentBlock.classList.add('reading');document.getElementById('rbChTitle').textContent=chapterNames[chIdx];document.getElementById('rbProgress').textContent='0 / '+speech.text.length;document.getElementById('rbPause').textContent='⏸ 暂停';document.getElementById('readBar').classList.add('visible');const utter=new SpeechSynthesisUtterance(speech.text);utter.lang='zh-CN';utter.rate=readSpeed;utter.pitch=1.0;const voices=speechSynthesis.getVoices();const zhV=voices.find(v=>v.lang==='zh-CN')||voices.find(v=>v.lang.startsWith('zh'));if(zhV)utter.voice=zhV;utter.addEventListener('boundary',e=>{highlightChar(e.charIndex,speech.map);document.getElementById('rbProgress').textContent=(e.charIndex+1)+' / '+speech.text.length;});utter.addEventListener('end',()=>{clearHL();resetBtn();hideBar();currentChIdx=-1;});utter.addEventListener('error',()=>{clearHL();resetBtn();hideBar();});speechSynthesis.speak(utter);}
+  function highlightChar(idx,map){clearHL();const t=map[idx];if(!t)return;t.box.classList.add('speaking');t.unit.classList.add('speaking-unit');lastHL=t;t.box.scrollIntoView({block:'nearest',behavior:'smooth'});}
+  function clearHL(){if(lastHL){lastHL.box.classList.remove('speaking');lastHL.unit.classList.remove('speaking-unit');lastHL=null;}}
+  function resetBtn(){if(currentReadBtn){currentReadBtn.textContent='▶ 朗读';currentReadBtn.classList.remove('active');currentReadBtn=null;}if(currentBlock){currentBlock.classList.remove('reading');currentBlock=null;}}
+  function hideBar(){document.getElementById('readBar').classList.remove('visible');isPaused=false;}
+  function togglePause(){const pb=document.getElementById('rbPause');if(isPaused){speechSynthesis.resume();isPaused=false;pb.textContent='⏸ 暂停';if(currentReadBtn)currentReadBtn.textContent='⏸ 朗读中';}else{speechSynthesis.pause();isPaused=true;pb.textContent='▶ 继续';if(currentReadBtn)currentReadBtn.textContent='▶ 已暂停';}}
+  function stopRead(){speechSynthesis.cancel();clearHL();resetBtn();hideBar();currentChIdx=-1;}
+  function onSpeedChange(val){readSpeed=parseFloat(val);document.getElementById('speedLabel').textContent=readSpeed.toFixed(1)+'x';if(currentChIdx>=0&&speechSynthesis.speaking){const ci=currentChIdx,rb=currentReadBtn;stopRead();setTimeout(()=>startRead(ci,rb),80);}}
+  if(speechSynthesis.onvoiceschanged!==undefined)speechSynthesis.onvoiceschanged=()=>{};
+  window.addEventListener('beforeunload',()=>speechSynthesis.cancel());
+  const overlay=document.getElementById('overlay'),popup=document.getElementById('popupCard');
+  const popupChar=document.getElementById('popupChar'),popupPin=document.getElementById('popupPin'),popupType=document.getElementById('popupType'),popupBody=document.getElementById('popupBody'),popupClose=document.getElementById('popupClose');
+  function showPopup(item,el){popupChar.textContent=item.c;popupChar.className='popup-char is-'+item.type;popupPin.textContent=item.p?'/ '+item.p+' /':'';popupType.className='popup-type type-'+item.type;popupType.textContent=item.type==='zhu'?'异读 / 通假字':'重点词·批注';popupBody.textContent=item.note;popup.style.display='block';const r=el.getBoundingClientRect();let top=r.bottom+8,left=r.left;const pw=popup.offsetWidth,ph=popup.offsetHeight;if(left+pw>window.innerWidth-12)left=window.innerWidth-pw-12;if(top+ph>window.innerHeight-12)top=r.top-ph-8;popup.style.top=top+'px';popup.style.left=left+'px';overlay.classList.add('show');}
+  function closePopup(){popup.style.display='none';overlay.classList.remove('show');}
+  overlay.addEventListener('click',closePopup);popupClose.addEventListener('click',closePopup);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();});
+  function toggleNote(btn){const note=btn.parentElement.nextElementSibling;const open=note.classList.toggle('open');btn.textContent=open?'收起讲义 ∧':'展开讲义 ∨';}
+  </script>
+</body>
+</html>
