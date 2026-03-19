@@ -1,0 +1,230 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第三十八章—第四十二章 · 德经 · 砚山 | SageLume</title>
+  <link rel="stylesheet" href="https://huang-husky.github.io/SageLume/style.css" />
+  <script src="https://huang-husky.github.io/SageLume/js/theme-toggle.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root{--ys-bg:#f5f0e8;--ys-paper:#faf7f0;--ys-ink:#2c2417;--ys-ink-lt:#6a5d4a;--ys-ink-fd:#a8997e;--ys-sage:#5a7a5e;--ys-sage-dk:#3d5940;--ys-sage-bg:rgba(90,122,94,.08);--ys-amber:#c8902a;--ys-amber-bg:rgba(200,144,42,.10);--ys-zhu:#c0392b;--ys-zhu-bg:rgba(192,57,43,.07);--ys-border:#d4c9b0;--ys-shadow:rgba(44,36,23,.12);--ys-popup-bg:#fffdf6;--char-size:2.5rem;--pin-size:.63rem;--gap:11px;}
+    [data-theme="dark"]{--ys-bg:#1a1812;--ys-paper:#221f16;--ys-ink:#e8e0cc;--ys-ink-lt:#a09078;--ys-ink-fd:#5c5040;--ys-sage:#7aaa7e;--ys-sage-dk:#9fcfa3;--ys-sage-bg:rgba(122,170,126,.08);--ys-amber:#d4a84b;--ys-amber-bg:rgba(212,168,75,.10);--ys-zhu:#e05a4a;--ys-zhu-bg:rgba(224,90,74,.07);--ys-border:#3a3428;--ys-shadow:rgba(0,0,0,.4);--ys-popup-bg:#2a2519;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    .ys-body{background:var(--ys-bg);font-family:'Noto Serif SC',serif;}
+    .ys-body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:repeating-linear-gradient(0deg,transparent,transparent 36px,rgba(180,160,120,.05) 36px,rgba(180,160,120,.05) 37px);}
+    .breadcrumb{position:relative;z-index:1;max-width:840px;margin:0 auto;padding:14px 24px 0;font-family:'Noto Sans SC',sans-serif;font-size:.72rem;color:var(--ys-ink-lt);letter-spacing:.05em;}
+    .breadcrumb a{color:var(--ys-sage);text-decoration:none;}.breadcrumb a:hover{text-decoration:underline;}.breadcrumb span{margin:0 5px;opacity:.4;}
+    .ys-banner{position:relative;z-index:1;text-align:center;padding:28px 24px 22px;border-bottom:1px solid var(--ys-border);background:linear-gradient(to bottom,var(--ys-paper),transparent);}
+    .ys-tag-line{font-family:'Noto Sans SC',sans-serif;font-size:.7rem;letter-spacing:.2em;color:var(--ys-amber);margin-bottom:5px;}
+    .ys-title{font-size:1.7rem;font-weight:700;letter-spacing:.2em;color:var(--ys-sage-dk);}
+    .ys-divider{width:44px;height:1px;margin:10px auto;background:linear-gradient(to right,transparent,var(--ys-amber),transparent);}
+    .ys-desc{font-size:.8rem;color:var(--ys-ink-fd);letter-spacing:.08em;}
+    .legend{max-width:840px;margin:16px auto 0;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-family:'Noto Sans SC',sans-serif;font-size:.7rem;color:var(--ys-ink-lt);}
+    .legend-item{display:flex;align-items:center;gap:4px;}.ldot{width:13px;height:13px;border-radius:2px;display:inline-block;}
+    .ldot-zhu{background:var(--ys-zhu-bg);border:1px solid var(--ys-zhu);}.ldot-note{background:var(--ys-sage-bg);border:1px solid var(--ys-sage);}.ldot-speak{background:var(--ys-amber-bg);border:1px solid var(--ys-amber);}
+    .ys-main{position:relative;z-index:1;max-width:840px;margin:0 auto;padding:36px 24px 120px;}
+    .chapter-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;font-family:'Noto Sans SC',sans-serif;font-size:.75rem;}
+    .nav-btn{display:inline-flex;align-items:center;color:var(--ys-sage);text-decoration:none;padding:5px 10px;border:1px solid var(--ys-border);border-radius:3px;transition:border-color .2s,background .2s;}
+    .nav-btn:hover{border-color:var(--ys-sage);background:var(--ys-sage-bg);}
+    .nav-btn.prev::before{content:'\u2039 ';}
+    .nav-btn.next::after{content:' \u203a';}
+    .nav-btn.disabled{color:var(--ys-ink-fd);pointer-events:none;border-color:var(--ys-border);opacity:.5;}
+    .nav-center{color:var(--ys-ink-lt);letter-spacing:.05em;}
+    .sentence-block{background:var(--ys-paper);border:1px solid var(--ys-border);border-radius:4px;padding:30px 26px 22px;margin-bottom:20px;box-shadow:0 2px 8px var(--ys-shadow);position:relative;transition:border-color .3s,box-shadow .3s;}
+    .sentence-block.reading{border-color:var(--ys-amber);box-shadow:0 2px 8px var(--ys-shadow),0 0 0 2px rgba(200,144,42,.15);}
+    .sentence-block::before{content:attr(data-index);position:absolute;top:10px;left:14px;font-size:.62rem;color:var(--ys-ink-fd);font-family:'Noto Sans SC',sans-serif;}
+    .read-btn{position:absolute;top:8px;right:12px;background:none;border:1px solid var(--ys-border);border-radius:3px;padding:3px 9px;font-family:'Noto Sans SC',sans-serif;font-size:.65rem;color:var(--ys-ink-fd);cursor:pointer;transition:border-color .2s,color .2s,background .2s;}
+    .read-btn:hover,.read-btn.active{border-color:var(--ys-amber);color:var(--ys-amber);background:var(--ys-amber-bg);}
+    .char-row{display:flex;flex-wrap:wrap;gap:var(--gap);align-items:flex-end;margin-bottom:18px;}
+    .char-unit{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:42px;}
+    .char-pin{font-family:'Noto Sans SC',sans-serif;font-size:var(--pin-size);color:var(--ys-ink-fd);letter-spacing:.02em;line-height:1.3;text-align:center;white-space:nowrap;min-height:1em;transition:color .15s;}
+    .char-box{width:46px;height:46px;border:1px solid var(--ys-border);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:var(--char-size);line-height:1;position:relative;background:transparent;user-select:none;cursor:default;transition:background .15s,border-color .15s,transform .15s,box-shadow .15s;}
+    .char-box.speaking{background:var(--ys-amber-bg)!important;border-color:var(--ys-amber)!important;box-shadow:0 0 10px rgba(200,144,42,.4);transform:scale(1.12);}
+    .char-unit.speaking-unit .char-pin{color:var(--ys-amber);}
+    .char-unit.punct .char-pin{opacity:0;}.char-unit.punct .char-box{border-color:transparent;font-size:1.6rem;color:var(--ys-ink-lt);}
+    .char-unit.zhu .char-box{color:var(--ys-zhu);background:var(--ys-zhu-bg);border-color:rgba(192,57,43,.25);cursor:pointer;}
+    .char-unit.zhu .char-box:hover{transform:scale(1.08);border-color:var(--ys-zhu);}
+    .char-unit.note .char-box{color:var(--ys-sage-dk);background:var(--ys-sage-bg);border-color:rgba(90,122,94,.25);cursor:pointer;}
+    .char-unit.note .char-box:hover{transform:scale(1.08);border-color:var(--ys-sage);}
+    .char-unit.zhu .char-box::after,.char-unit.note .char-box::after{content:'\u25c7';position:absolute;top:2px;right:3px;font-size:.42rem;opacity:.5;}
+    .sentence-footer{border-top:1px dashed var(--ys-border);padding-top:12px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+    .translation{font-size:.8rem;color:var(--ys-ink-lt);line-height:1.9;letter-spacing:.05em;flex:1;}
+    .toggle-note{background:none;border:1px solid var(--ys-border);border-radius:2px;padding:3px 9px;font-family:'Noto Sans SC',sans-serif;font-size:.68rem;color:var(--ys-ink-fd);cursor:pointer;white-space:nowrap;transition:border-color .2s,color .2s;}
+    .toggle-note:hover{border-color:var(--ys-sage);color:var(--ys-sage);}
+    .expand-note{display:none;margin-top:10px;font-size:.78rem;color:var(--ys-ink-lt);line-height:1.9;border-left:2px solid var(--ys-sage);padding-left:11px;letter-spacing:.04em;}
+    .expand-note.open{display:block;}
+    .daojing-end{text-align:center;padding:32px 0 8px;font-family:'Noto Sans SC',sans-serif;font-size:.78rem;color:var(--ys-ink-fd);letter-spacing:.15em;}
+    .daojing-end::before,.daojing-end::after{content:'\2014\2014\3000';}
+    .daojing-end::after{content:'\3000\2014\2014';}
+    .read-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--ys-paper);border-top:1px solid var(--ys-border);box-shadow:0 -4px 20px var(--ys-shadow);padding:10px 20px 14px;display:none;align-items:center;gap:14px;flex-wrap:wrap;font-family:'Noto Sans SC',sans-serif;}
+    .read-bar.visible{display:flex;}.rb-title{font-size:.72rem;color:var(--ys-ink-lt);flex-shrink:0;}.rb-title b{color:var(--ys-amber);}
+    .rb-progress{font-size:.65rem;color:var(--ys-ink-fd);min-width:48px;flex-shrink:0;}.rb-controls{display:flex;gap:7px;}
+    .rb-btn{background:none;border:1px solid var(--ys-border);border-radius:3px;padding:5px 11px;font-size:.72rem;color:var(--ys-ink-lt);cursor:pointer;transition:border-color .2s,color .2s,background .2s;}
+    .rb-btn:hover{border-color:var(--ys-sage);color:var(--ys-sage);background:var(--ys-sage-bg);}.rb-btn.rb-stop:hover{border-color:var(--ys-zhu);color:var(--ys-zhu);}
+    .rb-speed{display:flex;align-items:center;gap:6px;margin-left:auto;}.rb-speed label{font-size:.65rem;color:var(--ys-ink-fd);}
+    .rb-speed input[type=range]{width:76px;accent-color:var(--ys-amber);}.rb-speed .sp-val{font-size:.65rem;color:var(--ys-amber);min-width:28px;}
+    .popup-overlay{display:none;position:fixed;inset:0;z-index:100;}.popup-overlay.show{display:block;}
+    .popup-card{position:fixed;background:var(--ys-popup-bg);border:1px solid var(--ys-border);border-radius:6px;padding:16px 18px 14px;min-width:190px;max-width:280px;box-shadow:0 8px 28px var(--ys-shadow);z-index:101;animation:popIn .14s ease;font-family:'Noto Serif SC',serif;}
+    @keyframes popIn{from{opacity:0;transform:translateY(5px) scale(.96);}to{opacity:1;transform:none;}}
+    .popup-char{font-size:2rem;font-weight:700;margin-bottom:6px;line-height:1;}.popup-char.is-zhu{color:var(--ys-zhu);}.popup-char.is-note{color:var(--ys-sage-dk);}
+    .popup-pin{font-family:'Noto Sans SC',sans-serif;font-size:.68rem;color:var(--ys-ink-fd);margin-bottom:8px;letter-spacing:.08em;}
+    .popup-hr{height:1px;background:var(--ys-border);margin:8px 0;}
+    .popup-type{font-family:'Noto Sans SC',sans-serif;font-size:.62rem;letter-spacing:.08em;padding:1px 5px;border-radius:2px;margin-bottom:7px;display:inline-block;}
+    .type-zhu{background:var(--ys-zhu-bg);color:var(--ys-zhu);}.type-note{background:var(--ys-sage-bg);color:var(--ys-sage);}
+    .popup-body{font-size:.8rem;color:var(--ys-ink-lt);line-height:1.85;letter-spacing:.04em;}
+    .popup-close{position:absolute;top:7px;right:9px;background:none;border:none;cursor:pointer;color:var(--ys-ink-fd);font-size:.85rem;}
+    @media(max-width:480px){:root{--char-size:1.9rem;--gap:7px;}.char-box{width:38px;height:38px;}.rb-speed,.rb-progress{display:none;}}
+  </style>
+</head>
+<body class="ys-body">
+  <button class="theme-toggle" aria-label="切换深浅模式"><span class="icon sun">&#9728;&#65039;</span><span class="icon moon">&#127769;</span></button>
+  <a class="skip-to-content" href="#ys-main">跳至内容</a>
+  <header class="site-header">
+    <div class="site-title"><a href="https://huang-husky.github.io/SageLume/"><img src="https://huang-husky.github.io/SageLume/favicon/logo-header.png" alt="算海青藜" height="96" style="vertical-align:middle;" /></a></div>
+    <nav class="main-nav"><a href="https://huang-husky.github.io/SageLume/">Home</a><a href="https://huang-husky.github.io/SageLume/about/">About</a><a href="https://huang-husky.github.io/SageLume/blog/">Blog</a></nav>
+  </header>
+  <div class="breadcrumb"><a href="../../../index.html">砚山</a><span>&#8250;</span><a href="../../index.html">道德经</a><span>&#8250;</span><a href="../index.html">德经</a><span>&#8250;</span>第三十八章—第四十二章</div>
+  <div class="ys-banner">
+    <div class="ys-tag-line">《道德经》· 德经 · 第三十八章—第四十二章</div>
+    <h1 class="ys-title">上德不德，是以有德</h1>
+    <div class="ys-divider"></div>
+    <p class="ys-desc">老子 · 道家经典 · 背记注音版 · 德经始</p>
+    <div class="legend">
+      <span class="legend-item"><span class="ldot ldot-zhu"></span>异读字 / 通假字</span>
+      <span class="legend-item"><span class="ldot ldot-note"></span>重点词·点击批注</span>
+      <span class="legend-item"><span class="ldot ldot-speak"></span>朗读跟读高亮</span>
+    </div>
+  </div>
+  <main class="ys-main" id="ys-main">
+    <div class="chapter-nav">
+      <a class="nav-btn prev" href="../ch36-37/index.html">上一组</a>
+      <span class="nav-center">德经 第 1/9 组</span>
+      <a class="nav-btn next" href="../ch43-47/index.html">下一组</a>
+    </div>
+
+    <!-- 第三十八章 -->
+    <div class="sentence-block" data-index="第 三 十 八 章" data-ch="0">
+      <button class="read-btn" onclick="startRead(0,this)">&#9654; 朗读</button>
+      <div class="char-row" id="c1"></div>
+      <div class="sentence-footer">
+        <div class="translation">上德的人不刻意表现德，所以才有德；下德的人刻意表现德，所以没有德。上德的人无为而无所不为；下德的人有为而有所不为。上仁的人有所作为却出于无心；上义的人有所作为却出于有心。上礼的人有所作为却得不到回应，于是就卷起袖子强行推行。所以说：失去了道而后才有德，失去了德而后才有仁，失去了仁而后才有义，失去了义而后才有礼。礼，是忠信的淡薄，是祸乱的开端。所以大丈夫立身敦厚，不居于浅薄；存心朴实，不居于虚华。因此要舍弃后者而取前者。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章是德经的首章，也是全书思想转折的关键点。老子在此提出了著名的"道德仁义礼"退化论。"上德不德"意味着真正的德是顺应自然、不刻意标榜的（无为）；而"下德"则是刻意追求德的形式，反而失去了德的本质（有为）。从道到德，再到仁、义、礼，是一个从自然纯真向人为矫饰不断堕落的过程。礼被视作忠信淡薄的产物和祸乱的开端。老子主张"处其厚，不居其薄；处其实，不居其华"，即回归大道的敦厚与朴实，摒弃礼法的虚华与浅薄。</div>
+    </div>
+
+    <!-- 第三十九章 -->
+    <div class="sentence-block" data-index="第 三 十 九 章" data-ch="1">
+      <button class="read-btn" onclick="startRead(1,this)">&#9654; 朗读</button>
+      <div class="char-row" id="c2"></div>
+      <div class="sentence-footer">
+        <div class="translation">往昔得到"一"的：天得到一而清明，地得到一而安宁，神得到一而灵验，河谷得到一而充盈，万物得到一而生长，侯王得到一而天下归正。推究起来，天若不清明恐怕要崩裂，地若不安宁恐怕要震发，神若不灵验恐怕要歇息，河谷若不充盈恐怕要枯竭，万物若不生长恐怕要灭绝，侯王若不能保持高贵恐怕要跌倒。所以贵以贱为根本，高以下为基础。因此侯王自称"孤"、"寡"、"不谷"，这难道不是以贱为根本吗？不是吗？所以最高的荣誉无须赞誉。不要像玉那样坚硬华丽，要像石头那样坚实朴素。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章核心在于"一"。在老子哲学中，"一"通常指代"道"的初始状态或道的整体性。天地万物皆因得"一"（道）而存在并发挥功能。本章通过正反两方面的论证（得一则兴，失一则废），强调了"一"作为万物根本的重要性。进而引申出政治哲学：高贵必须以卑贱为根本，高位必须以低下为基础。侯王自称"孤寡"正是这种谦下态度的体现。结尾"不欲琭琭如玉，珞珞如石"，再次强调了道家反对浮华、崇尚朴实的价值观。</div>
+    </div>
+
+    <!-- 第四十章 -->
+    <div class="sentence-block" data-index="第 四 十 章" data-ch="2">
+      <button class="read-btn" onclick="startRead(2,this)">&#9654; 朗读</button>
+      <div class="char-row" id="c3"></div>
+      <div class="sentence-footer">
+        <div class="translation">循环往复是道的运动规律，柔弱是道的作用方式。天下万物生于有，有生于无。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">这是《道德经》中最短的一章，却极具概括力，被视为全书的总纲之一。"反者道之动"揭示了宇宙运动的辩证法则：事物发展到极致必然向反面转化（物极必反），道的运动是循环往复的。"弱者道之用"指出了道发挥作用的方式不是刚强强制，而是柔弱谦下、潜移默化。"天下万物生于有，有生于无"则阐述了宇宙生成的本体论序列：无（道）→ 有（一/气）→ 万物。这是对第一章"无，名天地之始；有，名万物之母"的进一步确认。</div>
+    </div>
+
+    <!-- 第四十一章 -->
+    <div class="sentence-block" data-index="第 四 十 一 章" data-ch="3">
+      <button class="read-btn" onclick="startRead(3,this)">&#9654; 朗读</button>
+      <div class="char-row" id="c4"></div>
+      <div class="sentence-footer">
+        <div class="translation">上士听了道，努力实行；中士听了道，半信半疑；下士听了道，哈哈大笑。不被嘲笑，就不足以成为道。所以建立道言说：光明的道好像暗昧，前进的道好像后退，平坦的道好像崎岖。上德好像低谷，大白好像含垢，广德好像不足，建德好像偷惰，质朴好像浑浊。最方正的反而没有棱角，最贵重的器皿最后制成，最大的声音听来无声，最大的形象没有形状。道幽隐无名，只有善于辅助万物并成就万物。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章通过描述不同层次的人对"道"的反应，揭示了道的深奥与超越性。下士之所以嘲笑，是因为道往往表现为与其常识相反的特征（明道若昧、进道若退等）。这一系列排比句（大白若辱、大方无隅等）是老子辩证思维的集中体现：真正的完美往往不显露完美之相，真正的"大"往往超越感官的局限。"大音希声，大象无形"更是成为了中国美学的重要命题，指代那种超越具体形式、直达本体的至高境界。</div>
+    </div>
+
+    <!-- 第四十二章 -->
+    <div class="sentence-block" data-index="第 四 十 二 章" data-ch="4">
+      <button class="read-btn" onclick="startRead(4,this)">&#9654; 朗读</button>
+      <div class="char-row" id="c5"></div>
+      <div class="sentence-footer">
+        <div class="translation">道生一，一生二，二生三，三生万物。万物负阴而抱阳，冲气以为和。人们所厌恶的，就是"孤"、"寡"、"不谷"，可是王公却用这些词来称呼自己。所以事物有时减损它反而得益，有时增益它反而受损。别人所教导的，我也用来教导人："强暴的人不得好死"。我将把这句话作为施教的根本。</div>
+        <button class="toggle-note" onclick="toggleNote(this)">展开讲义 ∨</button>
+      </div>
+      <div class="expand-note">本章提出了著名的宇宙生成论："道生一，一生二，二生三，三生万物"。这是对中国哲学影响最深远的命题之一。"一"指混沌未分的元气，"二"指阴阳二气，"三"指阴阳激荡产生的冲和之气（或指天、地、人），由此化生万物。"万物负阴而抱阳，冲气以为和"说明了万物内部的阴阳结构及其动态平衡。后半部分再次回到政治伦理，强调"损之而益，益之而损"的辩证法，并引用古语"强梁者不得其死"作为教诫，警示统治者不可逞强好胜，应守柔处下。</div>
+    </div>
+
+  </main>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator"><img class="lume-image" src="https://huang-husky.github.io/SageLume/favicon/logo-footer.png" alt="算海青藜" height="48" /></p>
+      <p>&#169; 2026 z-o-s</p>
+    </div>
+  </footer>
+  <div class="read-bar" id="readBar">
+    <div class="rb-title">&#9654; <b id="rbChTitle">&#8212;</b></div>
+    <div class="rb-progress" id="rbProgress"></div>
+    <div class="rb-controls">
+      <button class="rb-btn" id="rbPause" onclick="togglePause()">&#9208; 暂停</button>
+      <button class="rb-btn rb-stop" onclick="stopRead()">&#9209; 停止</button>
+    </div>
+    <div class="rb-speed">
+      <label>语速</label>
+      <input type="range" id="speedSlider" min="0.5" max="1.8" step="0.1" value="0.9" oninput="onSpeedChange(this.value)" />
+      <span class="sp-val" id="speedLabel">0.9&#215;</span>
+    </div>
+  </div>
+  <div class="popup-overlay" id="overlay"></div>
+  <div class="popup-card" id="popupCard" style="display:none;">
+    <button class="popup-close" id="popupClose">&#10005;</button>
+    <div class="popup-char" id="popupChar"></div>
+    <div class="popup-pin" id="popupPin"></div>
+    <div class="popup-hr"></div>
+    <span class="popup-type" id="popupType"></span>
+    <div class="popup-body" id="popupBody"></div>
+  </div>
+  <script>
+  const chapters = [
+    // Chapter 38
+    [{"c":"上","p":"shàng","type":"note","note":"上德：指具有最高德行的人，其德合于道，自然无为。"},{"c":"德","p":"dé","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"德","p":"dé","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"是","p":"shì","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"有","p":"yǒu","type":"normal"},{"c":"德","p":"dé","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"下","p":"xià","type":"normal"},{"c":"德","p":"dé","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"失","p":"shī","type":"normal"},{"c":"德","p":"dé","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"是","p":"shì","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"德","p":"dé","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"上","p":"shàng","type":"normal"},{"c":"德","p":"dé","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"下","p":"xià","type":"normal"},{"c":"德","p":"dé","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"有","p":"yǒu","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"上","p":"shàng","type":"normal"},{"c":"仁","p":"rén","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"上","p":"shàng","type":"normal"},{"c":"义","p":"yì","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"有","p":"yǒu","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"上","p":"shàng","type":"normal"},{"c":"礼","p":"lǐ","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"莫","p":"mò","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"应","p":"yìng","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"则","p":"zé","type":"normal"},{"c":"攘","p":"rǎng","type":"normal"},{"c":"臂","p":"bì","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"扔","p":"rēng","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"故","p":"gù","type":"normal"},{"c":"失","p":"shī","type":"normal"},{"c":"道","p":"dào","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"后","p":"hòu","type":"normal"},{"c":"德","p":"dé","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"失","p":"shī","type":"normal"},{"c":"德","p":"dé","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"后","p":"hòu","type":"normal"},{"c":"仁","p":"rén","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"失","p":"shī","type":"normal"},{"c":"仁","p":"rén","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"后","p":"hòu","type":"normal"},{"c":"义","p":"yì","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"失","p":"shī","type":"normal"},{"c":"义","p":"yì","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"后","p":"hòu","type":"normal"},{"c":"礼","p":"lǐ","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"夫","p":"fú","type":"normal"},{"c":"礼","p":"lǐ","type":"normal"},{"c":"者","p":"zhě","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"忠","p":"zhōng","type":"normal"},{"c":"信","p":"xìn","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"薄","p":"bó","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"而","p":"ér","type":"normal"},{"c":"乱","p":"luàn","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"首","p":"shǒu","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"是","p":"shì","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"大","p":"dà","type":"normal"},{"c":"丈","p":"zhàng","type":"normal"},{"c":"夫","p":"fū","type":"normal"},{"c":"处","p":"chǔ","type":"normal"},{"c":"其","p":"qí","type":"normal"},{"c":"厚","p":"hòu","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"不","p":"bù","type":"normal"},{"c":"居","p":"jū","type":"normal"},{"c":"其","p":"qí","type":"normal"},{"c":"薄","p":"bó","type":"normal"},{"c":"；","p":"","type":"punct"},{"c":"处","p":"chǔ","type":"normal"},{"c":"其","p":"qí","type":"normal"},{"c":"实","p":"shí","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"不","p":"bù","type":"normal"},{"c":"居","p":"jū","type":"normal"},{"c":"其","p":"qí","type":"normal"},{"c":"华","p":"huá","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"故","p":"gù","type":"normal"},{"c":"去","p":"qù","type":"normal"},{"c":"彼","p":"bǐ","type":"normal"},{"c":"取","p":"qǔ","type":"normal"},{"c":"此","p":"cǐ","type":"normal"},{"c":"。","p":"","type":"punct"}],
+    // Chapter 39
+    [{"c":"昔","p":"xī","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"得","p":"dé","type":"normal"},{"c":"一","p":"yī","type":"note","note":"一：指道，或指混沌未分的元气。得“一”即得道。"},{"c":"者","p":"zhě","type":"normal"},{"c":"：","p":"","type":"punct"},{"c":"天","p":"tiān","type":"normal"},{"c":"得","p":"dé","type":"normal"},{"c":"一","p":"yī","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"清","p":"qīng","type":"normal"},{"c":"；","p":"","type":"punct"},{"c":"地","p":"dì","type":"normal"},{"c":"得","p":"dé","type":"normal"},{"c":"一","p":"yī","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"宁","p":"níng","type":"normal"},{"c":"；","p":"","type":"punct"},{"c":"神","p":"shén","type":"normal"},{"c":"得","p":"dé","type":"normal"},{"c":"一","p":"yī","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"灵","p":"líng","type":"normal"},{"c":"；","p":"","type":"punct"},{"c":"谷","p":"gǔ","type":"normal"},{"c":"得","p":"dé","type":"normal"},{"c":"一","p":"yī","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"盈","p":"yíng","type":"normal"},{"c":"；","p":"","type":"punct"},{"c":"万","p":"wàn","type":"normal"},{"c":"物","p":"wù","type":"normal"},{"c":"得","p":"dé","type":"normal"},{"c":"一","p":"yī","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"生","p":"shēng","type":"normal"},{"c":"；","p":"","type":"punct"},{"c":"侯","p":"hóu","type":"normal"},{"c":"王","p":"wáng","type":"normal"},{"c":"得","p":"dé","type":"normal"},{"c":"一","p":"yī","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"天","p":"tiān","type":"normal"},{"c":"下","p":"xià","type":"normal"},{"c":"正","p":"zhèng","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"其","p":"qí","type":"normal"},{"c":"致","p":"zhì","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"一","p":"yī","type":"normal"},{"c":"也","p":"yě","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"天","p":"tiān","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"清","p":"qīng","type":"normal"},{"c":"将","p":"jiāng","type":"normal"},{"c":"恐","p":"kǒng","type":"normal"},{"c":"裂","p":"liè","type":"normal"},{"c":"；","p":"","type":"punct"},{"c":"地","p":"dì","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"宁","p":"níng","type":"normal"},{"c":"将","p":"jiāng","type":"normal"},{"c":"恐","p":"kǒng","type":"normal"},{"c":"发","p":"fā","type":"normal"},{"c":"；","p":"","type":"punct"},{"c":"神","p":"shén","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"灵","p":"líng","type":"normal"},{"c":"将","p":"jiāng","type":"normal"},{"c":"恐","p":"kǒng","type":"normal"},{"c":"歇","p":"xiē","type":"normal"},{"c":"；","p":"","type":"punct"},{"c":"谷","p":"gǔ","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"盈","p":"yíng","type":"normal"},{"c":"将","p":"jiāng","type":"normal"},{"c":"恐","p":"kǒng","type":"normal"},{"c":"竭","p":"jié","type":"normal"},{"c":"；","p":"","type":"punct"},{"c":"万","p":"wàn","type":"normal"},{"c":"物","p":"wù","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"生","p":"shēng","type":"normal"},{"c":"将","p":"jiāng","type":"normal"},{"c":"恐","p":"kǒng","type":"normal"},{"c":"灭","p":"miè","type":"normal"},{"c":"；","p":"","type":"punct"},{"c":"侯","p":"hóu","type":"normal"},{"c":"王","p":"wáng","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"贵","p":"guì","type":"normal"},{"c":"将","p":"jiāng","type":"normal"},{"c":"恐","p":"kǒng","type":"normal"},{"c":"蹶","p":"jué","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"故","p":"gù","type":"normal"},{"c":"贵","p":"guì","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"贱","p":"jiàn","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"本","p":"běn","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"高","p":"gāo","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"下","p":"xià","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"基","p":"jī","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"是","p":"shì","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"侯","p":"hóu","type":"normal"},{"c":"王","p":"wáng","type":"normal"},{"c":"自","p":"zì","type":"normal"},{"c":"谓","p":"wèi","type":"normal"},{"c":"孤","p":"gū","type":"normal"},{"c":"、","p":"","type":"punct"},{"c":"寡","p":"guǎ","type":"normal"},{"c":"、","p":"","type":"punct"},{"c":"不","p":"bù","type":"normal"},{"c":"谷","p":"gǔ","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"此","p":"cǐ","type":"normal"},{"c":"非","p":"fēi","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"贱","p":"jiàn","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"本","p":"běn","type":"normal"},{"c":"邪","p":"yé","type":"normal"},{"c":"？","p":"","type":"punct"},{"c":"乎","p":"hū","type":"normal"},{"c":"？","p":"","type":"punct"},{"c":"故","p":"gù","type":"normal"},{"c":"致","p":"zhì","type":"normal"},{"c":"数","p":"shù","type":"normal"},{"c":"舆","p":"yú","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"舆","p":"yú","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"不","p":"bù","type":"normal"},{"c":"欲","p":"yù","type":"normal"},{"c":"琭","p":"lù","type":"normal"},{"c":"琭","p":"lù","type":"normal"},{"c":"如","p":"rú","type":"normal"},{"c":"玉","p":"yù","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"珞","p":"luò","type":"normal"},{"c":"珞","p":"luò","type":"normal"},{"c":"如","p":"rú","type":"normal"},{"c":"石","p":"shí","type":"normal"},{"c":"。","p":"","type":"punct"}],
+    // Chapter 40
+    [{"c":"反","p":"fǎn","type":"note","note":"反: 通“返”。"},{"c":"者","p":"zhě","type":"normal"},{"c":"道","p":"dào","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"动","p":"dòng","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"弱","p":"ruò","type":"normal"},{"c":"者","p":"zhě","type":"normal"},{"c":"道","p":"dào","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"用","p":"yòng","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"天","p":"tiān","type":"normal"},{"c":"下","p":"xià","type":"normal"},{"c":"万","p":"wàn","type":"normal"},{"c":"物","p":"wù","type":"normal"},{"c":"生","p":"shēng","type":"normal"},{"c":"于","p":"yú","type":"normal"},{"c":"有","p":"yǒu","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"有","p":"yǒu","type":"normal"},{"c":"生","p":"shēng","type":"normal"},{"c":"于","p":"yú","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"。","p":"","type":"punct"}],
+    // Chapter 41
+    [{"c":"上","p":"shàng","type":"normal"},{"c":"士","p":"shì","type":"normal"},{"c":"闻","p":"wén","type":"normal"},{"c":"道","p":"dào","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"勤","p":"qín","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"行","p":"xíng","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"；","p":"","type":"punct"},{"c":"中","p":"zhōng","type":"normal"},{"c":"士","p":"shì","type":"normal"},{"c":"闻","p":"wén","type":"normal"},{"c":"道","p":"dào","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"若","p":"ruò","type":"normal"},{"c":"存","p":"cún","type":"normal"},{"c":"若","p":"ruò","type":"normal"},{"c":"亡","p":"wáng","type":"normal"},{"c":"；","p":"","type":"punct"},{"c":"下","p":"xià","type":"normal"},{"c":"士","p":"shì","type":"normal"},{"c":"闻","p":"wén","type":"normal"},{"c":"道","p":"dào","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"大","p":"dà","type":"normal"},{"c":"笑","p":"xiào","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"不","p":"bù","type":"normal"},{"c":"笑","p":"xiào","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"足","p":"zú","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"道","p":"dào","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"故","p":"gù","type":"normal"},{"c":"建","p":"jiàn","type":"normal"},{"c":"言","p":"yán","type":"normal"},{"c":"有","p":"yǒu","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"：","p":"","type":"punct"},{"c":"明","p":"míng","type":"normal"},{"c":"道","p":"dào","type":"normal"},{"c":"若","p":"ruò","type":"normal"},{"c":"昧","p":"mèi","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"进","p":"jìn","type":"normal"},{"c":"道","p":"dào","type":"normal"},{"c":"若","p":"ruò","type":"normal"},{"c":"退","p":"tuì","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"夷","p":"yí","type":"normal"},{"c":"道","p":"dào","type":"normal"},{"c":"若","p":"ruò","type":"normal"},{"c":"颣","p":"lèi","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"上","p":"shàng","type":"normal"},{"c":"德","p":"dé","type":"normal"},{"c":"若","p":"ruò","type":"normal"},{"c":"谷","p":"gǔ","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"大","p":"dà","type":"normal"},{"c":"白","p":"bái","type":"normal"},{"c":"若","p":"ruò","type":"normal"},{"c":"辱","p":"rǔ","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"广","p":"guǎng","type":"normal"},{"c":"德","p":"dé","type":"normal"},{"c":"若","p":"ruò","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"足","p":"zú","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"建","p":"jiàn","type":"normal"},{"c":"德","p":"dé","type":"normal"},{"c":"若","p":"ruò","type":"normal"},{"c":"偷","p":"tōu","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"质","p":"zhì","type":"normal"},{"c":"真","p":"zhēn","type":"normal"},{"c":"若","p":"ruò","type":"normal"},{"c":"渝","p":"yú","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"大","p":"dà","type":"normal"},{"c":"方","p":"fāng","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"隅","p":"yú","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"大","p":"dà","type":"normal"},{"c":"器","p":"qì","type":"normal"},{"c":"晚","p":"wǎn","type":"normal"},{"c":"成","p":"chéng","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"大","p":"dà","type":"normal"},{"c":"音","p":"yīn","type":"normal"},{"c":"希","p":"xī","type":"normal"},{"c":"声","p":"shēng","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"大","p":"dà","type":"normal"},{"c":"象","p":"xiàng","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"形","p":"xíng","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"道","p":"dào","type":"normal"},{"c":"隐","p":"yǐn","type":"normal"},{"c":"无","p":"wú","type":"normal"},{"c":"名","p":"míng","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"夫","p":"fú","type":"normal"},{"c":"唯","p":"wéi","type":"normal"},{"c":"道","p":"dào","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"善","p":"shàn","type":"normal"},{"c":"贷","p":"dài","type":"normal"},{"c":"且","p":"qiě","type":"normal"},{"c":"成","p":"chéng","type":"normal"},{"c":"。","p":"","type":"punct"}],
+    // Chapter 42
+    [{"c":"道","p":"dào","type":"normal"},{"c":"生","p":"shēng","type":"normal"},{"c":"一","p":"yī","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"一","p":"yī","type":"normal"},{"c":"生","p":"shēng","type":"normal"},{"c":"二","p":"èr","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"二","p":"èr","type":"normal"},{"c":"生","p":"shēng","type":"normal"},{"c":"三","p":"sān","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"三","p":"sān","type":"normal"},{"c":"生","p":"shēng","type":"normal"},{"c":"万","p":"wàn","type":"normal"},{"c":"物","p":"wù","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"万","p":"wàn","type":"normal"},{"c":"物","p":"wù","type":"normal"},{"c":"负","p":"fù","type":"normal"},{"c":"阴","p":"yīn","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"抱","p":"bào","type":"normal"},{"c":"阳","p":"yáng","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"冲","p":"chōng","type":"normal"},{"c":"气","p":"qì","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"和","p":"hé","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"人","p":"rén","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"所","p":"suǒ","type":"normal"},{"c":"恶","p":"wù","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"唯","p":"wéi","type":"normal"},{"c":"孤","p":"gū","type":"normal"},{"c":"、","p":"","type":"punct"},{"c":"寡","p":"guǎ","type":"normal"},{"c":"、","p":"","type":"punct"},{"c":"不","p":"bù","type":"normal"},{"c":"谷","p":"gǔ","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"而","p":"ér","type":"normal"},{"c":"王","p":"wáng","type":"normal"},{"c":"公","p":"gōng","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"称","p":"chēng","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"故","p":"gù","type":"normal"},{"c":"物","p":"wù","type":"normal"},{"c":"或","p":"huò","type":"normal"},{"c":"损","p":"sǔn","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"益","p":"yì","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"或","p":"huò","type":"normal"},{"c":"益","p":"yì","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"而","p":"ér","type":"normal"},{"c":"损","p":"sǔn","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"人","p":"rén","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"所","p":"suǒ","type":"normal"},{"c":"教","p":"jiào","type":"normal"},{"c":"，","p":"","type":"punct"},{"c":"我","p":"wǒ","type":"normal"},{"c":"亦","p":"yì","type":"normal"},{"c":"教","p":"jiào","type":"normal"},{"c":"之","p":"zhī","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"曰","p":"yuē","type":"normal"},{"c":"：","p":"","type":"punct"},{"c":"强","p":"qiáng","type":"normal"},{"c":"梁","p":"liáng","type":"normal"},{"c":"者","p":"zhě","type":"normal"},{"c":"不","p":"bù","type":"normal"},{"c":"得","p":"dé","type":"normal"},{"c":"其","p":"qí","type":"normal"},{"c":"死","p":"sǐ","type":"normal"},{"c":"。","p":"","type":"punct"},{"c":"吾","p":"wú","type":"normal"},{"c":"将","p":"jiāng","type":"normal"},{"c":"以","p":"yǐ","type":"normal"},{"c":"为","p":"wéi","type":"normal"},{"c":"教","p":"jiào","type":"normal"},{"c":"父","p":"fù","type":"normal"},{"c":"。","p":"","type":"punct"}]
+  ];
+  const chapterBoxes=[];
+  function render(id,data){const row=document.getElementById(id);const boxes=[];if(!row||!data.length){chapterBoxes.push(boxes);return;}data.forEach(item=>{const unit=document.createElement('div');unit.className='char-unit'+(item.type!=='normal'?' '+item.type:'');const pin=document.createElement('div');pin.className='char-pin';pin.textContent=item.p||'';const box=document.createElement('div');box.className='char-box';box.textContent=item.c;if(item.note&&(item.type==='zhu'||item.type==='note')){box.addEventListener('click',e=>{e.stopPropagation();showPopup(item,box);});}unit.appendChild(pin);unit.appendChild(box);row.appendChild(unit);boxes.push({box,unit,item});});chapterBoxes.push(boxes);}
+  chapters.forEach((data,i)=>render('c'+(i+1),data));
+  const chapterNames=['第三十八章','第三十九章','第四十章','第四十一章','第四十二章'];
+  let currentChIdx=-1,currentReadBtn=null,currentBlock=null,lastHL=null,isPaused=false,readSpeed=0.9;
+  function buildSpeech(chIdx){const boxes=chapterBoxes[chIdx];if(!boxes||!boxes.length)return null;let text='';const map=[];boxes.forEach(({box,unit,item})=>{text+=item.read||item.c;map.push(item.type==='punct'?null:{box,unit});});return{text,map};}
+  function startRead(chIdx,btn){if(currentChIdx===chIdx&&speechSynthesis.speaking){togglePause();return;}stopRead();const speech=buildSpeech(chIdx);if(!speech||!speech.text.trim()){alert('本章暂无内容。');return;}currentChIdx=chIdx;currentReadBtn=btn;currentBlock=document.querySelector('.sentence-block[data-ch="'+chIdx+'"]');isPaused=false;btn.textContent='&#9208; 朗读中';btn.classList.add('active');if(currentBlock)currentBlock.classList.add('reading');document.getElementById('rbChTitle').textContent=chapterNames[chIdx];document.getElementById('rbProgress').textContent='0 / '+speech.text.length;document.getElementById('rbPause').textContent='&#9208; 暂停';document.getElementById('readBar').classList.add('visible');const utter=new SpeechSynthesisUtterance(speech.text);utter.lang='zh-CN';utter.rate=readSpeed;utter.pitch=1.0;const voices=speechSynthesis.getVoices();const zhV=voices.find(v=>v.lang==='zh-CN')||voices.find(v=>v.lang.startsWith('zh'));if(zhV)utter.voice=zhV;utter.addEventListener('boundary',e=>{highlightChar(e.charIndex,speech.map);document.getElementById('rbProgress').textContent=(e.charIndex+1)+' / '+speech.text.length;});utter.addEventListener('end',()=>{clearHL();resetBtn();hideBar();currentChIdx=-1;});utter.addEventListener('error',()=>{clearHL();resetBtn();hideBar();});speechSynthesis.speak(utter);}
+  function highlightChar(idx,map){clearHL();const t=map[idx];if(!t)return;t.box.classList.add('speaking');t.unit.classList.add('speaking-unit');lastHL=t;t.box.scrollIntoView({block:'nearest',behavior:'smooth'});}
+  function clearHL(){if(lastHL){lastHL.box.classList.remove('speaking');lastHL.unit.classList.remove('speaking-unit');lastHL=null;}}
+  function resetBtn(){if(currentReadBtn){currentReadBtn.textContent='&#9654; 朗读';currentReadBtn.classList.remove('active');currentReadBtn=null;}if(currentBlock){currentBlock.classList.remove('reading');currentBlock=null;}}
+  function hideBar(){document.getElementById('readBar').classList.remove('visible');isPaused=false;}
+  function togglePause(){const pb=document.getElementById('rbPause');if(isPaused){speechSynthesis.resume();isPaused=false;pb.textContent='&#9208; 暂停';if(currentReadBtn)currentReadBtn.textContent='&#9208; 朗读中';}else{speechSynthesis.pause();isPaused=true;pb.textContent='&#9654; 继续';if(currentReadBtn)currentReadBtn.textContent='&#9654; 已暂停';}}
+  function stopRead(){speechSynthesis.cancel();clearHL();resetBtn();hideBar();currentChIdx=-1;}
+  function onSpeedChange(val){readSpeed=parseFloat(val);document.getElementById('speedLabel').textContent=readSpeed.toFixed(1)+'x';if(currentChIdx>=0&&speechSynthesis.speaking){const ci=currentChIdx,rb=currentReadBtn;stopRead();setTimeout(()=>startRead(ci,rb),80);}}
+  if(speechSynthesis.onvoiceschanged!==undefined)speechSynthesis.onvoiceschanged=()=>{};
+  window.addEventListener('beforeunload',()=>speechSynthesis.cancel());
+  const overlay=document.getElementById('overlay'),popup=document.getElementById('popupCard');
+  const popupChar=document.getElementById('popupChar'),popupPin=document.getElementById('popupPin'),popupType=document.getElementById('popupType'),popupBody=document.getElementById('popupBody'),popupClose=document.getElementById('popupClose');
+  function showPopup(item,el){popupChar.textContent=item.c;popupChar.className='popup-char is-'+item.type;popupPin.textContent=item.p?'/ '+item.p+' /':'';popupType.className='popup-type type-'+item.type;popupType.textContent=item.type==='zhu'?'异读 / 通假字':'重点词·批注';popupBody.textContent=item.note;popup.style.display='block';const r=el.getBoundingClientRect();let top=r.bottom+8,left=r.left;const pw=popup.offsetWidth,ph=popup.offsetHeight;if(left+pw>window.innerWidth-12)left=window.innerWidth-pw-12;if(top+ph>window.innerHeight-12)top=r.top-ph-8;popup.style.top=top+'px';popup.style.left=left+'px';overlay.classList.add('show');}
+  function closePopup(){popup.style.display='none';overlay.classList.remove('show');}
+  overlay.addEventListener('click',closePopup);popupClose.addEventListener('click',closePopup);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();});
+  function toggleNote(btn){const note=btn.parentElement.nextElementSibling;const open=note.classList.toggle('open');btn.textContent=open?'收起讲义 \u2227':'展开讲义 \u2228';}
+  </script>
+</body>
+</html>
+```
