@@ -17,11 +17,7 @@ async function initViews() {
     .single()
 
   document.querySelectorAll('.view-count').forEach(el => {
-    const count = data?.count ?? 1
-    const since = data?.reset_at
-      ? new Date(data.reset_at).toLocaleDateString('zh-CN', { month: 'long', day: 'numeric' })
-      : '3月24日'
-    el.textContent = `${count} · 自${since}`
+    el.textContent = data?.count ?? 1
   })
 }
 
