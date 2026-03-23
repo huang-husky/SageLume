@@ -1,0 +1,72 @@
+/* 浅色 */
+main {
+  /* 背景色 - 米黄调 */
+  --color-canvas-default: #fefef5;
+  --color-canvas-subtle: #f8f6eb;
+  --color-canvas-inset: #f0ede0;
+  
+  /* 边框 */
+  --color-border-default: #d4c9a8;
+  --color-border-muted: #e8e0c8;
+  
+  /* 文字 */
+  --color-fg-default: #3a4a3a;
+  --color-fg-muted: #6b7a6b;
+  --color-fg-subtle: #8a9a8a;
+  
+  /* 强调色 - 你的黄绿渐变 */
+  --color-accent-fg: #8fad4a;
+  --color-accent-emphasis: #7c9c3d;
+  --color-accent-muted: rgba(143, 173, 74, 0.2);
+  --color-accent-subtle: rgba(143, 173, 74, 0.1);
+  
+  /* 按钮 */
+  --color-btn-primary-bg: #8fad4a;
+  --color-btn-primary-hover-bg: #7c9c3d;
+  --color-btn-primary-text: #2c3e2c;
+  
+  /* 输入框 */
+  --color-input-bg: #fffef8;
+  --color-input-border: #c9d1a8;
+  
+  /* 其他功能色保持默认 */
+  --color-danger-fg: #d73a49;
+}
+
+/* 深色 */
+main.dark, main[data-color-mode="dark"] {
+  --color-canvas-default: #1a1f1a;
+  --color-canvas-subtle: #242b24;
+  --color-canvas-inset: #2a322a;
+  
+  --color-border-default: #3d4a3d;
+  --color-border-muted: #2d362d;
+  
+  --color-fg-default: #d4e4d4;
+  --color-fg-muted: #a0b8a0;
+  --color-fg-subtle: #7a8a7a;
+  
+  --color-accent-fg: #a8c970;
+  --color-accent-emphasis: #bdd896;
+  --color-accent-muted: rgba(168, 201, 112, 0.2);
+  --color-accent-subtle: rgba(168, 201, 112, 0.1);
+  
+  --color-btn-primary-bg: #a8c970;
+  --color-btn-primary-hover-bg: #bdd896;
+  --color-btn-primary-text: #1a1f1a;
+  
+  --color-input-bg: #2a322a;
+  --color-input-border: #4a5a4a;
+  
+  --color-danger-fg: #f97583;
+}
+
+/* 微调 */
+.gsc-comment-box-textarea,
+.gsc-reply-box-textarea {
+  font-family: inherit;
+}
+
+.gsc-comment-box-main {
+  border-color: var(--color-border-default);
+}

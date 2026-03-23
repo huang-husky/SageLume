@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -h \"href\\\\|src\" /d/vue-for-you/cc-blog/**/*.html)",
+      "Bash(ls -lh /d/vue-for-you/cc-blog/js/ /d/vue-for-you/cc-blog/*.css /d/vue-for-you/cc-blog/plotly/ /d/vue-for-you/cc-blog/temml/)",
+      "Bash(rm D:/vue-for-you/cc-blog/plotly/plotly-3.0.1.min.js)",
+      "Bash(rmdir D:/vue-for-you/cc-blog/plotly)",
+      "Bash(rm D:/vue-for-you/cc-blog/js/blog-search.js D:/vue-for-you/cc-blog/js/remap-headings.js D:/vue-for-you/cc-blog/js/site-stats.js D:/vue-for-you/cc-blog/js/theme-toggle.js)",
+      "Bash(mkdir D:/vue-for-you/cc-blog/css)",
+      "Bash(mv D:/vue-for-you/cc-blog/style.css D:/vue-for-you/cc-blog/blog-enhanced.css D:/vue-for-you/cc-blog/discrete-math.css D:/vue-for-you/cc-blog/giscus-theme.css D:/vue-for-you/cc-blog/css/)"
+    ]
+  }
+}
