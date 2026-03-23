@@ -1,0 +1,171 @@
+// blog-statistic
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // 数字滚动动画函数
+    function animateNumber(element, target, duration = 1000, suffix = '') {
+        if (!element) return;
+        
+        const start = 0;
+        const startTime = performance.now();
+        
+        function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // 使用缓动函数（easeOutQuart）
+            const easeProgress = 1 - Math.pow(1 - progress, 4);
+            const current = Math.floor(start + (target - start) * easeProgress);
+            
+            element.textContent = current + suffix;
+            
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                element.textContent = target + suffix;
+            }
+        }
+        
+        requestAnimationFrame(update);
+    }
+    
+    // article-amount
+    const articles = document.querySelectorAll('.post-item');
+    const articleCount = articles.length;
+    
+    // update-article-amount
+    const articleCountEl = document.getElementById('article-count');
+    if (articleCountEl) {
+        setTimeout(() => animateNumber(articleCountEl, articleCount, 800), 100);
+    }
+    
+    // 计text-amount（估算）
+    let totalWords = 0;
+    articles.forEach(article => {
+        const w = parseInt(article.dataset.words);
+        if (!isNaN(w)) totalWords += w;
+    });
+    
+    // 格式化字数并显示动画
+    const totalWordsEl = document.getElementById('total-words');
+    if (totalWordsEl) {
+        setTimeout(() => {
+            if (totalWords >= 1000) {
+                const kValue = Math.floor(totalWords / 100) / 10; // 保留一位小数
+                animateNumberWithDecimal(totalWordsEl, kValue, 'k', 1000);
+            } else {
+                animateNumber(totalWordsEl, totalWords, 1000);
+            }
+        }, 200);
+    }
+    
+    // 带小数的数字动画
+    function animateNumberWithDecimal(element, target, suffix = '', duration = 1000) {
+        if (!element) return;
+        
+        const start = 0;
+        const startTime = performance.now();
+        
+        function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easeProgress = 1 - Math.pow(1 - progress, 4);
+            const current = (start + (target - start) * easeProgress).toFixed(1);
+            
+            element.textContent = current + suffix;
+            
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            }
+        }
+        
+        requestAnimationFrame(update);
+    }
+    
+    // 计算最后更新时间
+    let latestDate = null;
+    articles.forEach(article => {
+        const d = article.dataset.date;
+        if (d) {
+            const date = new Date(d);
+            if (!latestDate || date > latestDate) latestDate = date;
+        }
+    });
+    
+    // 更新最后更新时间
+    const lastUpdateEl = document.getElementById('last-update');
+    if (lastUpdateEl && latestDate) {
+        const updateText = formatTimeAgo(latestDate);
+        setTimeout(() => {
+            lastUpdateEl.style.opacity = '0';
+            setTimeout(() => {
+                lastUpdateEl.textContent = updateText;
+                lastUpdateEl.style.transition = 'opacity 0.5s ease';
+                lastUpdateEl.style.opacity = '1';
+            }, 100);
+        }, 500);
+    }
+    
+    // 时间格式化函数
+    function formatTimeAgo(date) {
+        const now = new Date();
+        const diff = now - date;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        
+        if (days < 1) return '今天';
+        if (days === 1) return '1天前';
+        if (days < 30) return days + '天前';
+        if (days < 365) {
+            const months = Math.floor(days / 30);
+            return months + '个月前';
+        }
+        const years = Math.floor(days / 365);
+        return years + '年前';
+    }
+    
+    // 不蒜子数据监听
+    // 使用MutationObserver监听不蒜子数据变化，添加动画
+    const uvEl = document.getElementById('busuanzi_value_site_uv');
+    const pvEl = document.getElementById('busuanzi_value_site_pv');
+    
+    if (uvEl) {
+        const uvObserver = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList' && uvEl.textContent !== '-') {
+                    const value = parseInt(uvEl.textContent);
+                    if (!isNaN(value)) {
+                        uvEl.textContent = '-';
+                        setTimeout(() => animateNumber(uvEl, value, 1200), 300);
+                        uvObserver.disconnect();
+                    }
+                }
+            });
+        });
+        uvObserver.observe(uvEl, { childList: true, characterData: true, subtree: true });
+    }
+    
+    if (pvEl) {
+        const pvObserver = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList' && pvEl.textContent !== '-') {
+                    const value = parseInt(pvEl.textContent);
+                    if (!isNaN(value)) {
+                        pvEl.textContent = '-';
+                        setTimeout(() => animateNumber(pvEl, value, 1400), 400);
+                        pvObserver.disconnect();
+                    }
+                }
+            });
+        });
+        pvObserver.observe(pvEl, { childList: true, characterData: true, subtree: true });
+    }
+    
+    // 超时后显示加载提示
+    setTimeout(function() {
+        if (uvEl && uvEl.textContent === '-') {
+            uvEl.textContent = '加载中...';
+        }
+        if (pvEl && pvEl.textContent === '-') {
+            pvEl.textContent = '加载中...';
+        }
+    }, 10000);
+});
