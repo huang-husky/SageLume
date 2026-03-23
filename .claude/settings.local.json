@@ -7,7 +7,15 @@
       "Bash(rmdir D:/vue-for-you/cc-blog/plotly)",
       "Bash(rm D:/vue-for-you/cc-blog/js/blog-search.js D:/vue-for-you/cc-blog/js/remap-headings.js D:/vue-for-you/cc-blog/js/site-stats.js D:/vue-for-you/cc-blog/js/theme-toggle.js)",
       "Bash(mkdir D:/vue-for-you/cc-blog/css)",
-      "Bash(mv D:/vue-for-you/cc-blog/style.css D:/vue-for-you/cc-blog/blog-enhanced.css D:/vue-for-you/cc-blog/discrete-math.css D:/vue-for-you/cc-blog/giscus-theme.css D:/vue-for-you/cc-blog/css/)"
+      "Bash(mv D:/vue-for-you/cc-blog/style.css D:/vue-for-you/cc-blog/blog-enhanced.css D:/vue-for-you/cc-blog/discrete-math.css D:/vue-for-you/cc-blog/giscus-theme.css D:/vue-for-you/cc-blog/css/)",
+      "Bash(python3:*)",
+      "Bash(node:*)",
+      "Bash(mv css/style.css style.css)",
+      "Bash(mv css/blog-enhanced.css blog-enhanced.css)",
+      "Bash(mv css/discrete-math.css discrete-math.css)",
+      "Bash(mv css/giscus-theme.css giscus-theme.css)",
+      "Bash(rmdir css:*)",
+      "Bash(ls *.css)"
     ]
   }
 }
