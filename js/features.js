@@ -12,12 +12,16 @@ async function initViews() {
 
   const { data } = await supabase
     .from('page_views')
-    .select('count')
+    .select('count, reset_at')
     .eq('slug', slug)
     .single()
 
   document.querySelectorAll('.view-count').forEach(el => {
-    el.textContent = data?.count ?? 1
+    const count = data?.count ?? 1
+    const since = data?.reset_at
+      ? new Date(data.reset_at).toLocaleDateString('zh-CN', { month: 'long', day: 'numeric' })
+      : '3月24日'
+    el.textContent = `${count} · 自${since}`
   })
 }
 
