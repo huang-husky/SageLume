@@ -72,16 +72,27 @@
 
         <!-- 题目描述 -->
         <h2>题目</h2>
+        <p>相传，孙悟空被五指山压了 500 年后大喊一声：猿神，起洞！</p>
+        <p>唐僧看见孙悟空的一万个分身后说：原来你也万猿身！</p>
         <p>
-          给定如下分段函数，输入浮点数 <code>x</code>（仅保留两位小数，|x| ≤ 10⁹），求 f(x) 并保留两位小数输出。
+          在游戏《猿神》中，主角孙悟空原名冰心，浙江周树人，后改名步惊云，恶魔果实能力者。
+          经过 DNA 电泳分析可得，他统一三国的概率取决于应急食品里 42 号混凝土的质量。
+          为了不影响挖掘机的扭矩，他利用缩聚反应产生的高能蛋白收集七个葫芦娃在羊村召唤青眼白龙，
+          终于获得了 Concrete Math 中的相关函数：
         </p>
         <p>
-          &emsp;f(x) =
-          <span class="cc-highlight-pink">x − ⌊x⌋</span>，&ensp;当 2k ≤ x ≤ 2k+1，k ∈ ℤ（整数部分为偶数）<br>
-          &emsp;f(x) =
-          <span class="cc-highlight-purple">⌊x⌋ − x + 1</span>，当 2k+1 ≤ x ≤ 2k+2，k ∈ ℤ（整数部分为奇数）
+          &emsp;f(x) = <span class="cc-highlight-pink">x − ⌊x⌋</span>，&ensp;2k ≤ x ≤ 2k+1，k ∈ ℤ<br>
+          &emsp;f(x) = <span class="cc-highlight-purple">⌊x⌋ − x + 1</span>，2k+1 ≤ x ≤ 2k+2，k ∈ ℤ
         </p>
-        <p>即：这是一个以 2 为周期的三角波函数，在偶数区间上升，在奇数区间下降。</p>
+        <p>
+          孙悟空现在有一个浮点数 x，他找到了已经掌握条件语句的你，让你帮忙求 f(x)，以便知道他统一三国的概率。
+        </p>
+        <p><strong>输入：</strong>仅一行，一个浮点数 x，保证 x 仅保留两位小数。<br>
+           <strong>输出：</strong>仅一行，为 f(x)，保留两位小数后输出。<br>
+           <strong>数据范围：</strong>|x| ≤ 10⁹</p>
+        <p><strong>样例：</strong><br>
+           输入 <code>0.59</code> → 输出 <code>0.59</code><br>
+           输入 <code>1.73</code> → 输出 <code>0.27</code></p>
 
         <!-- 思路 -->
         <h2>思路</h2>
@@ -96,28 +107,22 @@
             <span class="cyber-code-lang">C++ · ape_cave.cpp</span>
           </div>
           <div class="cyber-code-body">
-            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span> <span class="cc-string">&lt;cstdio&gt;</span>
-<span class="cc-keyword">#include</span> <span class="cc-string">&lt;cmath&gt;</span>
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
 
-<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">() {</span>
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
     <span class="cc-type">double</span> <span class="cc-variable">x</span><span class="cc-plain">;</span>
-    <span class="cc-function">scanf</span><span class="cc-plain">(</span><span class="cc-string">"%lf"</span><span class="cc-plain">, &amp;</span><span class="cc-variable">x</span><span class="cc-plain">);</span>
-
-    <span class="cc-type">double</span> <span class="cc-variable">k</span>    <span class="cc-operator">=</span> <span class="cc-function">floor</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-plain">);</span>       <span class="cc-comment">// ⌊x⌋，向下取整（正确处理负数）</span>
-    <span class="cc-type">double</span> <span class="cc-variable">frac</span> <span class="cc-operator">=</span> <span class="cc-variable">x</span> <span class="cc-operator">-</span> <span class="cc-variable">k</span><span class="cc-plain">;</span>          <span class="cc-comment">// 小数部分，∈ [0, 1)</span>
-    <span class="cc-type">long long</span> <span class="cc-variable">ki</span> <span class="cc-operator">=</span> <span class="cc-plain">(</span><span class="cc-type">long long</span><span class="cc-plain">)</span><span class="cc-variable">k</span><span class="cc-plain">;</span>  <span class="cc-comment">// 整数部分，判奇偶</span>
-
-    <span class="cc-type">double</span> <span class="cc-variable">result</span> <span class="cc-operator">=</span> <span class="cc-plain">(</span><span class="cc-variable">ki</span> <span class="cc-operator">%</span> <span class="cc-number">2</span> <span class="cc-operator">==</span> <span class="cc-number">0</span><span class="cc-plain">)</span>
-                 <span class="cc-operator">?</span> <span class="cc-variable">frac</span>             <span class="cc-comment">// 偶数区间：x - ⌊x⌋</span>
-                 <span class="cc-plain">:</span> <span class="cc-number">1.0</span> <span class="cc-operator">-</span> <span class="cc-variable">frac</span><span class="cc-plain">;</span>    <span class="cc-comment">// 奇数区间：⌊x⌋ - x + 1</span>
-
-    <span class="cc-function">printf</span><span class="cc-plain">(</span><span class="cc-string">"%.2f\n"</span><span class="cc-plain">,</span> <span class="cc-variable">result</span><span class="cc-plain">);</span>
+    <span class="cc-plain">cin &gt;&gt; </span><span class="cc-variable">x</span><span class="cc-plain">;</span>
+    <span class="cc-type">long long</span> <span class="cc-variable">fx</span> <span class="cc-operator">=</span> <span class="cc-plain">(</span><span class="cc-type">long long</span><span class="cc-plain">)</span><span class="cc-function">floor</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-plain">);</span>  <span class="cc-comment">// 注意用long long，|x|可达1e9</span>
+    <span class="cc-type">double</span> <span class="cc-variable">frac</span> <span class="cc-operator">=</span> <span class="cc-variable">x</span> <span class="cc-operator">-</span> <span class="cc-variable">fx</span><span class="cc-plain">;</span>
+    <span class="cc-type">double</span> <span class="cc-variable">ans</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">fx</span> <span class="cc-operator">%</span> <span class="cc-number">2</span> <span class="cc-operator">==</span> <span class="cc-number">0</span><span class="cc-plain">)</span>
+        <span class="cc-variable">ans</span> <span class="cc-operator">=</span> <span class="cc-variable">frac</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">else</span>
+        <span class="cc-variable">ans</span> <span class="cc-operator">=</span> <span class="cc-number">1.0</span> <span class="cc-operator">-</span> <span class="cc-variable">frac</span><span class="cc-plain">;</span>
+    <span class="cc-function">printf</span><span class="cc-plain">(</span><span class="cc-string">"%.2f\n"</span><span class="cc-plain">,</span> <span class="cc-variable">ans</span><span class="cc-plain">);</span>
     <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
-<span class="cc-plain">}</span>
-
-<span class="cc-comment">// --- 验证 ---</span>
-<span class="cc-comment">// x = 0.59 → floor=0 (偶) → 0.59</span>
-<span class="cc-comment">// x = 1.73 → floor=1 (奇) → 1 - 0.73 = 0.27</span></code></pre>
+<span class="cc-plain">}</span></code></pre>
           </div>
         </div>
 
