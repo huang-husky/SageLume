@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 001 · 猿神，起洞 | SageLume</title>
+  <meta name="description" content="acm.scu.edu.cn 15 · 猿神，起洞（分支）——分支结构，Day 001 菜鸟的coding。">
+
+  <!-- Favicon -->
+  <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://sage-lume.vercel.app/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://sage-lume.vercel.app/favicon/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/coding.css">
+
+  <!-- Scripts -->
+  <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
+  <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+</head>
+
+<body>
+  <!-- 花瓣背景 -->
+  <canvas id="coding-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://sage-lume.vercel.app/">
+        <img src="https://sage-lume.vercel.app/favicon/logo-header.png" alt="算海青藜" height="96">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://sage-lume.vercel.app/">Home</a>
+      <a href="https://sage-lume.vercel.app/about/">About</a>
+      <a href="https://sage-lume.vercel.app/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <div class="coding-header-accent coding-header-accent--left">
+          <span class="coding-tag-badge"># 菜鸟的coding · Day 001</span>
+        </div>
+        <h1 class="post-title">猿神，起洞（分支）</h1>
+        <div class="post-meta">
+          <span>2026-03-30</span>
+          <span> • </span>
+          <span>C++</span>
+          <span> • </span>
+          <span>acm.scu.edu.cn 15 &nbsp;·&nbsp; 分支结构</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+
+        <!-- 题目描述 -->
+        <h2>题目</h2>
+        <p>
+          给定如下分段函数，输入浮点数 <code>x</code>（仅保留两位小数，|x| ≤ 10⁹），求 f(x) 并保留两位小数输出。
+        </p>
+        <p>
+          &emsp;f(x) =
+          <span class="cc-highlight-pink">x − ⌊x⌋</span>，&ensp;当 2k ≤ x ≤ 2k+1，k ∈ ℤ（整数部分为偶数）<br>
+          &emsp;f(x) =
+          <span class="cc-highlight-purple">⌊x⌋ − x + 1</span>，当 2k+1 ≤ x ≤ 2k+2，k ∈ ℤ（整数部分为奇数）
+        </p>
+        <p>即：这是一个以 2 为周期的三角波函数，在偶数区间上升，在奇数区间下降。</p>
+
+        <!-- 思路 -->
+        <h2>思路</h2>
+        <p>---</p>
+
+        <!-- 代码块 -->
+        <div class="cyber-code-block">
+          <div class="cyber-code-header">
+            <div class="cyber-code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="cyber-code-lang">C++ · ape_cave.cpp</span>
+          </div>
+          <div class="cyber-code-body">
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span> <span class="cc-string">&lt;cstdio&gt;</span>
+<span class="cc-keyword">#include</span> <span class="cc-string">&lt;cmath&gt;</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">() {</span>
+    <span class="cc-type">double</span> <span class="cc-variable">x</span><span class="cc-plain">;</span>
+    <span class="cc-function">scanf</span><span class="cc-plain">(</span><span class="cc-string">"%lf"</span><span class="cc-plain">, &amp;</span><span class="cc-variable">x</span><span class="cc-plain">);</span>
+
+    <span class="cc-type">double</span> <span class="cc-variable">k</span>    <span class="cc-operator">=</span> <span class="cc-function">floor</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-plain">);</span>       <span class="cc-comment">// ⌊x⌋，向下取整（正确处理负数）</span>
+    <span class="cc-type">double</span> <span class="cc-variable">frac</span> <span class="cc-operator">=</span> <span class="cc-variable">x</span> <span class="cc-operator">-</span> <span class="cc-variable">k</span><span class="cc-plain">;</span>          <span class="cc-comment">// 小数部分，∈ [0, 1)</span>
+    <span class="cc-type">long long</span> <span class="cc-variable">ki</span> <span class="cc-operator">=</span> <span class="cc-plain">(</span><span class="cc-type">long long</span><span class="cc-plain">)</span><span class="cc-variable">k</span><span class="cc-plain">;</span>  <span class="cc-comment">// 整数部分，判奇偶</span>
+
+    <span class="cc-type">double</span> <span class="cc-variable">result</span> <span class="cc-operator">=</span> <span class="cc-plain">(</span><span class="cc-variable">ki</span> <span class="cc-operator">%</span> <span class="cc-number">2</span> <span class="cc-operator">==</span> <span class="cc-number">0</span><span class="cc-plain">)</span>
+                 <span class="cc-operator">?</span> <span class="cc-variable">frac</span>             <span class="cc-comment">// 偶数区间：x - ⌊x⌋</span>
+                 <span class="cc-plain">:</span> <span class="cc-number">1.0</span> <span class="cc-operator">-</span> <span class="cc-variable">frac</span><span class="cc-plain">;</span>    <span class="cc-comment">// 奇数区间：⌊x⌋ - x + 1</span>
+
+    <span class="cc-function">printf</span><span class="cc-plain">(</span><span class="cc-string">"%.2f\n"</span><span class="cc-plain">,</span> <span class="cc-variable">result</span><span class="cc-plain">);</span>
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span>
+
+<span class="cc-comment">// --- 验证 ---</span>
+<span class="cc-comment">// x = 0.59 → floor=0 (偶) → 0.59</span>
+<span class="cc-comment">// x = 1.73 → floor=1 (奇) → 1 - 0.73 = 0.27</span></code></pre>
+          </div>
+        </div>
+
+        <!-- 复杂度 -->
+        <h2>复杂度分析</h2>
+        <ul>
+          <li><strong>时间复杂度：</strong>O(1)，单次运算。</li>
+          <li><strong>空间复杂度：</strong>O(1)。</li>
+        </ul>
+
+        <!-- 心得 -->
+        <div class="coding-reflection">
+          <span class="coding-reflection-label">今日感受</span>
+          <p class="coding-reflection-text">---</p>
+        </div>
+
+        <!-- 返回 -->
+        <p class="coding-back-wrap">
+          <a href="https://sage-lume.vercel.app/blog/coding/" class="coding-back-link">← 返回菜鸟的coding</a>
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://sage-lume.vercel.app/favicon/logo-footer.png" alt="算海青藜" height="48">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <script src="https://sage-lume.vercel.app/js/coding-particles.js"></script>
+</body>
+</html>
