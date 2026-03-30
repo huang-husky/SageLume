@@ -1,0 +1,326 @@
+/* ===== 菜鸟的coding 专用样式 ===== */
+/* 赛博朋克紫粉渐变 · 温柔朦胧反光质感 */
+
+/* ---- CSS变量 ---- */
+:root {
+  --coding-gradient-1: #c084fc;   /* 紫色 */
+  --coding-gradient-2: #f472b6;   /* 粉红 */
+  --coding-gradient-3: #fb7185;   /* 玫红 */
+  --coding-glow-color: rgba(244, 114, 182, 0.35);
+  --coding-glow-strong: rgba(192, 132, 252, 0.45);
+  --coding-glass-bg: rgba(30, 10, 40, 0.72);
+  --coding-glass-border: rgba(244, 114, 182, 0.28);
+  --coding-reflection: rgba(255, 220, 240, 0.08);
+  --coding-text-bright: #fce7f3;
+  --coding-text-dim: #d8b4d8;
+  --coding-keyword: #f9a8d4;      /* 关键字：粉 */
+  --coding-function: #c4b5fd;     /* 函数：浅紫 */
+  --coding-string: #fda4af;       /* 字符串：玫红 */
+  --coding-number: #fb923c;       /* 数字：橙红 */
+  --coding-comment: #9d8cb0;      /* 注释：暗紫 */
+  --coding-operator: #e879f9;     /* 运算符：紫红 */
+  --coding-type: #818cf8;         /* 类型：蓝紫 */
+  --coding-variable: #f0abfc;     /* 变量：浅紫粉 */
+}
+
+/* ---- 页面头部标题区域 ---- */
+.coding-header-accent {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.coding-tag-badge {
+  display: inline-block;
+  padding: 0.35rem 1.1rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--coding-gradient-1), var(--coding-gradient-2), var(--coding-gradient-3));
+  color: #fff;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  box-shadow: 0 2px 16px var(--coding-glow-color);
+  margin-bottom: 0.75rem;
+}
+
+/* ---- 记录列表 ---- */
+.coding-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.coding-entry {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  background: var(--yukima-component-bg);
+  border: 1px solid var(--yukima-component-border);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.coding-entry::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--coding-gradient-1), var(--coding-gradient-3));
+  border-radius: 4px 0 0 4px;
+}
+
+.coding-entry:hover {
+  background: var(--yukima-component-bg-hover);
+  border-color: rgba(192, 132, 252, 0.3);
+  transform: translateX(4px);
+  box-shadow: 0 4px 20px var(--coding-glow-color);
+}
+
+.coding-entry-day {
+  flex-shrink: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--coding-gradient-2);
+  background: linear-gradient(135deg, var(--coding-gradient-1), var(--coding-gradient-3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  width: 3.5rem;
+  text-align: center;
+}
+
+.coding-entry-body {
+  flex: 1;
+}
+
+.coding-entry-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--yukima-strong);
+  margin-bottom: 0.25rem;
+}
+
+.coding-entry-meta {
+  font-size: 0.8rem;
+  color: var(--yukima-text);
+  opacity: 0.75;
+}
+
+/* ----  代码块：赛博朋克紫粉风 ---- */
+
+/* 包裹容器 */
+.cyber-code-block {
+  position: relative;
+  border-radius: 16px;
+  margin: 2rem 0;
+  overflow: hidden;
+  /* 外发光 */
+  box-shadow:
+    0 0 0 1px var(--coding-glass-border),
+    0 4px 32px var(--coding-glow-color),
+    0 0 64px rgba(192, 132, 252, 0.12);
+}
+
+/* 渐变背景主体 */
+.cyber-code-block::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    #2d0845 0%,
+    #1e0a38 25%,
+    #3b0764 50%,
+    #500724 75%,
+    #2d0a2a 100%
+  );
+  z-index: 0;
+}
+
+/* 朦胧反光层 */
+.cyber-code-block::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 55%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 210, 240, 0.10) 0%,
+    rgba(200, 150, 255, 0.05) 50%,
+    transparent 100%
+  );
+  border-radius: 16px 16px 0 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 顶部标题栏 */
+.cyber-code-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1.1rem;
+  background: rgba(180, 80, 200, 0.14);
+  border-bottom: 1px solid rgba(244, 114, 182, 0.20);
+}
+
+.cyber-code-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.cyber-code-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.cyber-code-dots span:nth-child(1) { background: #f87171; }
+.cyber-code-dots span:nth-child(2) { background: #fbbf24; }
+.cyber-code-dots span:nth-child(3) { background: #34d399; }
+
+.cyber-code-lang {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--coding-text-dim);
+  text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+}
+
+/* 代码内容区 */
+.cyber-code-body {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem 1.5rem 1.25rem;
+  overflow-x: auto;
+}
+
+pre.cyber-pre {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
+  font-size: clamp(0.78rem, 0.7rem + 0.3vw, 0.92rem);
+  line-height: 1.75;
+  color: var(--coding-text-bright);
+}
+
+code.cyber-code {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  color: var(--coding-text-bright);
+  font-family: inherit;
+}
+
+/* 语法高亮 */
+.cc-keyword  { color: var(--coding-keyword);  font-style: italic; }
+.cc-function { color: var(--coding-function); }
+.cc-string   { color: var(--coding-string);  }
+.cc-number   { color: var(--coding-number);  }
+.cc-comment  { color: var(--coding-comment); font-style: italic; opacity: 0.8; }
+.cc-operator { color: var(--coding-operator); }
+.cc-type     { color: var(--coding-type);    }
+.cc-variable { color: var(--coding-variable); }
+.cc-plain    { color: var(--coding-text-bright); }
+
+/* ---- 心得区块 ---- */
+.coding-reflection {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg,
+    rgba(192, 132, 252, 0.07),
+    rgba(244, 114, 182, 0.07)
+  );
+  border: 1px solid rgba(192, 132, 252, 0.18);
+  border-left: 3px solid;
+  border-image: linear-gradient(180deg, var(--coding-gradient-1), var(--coding-gradient-3)) 1;
+  position: relative;
+}
+
+.coding-reflection-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--coding-gradient-2);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+/* ---- 提取自 HTML 的通用类 ---- */
+
+/* 索引页简介文字 */
+.coding-intro-text {
+  margin-top: 0.75rem;
+  color: var(--yukima-text);
+  font-size: 0.92rem;
+  line-height: 1.8;
+}
+
+/* 单篇页头部 accent 左对齐变体 */
+.coding-header-accent--left {
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+/* 思路中标注复杂度的色彩 */
+.cc-highlight-purple { color: var(--coding-gradient-1); }
+.cc-highlight-pink   { color: var(--coding-gradient-2); }
+
+/* 心得段落 */
+.coding-reflection-text {
+  margin: 0;
+  color: var(--yukima-text);
+  line-height: 1.85;
+}
+
+/* 返回链接容器 */
+.coding-back-wrap {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+/* 返回链接按钮 */
+.coding-back-link {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(192, 132, 252, 0.15), rgba(244, 114, 182, 0.15));
+  border: 1px solid rgba(192, 132, 252, 0.3);
+  color: var(--yukima-text);
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: all 0.3s ease;
+}
+
+.coding-back-link:hover {
+  background: linear-gradient(135deg, rgba(192, 132, 252, 0.28), rgba(244, 114, 182, 0.25));
+  border-color: rgba(192, 132, 252, 0.5);
+}
+
+/* ---- 深色模式微调 ---- */
+[data-theme="dark"] .cyber-code-block {
+  box-shadow:
+    0 0 0 1px rgba(244, 114, 182, 0.22),
+    0 4px 40px rgba(192, 132, 252, 0.28),
+    0 0 80px rgba(192, 132, 252, 0.10);
+}
+
+[data-theme="dark"] .coding-reflection {
+  background: linear-gradient(135deg,
+    rgba(192, 132, 252, 0.10),
+    rgba(244, 114, 182, 0.08)
+  );
+}
