@@ -24,6 +24,37 @@
   <!-- Scripts -->
   <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
   <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var filterItems = document.querySelectorAll('.sidebar-filter-item');
+      var entries = document.querySelectorAll('.coding-entry[data-platform]');
+
+      // 统计各平台数量
+      var counts = { all: entries.length };
+      entries.forEach(function (e) {
+        var p = e.dataset.platform;
+        counts[p] = (counts[p] || 0) + 1;
+      });
+
+      // 更新 badge 数字
+      filterItems.forEach(function (item) {
+        var badge = item.querySelector('.sidebar-badge');
+        if (badge) badge.textContent = counts[item.dataset.filter] ?? 0;
+      });
+
+      // 点击过滤
+      filterItems.forEach(function (item) {
+        item.addEventListener('click', function () {
+          filterItems.forEach(function (i) { i.classList.remove('active'); });
+          item.classList.add('active');
+          var filter = item.dataset.filter;
+          entries.forEach(function (entry) {
+            entry.style.display = (filter === 'all' || entry.dataset.platform === filter) ? '' : 'none';
+          });
+        });
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -60,31 +91,50 @@
       </header>
 
       <div class="post-content">
+        <div class="coding-layout">
 
-        <div class="coding-header-accent">
-          <span class="coding-tag-badge"># 菜鸟的coding</span>
-          <p class="coding-intro-text">
-            养成每日刷题的习惯，哪怕只有一道。<br>
-            每次记录：题目、代码、感受。<br>
-            从菜鸟出发，不设终点。
-          </p>
-        </div>
-
-        <!-- 记录列表 -->
-        <div class="coding-list">
-
-          <a href="https://sage-lume.vercel.app/blog/coding/day001/" class="coding-entry">
-            <span class="coding-entry-day">Day<br>001</span>
-            <div class="coding-entry-body">
-              <div class="coding-entry-title">两数之和（Two Sum）</div>
-              <div class="coding-entry-meta">2026-03-30 &nbsp;·&nbsp; C++ &nbsp;·&nbsp; 哈希表</div>
+          <!-- 左侧筛选栏 -->
+          <aside class="coding-sidebar">
+            <div class="sidebar-section">
+              <h3 class="sidebar-title">平台</h3>
+              <ul class="sidebar-filter-list">
+                <li class="sidebar-filter-item active" data-filter="all">全部 <span class="sidebar-badge">0</span></li>
+                <li class="sidebar-filter-item" data-filter="leetcode">LeetCode <span class="sidebar-badge">0</span></li>
+                <li class="sidebar-filter-item" data-filter="nowcoder">牛客网 <span class="sidebar-badge">0</span></li>
+                <li class="sidebar-filter-item" data-filter="acm-scu">acm.scu.edu.cn <span class="sidebar-badge">0</span></li>
+              </ul>
             </div>
-          </a>
+          </aside>
 
-          <!-- 后续记录在这里追加 -->
+          <!-- 右侧主内容 -->
+          <div class="coding-main">
 
-        </div>
+            <div class="coding-header-accent">
+              <span class="coding-tag-badge"># 菜鸟的coding</span>
+              <p class="coding-intro-text">
+                养成每日刷题的习惯，哪怕只有一道。<br>
+                每次记录：题目、代码、感受。<br>
+                从菜鸟出发，不设终点。
+              </p>
+            </div>
 
+            <!-- 记录列表 -->
+            <div class="coding-list">
+
+              <a href="https://sage-lume.vercel.app/blog/coding/day001/" class="coding-entry" data-platform="leetcode">
+                <span class="coding-entry-day">Day<br>001</span>
+                <div class="coding-entry-body">
+                  <div class="coding-entry-title">两数之和（Two Sum）</div>
+                  <div class="coding-entry-meta">2026-03-30 &nbsp;·&nbsp; C++ &nbsp;·&nbsp; 哈希表</div>
+                </div>
+              </a>
+
+              <!-- 后续记录在这里追加 -->
+
+            </div>
+
+          </div><!-- /coding-main -->
+        </div><!-- /coding-layout -->
       </div>
     </article>
   </main>

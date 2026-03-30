@@ -329,6 +329,111 @@ code.cyber-code {
   border-color: rgba(192, 132, 252, 0.5);
 }
 
+/* ---- 索引页双栏布局 ---- */
+.coding-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.coding-sidebar {
+  flex-shrink: 0;
+  width: 190px;
+  position: sticky;
+  top: 1.5rem;
+}
+
+.coding-main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* GitHub风格侧栏面板 */
+.sidebar-section {
+  border: 1px solid var(--coding-glass-border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--yukima-component-bg);
+}
+
+.sidebar-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--coding-text-dim);
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid var(--coding-glass-border);
+  margin: 0;
+}
+
+.sidebar-filter-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem;
+}
+
+.sidebar-filter-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.38rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.83rem;
+  color: var(--yukima-text);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.sidebar-filter-item:hover {
+  background: rgba(192, 132, 252, 0.12);
+  color: var(--coding-text-bright);
+}
+
+.sidebar-filter-item.active {
+  background: linear-gradient(135deg, rgba(192, 132, 252, 0.22), rgba(244, 114, 182, 0.18));
+  color: var(--coding-keyword);
+  font-weight: 600;
+}
+
+.sidebar-badge {
+  font-size: 0.7rem;
+  padding: 0.08rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(192, 132, 252, 0.14);
+  color: var(--coding-text-dim);
+  min-width: 1.4rem;
+  text-align: center;
+}
+
+.sidebar-filter-item.active .sidebar-badge {
+  background: rgba(192, 132, 252, 0.3);
+  color: var(--coding-gradient-1);
+}
+
+/* 响应式：窄屏改为横排 */
+@media (max-width: 640px) {
+  .coding-layout {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .coding-sidebar {
+    width: 100%;
+    position: static;
+  }
+  .sidebar-filter-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .sidebar-filter-item {
+    border: 1px solid var(--coding-glass-border);
+    border-radius: 999px;
+    padding: 0.3rem 0.75rem;
+  }
+}
+
 /* ---- 深色模式微调 ---- */
 [data-theme="dark"] .cyber-code-block {
   box-shadow:
