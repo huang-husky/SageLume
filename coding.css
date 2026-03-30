@@ -1,6 +1,25 @@
 /* ===== 菜鸟的coding 专用样式 ===== */
 /* 赛博朋克紫粉渐变 · 温柔朦胧反光质感 */
 
+/* ---- 花瓣背景 canvas ---- */
+#coding-bg-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 确保所有页面内容层叠在 canvas 上方 */
+.theme-toggle,
+.site-header,
+main,
+.site-footer {
+  position: relative;
+  z-index: 1;
+}
+
 /* ---- CSS变量 ---- */
 :root {
   --coding-gradient-1: #c084fc;   /* 紫色 */

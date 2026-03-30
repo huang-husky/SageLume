@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Day 001 · 两数之和 | SageLume</title>
   <meta name="description" content="LeetCode 1 · 两数之和（Two Sum）——哈希表解法，Day 001 菜鸟的coding。">
+
   <!-- Favicon -->
   <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
   <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
@@ -27,6 +28,9 @@
 </head>
 
 <body>
+  <!-- 花瓣背景 -->
+  <canvas id="coding-bg-canvas" aria-hidden="true"></canvas>
+
   <!-- 主题切换按钮 -->
   <button class="theme-toggle" aria-label="切换深浅模式">
     <span class="icon sun">☀️</span>
@@ -58,7 +62,7 @@
         <div class="post-meta">
           <span>2026-03-30</span>
           <span> • </span>
-          <span>Python</span>
+          <span>C++</span>
           <span> • </span>
           <span>LeetCode 1 &nbsp;·&nbsp; Easy</span>
         </div>
@@ -91,32 +95,33 @@
             <div class="cyber-code-dots">
               <span></span><span></span><span></span>
             </div>
-            <span class="cyber-code-lang">Python · two_sum.py</span>
+            <span class="cyber-code-lang">C++ · two_sum.cpp</span>
           </div>
           <div class="cyber-code-body">
-            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">from</span> <span class="cc-plain">typing</span> <span class="cc-keyword">import</span> <span class="cc-type">List</span>
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span> <span class="cc-string">&lt;vector&gt;</span>
+<span class="cc-keyword">#include</span> <span class="cc-string">&lt;unordered_map&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
 
-<span class="cc-keyword">class</span> <span class="cc-type">Solution</span><span class="cc-plain">:</span>
-    <span class="cc-keyword">def</span> <span class="cc-function">twoSum</span><span class="cc-plain">(</span><span class="cc-variable">self</span><span class="cc-plain">,</span> <span class="cc-variable">nums</span><span class="cc-plain">:</span> <span class="cc-type">List</span><span class="cc-plain">[</span><span class="cc-type">int</span><span class="cc-plain">],</span> <span class="cc-variable">target</span><span class="cc-plain">:</span> <span class="cc-type">int</span><span class="cc-plain">)</span> <span class="cc-operator">-></span> <span class="cc-type">List</span><span class="cc-plain">[</span><span class="cc-type">int</span><span class="cc-plain">]:</span>
-        <span class="cc-comment"># 哈希表：存放 {数值: 下标}</span>
-        <span class="cc-variable">seen</span> <span class="cc-operator">=</span> <span class="cc-plain">{}</span>
+<span class="cc-keyword">class</span> <span class="cc-type">Solution</span> <span class="cc-plain">{</span>
+<span class="cc-keyword">public</span><span class="cc-plain">:</span>
+    <span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">int</span><span class="cc-plain">&gt;</span> <span class="cc-function">twoSum</span><span class="cc-plain">(</span><span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">int</span><span class="cc-plain">&gt;&amp;</span> <span class="cc-variable">nums</span><span class="cc-plain">,</span> <span class="cc-type">int</span> <span class="cc-variable">target</span><span class="cc-plain">) {</span>
+        <span class="cc-type">unordered_map</span><span class="cc-plain">&lt;</span><span class="cc-type">int</span><span class="cc-plain">,</span> <span class="cc-type">int</span><span class="cc-plain">&gt;</span> <span class="cc-variable">seen</span><span class="cc-plain">;</span>  <span class="cc-comment">// 哈希表：{数值 → 下标}</span>
 
-        <span class="cc-keyword">for</span> <span class="cc-variable">i</span><span class="cc-plain">,</span> <span class="cc-variable">x</span> <span class="cc-keyword">in</span> <span class="cc-function">enumerate</span><span class="cc-plain">(</span><span class="cc-variable">nums</span><span class="cc-plain">):</span>
-            <span class="cc-variable">complement</span> <span class="cc-operator">=</span> <span class="cc-variable">target</span> <span class="cc-operator">-</span> <span class="cc-variable">x</span>
+        <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">i</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span> <span class="cc-variable">i</span> <span class="cc-operator">&lt;</span> <span class="cc-plain">(</span><span class="cc-type">int</span><span class="cc-plain">)</span><span class="cc-variable">nums</span><span class="cc-plain">.</span><span class="cc-function">size</span><span class="cc-plain">();</span> <span class="cc-variable">i</span><span class="cc-operator">++</span><span class="cc-plain">) {</span>
+            <span class="cc-type">int</span> <span class="cc-variable">complement</span> <span class="cc-operator">=</span> <span class="cc-variable">target</span> <span class="cc-operator">-</span> <span class="cc-variable">nums</span><span class="cc-plain">[</span><span class="cc-variable">i</span><span class="cc-plain">];</span>
 
-            <span class="cc-keyword">if</span> <span class="cc-variable">complement</span> <span class="cc-keyword">in</span> <span class="cc-variable">seen</span><span class="cc-plain">:</span>
-                <span class="cc-keyword">return</span> <span class="cc-plain">[</span><span class="cc-variable">seen</span><span class="cc-plain">[</span><span class="cc-variable">complement</span><span class="cc-plain">],</span> <span class="cc-variable">i</span><span class="cc-plain">]</span>
+            <span class="cc-keyword">if</span> <span class="cc-plain">(</span><span class="cc-variable">seen</span><span class="cc-plain">.</span><span class="cc-function">count</span><span class="cc-plain">(</span><span class="cc-variable">complement</span><span class="cc-plain">))</span> <span class="cc-plain">{</span>
+                <span class="cc-keyword">return</span> <span class="cc-plain">{</span><span class="cc-variable">seen</span><span class="cc-plain">[</span><span class="cc-variable">complement</span><span class="cc-plain">],</span> <span class="cc-variable">i</span><span class="cc-plain">};</span>
+            <span class="cc-plain">}</span>
+            <span class="cc-variable">seen</span><span class="cc-plain">[</span><span class="cc-variable">nums</span><span class="cc-plain">[</span><span class="cc-variable">i</span><span class="cc-plain">]]</span> <span class="cc-operator">=</span> <span class="cc-variable">i</span><span class="cc-plain">;</span>
+        <span class="cc-plain">}</span>
+        <span class="cc-keyword">return</span> <span class="cc-plain">{};</span>  <span class="cc-comment">// 题目保证有解，不会执行到这里</span>
+    <span class="cc-plain">}</span>
+<span class="cc-plain">};</span>
 
-            <span class="cc-variable">seen</span><span class="cc-plain">[</span><span class="cc-variable">x</span><span class="cc-plain">]</span> <span class="cc-operator">=</span> <span class="cc-variable">i</span>
-
-        <span class="cc-keyword">return</span> <span class="cc-plain">[]</span>  <span class="cc-comment"># 题目保证有解，理论上不会执行到这里</span>
-
-
-<span class="cc-comment"># --- 测试 ---</span>
-<span class="cc-keyword">if</span> <span class="cc-variable">__name__</span> <span class="cc-operator">==</span> <span class="cc-string">"__main__"</span><span class="cc-plain">:</span>
-    <span class="cc-variable">sol</span> <span class="cc-operator">=</span> <span class="cc-type">Solution</span><span class="cc-plain">()</span>
-    <span class="cc-function">print</span><span class="cc-plain">(</span><span class="cc-variable">sol</span><span class="cc-plain">.</span><span class="cc-function">twoSum</span><span class="cc-plain">([</span><span class="cc-number">2</span><span class="cc-plain">,</span> <span class="cc-number">7</span><span class="cc-plain">,</span> <span class="cc-number">11</span><span class="cc-plain">,</span> <span class="cc-number">15</span><span class="cc-plain">],</span> <span class="cc-number">9</span><span class="cc-plain">))</span>   <span class="cc-comment"># → [0, 1]</span>
-    <span class="cc-function">print</span><span class="cc-plain">(</span><span class="cc-variable">sol</span><span class="cc-plain">.</span><span class="cc-function">twoSum</span><span class="cc-plain">([</span><span class="cc-number">3</span><span class="cc-plain">,</span> <span class="cc-number">2</span><span class="cc-plain">,</span> <span class="cc-number">4</span><span class="cc-plain">],</span> <span class="cc-number">6</span><span class="cc-plain">))</span>       <span class="cc-comment"># → [1, 2]</span></code></pre>
+<span class="cc-comment">// --- 验证 ---</span>
+<span class="cc-comment">// twoSum([2, 7, 11, 15], 9)  →  [0, 1]</span>
+<span class="cc-comment">// twoSum([3, 2, 4],      6)  →  [1, 2]</span></code></pre>
           </div>
         </div>
 
@@ -156,5 +161,7 @@
       <p>© 2026 z-o-s</p>
     </div>
   </footer>
+
+  <script src="https://sage-lume.vercel.app/js/coding-particles.js"></script>
 </body>
 </html>
