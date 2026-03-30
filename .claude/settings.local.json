@@ -15,7 +15,8 @@
       "Bash(mv css/discrete-math.css discrete-math.css)",
       "Bash(mv css/giscus-theme.css giscus-theme.css)",
       "Bash(rmdir css:*)",
-      "Bash(ls *.css)"
+      "Bash(ls *.css)",
+      "Bash(curl -s \"https://sage-lume.vercel.app/coding.css\")"
     ]
   }
 }
