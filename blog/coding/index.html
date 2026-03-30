@@ -58,6 +58,11 @@
 </head>
 
 <body>
+  <!-- 入场花瓣遮罩 -->
+  <div id="coding-entry-overlay" aria-hidden="true">
+    <canvas id="entry-petal-canvas"></canvas>
+  </div>
+
   <!-- 主题切换按钮 -->
   <button class="theme-toggle" aria-label="切换深浅模式">
     <span class="icon sun">☀️</span>
@@ -155,5 +160,110 @@
       <p>© 2026 z-o-s</p>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var overlay = document.getElementById('coding-entry-overlay');
+      var canvas  = document.getElementById('entry-petal-canvas');
+      var ctx     = canvas.getContext('2d');
+
+      // 入场时隐藏页面内容
+      var fadeEls = [
+        document.querySelector('.site-header'),
+        document.getElementById('main-content'),
+        document.querySelector('.site-footer'),
+        document.querySelector('.theme-toggle'),
+      ];
+      fadeEls.forEach(function (el) { if (el) el.style.opacity = '0'; });
+
+      // 画布尺寸
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      // 花瓣参数
+      var COLORS = ['#c084fc', '#f472b6', '#fb7185', '#e879f9', '#f9a8d4', '#fda4af'];
+      var petals = [];
+      for (var i = 0; i < 100; i++) {
+        petals.push({
+          x:    Math.random() * canvas.width,
+          y:    -Math.random() * canvas.height - 20,
+          size: Math.random() * 13 + 5,
+          vy:   Math.random() * 4  + 2.5,
+          vx:   (Math.random() - 0.5) * 1.5,
+          rot:  Math.random() * Math.PI * 2,
+          rotV: (Math.random() - 0.5) * 0.13,
+          color: COLORS[Math.floor(Math.random() * COLORS.length)],
+          alpha: Math.random() * 0.5 + 0.45,
+          type: Math.floor(Math.random() * 3),
+        });
+      }
+
+      var FALL_MS = 900;   // 花瓣落满的时间
+      var FADE_MS = 750;   // 遮罩淡出时间
+      var t0 = null;
+
+      function easeInOut(t) { return t < 0.5 ? 2*t*t : -1 + (4 - 2*t)*t; }
+
+      function tick(now) {
+        if (!t0) t0 = now;
+        var elapsed = now - t0;
+
+        // 深色背景
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(16, 3, 26, 0.94)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // 更新 & 绘制花瓣
+        for (var i = 0; i < petals.length; i++) {
+          var p = petals[i];
+          p.y   += p.vy;
+          p.x   += p.vx + Math.sin(elapsed * 0.0012 + p.rot) * 0.45;
+          p.rot += p.rotV;
+          if (p.y > canvas.height + 20) {
+            p.y = -20;
+            p.x = Math.random() * canvas.width;
+          }
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.globalAlpha = p.alpha;
+          ctx.fillStyle   = p.color;
+          ctx.beginPath();
+          if (p.type === 0) {
+            ctx.ellipse(0, 0, p.size * 0.45, p.size, 0, 0, Math.PI * 2);
+          } else if (p.type === 1) {
+            ctx.ellipse(0, 0, p.size * 0.7, p.size * 0.4, 0, 0, Math.PI * 2);
+          } else {
+            ctx.moveTo(0, -p.size);
+            ctx.lineTo(p.size * 0.5, 0);
+            ctx.lineTo(0, p.size);
+            ctx.lineTo(-p.size * 0.5, 0);
+            ctx.closePath();
+          }
+          ctx.fill();
+          ctx.restore();
+        }
+
+        // 淡出遮罩 + 淡入页面
+        if (elapsed >= FALL_MS) {
+          var prog   = Math.min((elapsed - FALL_MS) / FADE_MS, 1);
+          var eased  = easeInOut(prog);
+          overlay.style.opacity = 1 - eased;
+          fadeEls.forEach(function (el) { if (el) el.style.opacity = eased; });
+
+          if (prog >= 1) {
+            overlay.style.display = 'none';
+            fadeEls.forEach(function (el) { if (el) el.style.opacity = ''; });
+            return;
+          }
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+    })();
+  </script>
 </body>
 </html>
