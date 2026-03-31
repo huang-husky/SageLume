@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>英格力士 | SageLume</title>
+  <meta name="description" content="英语学习笔记——词汇、语法、阅读与表达">
+  <!-- Favicon -->
+  <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://sage-lume.vercel.app/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://sage-lume.vercel.app/favicon/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
+
+  <!-- Scripts -->
+  <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
+  <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+
+  <style>
+    /* ── 英格力士 节目样式 ── */
+    :root {
+      --ig-accent:    #4a7c8e;
+      --ig-accent2:   #6aabb8;
+      --ig-tag-bg:    #e8f4f8;
+      --ig-tag-fg:    #2c5f6e;
+      --ig-entry-bg:  #ffffff;
+      --ig-entry-bdr: #c8e0e8;
+      --ig-muted:     #7a9ba8;
+      --ig-intro-bg:  #f0f8fb;
+    }
+    [data-theme="dark"] {
+      --ig-accent:    #6aabb8;
+      --ig-accent2:   #8ecad4;
+      --ig-tag-bg:    #1a3040;
+      --ig-tag-fg:    #8ecad4;
+      --ig-entry-bg:  #1a2830;
+      --ig-entry-bdr: #2a4858;
+      --ig-muted:     #5a8898;
+      --ig-intro-bg:  #141e24;
+    }
+
+    .ig-layout {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 680px) {
+      .ig-layout { grid-template-columns: 1fr; }
+    }
+
+    /* 侧边栏 */
+    .ig-sidebar {
+      position: sticky;
+      top: 1.5rem;
+    }
+    .ig-sidebar-title {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ig-muted);
+      margin: 0 0 0.6rem;
+    }
+    .ig-filter-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .ig-filter-item {
+      cursor: pointer;
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      color: var(--color-text-secondary, #666);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.15s, color 0.15s;
+    }
+    .ig-filter-item:hover { background: var(--ig-tag-bg); color: var(--ig-tag-fg); }
+    .ig-filter-item.active {
+      background: var(--ig-tag-bg);
+      color: var(--ig-accent);
+      font-weight: 600;
+    }
+    .ig-badge {
+      font-size: 0.75rem;
+      background: var(--ig-entry-bdr);
+      color: var(--ig-muted);
+      border-radius: 999px;
+      padding: 0 0.45rem;
+      min-width: 1.2em;
+      text-align: center;
+    }
+
+    /* 主内容区 */
+    .ig-header-accent {
+      background: var(--ig-intro-bg);
+      border-left: 3px solid var(--ig-accent);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .ig-tag-badge {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ig-accent);
+      letter-spacing: 0.05em;
+    }
+    .ig-intro-text {
+      margin: 0.5rem 0 0;
+      font-size: 0.92rem;
+      color: var(--color-text-secondary, #666);
+      line-height: 1.7;
+    }
+
+    /* 条目列表 */
+    .ig-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .ig-entry {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--ig-entry-bg);
+      border: 1px solid var(--ig-entry-bdr);
+      border-radius: 8px;
+      padding: 0.85rem 1.1rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+    }
+    .ig-entry:hover {
+      border-color: var(--ig-accent2);
+      box-shadow: 0 2px 10px color-mix(in srgb, var(--ig-accent) 15%, transparent);
+      transform: translateY(-1px);
+    }
+    .ig-entry-num {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ig-accent);
+      white-space: pre;
+      text-align: center;
+      line-height: 1.25;
+      min-width: 2.8em;
+    }
+    .ig-entry-body { flex: 1; min-width: 0; }
+    .ig-entry-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin: 0 0 0.2rem;
+      color: var(--color-text, #222);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ig-entry-meta {
+      font-size: 0.78rem;
+      color: var(--ig-muted);
+    }
+    .ig-cat-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: var(--ig-tag-bg);
+      color: var(--ig-tag-fg);
+      border-radius: 4px;
+      padding: 0.05rem 0.4rem;
+      margin-left: 0.3rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://sage-lume.vercel.app/">
+        <img src="https://sage-lume.vercel.app/favicon/logo-header.png" alt="算海青藜" height="96">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://sage-lume.vercel.app/">Home</a>
+      <a href="https://sage-lume.vercel.app/about/">About</a>
+      <a href="https://sage-lume.vercel.app/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <h1 class="post-title">英格力士 · 英语笔记</h1>
+        <div class="post-meta">
+          <span>持续更新中</span>
+          <span> • </span>
+          <span>积累每一个值得记下的英语瞬间</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+        <div class="ig-layout">
+
+          <!-- 左侧分类筛选 -->
+          <aside class="ig-sidebar">
+            <h3 class="ig-sidebar-title">分类</h3>
+            <ul class="ig-filter-list">
+              <li class="ig-filter-item active" data-filter="all">全部 <span class="ig-badge">0</span></li>
+              <li class="ig-filter-item" data-filter="vocab">词汇 <span class="ig-badge">0</span></li>
+              <li class="ig-filter-item" data-filter="grammar">语法 <span class="ig-badge">0</span></li>
+              <li class="ig-filter-item" data-filter="reading">阅读 <span class="ig-badge">0</span></li>
+              <li class="ig-filter-item" data-filter="writing">写作 <span class="ig-badge">0</span></li>
+              <li class="ig-filter-item" data-filter="expression">表达 <span class="ig-badge">0</span></li>
+            </ul>
+          </aside>
+
+          <!-- 右侧主内容 -->
+          <div>
+            <div class="ig-header-accent">
+              <span class="ig-tag-badge"># 英格力士</span>
+              <p class="ig-intro-text">
+                英语学习没有捷径，只有积累。<br>
+                每条笔记记录一个词、一句话、一个用法，或一段感悟。<br>
+                Inch by inch, day by day.
+              </p>
+            </div>
+
+            <!-- 笔记列表 -->
+            <div class="ig-list">
+
+              <!-- 后续笔记在这里追加，格式示例：
+              <a href="https://sage-lume.vercel.app/blog/inglish/note001/" class="ig-entry" data-category="vocab">
+                <span class="ig-entry-num">Note<br>001</span>
+                <div class="ig-entry-body">
+                  <div class="ig-entry-title">笔记标题</div>
+                  <div class="ig-entry-meta">2026-03-31 &nbsp;·&nbsp; 词汇<span class="ig-cat-tag">vocab</span></div>
+                </div>
+              </a>
+              -->
+
+            </div>
+          </div>
+
+        </div><!-- /ig-layout -->
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://sage-lume.vercel.app/favicon/logo-footer.png" alt="算海青藜" height="48">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var filterItems = document.querySelectorAll('.ig-filter-item');
+      var entries = document.querySelectorAll('.ig-entry[data-category]');
+
+      // 统计各分类数量
+      var counts = { all: entries.length };
+      entries.forEach(function (e) {
+        var c = e.dataset.category;
+        counts[c] = (counts[c] || 0) + 1;
+      });
+
+      // 更新 badge
+      filterItems.forEach(function (item) {
+        var badge = item.querySelector('.ig-badge');
+        if (badge) badge.textContent = counts[item.dataset.filter] ?? 0;
+      });
+
+      // 点击过滤
+      filterItems.forEach(function (item) {
+        item.addEventListener('click', function () {
+          filterItems.forEach(function (i) { i.classList.remove('active'); });
+          item.classList.add('active');
+          var filter = item.dataset.filter;
+          entries.forEach(function (entry) {
+            entry.style.display = (filter === 'all' || entry.dataset.category === filter) ? '' : 'none';
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
