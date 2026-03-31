@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>英格力士 | SageLume</title>
-  <meta name="description" content="about English">
+  <meta name="description" content="英语学习笔记——写作、口语、听力、词汇、语法、阅读">
   <!-- Favicon -->
   <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
   <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
@@ -25,92 +25,33 @@
   <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
 
   <style>
-    /* ── 英格力士 节目样式 ── */
     :root {
-      --ig-accent:    #4a7c8e;
-      --ig-accent2:   #6aabb8;
-      --ig-tag-bg:    #e8f4f8;
-      --ig-tag-fg:    #2c5f6e;
-      --ig-entry-bg:  #ffffff;
-      --ig-entry-bdr: #c8e0e8;
-      --ig-muted:     #7a9ba8;
-      --ig-intro-bg:  #f0f8fb;
+      --ig-accent:   #4a7c8e;
+      --ig-accent2:  #6aabb8;
+      --ig-muted:    #7a9ba8;
+      --ig-card-bg:  #f6fcfe;
+      --ig-card-bdr: #c0dde8;
+      --ig-tag-bg:   #e8f4f8;
+      --ig-tag-fg:   #2c5f6e;
+      --ig-intro-bg: #f0f8fb;
     }
     [data-theme="dark"] {
-      --ig-accent:    #6aabb8;
-      --ig-accent2:   #8ecad4;
-      --ig-tag-bg:    #1a3040;
-      --ig-tag-fg:    #8ecad4;
-      --ig-entry-bg:  #1a2830;
-      --ig-entry-bdr: #2a4858;
-      --ig-muted:     #5a8898;
-      --ig-intro-bg:  #141e24;
+      --ig-accent:   #6aabb8;
+      --ig-accent2:  #8ecad4;
+      --ig-muted:    #5a8898;
+      --ig-card-bg:  #141e24;
+      --ig-card-bdr: #2a4858;
+      --ig-tag-bg:   #1a3040;
+      --ig-tag-fg:   #8ecad4;
+      --ig-intro-bg: #0e1820;
     }
 
-    .ig-layout {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 2rem;
-      align-items: start;
-    }
-    @media (max-width: 680px) {
-      .ig-layout { grid-template-columns: 1fr; }
-    }
-
-    /* 侧边栏 */
-    .ig-sidebar {
-      position: sticky;
-      top: 1.5rem;
-    }
-    .ig-sidebar-title {
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ig-muted);
-      margin: 0 0 0.6rem;
-    }
-    .ig-filter-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-    .ig-filter-item {
-      cursor: pointer;
-      padding: 0.4rem 0.75rem;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      color: var(--color-text-secondary, #666);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background 0.15s, color 0.15s;
-    }
-    .ig-filter-item:hover { background: var(--ig-tag-bg); color: var(--ig-tag-fg); }
-    .ig-filter-item.active {
-      background: var(--ig-tag-bg);
-      color: var(--ig-accent);
-      font-weight: 600;
-    }
-    .ig-badge {
-      font-size: 0.75rem;
-      background: var(--ig-entry-bdr);
-      color: var(--ig-muted);
-      border-radius: 999px;
-      padding: 0 0.45rem;
-      min-width: 1.2em;
-      text-align: center;
-    }
-
-    /* 主内容区 */
-    .ig-header-accent {
+    .ig-intro {
       background: var(--ig-intro-bg);
       border-left: 3px solid var(--ig-accent);
       border-radius: 0 8px 8px 0;
       padding: 1rem 1.25rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
     .ig-tag-badge {
       font-size: 0.8rem;
@@ -118,73 +59,60 @@
       color: var(--ig-accent);
       letter-spacing: 0.05em;
     }
-    .ig-intro-text {
+    .ig-intro p {
       margin: 0.5rem 0 0;
       font-size: 0.92rem;
       color: var(--color-text-secondary, #666);
       line-height: 1.7;
     }
 
-    /* 条目列表 */
-    .ig-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-    .ig-entry {
-      display: flex;
-      align-items: center;
+    /* 分类卡片网格 */
+    .ig-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 1rem;
-      background: var(--ig-entry-bg);
-      border: 1px solid var(--ig-entry-bdr);
-      border-radius: 8px;
-      padding: 0.85rem 1.1rem;
+    }
+    .ig-cat-card {
+      display: block;
+      background: var(--ig-card-bg);
+      border: 1px solid var(--ig-card-bdr);
+      border-radius: 10px;
+      padding: 1.25rem 1.2rem;
       text-decoration: none;
       color: inherit;
       transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
     }
-    .ig-entry:hover {
+    .ig-cat-card:hover {
       border-color: var(--ig-accent2);
-      box-shadow: 0 2px 10px color-mix(in srgb, var(--ig-accent) 15%, transparent);
-      transform: translateY(-1px);
+      box-shadow: 0 3px 12px color-mix(in srgb, var(--ig-accent) 15%, transparent);
+      transform: translateY(-2px);
     }
-    .ig-entry-num {
-      font-size: 0.78rem;
+    .ig-cat-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+    .ig-cat-name {
+      font-size: 1rem;
       font-weight: 700;
       color: var(--ig-accent);
-      white-space: pre;
-      text-align: center;
-      line-height: 1.25;
-      min-width: 2.8em;
-    }
-    .ig-entry-body { flex: 1; min-width: 0; }
-    .ig-entry-title {
-      font-size: 0.98rem;
-      font-weight: 600;
       margin: 0 0 0.2rem;
-      color: var(--color-text, #222);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
-    .ig-entry-meta {
-      font-size: 0.78rem;
+    .ig-cat-name-en {
+      font-size: 0.75rem;
       color: var(--ig-muted);
+      letter-spacing: 0.05em;
     }
-    .ig-cat-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      background: var(--ig-tag-bg);
-      color: var(--ig-tag-fg);
-      border-radius: 4px;
-      padding: 0.05rem 0.4rem;
-      margin-left: 0.3rem;
+    .ig-cat-desc {
+      font-size: 0.82rem;
+      color: var(--color-text-secondary, #666);
+      margin: 0.5rem 0 0;
+      line-height: 1.5;
     }
   </style>
 </head>
 
 <body>
-  <!-- 主题切换按钮 -->
   <button class="theme-toggle" aria-label="切换深浅模式">
     <span class="icon sun">☀️</span>
     <span class="icon moon">🌙</span>
@@ -217,47 +145,57 @@
       </header>
 
       <div class="post-content">
-        <div class="ig-layout">
 
-          <!-- 左侧分类筛选 -->
-          <aside class="ig-sidebar">
-            <h3 class="ig-sidebar-title">分类</h3>
-            <ul class="ig-filter-list">
-              <li class="ig-filter-item active" data-filter="all">全部 <span class="ig-badge">0</span></li>
-              <li class="ig-filter-item" data-filter="vocab">词汇 <span class="ig-badge">0</span></li>
-              <li class="ig-filter-item" data-filter="grammar">语法 <span class="ig-badge">0</span></li>
-              <li class="ig-filter-item" data-filter="reading">阅读 <span class="ig-badge">0</span></li>
-              <li class="ig-filter-item" data-filter="writing">写作 <span class="ig-badge">0</span></li>
-              <li class="ig-filter-item" data-filter="expression">表达 <span class="ig-badge">0</span></li>
-            </ul>
-          </aside>
+        <div class="ig-intro">
+          <span class="ig-tag-badge"># 英格力士</span>
+          <p>Inch by inch, day by day.</p>
+        </div>
 
-          <!-- 右侧主内容 -->
-          <div>
-            <div class="ig-header-accent">
-              <span class="ig-tag-badge"># 英格力士</span>
-              <p class="ig-intro-text">
-                Inch by inch, day by day.
-              </p>
-            </div>
+        <div class="ig-grid">
 
-            <!-- 笔记列表 -->
-            <div class="ig-list">
+          <a href="https://sage-lume.vercel.app/blog/english/writing/" class="ig-cat-card">
+            <div class="ig-cat-icon">✍️</div>
+            <div class="ig-cat-name">写作</div>
+            <div class="ig-cat-name-en">Writing</div>
+            <p class="ig-cat-desc">写作技巧、句式结构、表达方式</p>
+          </a>
 
-              <a href="https://sage-lume.vercel.app/blog/english/note000/" class="ig-entry" data-category="writing">
-                <span class="ig-entry-num">Note<br>000</span>
-                <div class="ig-entry-body">
-                  <div class="ig-entry-title">Show, Don't Tell</div>
-                  <div class="ig-entry-meta">2026-03-31 &nbsp;·&nbsp; 写作<span class="ig-cat-tag">writing</span></div>
-                </div>
-              </a>
+          <a href="https://sage-lume.vercel.app/blog/english/speaking/" class="ig-cat-card">
+            <div class="ig-cat-icon">💬</div>
+            <div class="ig-cat-name">口语</div>
+            <div class="ig-cat-name-en">Speaking</div>
+            <p class="ig-cat-desc">日常表达、地道说法、发音笔记</p>
+          </a>
 
-              <!-- 后续笔记在这里追加 -->
+          <a href="https://sage-lume.vercel.app/blog/english/listening/" class="ig-cat-card">
+            <div class="ig-cat-icon">🎧</div>
+            <div class="ig-cat-name">听力</div>
+            <div class="ig-cat-name-en">Listening</div>
+            <p class="ig-cat-desc">听力技巧、影视台词、语感积累</p>
+          </a>
 
-            </div>
-          </div>
+          <a href="https://sage-lume.vercel.app/blog/english/vocab/" class="ig-cat-card">
+            <div class="ig-cat-icon">📖</div>
+            <div class="ig-cat-name">词汇</div>
+            <div class="ig-cat-name-en">Vocabulary</div>
+            <p class="ig-cat-desc">单词、短语、词根词缀</p>
+          </a>
 
-        </div><!-- /ig-layout -->
+          <a href="https://sage-lume.vercel.app/blog/english/grammar/" class="ig-cat-card">
+            <div class="ig-cat-icon">📐</div>
+            <div class="ig-cat-name">语法</div>
+            <div class="ig-cat-name-en">Grammar</div>
+            <p class="ig-cat-desc">语法规则、易错点、句法分析</p>
+          </a>
+
+          <a href="https://sage-lume.vercel.app/blog/english/reading/" class="ig-cat-card">
+            <div class="ig-cat-icon">📚</div>
+            <div class="ig-cat-name">阅读</div>
+            <div class="ig-cat-name-en">Reading</div>
+            <p class="ig-cat-desc">精读笔记、长难句分析、文章赏析</p>
+          </a>
+
+        </div>
       </div>
     </article>
   </main>
@@ -270,37 +208,5 @@
       <p>© 2026 z-o-s</p>
     </div>
   </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var filterItems = document.querySelectorAll('.ig-filter-item');
-      var entries = document.querySelectorAll('.ig-entry[data-category]');
-
-      // 统计各分类数量
-      var counts = { all: entries.length };
-      entries.forEach(function (e) {
-        var c = e.dataset.category;
-        counts[c] = (counts[c] || 0) + 1;
-      });
-
-      // 更新 badge
-      filterItems.forEach(function (item) {
-        var badge = item.querySelector('.ig-badge');
-        if (badge) badge.textContent = counts[item.dataset.filter] ?? 0;
-      });
-
-      // 点击过滤
-      filterItems.forEach(function (item) {
-        item.addEventListener('click', function () {
-          filterItems.forEach(function (i) { i.classList.remove('active'); });
-          item.classList.add('active');
-          var filter = item.dataset.filter;
-          entries.forEach(function (entry) {
-            entry.style.display = (filter === 'all' || entry.dataset.category === filter) ? '' : 'none';
-          });
-        });
-      });
-    });
-  </script>
 </body>
 </html>
