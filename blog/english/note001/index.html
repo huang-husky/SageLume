@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Note 001 · Show, Don't Tell | SageLume</title>
+  <meta name="description" content="英格力士写作笔记 · Show, Don't Tell——让文字有画面感的写作原则">
+
+  <!-- Favicon -->
+  <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://sage-lume.vercel.app/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://sage-lume.vercel.app/favicon/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
+
+  <!-- Scripts -->
+  <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
+  <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+
+  <style>
+    :root {
+      --ig-accent:   #4a7c8e;
+      --ig-accent2:  #6aabb8;
+      --ig-tag-bg:   #e8f4f8;
+      --ig-tag-fg:   #2c5f6e;
+      --ig-muted:    #7a9ba8;
+      --ig-card-bg:  #f6fcfe;
+      --ig-card-bdr: #c0dde8;
+    }
+    [data-theme="dark"] {
+      --ig-accent:   #6aabb8;
+      --ig-accent2:  #8ecad4;
+      --ig-tag-bg:   #1a3040;
+      --ig-tag-fg:   #8ecad4;
+      --ig-muted:    #5a8898;
+      --ig-card-bg:  #141e24;
+      --ig-card-bdr: #2a4858;
+    }
+
+    /* 顶部标签 */
+    .ig-note-badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--ig-accent);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 例句对比卡片 */
+    .ig-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.2rem 0;
+    }
+    @media (max-width: 600px) {
+      .ig-compare { grid-template-columns: 1fr; }
+    }
+    .ig-compare-card {
+      background: var(--ig-card-bg);
+      border: 1px solid var(--ig-card-bdr);
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+    }
+    .ig-compare-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 0.5rem;
+    }
+    .ig-compare-label.bad  { color: #e05a5a; }
+    .ig-compare-label.good { color: #4aaa6e; }
+    .ig-compare-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      font-style: italic;
+    }
+
+    /* 笔记框 */
+    .ig-note-box {
+      background: var(--ig-tag-bg);
+      border-left: 3px solid var(--ig-accent);
+      border-radius: 0 8px 8px 0;
+      padding: 0.9rem 1.1rem;
+      margin: 1.2rem 0;
+      font-size: 0.92rem;
+      color: var(--ig-tag-fg);
+      line-height: 1.75;
+    }
+    .ig-note-box strong { color: var(--ig-accent); }
+
+    /* 返回链接 */
+    .ig-back-wrap { margin-top: 2.5rem; }
+    .ig-back-link {
+      font-size: 0.88rem;
+      color: var(--ig-muted);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--ig-muted);
+      transition: color 0.15s;
+    }
+    .ig-back-link:hover { color: var(--ig-accent); border-bottom-color: var(--ig-accent); }
+  </style>
+</head>
+
+<body>
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://sage-lume.vercel.app/">
+        <img src="https://sage-lume.vercel.app/favicon/logo-header.png" alt="算海青藜" height="96">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://sage-lume.vercel.app/">Home</a>
+      <a href="https://sage-lume.vercel.app/about/">About</a>
+      <a href="https://sage-lume.vercel.app/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <div class="ig-note-badge"># 英格力士 · Note 001 · 写作</div>
+        <h1 class="post-title">Show, Don't Tell</h1>
+        <div class="post-meta">
+          <span>2026-03-31</span>
+          <span> • </span>
+          <span>Writing</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+
+        <h2>是什么</h2>
+        <p>
+          "Show, don't tell" 是英语写作中最经典的原则之一。
+          <strong>Tell</strong> 是直接告诉读者结论；
+          <strong>Show</strong> 是用细节、动作、感官描写让读者自己感受到那个结论。
+        </p>
+        <p>
+          好的写作不说"她很悲伤"，而是让读者看见她握着杯子的手在抖、咖啡凉了也没喝一口。
+        </p>
+
+        <h2>对比例句</h2>
+
+        <div class="ig-compare">
+          <div class="ig-compare-card">
+            <p class="ig-compare-label bad">Tell &nbsp;✗</p>
+            <p>She was nervous before the speech.</p>
+          </div>
+          <div class="ig-compare-card">
+            <p class="ig-compare-label good">Show &nbsp;✓</p>
+            <p>She smoothed her skirt three times, then checked her notes — though she already knew every word by heart.</p>
+          </div>
+        </div>
+
+        <div class="ig-compare">
+          <div class="ig-compare-card">
+            <p class="ig-compare-label bad">Tell &nbsp;✗</p>
+            <p>The room was messy.</p>
+          </div>
+          <div class="ig-compare-card">
+            <p class="ig-compare-label good">Show &nbsp;✓</p>
+            <p>Books spilled off the shelves onto the floor. Empty mugs occupied every flat surface, and somewhere beneath a pile of papers, a phone buzzed, unanswered.</p>
+          </div>
+        </div>
+
+        <h2>核心技巧</h2>
+        <ul>
+          <li><strong>用动作代替形容词</strong>——不写"他很生气"，写"他把杯子摔在桌上"。</li>
+          <li><strong>调动五感</strong>——视觉、听觉、触觉、嗅觉、味觉，细节越具体越有画面感。</li>
+          <li><strong>让读者推断情绪</strong>——描写外在表现，情绪由读者自己解读。</li>
+          <li><strong>具体胜于模糊</strong>——"a battered 1998 Honda Civic" 比 "an old car" 更有质感。</li>
+        </ul>
+
+        <div class="ig-note-box">
+          <strong>何时可以 Tell？</strong><br>
+          Show 需要篇幅，不是每处都值得展开。背景信息、过渡段、不重要的细节可以直接 Tell。
+          原则是：<em>重要的场景 Show，次要的信息 Tell。</em>
+        </div>
+
+        <p class="ig-back-wrap">
+          <a href="https://sage-lume.vercel.app/blog/english/" class="ig-back-link">← 返回英格力士</a>
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://sage-lume.vercel.app/favicon/logo-footer.png" alt="算海青藜" height="48">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+</body>
+</html>
