@@ -16,7 +16,10 @@
       "Bash(mv css/giscus-theme.css giscus-theme.css)",
       "Bash(rmdir css:*)",
       "Bash(ls *.css)",
-      "Bash(curl -s \"https://sage-lume.vercel.app/coding.css\")"
+      "Bash(curl -s \"https://sage-lume.vercel.app/coding.css\")",
+      "Bash(find /d/vue-for-you/cc-blog -type f \\\\\\(-name *.json -o -name *.config.* -o -name *.yml -o -name *.yaml \\\\\\))",
+      "Bash(find /d/vue-for-you/cc-blog -name *.css -o -name *config*)",
+      "Bash(cd:*)"
     ]
   }
 }
