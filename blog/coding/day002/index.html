@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 002 · 队列（排序）| SageLume</title>
+  <meta name="description" content="acm.scu.edu.cn 38 · 队列（排序）——计数排序，Day 002 菜鸟的coding。">
+
+  <!-- Favicon -->
+  <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://sage-lume.vercel.app/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://sage-lume.vercel.app/favicon/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/coding.css">
+
+  <!-- Scripts -->
+  <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
+  <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+</head>
+
+<body>
+  <!-- 花瓣背景 -->
+  <canvas id="coding-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://sage-lume.vercel.app/">
+        <img src="https://sage-lume.vercel.app/favicon/logo-header.png" alt="算海青藜" height="96">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://sage-lume.vercel.app/">Home</a>
+      <a href="https://sage-lume.vercel.app/about/">About</a>
+      <a href="https://sage-lume.vercel.app/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <div class="coding-header-accent coding-header-accent--left">
+          <span class="coding-tag-badge"># 菜鸟的coding · Day 002</span>
+        </div>
+        <h1 class="post-title">队列（排序）</h1>
+        <div class="post-meta">
+          <span>2026-04-02</span>
+          <span> • </span>
+          <span>C++</span>
+          <span> • </span>
+          <span>acm.scu.edu.cn 38 &nbsp;·&nbsp; 计数排序</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+
+        <!-- 题目描述 -->
+        <h2>题目</h2>
+        <p>我排着队拿着爱的号码牌。</p>
+        <p>
+          "追我的人从这里可以排到巴黎"，小R在网上冲浪时总会有一些新的发现："你说，如果有这么多人追我，我肯定得让他们每个人都取个号。"
+        </p>
+        <p>小J贫到："那你是不是还要让他们按大小排个序。"</p>
+        <p>小R："那当然了，我还要让负数排在前面！重复的就让他们随便站着吧！"</p>
+        <p>
+          小R已经停不下幻想了，决定在计算机上先模拟一下，想邀请你和他一同完成。
+          小R幻想有 n 个人拿着号码牌在排队，这些号码牌有正有负，不过绝对值都在 10000 以内，
+          她希望你能够把他们按照从小到大进行排序。
+        </p>
+        <p>
+          <strong>输入：</strong>共 2 行。第 1 行，一个整数 n，表示有多少个人拿着号码牌；第 2 行，n 个整数 a₁, a₂, …, aₙ，表示每个人号码牌上的数字。<br>
+          <strong>输出：</strong>共 1 行，输出 n 个整数，表示按照从小到大排序后每个人手上的号码牌。<br>
+          <strong>数据范围：</strong>对于 40% 的数据，n ≤ 1000；对于 60% 的数据，n ≤ 100000；对于 100% 的数据，n ≤ 10000000、|aᵢ| ≤ 10000。其中 50% 的数据中，所有号码牌均为非负整数。
+        </p>
+        <p><strong>样例：</strong><br>
+           输入 <code>8 &nbsp; 0 20 60 -20 20 60 0 10</code> → 输出 <code>-20 0 0 10 20 20 60 60</code></p>
+
+        <!-- 思路 -->
+        <h2>思路</h2>
+        <p>
+          n 最大达 1000 万，用 <code>std::sort</code> 是 O(n log n)，约 2 亿次操作，加上 I/O 很可能 TLE。
+          但题目给了一个隐藏条件：<span class="cc-highlight-pink">值域只有 [-10000, 10000]，共 20001 个不同值</span>。
+        </p>
+        <p>
+          这正是<strong>计数排序</strong>的适用场景：开一个大小 20001 的桶数组 <code>cnt[]</code>，
+          读入每个数 x 时令 <code>cnt[x + 10000]++</code>（偏移 10000 避免负数下标）。
+          读完后按下标从小到大遍历桶，每个桶输出对应次数的值，天然有序，重复元素也自动处理。
+          整体复杂度 <span class="cc-highlight-purple">O(n + k)</span>，k = 20001，远快于比较排序。
+        </p>
+        <p>
+          另一个关键点：n = 10⁷ 时 I/O 本身就是瓶颈，必须用 <code>scanf / printf</code> 而非 <code>cin / cout</code>。
+        </p>
+
+        <!-- 代码块 -->
+        <div class="cyber-code-block">
+          <div class="cyber-code-header">
+            <div class="cyber-code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="cyber-code-lang">C++ · queue_sort.cpp</span>
+          </div>
+          <div class="cyber-code-body">
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-type">int</span> <span class="cc-variable">cnt</span><span class="cc-plain">[</span><span class="cc-number">20001</span><span class="cc-plain">];</span>  <span class="cc-comment">// 值域 [-10000, 10000]，偏移 10000</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
+    <span class="cc-type">int</span> <span class="cc-variable">n</span><span class="cc-plain">;</span>
+    <span class="cc-function">scanf</span><span class="cc-plain">(</span><span class="cc-string">"%d"</span><span class="cc-plain">, &amp;</span><span class="cc-variable">n</span><span class="cc-plain">);</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">i</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">; </span><span class="cc-variable">i</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">n</span><span class="cc-plain">; </span><span class="cc-variable">i</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-type">int</span> <span class="cc-variable">x</span><span class="cc-plain">;</span>
+        <span class="cc-function">scanf</span><span class="cc-plain">(</span><span class="cc-string">"%d"</span><span class="cc-plain">, &amp;</span><span class="cc-variable">x</span><span class="cc-plain">);</span>
+        <span class="cc-variable">cnt</span><span class="cc-plain">[</span><span class="cc-variable">x</span> <span class="cc-operator">+</span> <span class="cc-number">10000</span><span class="cc-plain">]</span><span class="cc-operator">++</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-type">bool</span> <span class="cc-variable">first</span> <span class="cc-operator">=</span> <span class="cc-keyword">true</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">i</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">; </span><span class="cc-variable">i</span> <span class="cc-operator">&lt;=</span> <span class="cc-number">20000</span><span class="cc-plain">; </span><span class="cc-variable">i</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">j</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">; </span><span class="cc-variable">j</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">cnt</span><span class="cc-plain">[</span><span class="cc-variable">i</span><span class="cc-plain">]; </span><span class="cc-variable">j</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+            <span class="cc-keyword">if</span><span class="cc-plain">(!</span><span class="cc-variable">first</span><span class="cc-plain">) </span><span class="cc-function">printf</span><span class="cc-plain">(</span><span class="cc-string">" "</span><span class="cc-plain">);</span>
+            <span class="cc-function">printf</span><span class="cc-plain">(</span><span class="cc-string">"%d"</span><span class="cc-plain">, </span><span class="cc-variable">i</span> <span class="cc-operator">-</span> <span class="cc-number">10000</span><span class="cc-plain">);</span>
+            <span class="cc-variable">first</span> <span class="cc-operator">=</span> <span class="cc-keyword">false</span><span class="cc-plain">;</span>
+        <span class="cc-plain">}</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-function">printf</span><span class="cc-plain">(</span><span class="cc-string">"\n"</span><span class="cc-plain">);</span>
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
+          </div>
+        </div>
+
+        <!-- 复杂度 -->
+        <h2>复杂度分析</h2>
+        <ul>
+          <li><strong>时间复杂度：</strong>O(n + k)，k = 20001，线性。</li>
+          <li><strong>空间复杂度：</strong>O(k)，固定大小桶数组，与 n 无关。</li>
+        </ul>
+
+        <!-- 心得 -->
+        <div class="coding-reflection">
+          <span class="coding-reflection-label">今日感受</span>
+          <p class="coding-reflection-text">
+            看到 n 很大就想快排，但看到值域有限才是真正的突破口。计数排序不需要比较，天然处理重复，是值域受限时的利器。<br>
+            另外 n = 10⁷ 时 cin 真的会 TLE，今天记住了：大数据量一律 scanf/printf。
+          </p>
+        </div>
+
+        <!-- 返回 -->
+        <p class="coding-back-wrap">
+          <a href="https://sage-lume.vercel.app/blog/coding/" class="coding-back-link">← 返回菜鸟的coding</a>
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://sage-lume.vercel.app/favicon/logo-footer.png" alt="算海青藜" height="48">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <script src="https://sage-lume.vercel.app/js/coding-particles.js"></script>
+</body>
+</html>
