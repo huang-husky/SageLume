@@ -15,8 +15,9 @@ const INDEX_FILE = path.join(BLOG_DIR, 'index.html');
 const WRITE_MODE = process.argv.includes('--write');
 
 // ─── 每个 blog/index.html 条目对应的本地目录 ────────────────────────────────
-// series: true  → 递归统计子文章（系列/专题）
-// series: false → 只统计该目录下的 index.html（单篇文章）
+// series: true     → 递归统计子文章（系列/专题）
+// series: false    → 只统计该目录下的 index.html（单篇文章）
+// scriptData: true → 额外提取 <script> 中的 c/note 字段（用于砚山逐字注释页）
 const ENTRY_MAP = {
   '/blog/post1/':         { dir: 'post1',         series: false },
   '/blog/post2/':         { dir: 'post2',         series: false },
@@ -27,7 +28,7 @@ const ENTRY_MAP = {
   '/blog/english/':       { dir: 'english',       series: true  },
   '/blog/coding/':        { dir: 'coding',        series: true  },
   '/blog/discrete-math/': { dir: 'discrete-math', series: true  },
-  '/blog/yanshan/':       { dir: 'yanshan',       series: true  },
+  '/blog/yanshan/':       { dir: 'yanshan',       series: true,  scriptData: true },
 };
 
 // ─── 工具函数 ────────────────────────────────────────────────────────────────
@@ -52,11 +53,33 @@ function countWords(text) {
 }
 
 /**
+ * 从 <script> 块中提取砚山逐字注释数据的字数：
+ *   - c 字段：原文字符（汉字）
+ *   - note 字段：字义注释文本
+ */
+function extractScriptWordCount(html) {
+  let text = '';
+  const scriptBlocks = html.match(/<script[\s\S]*?<\/script>/gi) || [];
+  for (const block of scriptBlocks) {
+    // 原文字符（c: '道' 等单字）
+    for (const m of (block.match(/\bc:'([^']+)'/g) || [])) {
+      text += m.slice(3, -1); // 去掉 c:' 和 '
+    }
+    // 字注内容（note: '【道】...' ）
+    for (const m of (block.match(/\bnote:'([^']+)'/g) || [])) {
+      text += ' ' + m.slice(6, -1); // 去掉 note:' 和 '
+    }
+  }
+  return countWords(text);
+}
+
+/**
  * 读取一个 HTML 文件，提取 <main>...</main> 区域并返回字数。
  * <main> 标签不嵌套，用字符串截取比正则更可靠。
  * 如果找不到 <main>（纯导航/目录页），返回 null。
+ * withScript: true 时额外统计 <script> 中的 c/note 字段。
  */
-function getFileWordCount(filePath) {
+function getFileWordCount(filePath, withScript) {
   if (!fs.existsSync(filePath)) return null;
   const html = fs.readFileSync(filePath, 'utf-8');
 
@@ -71,7 +94,9 @@ function getFileWordCount(filePath) {
     ? html.slice(startIdx, endIdx + endTag.length)
     : html.slice(startIdx); // 没找到就取到末尾
 
-  return countWords(stripHtml(content));
+  let total = countWords(stripHtml(content));
+  if (withScript) total += extractScriptWordCount(html);
+  return total;
 }
 
 /** 递归找目录下所有 index.html，跳过第一层（系列根目录的 index.html） */
@@ -92,7 +117,7 @@ function findSubArticles(dir) {
 }
 
 /** 计算某条目的总字数 */
-function calcEntryWords(dir, isSeries) {
+function calcEntryWords(dir, isSeries, withScript) {
   const absDir = path.join(BLOG_DIR, dir);
   if (!fs.existsSync(absDir)) {
     console.warn(`  [警告] 目录不存在：${absDir}`);
@@ -100,14 +125,14 @@ function calcEntryWords(dir, isSeries) {
   }
 
   if (!isSeries) {
-    return getFileWordCount(path.join(absDir, 'index.html')) ?? 0;
+    return getFileWordCount(path.join(absDir, 'index.html'), withScript) ?? 0;
   }
 
   // 系列：递归统计所有子文章
   const files = findSubArticles(absDir);
   let total = 0;
   for (const f of files) {
-    const w = getFileWordCount(f);
+    const w = getFileWordCount(f, withScript);
     if (w !== null) total += w; // null = hub/目录页，跳过
   }
   return total;
@@ -145,7 +170,7 @@ function main() {
       const entry = ENTRY_MAP[hrefKey];
       if (!entry) return fullMatch; // 未登记的条目，跳过
 
-      const words = calcEntryWords(entry.dir, entry.series);
+      const words = calcEntryWords(entry.dir, entry.series, entry.scriptData);
       const oldMatch = openTag.match(/data-words="(\d+)"/);
       const oldWords = oldMatch ? parseInt(oldMatch[1]) : null;
 
