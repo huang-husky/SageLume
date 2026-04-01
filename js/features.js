@@ -12,7 +12,7 @@ async function initViews() {
 
   const { data } = await supabase
     .from('page_views')
-    .select('count, reset_at')
+    .select('count')
     .eq('slug', slug)
     .single()
 
