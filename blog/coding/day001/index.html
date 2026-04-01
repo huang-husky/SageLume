@@ -96,7 +96,22 @@
 
         <!-- 思路 -->
         <h2>思路</h2>
-        <p>---</p>
+        <p>
+          观察分段条件：当 x 落在 [2k, 2k+1] 时取第一段，落在 [2k+1, 2k+2] 时取第二段。
+          两段的分界点恰好是整数，所以只需看 <code>⌊x⌋</code> 的奇偶性——
+          <span class="cc-highlight-pink">偶数对应第一段</span>，<span class="cc-highlight-purple">奇数对应第二段</span>。
+        </p>
+        <p>
+          设 <code>frac = x − ⌊x⌋</code>（小数部分），则两段公式分别化简为：
+        </p>
+        <p>
+          &emsp;⌊x⌋ 为偶数 → f(x) = <span class="cc-highlight-pink">frac</span><br>
+          &emsp;⌊x⌋ 为奇数 → f(x) = <span class="cc-highlight-purple">1 − frac</span>
+        </p>
+        <p>
+          由此，问题变成一个简单的 if-else 分支。唯一需要注意的是：
+          |x| 最大达 10⁹，用 <code>floor()</code> 取整后须存入 <code>long long</code> 而非 <code>int</code>，避免溢出。
+        </p>
 
         <!-- 代码块 -->
         <div class="cyber-code-block">
@@ -136,7 +151,9 @@
         <!-- 心得 -->
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
-          <p class="coding-reflection-text">首先声明：day000为人工智能所写，不含人工成分。如有错误请email me.</p>
+          <p class="coding-reflection-text">首先声明：day000为人工智能所写，不含人工成分。如有错误请email me.<br>
+              1. 浮点数精度：x 是浮点数，直接用 int 截断会在负数或大数上出错，用 floor() 再转 long long 更安全。<br>
+              2. 奇偶判断：负数的取模 % 在 C++ 中可能返回负值（如 -1 % 2 == -1），要额外处理</p>
         </div>
 
         <!-- 返回 -->
