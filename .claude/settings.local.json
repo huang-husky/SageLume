@@ -19,7 +19,8 @@
       "Bash(curl -s \"https://sage-lume.vercel.app/coding.css\")",
       "Bash(find /d/vue-for-you/cc-blog -type f \\\\\\(-name *.json -o -name *.config.* -o -name *.yml -o -name *.yaml \\\\\\))",
       "Bash(find /d/vue-for-you/cc-blog -name *.css -o -name *config*)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(grep -c \"[a-zA-Z]\\\\{2,\\\\}\\\\|[\\\\u4e00-\\\\u9fff]\" D:/vue-for-you/cc-blog/blog/post5/index.html)"
     ]
   }
 }
