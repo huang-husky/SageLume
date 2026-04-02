@@ -60,7 +60,7 @@
         </div>
         <h1 class="post-title">队列（排序）</h1>
         <div class="post-meta">
-          <span>2026-04-02</span>
+          <span>2026-04-01</span>
           <span> • </span>
           <span>C++</span>
           <span> • </span>
@@ -94,7 +94,7 @@
         <!-- 思路 -->
         <h2>思路</h2>
         <p>
-          n 最大达 1000 万，用 <code>std::sort</code> 是 O(n log n)，约 2 亿次操作，加上 I/O 很可能 TLE。
+          n 最大 1000 万，用 <code>std::sort</code> 是 O(n log n)，约 2 亿次操作，加上 I/O 很可能 TLE。
           但题目给了一个隐藏条件：<span class="cc-highlight-pink">值域只有 [-10000, 10000]，共 20001 个不同值</span>。
         </p>
         <p>
@@ -102,9 +102,6 @@
           读入每个数 x 时令 <code>cnt[x + 10000]++</code>（偏移 10000 避免负数下标）。
           读完后按下标从小到大遍历桶，每个桶输出对应次数的值，天然有序，重复元素也自动处理。
           整体复杂度 <span class="cc-highlight-purple">O(n + k)</span>，k = 20001，远快于比较排序。
-        </p>
-        <p>
-          另一个关键点：n = 10⁷ 时 I/O 本身就是瓶颈，必须用 <code>scanf / printf</code> 而非 <code>cin / cout</code>。
         </p>
 
         <!-- 代码块 -->
@@ -155,7 +152,7 @@
           <span class="coding-reflection-label">今日感受</span>
           <p class="coding-reflection-text">
             看到 n 很大就想快排，但看到值域有限才是真正的突破口。计数排序不需要比较，天然处理重复，是值域受限时的利器。<br>
-            另外 n = 10⁷ 时 cin 真的会 TLE，今天记住了：大数据量一律 scanf/printf。
+            另外 n = 10⁷ 时 cin 会 TLE，大数据量一律 scanf/printf。
           </p>
         </div>
 

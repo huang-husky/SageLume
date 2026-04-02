@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Day 003 · 题目名称 | SageLume</title>
-  <meta name="description" content="acm.scu.edu.cn XX · 题目名称——算法名称，Day 003 菜鸟的coding。">
+  <title>Day 003 · 秘密 | SageLume</title>
+  <meta name="description" content="acm.scu.edu.cn 39 · 秘密——二分查找，Day 003 菜鸟的coding。">
 
   <!-- Favicon -->
   <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
@@ -58,13 +58,13 @@
         <div class="coding-header-accent coding-header-accent--left">
           <span class="coding-tag-badge"># 菜鸟的coding · Day 003</span>
         </div>
-        <h1 class="post-title">题目名称</h1>
+        <h1 class="post-title">秘密</h1>
         <div class="post-meta">
           <span>2026-04-02</span>
           <span> • </span>
           <span>C++</span>
           <span> • </span>
-          <span>acm.scu.edu.cn XX &nbsp;·&nbsp; 算法名称</span>
+          <span>acm.scu.edu.cn 39 &nbsp;·&nbsp; 二分查找</span>
         </div>
       </header>
 
@@ -72,19 +72,31 @@
 
         <!-- 题目描述 -->
         <h2>题目</h2>
-        <p>题目描述。</p>
         <p>
-          <strong>输入：</strong>输入格式。<br>
-          <strong>输出：</strong>输出格式。<br>
-          <strong>数据范围：</strong>数据范围。
+          小J发现小R用函数 f(x) = 6x<sup>3</sup>+2x<sup>2</sup>-x 对一个正整数加密，
+          已知加密后的值 n，求原来的 x。
+        </p>
+        <p>
+          <strong>输入：</strong>1 个整数 n，为 f(x) 的值。<br>
+          <strong>输出：</strong>1 个整数 x。<br>
+          <strong>数据范围：</strong>数据保证 x 存在正整数解（实际样例中 n 可达 10<sup>13</sup>）。
         </p>
         <p><strong>样例：</strong><br>
-           输入 <code>样例输入</code> → 输出 <code>样例输出</code></p>
+           输入 <code>6190</code> → 输出 <code>10</code> &nbsp;|&nbsp;
+           输入 <code>11288500567455</code> → 输出 <code>12345</code></p>
 
         <!-- 思路 -->
         <h2>思路</h2>
         <p>
-          思路描述。
+          f(x) = 6x<sup>3</sup>+2x<sup>2</sup>-x 对正整数 x 严格单调递增，
+          因此可以<span class="cc-highlight-pink">直接对 x 做二分查找</span>，
+          不需要求解三次方程。
+        </p>
+        <p>
+          设搜索范围 [1, 2000000]，每次取中点 mid，计算 f(mid) 与 n 的大小关系，
+          缩小区间直到找到精确解。
+          另外题目虽然写 n ≤ 10<sup>9</sup>，但样例中 n 达到 10<sup>13</sup>，
+          <span class="cc-highlight-purple">必须用 long long</span>，否则 f(mid) 计算时会溢出。
         </p>
 
         <!-- 代码块 -->
@@ -93,14 +105,24 @@
             <div class="cyber-code-dots">
               <span></span><span></span><span></span>
             </div>
-            <span class="cyber-code-lang">C++ · filename.cpp</span>
+            <span class="cyber-code-lang">C++ · p39.cpp</span>
           </div>
           <div class="cyber-code-body">
             <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
 <span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
 
 <span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
-    <span class="cc-comment">// 代码</span>
+    <span class="cc-type">long long</span> <span class="cc-variable">n</span><span class="cc-plain">;</span>
+    <span class="cc-function">scanf</span><span class="cc-plain">(</span><span class="cc-string">"%lld"</span><span class="cc-plain">, &amp;</span><span class="cc-variable">n</span><span class="cc-plain">);</span>
+    <span class="cc-type">long long</span> <span class="cc-variable">lo</span> <span class="cc-operator">=</span> <span class="cc-number">1</span><span class="cc-plain">, </span><span class="cc-variable">hi</span> <span class="cc-operator">=</span> <span class="cc-number">2000000</span><span class="cc-plain">;</span>    <span class="cc-comment">// x 的搜索范围上界</span>
+    <span class="cc-keyword">while</span><span class="cc-plain">(</span><span class="cc-variable">lo</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">hi</span><span class="cc-plain">){</span>
+        <span class="cc-type">long long</span> <span class="cc-variable">mid</span> <span class="cc-operator">=</span> <span class="cc-plain">(</span><span class="cc-variable">lo</span> <span class="cc-operator">+</span> <span class="cc-variable">hi</span><span class="cc-plain">) /</span> <span class="cc-number">2</span><span class="cc-plain">;</span>
+        <span class="cc-type">long long</span> <span class="cc-variable">f</span> <span class="cc-operator">=</span> <span class="cc-number">6</span><span class="cc-operator">*</span><span class="cc-variable">mid</span><span class="cc-operator">*</span><span class="cc-variable">mid</span><span class="cc-operator">*</span><span class="cc-variable">mid</span> <span class="cc-operator">+</span> <span class="cc-number">2</span><span class="cc-operator">*</span><span class="cc-variable">mid</span><span class="cc-operator">*</span><span class="cc-variable">mid</span> <span class="cc-operator">-</span> <span class="cc-variable">mid</span><span class="cc-plain">;</span>    <span class="cc-comment">// f(x) = 6x³+2x²-x</span>
+        <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">f</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">n</span><span class="cc-plain">) </span><span class="cc-variable">lo</span> <span class="cc-operator">=</span> <span class="cc-variable">mid</span> <span class="cc-operator">+</span> <span class="cc-number">1</span><span class="cc-plain">;</span>
+        <span class="cc-keyword">else if</span><span class="cc-plain">(</span><span class="cc-variable">f</span> <span class="cc-operator">&gt;</span> <span class="cc-variable">n</span><span class="cc-plain">) </span><span class="cc-variable">hi</span> <span class="cc-operator">=</span> <span class="cc-variable">mid</span> <span class="cc-operator">-</span> <span class="cc-number">1</span><span class="cc-plain">;</span>
+        <span class="cc-keyword">else</span> <span class="cc-plain">{ </span><span class="cc-function">printf</span><span class="cc-plain">(</span><span class="cc-string">"%lld\n"</span><span class="cc-plain">, </span><span class="cc-variable">mid</span><span class="cc-plain">); </span><span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">; }</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-function">printf</span><span class="cc-plain">(</span><span class="cc-string">"%lld\n"</span><span class="cc-plain">, </span><span class="cc-variable">lo</span><span class="cc-plain">);</span>
     <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
 <span class="cc-plain">}</span></code></pre>
           </div>
@@ -109,15 +131,18 @@
         <!-- 复杂度 -->
         <h2>复杂度分析</h2>
         <ul>
-          <li><strong>时间复杂度：</strong>O(?)</li>
-          <li><strong>空间复杂度：</strong>O(?)</li>
+          <li><strong>时间复杂度：</strong>O(log N)，N = 2×10<sup>6</sup>，约 21 次迭代。</li>
+          <li><strong>空间复杂度：</strong>O(1)。</li>
         </ul>
 
         <!-- 心得 -->
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
           <p class="coding-reflection-text">
-            心得内容。
+            看到 f(x) = 6x<sup>3</sup>+2x<sup>2</sup>-x，第一反应想用 cbrt() 凑解析解，但这个式子根本化不开。
+            转念一想：f 单调递增，直接二分就行，完全不需要数学。<br>
+            然后被样例2坑了一次——题目写 n ≤ 10<sup>9</sup>，实际 n 到了 10<sup>13</sup>，int 直接溢出。
+            以后看到幂次，先想 long long。
           </p>
         </div>
 
