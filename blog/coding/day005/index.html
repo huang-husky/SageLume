@@ -73,16 +73,19 @@
         <!-- 题目描述 -->
         <h2>题目</h2>
         <p>
-          小jj将字符串 S 复制一次得到 T，再在 T 中插入一个字符得到 U。
-          现给出 U，要求还原 S。
+          小jj这学期有门课叫密码学，他自己想了一种加密方式。
+          他手上有一个字符串 S，先将 S 复制一次得到字符串 T，然后在 T 中插入一个字符，得到字符串 U。
         </p>
         <p>
-          <strong>输入：</strong>第一行整数 N（U 的长度），第二行长度为 N 的字符串 U，仅含大写英文字母。<br>
-          <strong>输出：</strong>字符串 S；若无法构造输出 <code>NOT POSSIBLE</code>；若 S 不唯一输出 <code>NOT UNIQUE</code>。<br>
+          现在小jj给出字符串 U，要你构造出字符串 S。所有字符串只包含大写英文字母。
+        </p>
+        <p>
+          <strong>输入：</strong>第一行一个整数 N，表示字符串 U 的长度；第二行一个长度为 N 的字符串，表示 U。<br>
+          <strong>输出：</strong>一行一个字符串，表示 S。若无法构造输出 <code>NOT POSSIBLE</code>；若 S 不唯一输出 <code>NOT UNIQUE</code>。<br>
           <strong>数据范围：</strong>46% 的数据 N ≤ 2000；100% 的数据 N ≤ 5×10<sup>5</sup>。
         </p>
         <p><strong>样例：</strong><br>
-           输入 <code>7 / ABXCABC</code> → 输出 <code>ABC</code></p>
+           输入 <code>7</code> / <code>ABXCABC</code> → 输出 <code>ABC</code></p>
 
         <!-- 思路 -->
         <h2>思路</h2>
