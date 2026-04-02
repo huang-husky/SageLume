@@ -1,21 +1,37 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int days[] = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};  // 2024 是闰年，2月有29天
-
-long long toMin(int m, int d, int h, int mn){
-    long long total = 0;
-    for(int c = 1; c < m; c++) total += days[c];  // 累加前几个月的天数
-    total += d - 1;                                // 加上当月已过的天数
-    total = total * 24 * 60 + h * 60 + mn;        // 换算成分钟
-    return total;
-}
-
 int main(){
-    int m1, d1, h1, mn1;
-    int m2, d2, h2, mn2;
-    scanf("%d %d %d %d", &m1, &d1, &h1, &mn1);
-    scanf("%d %d %d %d", &m2, &d2, &h2, &mn2);
-    printf("%lld\n", toMin(m2, d2, h2, mn2) - toMin(m1, d1, h1, mn1));
+    int day_in_month[12]={31,29,31,30,31,30,31,31,30,31,30,31};
+    int m1,d1,h1,f1,m2,d2,h2,f2;
+    cin>>m1>>d1>>h1>>f1;
+    cin>>m2>>d2>>h2>>f2;
+
+    // 第一步：算出这一天是今年第几天
+    int total_days1=0;
+    int total_days2=0;
+    for(int c=0;c<m1-1;c++){
+        total_days1+=day_in_month[c];
+    }
+    total_days1+=d1-1;
+    for(int c=0;c<m2-1;c++){
+        total_days2+=day_in_month[c];
+    }
+    total_days2+=d2-1;
+
+    // 第二步：天数乘1440换算成分钟
+    int total_min1=1440*total_days1;
+    int total_min2=1440*total_days2;
+
+    // 第三步：加上当天的小时和分钟
+    int today_min1=60*h1+f1;
+    int today_min2=60*h2+f2;
+    total_min1+=today_min1;
+    total_min2+=today_min2;
+
+    // 第四步：后减前
+    int output=total_min2-total_min1;
+    cout<<output<<endl;
+
     return 0;
 }
