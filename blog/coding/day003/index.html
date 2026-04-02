@@ -73,13 +73,17 @@
         <!-- 题目描述 -->
         <h2>题目</h2>
         <p>
-          小J发现小R用函数 f(x) = 6x<sup>3</sup>+2x<sup>2</sup>-x 对一个正整数加密，
-          已知加密后的值 n，求原来的 x。
+          人总要有些秘密。一天上课的时候，小J无意间瞥见小R在聊天窗中发送着一串又一串的数字。
+          整节课小J都在观察小R，终于发现了一个奇怪的式子 6×x<sup>3</sup>+2×x<sup>2</sup>-x，
+          猜测这可能与小R发出的数字有关系。
         </p>
         <p>
-          <strong>输入：</strong>1 个整数 n，为 f(x) 的值。<br>
+          小J只拿到了加密后的数字 n，现在需要找到加密前小R的秘密 x 到底是什么。
+        </p>
+        <p>
+          <strong>输入：</strong>1 个整数 n，表示经由 6×x<sup>3</sup>+2×x<sup>2</sup>-x 加密后的值。数据保证 x 存在正整数解。<br>
           <strong>输出：</strong>1 个整数 x。<br>
-          <strong>数据范围：</strong>数据保证 x 存在正整数解（实际样例中 n 可达 10<sup>13</sup>）。
+          <strong>数据范围：</strong>50% 的数据 n ≤ 10<sup>9</sup>；100% 的数据 n ≤ 10<sup>9</sup>。
         </p>
         <p><strong>样例：</strong><br>
            输入 <code>6190</code> → 输出 <code>10</code> &nbsp;|&nbsp;
