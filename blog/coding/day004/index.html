@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Day 004 · 题目名称 | SageLume</title>
-  <meta name="description" content="acm.scu.edu.cn XX · 题目名称——算法名称，Day 004 菜鸟的coding。">
+  <title>Day 004 · 纪念日 | SageLume</title>
+  <meta name="description" content="acm.scu.edu.cn 40 · 纪念日——时间换算，Day 004 菜鸟的coding。">
 
   <!-- Favicon -->
   <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
@@ -58,13 +58,13 @@
         <div class="coding-header-accent coding-header-accent--left">
           <span class="coding-tag-badge"># 菜鸟的coding · Day 004</span>
         </div>
-        <h1 class="post-title">题目名称</h1>
+        <h1 class="post-title">纪念日</h1>
         <div class="post-meta">
           <span>2026-04-02</span>
           <span> • </span>
           <span>C++</span>
           <span> • </span>
-          <span>acm.scu.edu.cn XX &nbsp;·&nbsp; 算法名称</span>
+          <span>acm.scu.edu.cn 40 &nbsp;·&nbsp; 时间换算</span>
         </div>
       </header>
 
@@ -72,19 +72,29 @@
 
         <!-- 题目描述 -->
         <h2>题目</h2>
-        <p>题目描述。</p>
         <p>
-          <strong>输入：</strong>输入格式。<br>
-          <strong>输出：</strong>输出格式。<br>
-          <strong>数据范围：</strong>数据范围。
+          小R要求小J说出他们认识了多久，精确到分钟。
+          小J需要一个程序来计算两个时间节点之间相差了多少分钟。
+        </p>
+        <p>
+          <strong>输入：</strong>共2行，分别表示起止时间（月 日 时 分），24小时制，范围均在2024年内，保证第一行早于第二行。<br>
+          <strong>输出：</strong>1 个整数，表示两个时间节点之间相差的分钟数。
         </p>
         <p><strong>样例：</strong><br>
-           输入 <code>样例输入</code> → 输出 <code>样例输出</code></p>
+           输入 <code>4 1 21 21</code> / <code>4 1 21 22</code> → 输出 <code>1</code><br>
+           输入 <code>6 30 23 49</code> / <code>7 1 6 30</code> → 输出 <code>401</code></p>
 
         <!-- 思路 -->
         <h2>思路</h2>
         <p>
-          思路描述。
+          把两个时间点分别换算成<span class="cc-highlight-pink">从 1月1日 00:00 起的总分钟数</span>，
+          再直接相减，跨月、跨天的情况都自动处理。
+        </p>
+        <p>
+          换算步骤：先累加前几个月的天数，再加上当月已过的天数，
+          乘以 1440（每天的分钟数），最后加上当天的小时和分钟。
+          唯一需要注意的是：<span class="cc-highlight-purple">2024 是闰年，2 月有 29 天</span>，
+          月份天数表要单独写，不能用通用公式。
         </p>
 
         <!-- 代码块 -->
@@ -93,14 +103,28 @@
             <div class="cyber-code-dots">
               <span></span><span></span><span></span>
             </div>
-            <span class="cyber-code-lang">C++ · filename.cpp</span>
+            <span class="cyber-code-lang">C++ · p40.cpp</span>
           </div>
           <div class="cyber-code-body">
             <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
 <span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
 
+<span class="cc-type">int</span> <span class="cc-variable">days</span><span class="cc-plain">[] = {</span><span class="cc-number">0</span><span class="cc-plain">, </span><span class="cc-number">31</span><span class="cc-plain">, </span><span class="cc-number">29</span><span class="cc-plain">, </span><span class="cc-number">31</span><span class="cc-plain">, </span><span class="cc-number">30</span><span class="cc-plain">, </span><span class="cc-number">31</span><span class="cc-plain">, </span><span class="cc-number">30</span><span class="cc-plain">, </span><span class="cc-number">31</span><span class="cc-plain">, </span><span class="cc-number">31</span><span class="cc-plain">, </span><span class="cc-number">30</span><span class="cc-plain">, </span><span class="cc-number">31</span><span class="cc-plain">, </span><span class="cc-number">30</span><span class="cc-plain">, </span><span class="cc-number">31</span><span class="cc-plain">};</span>  <span class="cc-comment">// 2024 是闰年，2月有29天</span>
+
+<span class="cc-type">long long</span> <span class="cc-function">toMin</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">m</span><span class="cc-plain">, </span><span class="cc-type">int</span> <span class="cc-variable">d</span><span class="cc-plain">, </span><span class="cc-type">int</span> <span class="cc-variable">h</span><span class="cc-plain">, </span><span class="cc-type">int</span> <span class="cc-variable">mn</span><span class="cc-plain">){</span>
+    <span class="cc-type">long long</span> <span class="cc-variable">total</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span> <span class="cc-operator">=</span> <span class="cc-number">1</span><span class="cc-plain">; </span><span class="cc-variable">c</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">m</span><span class="cc-plain">; </span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">) </span><span class="cc-variable">total</span> <span class="cc-operator">+=</span> <span class="cc-variable">days</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-plain">];</span>  <span class="cc-comment">// 累加前几个月的天数</span>
+    <span class="cc-variable">total</span> <span class="cc-operator">+=</span> <span class="cc-variable">d</span> <span class="cc-operator">-</span> <span class="cc-number">1</span><span class="cc-plain">;</span>                                        <span class="cc-comment">// 加上当月已过的天数</span>
+    <span class="cc-variable">total</span> <span class="cc-operator">=</span> <span class="cc-variable">total</span> <span class="cc-operator">*</span> <span class="cc-number">24</span> <span class="cc-operator">*</span> <span class="cc-number">60</span> <span class="cc-operator">+</span> <span class="cc-variable">h</span> <span class="cc-operator">*</span> <span class="cc-number">60</span> <span class="cc-operator">+</span> <span class="cc-variable">mn</span><span class="cc-plain">;</span>                <span class="cc-comment">// 换算成分钟</span>
+    <span class="cc-keyword">return</span> <span class="cc-variable">total</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span>
+
 <span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
-    <span class="cc-comment">// 代码</span>
+    <span class="cc-type">int</span> <span class="cc-variable">m1</span><span class="cc-plain">, </span><span class="cc-variable">d1</span><span class="cc-plain">, </span><span class="cc-variable">h1</span><span class="cc-plain">, </span><span class="cc-variable">mn1</span><span class="cc-plain">;</span>
+    <span class="cc-type">int</span> <span class="cc-variable">m2</span><span class="cc-plain">, </span><span class="cc-variable">d2</span><span class="cc-plain">, </span><span class="cc-variable">h2</span><span class="cc-plain">, </span><span class="cc-variable">mn2</span><span class="cc-plain">;</span>
+    <span class="cc-function">scanf</span><span class="cc-plain">(</span><span class="cc-string">"%d %d %d %d"</span><span class="cc-plain">, &amp;</span><span class="cc-variable">m1</span><span class="cc-plain">, &amp;</span><span class="cc-variable">d1</span><span class="cc-plain">, &amp;</span><span class="cc-variable">h1</span><span class="cc-plain">, &amp;</span><span class="cc-variable">mn1</span><span class="cc-plain">);</span>
+    <span class="cc-function">scanf</span><span class="cc-plain">(</span><span class="cc-string">"%d %d %d %d"</span><span class="cc-plain">, &amp;</span><span class="cc-variable">m2</span><span class="cc-plain">, &amp;</span><span class="cc-variable">d2</span><span class="cc-plain">, &amp;</span><span class="cc-variable">h2</span><span class="cc-plain">, &amp;</span><span class="cc-variable">mn2</span><span class="cc-plain">);</span>
+    <span class="cc-function">printf</span><span class="cc-plain">(</span><span class="cc-string">"%lld\n"</span><span class="cc-plain">, </span><span class="cc-function">toMin</span><span class="cc-plain">(</span><span class="cc-variable">m2</span><span class="cc-plain">, </span><span class="cc-variable">d2</span><span class="cc-plain">, </span><span class="cc-variable">h2</span><span class="cc-plain">, </span><span class="cc-variable">mn2</span><span class="cc-plain">) - </span><span class="cc-function">toMin</span><span class="cc-plain">(</span><span class="cc-variable">m1</span><span class="cc-plain">, </span><span class="cc-variable">d1</span><span class="cc-plain">, </span><span class="cc-variable">h1</span><span class="cc-plain">, </span><span class="cc-variable">mn1</span><span class="cc-plain">));</span>
     <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
 <span class="cc-plain">}</span></code></pre>
           </div>
@@ -109,15 +133,18 @@
         <!-- 复杂度 -->
         <h2>复杂度分析</h2>
         <ul>
-          <li><strong>时间复杂度：</strong>O(?)</li>
-          <li><strong>空间复杂度：</strong>O(?)</li>
+          <li><strong>时间复杂度：</strong>O(1)，月份循环最多 12 次。</li>
+          <li><strong>空间复杂度：</strong>O(1)。</li>
         </ul>
 
         <!-- 心得 -->
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
           <p class="coding-reflection-text">
-            心得内容。
+            看到跨月跨天的时间差，第一反应是分情况讨论，容易漏掉边界。转念一想：
+            把两个时间都换算成同一基准下的总分钟数，直接相减，所有情况一口气解决。<br>
+            还有个坑：2024 是闰年，2月有29天。如果直接套"奇数月31天偶数月30天"的通用规律就会出错。
+            遇到特定年份的日期题，先查闰年。
           </p>
         </div>
 
