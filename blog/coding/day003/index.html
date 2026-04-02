@@ -83,7 +83,7 @@
         <p>
           <strong>输入：</strong>1 个整数 n，表示经由 6×x<sup>3</sup>+2×x<sup>2</sup>-x 加密后的值。数据保证 x 存在正整数解。<br>
           <strong>输出：</strong>1 个整数 x。<br>
-          <strong>数据范围：</strong>50% 的数据 n ≤ 10<sup>9</sup>；100% 的数据 n ≤ 10<sup>9</sup>。
+          <strong>数据范围：</strong>50% 的数据 n ≤ 10<sup>9</sup>；100% 的数据 n ≤ 10<sup>13</sup>。
         </p>
         <p><strong>样例：</strong><br>
            输入 <code>6190</code> → 输出 <code>10</code> &nbsp;|&nbsp;
@@ -144,9 +144,7 @@
           <span class="coding-reflection-label">今日感受</span>
           <p class="coding-reflection-text">
             看到 f(x) = 6x<sup>3</sup>+2x<sup>2</sup>-x，第一反应想用 cbrt() 凑解析解，但这个式子根本化不开。
-            转念一想：f 单调递增，直接二分就行，完全不需要数学。<br>
-            然后被样例2坑了一次——题目写 n ≤ 10<sup>9</sup>，实际 n 到了 10<sup>13</sup>，int 直接溢出。
-            以后看到幂次，先想 long long。
+            转念一想：f 单调递增，直接二分就行，完全不需要数学。<br>看到幂次和10的13次方，一定用 long long。
           </p>
         </div>
 
