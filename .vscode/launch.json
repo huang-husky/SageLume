@@ -9,7 +9,7 @@
       "args": [],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
-      "externalConsole": true,
+      "externalConsole": false,
       "MIMode": "gdb",
       "miDebuggerPath": "gdb.exe",
       "preLaunchTask": "C++: Build"
