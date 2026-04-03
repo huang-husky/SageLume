@@ -110,7 +110,10 @@
 
         <!-- 思路 -->
         <h2>思路</h2>
-        <p>思路描述。</p>
+        <p>
+          average 函数传入评委数 m，在函数内逐个读入分数并累加，返回总和除以 m 的浮点结果；
+          主函数循环 n 次调用，<span class="cc-highlight-pink">每行输出两位小数</span>。
+        </p>
 
         <!-- 代码块 -->
         <div class="cyber-code-block">
@@ -124,8 +127,22 @@
             <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
 <span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
 
+<span class="cc-type">double</span> <span class="cc-function">average</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">m</span><span class="cc-plain">){</span>
+    <span class="cc-type">int</span> <span class="cc-variable">sum</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">,</span><span class="cc-variable">x</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;</span><span class="cc-variable">m</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-variable">cin</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">x</span><span class="cc-plain">;</span>
+        <span class="cc-variable">sum</span><span class="cc-operator">+=</span><span class="cc-variable">x</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">return</span> <span class="cc-plain">(</span><span class="cc-type">double</span><span class="cc-plain">)</span><span class="cc-variable">sum</span><span class="cc-operator">/</span><span class="cc-variable">m</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span>
+
 <span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
-    <span class="cc-comment">// 代码</span>
+    <span class="cc-type">int</span> <span class="cc-variable">n</span><span class="cc-plain">,</span><span class="cc-variable">m</span><span class="cc-plain">;</span>  <span class="cc-comment">// 选手，评委</span>
+    <span class="cc-variable">cin</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">n</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">m</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;</span><span class="cc-variable">n</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-type">double</span> <span class="cc-variable">result</span><span class="cc-operator">=</span><span class="cc-function">average</span><span class="cc-plain">(</span><span class="cc-variable">m</span><span class="cc-plain">);</span>
+        <span class="cc-function">printf</span><span class="cc-plain">(</span><span class="cc-string">"%.2f\n"</span><span class="cc-plain">,</span><span class="cc-variable">result</span><span class="cc-plain">);</span>
+    <span class="cc-plain">}</span>
     <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
 <span class="cc-plain">}</span></code></pre>
           </div>
@@ -134,15 +151,15 @@
         <!-- 复杂度 -->
         <h2>复杂度分析</h2>
         <ul>
-          <li><strong>时间复杂度：</strong>O(?)</li>
-          <li><strong>空间复杂度：</strong>O(?)</li>
+          <li><strong>时间复杂度：</strong>O(n·m)。</li>
+          <li><strong>空间复杂度：</strong>O(1)，边读边算，不存数组。</li>
         </ul>
 
         <!-- 心得 -->
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
           <p class="coding-reflection-text">
-            心得内容。
+            题目提示"不需要存所有数据"，边读边加，不用数组，读完直接返回平均值。
           </p>
         </div>
 
