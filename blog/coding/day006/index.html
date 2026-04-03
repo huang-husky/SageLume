@@ -101,7 +101,11 @@
 
         <!-- 思路 -->
         <h2>思路</h2>
-        <p>思路描述。</p>
+        <p>
+          写一个 isPrime 函数判断单个数是否为素数：x &lt; 2 返回 false，x == 2 返回 true，偶数返回 false，
+          否则从 3 到 √x 步长 2 试除。主函数对每段 [l, r] 遍历调用函数，
+          <span class="cc-highlight-pink">素数依次输出，每段结束换行</span>。
+        </p>
 
         <!-- 代码块 -->
         <div class="cyber-code-block">
@@ -115,8 +119,43 @@
             <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
 <span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
 
+<span class="cc-type">bool</span> <span class="cc-function">isPrime</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">x</span><span class="cc-plain">){</span>
+    <span class="cc-type">bool</span> <span class="cc-variable">prime_flag</span><span class="cc-operator">=</span><span class="cc-keyword">true</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">3</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">*</span><span class="cc-variable">c</span><span class="cc-operator">&lt;=</span><span class="cc-variable">x</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">+=</span><span class="cc-number">2</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-operator">%</span><span class="cc-variable">c</span><span class="cc-operator">==</span><span class="cc-number">0</span><span class="cc-plain">){</span>
+            <span class="cc-variable">prime_flag</span><span class="cc-operator">=</span><span class="cc-keyword">false</span><span class="cc-plain">;</span>
+        <span class="cc-plain">}</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-operator">&lt;</span><span class="cc-number">2</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">return</span> <span class="cc-keyword">false</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span><span class="cc-keyword">else if</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-operator">==</span><span class="cc-number">2</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">return</span> <span class="cc-keyword">true</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span><span class="cc-keyword">else if</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-operator">%</span><span class="cc-number">2</span><span class="cc-operator">==</span><span class="cc-number">0</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">return</span> <span class="cc-keyword">false</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span><span class="cc-keyword">else if</span><span class="cc-plain">(!</span><span class="cc-variable">prime_flag</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">return</span> <span class="cc-keyword">false</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span><span class="cc-keyword">else</span><span class="cc-plain">{</span>
+        <span class="cc-keyword">return</span> <span class="cc-keyword">true</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+<span class="cc-plain">}</span>
+
 <span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
-    <span class="cc-comment">// 代码</span>
+    <span class="cc-type">int</span> <span class="cc-variable">n</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">n</span><span class="cc-plain">;</span>
+    <span class="cc-type">bool</span> <span class="cc-variable">first</span><span class="cc-operator">=</span><span class="cc-keyword">true</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;</span><span class="cc-variable">n</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-type">int</span> <span class="cc-variable">l</span><span class="cc-plain">,</span><span class="cc-variable">r</span><span class="cc-plain">;</span>
+        <span class="cc-variable">cin</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">l</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">r</span><span class="cc-plain">;</span>
+        <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c1</span><span class="cc-operator">=</span><span class="cc-variable">l</span><span class="cc-plain">;</span><span class="cc-variable">c1</span><span class="cc-operator">&lt;=</span><span class="cc-variable">r</span><span class="cc-plain">;</span><span class="cc-variable">c1</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+            <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-function">isPrime</span><span class="cc-plain">(</span><span class="cc-variable">c1</span><span class="cc-plain">)){</span>
+                <span class="cc-keyword">if</span><span class="cc-plain">(!</span><span class="cc-variable">first</span><span class="cc-plain">) </span><span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">" "</span><span class="cc-plain">;</span>
+                <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">c1</span><span class="cc-plain">;</span>
+                <span class="cc-variable">first</span><span class="cc-operator">=</span><span class="cc-keyword">false</span><span class="cc-plain">;</span>
+            <span class="cc-plain">}</span>
+        <span class="cc-plain">}</span>
+        <span class="cc-variable">first</span><span class="cc-operator">=</span><span class="cc-keyword">true</span><span class="cc-plain">;</span>
+        <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">""</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
     <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
 <span class="cc-plain">}</span></code></pre>
           </div>
@@ -125,15 +164,16 @@
         <!-- 复杂度 -->
         <h2>复杂度分析</h2>
         <ul>
-          <li><strong>时间复杂度：</strong>O(?)</li>
-          <li><strong>空间复杂度：</strong>O(?)</li>
+          <li><strong>时间复杂度：</strong>O(n·(r−l)·√r)，每段遍历区间内每个数，每个数试除到 √x。</li>
+          <li><strong>空间复杂度：</strong>O(1)。</li>
         </ul>
 
         <!-- 心得 -->
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
           <p class="coding-reflection-text">
-            心得内容。
+            for 循环终止条件要写 <code>c*c &lt;= x</code>，写成 <code>&lt;</code> 会漏掉 c 恰好等于 √x 的情况（比如 x=9 漏掉 c=3）。
+            主函数里 <code>first</code> 标志、换行、重置的位置也要仔细——每段开始前重置，每段结束后换行，空格只在打出素数之前才打。
           </p>
         </div>
 
