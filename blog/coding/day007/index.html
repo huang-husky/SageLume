@@ -102,7 +102,11 @@
 
         <!-- 思路 -->
         <h2>思路</h2>
-        <p>思路描述。</p>
+        <p>
+          写一个 dist 函数封装<span class="cc-highlight-pink">两点距离公式</span>，
+          主函数调用三次分别计算三段路的距离，求和输出。
+          两种走法总距离相同，直接相加即可，不需要取最小值。
+        </p>
 
         <!-- 代码块 -->
         <div class="cyber-code-block">
@@ -116,8 +120,16 @@
             <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
 <span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
 
+<span class="cc-type">double</span> <span class="cc-function">dist</span><span class="cc-plain">(</span><span class="cc-type">double</span> <span class="cc-variable">x1</span><span class="cc-plain">, </span><span class="cc-type">double</span> <span class="cc-variable">y1</span><span class="cc-plain">, </span><span class="cc-type">double</span> <span class="cc-variable">x2</span><span class="cc-plain">, </span><span class="cc-type">double</span> <span class="cc-variable">y2</span><span class="cc-plain">){</span>
+    <span class="cc-type">double</span> <span class="cc-variable">distance</span><span class="cc-operator">=</span><span class="cc-function">sqrt</span><span class="cc-plain">((</span><span class="cc-variable">x1</span><span class="cc-operator">-</span><span class="cc-variable">x2</span><span class="cc-plain">)</span><span class="cc-operator">*</span><span class="cc-plain">(</span><span class="cc-variable">x1</span><span class="cc-operator">-</span><span class="cc-variable">x2</span><span class="cc-plain">)</span><span class="cc-operator">+</span><span class="cc-plain">(</span><span class="cc-variable">y1</span><span class="cc-operator">-</span><span class="cc-variable">y2</span><span class="cc-plain">)</span><span class="cc-operator">*</span><span class="cc-plain">(</span><span class="cc-variable">y1</span><span class="cc-operator">-</span><span class="cc-variable">y2</span><span class="cc-plain">));</span>
+    <span class="cc-keyword">return</span> <span class="cc-variable">distance</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span>
+
 <span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
-    <span class="cc-comment">// 代码</span>
+    <span class="cc-type">double</span> <span class="cc-variable">x0</span><span class="cc-plain">,</span><span class="cc-variable">y0</span><span class="cc-plain">,</span><span class="cc-variable">x1</span><span class="cc-plain">,</span><span class="cc-variable">y1</span><span class="cc-plain">,</span><span class="cc-variable">x2</span><span class="cc-plain">,</span><span class="cc-variable">y2</span><span class="cc-plain">,</span><span class="cc-variable">result</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">x0</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">y0</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">x1</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">y1</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">x2</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">y2</span><span class="cc-plain">;</span>
+    <span class="cc-variable">result</span><span class="cc-operator">=</span><span class="cc-function">dist</span><span class="cc-plain">(</span><span class="cc-variable">x0</span><span class="cc-plain">,</span><span class="cc-variable">y0</span><span class="cc-plain">,</span><span class="cc-variable">x1</span><span class="cc-plain">,</span><span class="cc-variable">y1</span><span class="cc-plain">)</span><span class="cc-operator">+</span><span class="cc-function">dist</span><span class="cc-plain">(</span><span class="cc-variable">x0</span><span class="cc-plain">,</span><span class="cc-variable">y0</span><span class="cc-plain">,</span><span class="cc-variable">x2</span><span class="cc-plain">,</span><span class="cc-variable">y2</span><span class="cc-plain">)</span><span class="cc-operator">+</span><span class="cc-function">dist</span><span class="cc-plain">(</span><span class="cc-variable">x1</span><span class="cc-plain">,</span><span class="cc-variable">y1</span><span class="cc-plain">,</span><span class="cc-variable">x2</span><span class="cc-plain">,</span><span class="cc-variable">y2</span><span class="cc-plain">);</span>
+    <span class="cc-function">printf</span><span class="cc-plain">(</span><span class="cc-string">"%.2f\n"</span><span class="cc-plain">, </span><span class="cc-variable">result</span><span class="cc-plain">);</span>
     <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
 <span class="cc-plain">}</span></code></pre>
           </div>
@@ -126,15 +138,15 @@
         <!-- 复杂度 -->
         <h2>复杂度分析</h2>
         <ul>
-          <li><strong>时间复杂度：</strong>O(?)</li>
-          <li><strong>空间复杂度：</strong>O(?)</li>
+          <li><strong>时间复杂度：</strong>O(1)。</li>
+          <li><strong>空间复杂度：</strong>O(1)。</li>
         </ul>
 
         <!-- 心得 -->
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
           <p class="coding-reflection-text">
-            心得内容。
+            两点距离公式直接套，没有难度。注意输出要保留两位小数，用 <code>printf("%.2f\n", result)</code>。
           </p>
         </div>
 
