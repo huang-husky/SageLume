@@ -1,5 +1,5 @@
 /* coding-particles.js
- * 温柔花瓣飘落特效 — 奶白底色 · 玫红渐变 · 一端尖一端圆的花瓣形
+ * 温柔赛博朋克花瓣飘落特效
  * 用于 blog/coding/ 各 Day 页面
  */
 (function () {
@@ -9,27 +9,35 @@
   if (!canvas) return;
 
   const ctx = canvas.getContext('2d');
-  const PETAL_COUNT = 28;
+  const PETAL_COUNT = 32;
+
+  const COLORS = [
+    [240, 171, 252],   // 紫粉
+    [249, 168, 212],   // 粉
+    [196, 181, 253],   // 薰衣草
+    [253, 164, 175],   // 玫红
+    [255, 228, 230],   // 浅粉白
+  ];
 
   function rand(a, b) { return a + Math.random() * (b - a); }
+  function randInt(a, b) { return Math.floor(rand(a, b)); }
 
   function makePetal(randomY) {
-    const rx = rand(10, 18);   // 花瓣长轴（水平方向，旋转后任意角度）
-    const ry = rand(3.5, 6);   // 花瓣短轴
+    const [r, g, b] = COLORS[randInt(0, COLORS.length)];
     return {
-      x:          rand(0, canvas.width),
-      y:          randomY ? rand(-canvas.height * 0.2, canvas.height) : rand(-80, -8),
-      rx,
-      ry,
-      angle:      rand(0, Math.PI * 2),
-      angleSpeed: rand(-0.013, 0.013),
-      speedY:     rand(0.4, 1.1),
-      speedX:     rand(-0.25, 0.25),
-      swayAmp:    rand(0.3, 1.0),
-      swayFreq:   rand(0.006, 0.016),
-      swayPhase:  rand(0, Math.PI * 2),
-      opacity:    rand(0.32, 0.72),
-      hueShift:   rand(-14, 14),
+      x:            rand(0, canvas.width),
+      y:            randomY ? rand(-canvas.height * 0.2, canvas.height) : rand(-80, -8),
+      rx:           rand(4, 10),        // 椭圆长轴
+      ry:           rand(2, 5),         // 椭圆短轴
+      angle:        rand(0, Math.PI * 2),
+      angleSpeed:   rand(-0.018, 0.018),
+      speedY:       rand(0.5, 1.4),
+      speedX:       rand(-0.3, 0.3),
+      swayAmp:      rand(0.4, 1.1),
+      swayFreq:     rand(0.007, 0.018),
+      swayPhase:    rand(0, Math.PI * 2),
+      opacity:      rand(0.18, 0.52),
+      r, g, b,
     };
   }
 
@@ -47,56 +55,6 @@
     petals = Array.from({ length: PETAL_COUNT }, () => makePetal(true));
   }
 
-  /**
-   * 花瓣路径：右端收尖（花梢），左端圆润（花基）
-   * 控制点刻意不对称，让形状清晰区别于椭圆
-   */
-  function petalPath(rx, ry) {
-    ctx.beginPath();
-    ctx.moveTo(rx, 0);                                            // 右端：尖梢
-    ctx.bezierCurveTo( rx * 0.35, -ry * 1.05,                   // 上弧：右侧控制点靠近尖端
-                      -rx * 0.50, -ry * 1.05, -rx, 0);          // 上弧：左侧控制点贴近圆端
-    ctx.bezierCurveTo(-rx * 0.50,  ry * 1.05,                   // 下弧：左侧控制点
-                       rx * 0.35,  ry * 1.05,  rx, 0);          // 下弧：回到尖梢
-    ctx.closePath();
-  }
-
-  function drawPetal(p) {
-    ctx.save();
-    ctx.translate(p.x, p.y);
-    ctx.rotate(p.angle);
-    ctx.globalAlpha = p.opacity;
-
-    const { rx, ry, hueShift: h } = p;
-
-    // ── 奶白底色：宣纸质感 ────────────────────────────────────────
-    petalPath(rx, ry);
-    ctx.fillStyle = 'rgba(255, 250, 245, 0.96)';
-    ctx.fill();
-
-    // ── 径向渐变：中心玫红 → 浅粉 → 奶白边缘 ────────────────────
-    const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, rx);
-    grad.addColorStop(0,    `rgba(${(208 + h) | 0}, ${Math.max(0, 38 - h) | 0}, ${(88 + h * 0.4) | 0}, 0.93)`);
-    grad.addColorStop(0.35, `rgba(${(236 + h * 0.5) | 0}, ${(108 + h * 0.3) | 0}, ${(146 + h * 0.3) | 0}, 0.76)`);
-    grad.addColorStop(0.65, 'rgba(252, 198, 216, 0.48)');
-    grad.addColorStop(1,    'rgba(255, 245, 250, 0.06)');
-    petalPath(rx, ry);
-    ctx.fillStyle = grad;
-    ctx.fill();
-
-    // ── 中轴脉络高光（沿长轴方向）────────────────────────────────
-    ctx.globalAlpha = p.opacity * 0.22;
-    ctx.strokeStyle = 'rgba(255, 230, 238, 0.95)';
-    ctx.lineWidth   = ry * 0.22;
-    ctx.lineCap     = 'round';
-    ctx.beginPath();
-    ctx.moveTo( rx * 0.65, 0);
-    ctx.lineTo(-rx * 0.65, 0);
-    ctx.stroke();
-
-    ctx.restore();
-  }
-
   function tick() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     frame++;
@@ -108,24 +66,51 @@
       p.y     += p.speedY;
       p.angle += p.angleSpeed;
 
+      // 飞出屏幕后重置到顶部
       if (p.y > canvas.height + 20 || p.x < -50 || p.x > canvas.width + 50) {
         petals[i] = makePetal(false);
         petals[i].x = rand(0, canvas.width);
       }
 
-      drawPetal(p);
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.angle);
+      ctx.globalAlpha = p.opacity;
+
+      // 主花瓣
+      ctx.fillStyle = `rgb(${p.r},${p.g},${p.b})`;
+      ctx.shadowColor = `rgba(${p.r},${p.g},${p.b},0.7)`;
+      ctx.shadowBlur  = 10;
+      ctx.beginPath();
+      ctx.ellipse(0, 0, p.rx, p.ry, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // 高光小点（朦胧反光）
+      ctx.globalAlpha  = p.opacity * 0.55;
+      ctx.fillStyle    = `rgba(255,240,255,0.9)`;
+      ctx.shadowBlur   = 0;
+      ctx.beginPath();
+      ctx.ellipse(-p.rx * 0.25, -p.ry * 0.2, p.rx * 0.3, p.ry * 0.25, -0.4, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.restore();
     }
 
     raf = requestAnimationFrame(tick);
   }
 
+  // 页面不可见时暂停，恢复时继续（省电）
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) { cancelAnimationFrame(raf); }
-    else                  { raf = requestAnimationFrame(tick); }
+    if (document.hidden) {
+      cancelAnimationFrame(raf);
+    } else {
+      raf = requestAnimationFrame(tick);
+    }
   });
 
   window.addEventListener('resize', resize);
 
+  // 启动
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => { init(); tick(); });
   } else {
