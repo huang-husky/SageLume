@@ -23,7 +23,8 @@
       "Bash(grep -c \"[a-zA-Z]\\\\{2,\\\\}\\\\|[\\\\u4e00-\\\\u9fff]\" D:/vue-for-you/cc-blog/blog/post5/index.html)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(where:*)"
     ]
   }
 }
