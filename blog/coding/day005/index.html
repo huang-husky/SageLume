@@ -91,22 +91,124 @@
 
         <!-- 思路 -->
         <h2>思路</h2>
-        <p>思路描述。</p>
+        <p>
+          U 的长度 N 必须是奇数，否则无论在哪插入一个字符都凑不出两段相等的 S，直接 NOT POSSIBLE。
+          设 L = (N-1)/2。
+        </p>
+        <p>
+          <span class="cc-highlight-pink">暴力做法（p96.cpp）</span>：枚举每个位置 c（0 到 N-1）作为插入点，删掉 U[c] 后检查前后两半是否相同，记录合法 S，有冲突输出 NOT UNIQUE。时间复杂度 O(N²)。
+        </p>
+        <p>
+          <span class="cc-highlight-pink">优化做法（p96+.cpp）</span>：先扫一遍，找第一个让 U[c] ≠ U[c+L+1] 的位置 p。
+          若 p == -1，左右本来全匹配，插入点只可能是中间位置 L；否则，差异只可能由位置 p 或 p+L+1 引起，候选至多 2 个。
+          check() 直接用下标跳过插入位置逐字符比较，总复杂度 O(N)，通过 92%。
+        </p>
 
-        <!-- 代码块 -->
+        <!-- 代码块 1 -->
         <div class="cyber-code-block">
           <div class="cyber-code-header">
             <div class="cyber-code-dots">
               <span></span><span></span><span></span>
             </div>
-            <span class="cyber-code-lang">C++ · p96.cpp</span>
+            <span class="cyber-code-lang">C++ · p96.cpp &nbsp;·&nbsp; 暴力 O(N²)</span>
           </div>
           <div class="cyber-code-body">
             <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
 <span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
 
 <span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
-    <span class="cc-comment">// 代码</span>
+    <span class="cc-type">int</span> <span class="cc-variable">N</span><span class="cc-plain">;</span>
+    <span class="cc-type">string</span> <span class="cc-variable">S</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">N</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">S</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">N</span><span class="cc-operator">%</span><span class="cc-number">2</span><span class="cc-operator">==</span><span class="cc-number">0</span><span class="cc-plain">){</span>
+        <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">"NOT POSSIBLE"</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+        <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-type">int</span> <span class="cc-variable">L</span> <span class="cc-operator">=</span> <span class="cc-plain">(</span><span class="cc-variable">N</span><span class="cc-operator">-</span><span class="cc-number">1</span><span class="cc-plain">)/</span><span class="cc-number">2</span><span class="cc-plain">;</span>
+    <span class="cc-type">string</span> <span class="cc-variable">result</span><span class="cc-plain">;</span>
+    <span class="cc-type">bool</span> <span class="cc-variable">only</span><span class="cc-operator">=</span><span class="cc-keyword">true</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;</span><span class="cc-variable">N</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-type">string</span> <span class="cc-variable">T</span><span class="cc-operator">=</span><span class="cc-variable">S</span><span class="cc-plain">.</span><span class="cc-function">substr</span><span class="cc-plain">(</span><span class="cc-number">0</span><span class="cc-plain">, </span><span class="cc-variable">c</span><span class="cc-plain">)</span><span class="cc-operator">+</span><span class="cc-variable">S</span><span class="cc-plain">.</span><span class="cc-function">substr</span><span class="cc-plain">(</span><span class="cc-variable">c</span><span class="cc-operator">+</span><span class="cc-number">1</span><span class="cc-plain">);</span>
+        <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">T</span><span class="cc-plain">.</span><span class="cc-function">substr</span><span class="cc-plain">(</span><span class="cc-number">0</span><span class="cc-plain">, </span><span class="cc-variable">L</span><span class="cc-plain">) </span><span class="cc-operator">==</span> <span class="cc-variable">T</span><span class="cc-plain">.</span><span class="cc-function">substr</span><span class="cc-plain">(</span><span class="cc-variable">L</span><span class="cc-plain">)) {</span>
+            <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">result</span><span class="cc-plain">.</span><span class="cc-function">empty</span><span class="cc-plain">()){</span>
+                <span class="cc-variable">result</span><span class="cc-operator">=</span><span class="cc-variable">T</span><span class="cc-plain">.</span><span class="cc-function">substr</span><span class="cc-plain">(</span><span class="cc-number">0</span><span class="cc-plain">,</span><span class="cc-variable">L</span><span class="cc-plain">);;</span>
+            <span class="cc-plain">}</span><span class="cc-keyword">else if</span><span class="cc-plain">(</span><span class="cc-variable">T</span><span class="cc-plain">.</span><span class="cc-function">substr</span><span class="cc-plain">(</span><span class="cc-number">0</span><span class="cc-plain">,</span><span class="cc-variable">L</span><span class="cc-plain">)</span><span class="cc-operator">!=</span><span class="cc-variable">result</span><span class="cc-plain">){</span>
+                <span class="cc-variable">only</span><span class="cc-operator">=</span><span class="cc-keyword">false</span><span class="cc-plain">;</span>
+                <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">"NOT UNIQUE"</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+                <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+            <span class="cc-plain">}</span>
+        <span class="cc-plain">}</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">result</span><span class="cc-plain">.</span><span class="cc-function">empty</span><span class="cc-plain">()) </span><span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">"NOT POSSIBLE"</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">else</span> <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">result</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
+          </div>
+        </div>
+
+        <!-- 代码块 2 -->
+        <div class="cyber-code-block">
+          <div class="cyber-code-header">
+            <div class="cyber-code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="cyber-code-lang">C++ · p96+.cpp &nbsp;·&nbsp; 优化 O(N) &nbsp;·&nbsp; 92%</span>
+          </div>
+          <div class="cyber-code-body">
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-comment">// 假设插入的字符在位置c，验证去掉它之后两半是否相同</span>
+<span class="cc-type">bool</span> <span class="cc-function">check</span><span class="cc-plain">(</span><span class="cc-type">string</span><span class="cc-plain">&amp; </span><span class="cc-variable">U</span><span class="cc-plain">, </span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-plain">, </span><span class="cc-type">int</span> <span class="cc-variable">L</span><span class="cc-plain">){</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c1</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c1</span><span class="cc-operator">&lt;</span><span class="cc-variable">L</span><span class="cc-plain">;</span><span class="cc-variable">c1</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-type">char</span> <span class="cc-variable">ti</span>  <span class="cc-operator">=</span> <span class="cc-plain">(</span><span class="cc-variable">c1</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">c</span><span class="cc-plain">)   ? </span><span class="cc-variable">U</span><span class="cc-plain">[</span><span class="cc-variable">c1</span><span class="cc-plain">]   : </span><span class="cc-variable">U</span><span class="cc-plain">[</span><span class="cc-variable">c1</span><span class="cc-operator">+</span><span class="cc-number">1</span><span class="cc-plain">];</span>
+        <span class="cc-type">char</span> <span class="cc-variable">tiL</span> <span class="cc-operator">=</span> <span class="cc-plain">(</span><span class="cc-variable">c1</span><span class="cc-operator">+</span><span class="cc-variable">L</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">c</span><span class="cc-plain">) ? </span><span class="cc-variable">U</span><span class="cc-plain">[</span><span class="cc-variable">c1</span><span class="cc-operator">+</span><span class="cc-variable">L</span><span class="cc-plain">] : </span><span class="cc-variable">U</span><span class="cc-plain">[</span><span class="cc-variable">c1</span><span class="cc-operator">+</span><span class="cc-variable">L</span><span class="cc-operator">+</span><span class="cc-number">1</span><span class="cc-plain">];</span>
+        <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">ti</span> <span class="cc-operator">!=</span> <span class="cc-variable">tiL</span><span class="cc-plain">) </span><span class="cc-keyword">return</span> <span class="cc-keyword">false</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">return</span> <span class="cc-keyword">true</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
+    <span class="cc-type">int</span> <span class="cc-variable">N</span><span class="cc-plain">;</span>
+    <span class="cc-type">string</span> <span class="cc-variable">S</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">N</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">S</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">N</span><span class="cc-operator">%</span><span class="cc-number">2</span><span class="cc-operator">==</span><span class="cc-number">0</span><span class="cc-plain">){</span>
+        <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">"NOT POSSIBLE"</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+        <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-type">int</span> <span class="cc-variable">L</span> <span class="cc-operator">=</span> <span class="cc-plain">(</span><span class="cc-variable">N</span><span class="cc-operator">-</span><span class="cc-number">1</span><span class="cc-plain">)/</span><span class="cc-number">2</span><span class="cc-plain">;</span>
+    <span class="cc-type">string</span> <span class="cc-variable">result</span><span class="cc-plain">;</span>
+    <span class="cc-type">bool</span> <span class="cc-variable">only</span><span class="cc-operator">=</span><span class="cc-keyword">true</span><span class="cc-plain">;</span>
+    <span class="cc-type">int</span> <span class="cc-variable">p</span><span class="cc-operator">=</span><span class="cc-number">-1</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;</span><span class="cc-variable">L</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">S</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-plain">]</span><span class="cc-operator">!=</span><span class="cc-variable">S</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-operator">+</span><span class="cc-variable">L</span><span class="cc-operator">+</span><span class="cc-number">1</span><span class="cc-plain">]){</span>
+            <span class="cc-variable">p</span><span class="cc-operator">=</span><span class="cc-variable">c</span><span class="cc-plain">;</span>
+            <span class="cc-keyword">break</span><span class="cc-plain">;</span>
+        <span class="cc-plain">}</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">int</span><span class="cc-plain">&gt; </span><span class="cc-variable">candidates</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">p</span><span class="cc-operator">==</span><span class="cc-number">-1</span><span class="cc-plain">){</span>
+        <span class="cc-variable">candidates</span> <span class="cc-operator">=</span> <span class="cc-plain">{</span><span class="cc-variable">L</span><span class="cc-plain">};</span>
+    <span class="cc-plain">}</span><span class="cc-keyword">else</span><span class="cc-plain">{</span>
+        <span class="cc-variable">candidates</span> <span class="cc-operator">=</span> <span class="cc-plain">{</span><span class="cc-variable">p</span><span class="cc-plain">, </span><span class="cc-variable">p</span><span class="cc-operator">+</span><span class="cc-variable">L</span><span class="cc-operator">+</span><span class="cc-number">1</span><span class="cc-plain">};</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span> <span class="cc-plain">: </span><span class="cc-variable">candidates</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-function">check</span><span class="cc-plain">(</span><span class="cc-variable">S</span><span class="cc-plain">,</span><span class="cc-variable">c</span><span class="cc-plain">,</span><span class="cc-variable">L</span><span class="cc-plain">)){</span>
+            <span class="cc-type">string</span> <span class="cc-variable">current</span> <span class="cc-operator">=</span> <span class="cc-plain">(</span><span class="cc-variable">S</span><span class="cc-plain">.</span><span class="cc-function">substr</span><span class="cc-plain">(</span><span class="cc-number">0</span><span class="cc-plain">,</span><span class="cc-variable">c</span><span class="cc-plain">)</span><span class="cc-operator">+</span><span class="cc-variable">S</span><span class="cc-plain">.</span><span class="cc-function">substr</span><span class="cc-plain">(</span><span class="cc-variable">c</span><span class="cc-operator">+</span><span class="cc-number">1</span><span class="cc-plain">)).</span><span class="cc-function">substr</span><span class="cc-plain">(</span><span class="cc-number">0</span><span class="cc-plain">,</span><span class="cc-variable">L</span><span class="cc-plain">);</span>
+            <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">result</span><span class="cc-plain">.</span><span class="cc-function">empty</span><span class="cc-plain">()){</span>
+                <span class="cc-variable">result</span><span class="cc-operator">=</span><span class="cc-variable">current</span><span class="cc-plain">;</span>
+            <span class="cc-plain">}</span><span class="cc-keyword">else if</span><span class="cc-plain">(</span><span class="cc-variable">result</span><span class="cc-operator">!=</span><span class="cc-variable">current</span><span class="cc-plain">){</span>
+                <span class="cc-variable">only</span><span class="cc-operator">=</span><span class="cc-keyword">false</span><span class="cc-plain">;</span>
+            <span class="cc-plain">}</span>
+        <span class="cc-plain">}</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">result</span><span class="cc-plain">.</span><span class="cc-function">empty</span><span class="cc-plain">()){</span>
+        <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">"NOT POSSIBLE"</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span><span class="cc-keyword">else if</span><span class="cc-plain">(!</span><span class="cc-variable">only</span><span class="cc-plain">){</span>
+        <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">"NOT UNIQUE"</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span><span class="cc-keyword">else</span><span class="cc-plain">{</span>
+        <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">result</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
     <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
 <span class="cc-plain">}</span></code></pre>
           </div>
@@ -115,15 +217,16 @@
         <!-- 复杂度 -->
         <h2>复杂度分析</h2>
         <ul>
-          <li><strong>时间复杂度：</strong>O(?)</li>
-          <li><strong>空间复杂度：</strong>O(?)</li>
+          <li><strong>p96.cpp（暴力）：</strong>时间 O(N²)，空间 O(N)。</li>
+          <li><strong>p96+.cpp（优化）：</strong>时间 O(N)，空间 O(N)，通过 92%。</li>
         </ul>
 
         <!-- 心得 -->
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
           <p class="coding-reflection-text">
-            心得内容。
+            暴力版思路清晰，枚举插入点再比较两半。优化版的核心是：两半扫到不一样，插入点就被锁死，候选从 N 个降到 2 个。<br>
+            这题让我学到了 substr 的用法——<code>substr(pos, len)</code> 截取从 pos 开始长度为 len 的子串，<code>substr(pos)</code> 截取到末尾。也补充了以前忘记的 <code>.empty()</code> 判断，比 <code>result == ""</code> 更正规。
           </p>
         </div>
 
