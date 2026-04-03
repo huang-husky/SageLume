@@ -301,36 +301,66 @@
         }
       }
 
-      // 绘制单片花瓣（贝塞尔曲线 + 渐变 + 中脉）
+      // 绘制单片花瓣（贝塞尔曲线 + 线性渐变 + 径向晕染 + 主脉侧脉）
       function drawPetal(x, y, rot, sz, col, al) {
         ctx.save();
         ctx.translate(x, y);
         ctx.rotate(rot);
+
+        function path() {
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.bezierCurveTo( sz*0.62, -sz*0.26,  sz*0.52, -sz*0.88,  0, -sz);
+          ctx.bezierCurveTo(-sz*0.52, -sz*0.88, -sz*0.62, -sz*0.26,  0,  0);
+          ctx.closePath();
+        }
+
+        // 层1：基部到尖端线性渐变（底色）
         ctx.globalAlpha = al;
-
-        // 花瓣轮廓：基座在 (0,0)，尖端在 (0,-sz)
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.bezierCurveTo( sz*0.62, -sz*0.26,  sz*0.52, -sz*0.88,  0, -sz);
-        ctx.bezierCurveTo(-sz*0.52, -sz*0.88, -sz*0.62, -sz*0.26,  0,  0);
-        ctx.closePath();
-
-        // 基部到尖端渐变（深 → 亮）
-        var g = ctx.createLinearGradient(0, 0, 0, -sz);
-        g.addColorStop(0.0,  col);
-        g.addColorStop(0.55, col);
-        g.addColorStop(1.0,  lighten(col, 55));
-        ctx.fillStyle = g;
+        path();
+        var lg = ctx.createLinearGradient(0, 0, 0, -sz);
+        lg.addColorStop(0.0,  col);
+        lg.addColorStop(0.5,  col);
+        lg.addColorStop(1.0,  lighten(col, 62));
+        ctx.fillStyle = lg;
         ctx.fill();
 
-        // 中脉
-        ctx.globalAlpha = al * 0.18;
+        // 层2：中轴向边缘的径向晕染（从中心向四周淡出，模拟层层粉晕）
+        ctx.globalAlpha = al * 0.52;
+        path();
+        var midY = -sz * 0.44;
+        var rg = ctx.createRadialGradient(0, midY, sz * 0.03, 0, midY, sz * 0.64);
+        rg.addColorStop(0,    'rgba(255, 255, 255, 0.26)');
+        rg.addColorStop(0.38, 'rgba(255, 255, 255, 0.08)');
+        rg.addColorStop(1,    'rgba(255, 255, 255, 0.00)');
+        ctx.fillStyle = rg;
+        ctx.fill();
+
+        // 主脉（中轴，清晰可见）
+        ctx.globalAlpha = al * 0.32;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.95)';
+        ctx.lineWidth   = sz * 0.055;
+        ctx.lineCap     = 'round';
         ctx.beginPath();
-        ctx.moveTo(0, -sz * 0.06);
-        ctx.lineTo(0, -sz * 0.87);
-        ctx.strokeStyle = '#fff';
-        ctx.lineWidth   = 0.55;
+        ctx.moveTo(0, -sz * 0.05);
+        ctx.lineTo(0, -sz * 0.88);
         ctx.stroke();
+
+        // 侧脉（丝丝缕缕，左右各两条）
+        ctx.globalAlpha = al * 0.13;
+        ctx.lineWidth   = sz * 0.028;
+        var veins = [
+          [0, -sz*0.28, -sz*0.22, -sz*0.52],
+          [0, -sz*0.28,  sz*0.22, -sz*0.52],
+          [0, -sz*0.50, -sz*0.28, -sz*0.68],
+          [0, -sz*0.50,  sz*0.28, -sz*0.68],
+        ];
+        for (var v = 0; v < veins.length; v++) {
+          ctx.beginPath();
+          ctx.moveTo(veins[v][0], veins[v][1]);
+          ctx.lineTo(veins[v][2], veins[v][3]);
+          ctx.stroke();
+        }
 
         ctx.restore();
       }
