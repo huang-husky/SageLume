@@ -97,7 +97,11 @@
 
         <!-- 思路 -->
         <h2>思路</h2>
-        <p>思路描述。</p>
+        <p>
+          枚举胡同户数 m，由 sum = m(m+1)/2 反推门牌号 k = (sum−n)/3，
+          检查 k 是否为正整数且在 [1, m] 内，<span class="cc-highlight-pink">第一个满足条件的即为答案</span>；
+          否则输出 Impossible!。
+        </p>
 
         <!-- 代码块 -->
         <div class="cyber-code-block">
@@ -112,7 +116,19 @@
 <span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
 
 <span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
-    <span class="cc-comment">// 代码</span>
+    <span class="cc-type">int</span> <span class="cc-variable">n</span><span class="cc-plain">,</span><span class="cc-variable">sum</span><span class="cc-plain">,</span><span class="cc-variable">k</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">n</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;</span><span class="cc-number">10000</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-variable">sum</span><span class="cc-operator">=</span><span class="cc-variable">c</span><span class="cc-operator">*</span><span class="cc-plain">(</span><span class="cc-variable">c</span><span class="cc-operator">+</span><span class="cc-number">1</span><span class="cc-plain">)/</span><span class="cc-number">2</span><span class="cc-plain">;</span>
+        <span class="cc-keyword">if</span><span class="cc-plain">((</span><span class="cc-variable">sum</span><span class="cc-operator">-</span><span class="cc-variable">n</span><span class="cc-plain">)</span><span class="cc-operator">%</span><span class="cc-number">3</span><span class="cc-operator">==</span><span class="cc-number">0</span><span class="cc-plain">){</span>
+            <span class="cc-variable">k</span><span class="cc-operator">=</span><span class="cc-plain">(</span><span class="cc-variable">sum</span><span class="cc-operator">-</span><span class="cc-variable">n</span><span class="cc-plain">)/</span><span class="cc-number">3</span><span class="cc-plain">;</span>
+            <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">k</span><span class="cc-operator">&gt;=</span><span class="cc-number">1</span><span class="cc-operator">&amp;&amp;</span><span class="cc-variable">k</span><span class="cc-operator">&lt;=</span><span class="cc-variable">c</span><span class="cc-plain">){</span>
+                <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">c</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">" "</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">k</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+                <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+            <span class="cc-plain">}</span>
+        <span class="cc-plain">}</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">"Impossible!"</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
     <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
 <span class="cc-plain">}</span></code></pre>
           </div>
@@ -121,15 +137,15 @@
         <!-- 复杂度 -->
         <h2>复杂度分析</h2>
         <ul>
-          <li><strong>时间复杂度：</strong>O(?)</li>
-          <li><strong>空间复杂度：</strong>O(?)</li>
+          <li><strong>时间复杂度：</strong>O(M)，M = 10000，最多枚举一万次。</li>
+          <li><strong>空间复杂度：</strong>O(1)。</li>
         </ul>
 
         <!-- 心得 -->
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
           <p class="coding-reflection-text">
-            心得内容。
+            题目要求输出户数最少的情况，从小到大枚举、找到就立刻返回，最小户数已经间接处理了，不需要额外比较。
           </p>
         </div>
 
