@@ -98,7 +98,7 @@
         <!-- 思路 -->
         <h2>思路</h2>
         <p>
-          <!-- PLACEHOLDER: 思路 -->
+          从 c=2 开始枚举因子，每次找到能整除 x 的 c，就用 <code>while</code> 把 x 中所有的 c 除干净，记录 c 为当前最大质因子。由于小因子都被除尽，当前能整除 x 的 c 一定是质数，不需要额外判素。循环结束后若 <span class="cc-highlight-pink">x&nbsp;&gt;&nbsp;1，则 x 本身是最大质因子</span>（它比所有已除尽的小因子都大）。
         </p>
 
         <!-- 代码块 -->
@@ -110,22 +110,46 @@
             <span class="cyber-code-lang">C++ · p77.cpp</span>
           </div>
           <div class="cyber-code-body">
-            <pre class="cyber-pre"><code class="cyber-code"><!-- PLACEHOLDER: 代码 --></code></pre>
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-type">int</span> <span class="cc-function">maxPrime</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">x</span><span class="cc-plain">){</span>
+    <span class="cc-type">int</span> <span class="cc-variable">max</span><span class="cc-operator">=</span><span class="cc-number">1</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">2</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">*</span><span class="cc-variable">c</span><span class="cc-operator">&lt;=</span><span class="cc-variable">x</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-operator">%</span><span class="cc-variable">c</span><span class="cc-operator">==</span><span class="cc-number">0</span><span class="cc-plain">){</span>
+            <span class="cc-keyword">while</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-operator">%</span><span class="cc-variable">c</span><span class="cc-operator">==</span><span class="cc-number">0</span><span class="cc-plain">){</span>
+                <span class="cc-variable">max</span><span class="cc-operator">=</span><span class="cc-variable">c</span><span class="cc-plain">;</span>
+                <span class="cc-variable">x</span><span class="cc-operator">/=</span><span class="cc-variable">c</span><span class="cc-plain">;</span>
+            <span class="cc-plain">}</span>
+        <span class="cc-plain">}</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-operator">&gt;</span><span class="cc-number">1</span><span class="cc-plain">)</span> <span class="cc-variable">max</span><span class="cc-operator">=</span><span class="cc-variable">x</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">return</span> <span class="cc-variable">max</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
+    <span class="cc-type">int</span> <span class="cc-variable">l</span><span class="cc-plain">,</span><span class="cc-variable">r</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">l</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">r</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-variable">l</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;=</span><span class="cc-variable">r</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-function">maxPrime</span><span class="cc-plain">(</span><span class="cc-variable">c</span><span class="cc-plain">)&lt;&lt;</span><span class="cc-string">" "</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
           </div>
         </div>
 
         <!-- 复杂度 -->
         <h2>复杂度分析</h2>
         <ul>
-          <li><strong>时间复杂度：</strong><!-- PLACEHOLDER --></li>
-          <li><strong>空间复杂度：</strong><!-- PLACEHOLDER --></li>
+          <li><strong>时间复杂度：</strong>O((r−l+1) · √r)，每个数枚举因子到 √x。</li>
+          <li><strong>空间复杂度：</strong>O(1)。</li>
         </ul>
 
         <!-- 心得 -->
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
           <p class="coding-reflection-text">
-            <!-- PLACEHOLDER: 今日感受 -->
+            第一版用 <code>if</code> 除了一次就继续，导致重复因子没除干净，结果错了。改成 <code>while</code> 把同一个因子除到底，才能保证后续遇到的因子一定是质数。还有一个关键：循环结束后如果 x&nbsp;&gt;&nbsp;1，这个剩余的 x 本身就是最大质因子——因为所有更小的质因子都已经被除掉了。
           </p>
         </div>
 
