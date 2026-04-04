@@ -170,7 +170,7 @@
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
           <p class="coding-reflection-text">
-            <!-- PLACEHOLDER: 今日感受 -->
+            写反序函数时，最容易犯的错是先加再乘——结果多乘了一次。后来弄明白：要先 <code>rev *= 10</code> 腾出位置，再 <code>rev += x % 10</code> 填入新数字，顺序不能反。另外 <code>notFound</code> 的判断条件也写反了一次，找 bug 时才意识到变量名要和逻辑方向对齐，不然很容易绕糊涂。
           </p>
         </div>
 

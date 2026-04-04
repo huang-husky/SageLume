@@ -98,7 +98,7 @@
         <!-- 思路 -->
         <h2>思路</h2>
         <p>
-          <!-- PLACEHOLDER: 思路 -->
+          写两个函数：<code>countOnes</code> 统计二进制中 1 的个数（<code>%2</code> 判断末位，<code>/2</code> 移位），<code>countBits</code> 统计总位数（每次 <code>/2</code> 计一位）。判断条件化简：1的个数 ≥ 0的个数 等价于 <span class="cc-highlight-pink">2 × ones ≥ bits</span>，不需要显式统计 0，枚举区间累计 A、B 计数输出。
         </p>
 
         <!-- 代码块 -->
@@ -110,22 +110,53 @@
             <span class="cyber-code-lang">C++ · p76.cpp</span>
           </div>
           <div class="cyber-code-body">
-            <pre class="cyber-pre"><code class="cyber-code"><!-- PLACEHOLDER: 代码 --></code></pre>
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-type">int</span> <span class="cc-function">countOnes</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">x</span><span class="cc-plain">){</span>
+    <span class="cc-type">int</span> <span class="cc-variable">count1</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">while</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-operator">!=</span><span class="cc-number">0</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-operator">%</span><span class="cc-number">2</span><span class="cc-operator">==</span><span class="cc-number">1</span><span class="cc-plain">)</span> <span class="cc-variable">count1</span><span class="cc-operator">++</span><span class="cc-plain">;</span>
+        <span class="cc-variable">x</span><span class="cc-operator">/=</span><span class="cc-number">2</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">return</span> <span class="cc-variable">count1</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span>
+
+<span class="cc-type">int</span> <span class="cc-function">countBits</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">y</span><span class="cc-plain">){</span>
+    <span class="cc-type">int</span> <span class="cc-variable">count</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">while</span><span class="cc-plain">(</span><span class="cc-variable">y</span><span class="cc-operator">!=</span><span class="cc-number">0</span><span class="cc-plain">){</span>
+        <span class="cc-variable">count</span><span class="cc-operator">++</span><span class="cc-plain">;</span>
+        <span class="cc-variable">y</span><span class="cc-operator">/=</span><span class="cc-number">2</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">return</span> <span class="cc-variable">count</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
+    <span class="cc-type">int</span> <span class="cc-variable">l</span><span class="cc-plain">,</span><span class="cc-variable">r</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">l</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">r</span><span class="cc-plain">;</span>
+    <span class="cc-type">int</span> <span class="cc-variable">A</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">,</span><span class="cc-variable">B</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-variable">l</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;=</span><span class="cc-variable">r</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-number">2</span><span class="cc-operator">*</span><span class="cc-function">countOnes</span><span class="cc-plain">(</span><span class="cc-variable">c</span><span class="cc-plain">)</span><span class="cc-operator">&gt;=</span><span class="cc-function">countBits</span><span class="cc-plain">(</span><span class="cc-variable">c</span><span class="cc-plain">))</span> <span class="cc-variable">A</span><span class="cc-operator">++</span><span class="cc-plain">;</span>
+        <span class="cc-keyword">else</span> <span class="cc-variable">B</span><span class="cc-operator">++</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">A</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">" "</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">B</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
           </div>
         </div>
 
         <!-- 复杂度 -->
         <h2>复杂度分析</h2>
         <ul>
-          <li><strong>时间复杂度：</strong><!-- PLACEHOLDER --></li>
-          <li><strong>空间复杂度：</strong><!-- PLACEHOLDER --></li>
+          <li><strong>时间复杂度：</strong>O((r−l+1) · log r)，每个数调用两次函数，循环次数为二进制位数 log₂x。</li>
+          <li><strong>空间复杂度：</strong>O(1)。</li>
         </ul>
 
         <!-- 心得 -->
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
           <p class="coding-reflection-text">
-            <!-- PLACEHOLDER: 今日感受 -->
+            一开始想同时数 1 和 0 的个数，后来发现 0的个数 = 总位数 − 1的个数，条件 ones ≥ zeros 等价于 2 × ones ≥ bits，完全不需要单独统计 0，化简之后代码也更干净。以后看到"比较两个量"的问题，可以先想想能不能用一个量表示另一个。
           </p>
         </div>
 
