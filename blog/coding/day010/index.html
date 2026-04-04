@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 010 · 区间内的真素数 | SageLume</title>
+  <meta name="description" content="acm.scu.edu.cn 75 · 区间内的真素数——函数/素数，Day 010 菜鸟的coding。">
+
+  <!-- Favicon -->
+  <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://sage-lume.vercel.app/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://sage-lume.vercel.app/favicon/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/coding.css">
+
+  <!-- Scripts -->
+  <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
+  <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+</head>
+
+<body>
+  <!-- 花瓣背景 -->
+  <canvas id="coding-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://sage-lume.vercel.app/">
+        <img src="https://sage-lume.vercel.app/favicon/logo-header.png" alt="算海青藜" height="96">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://sage-lume.vercel.app/">Home</a>
+      <a href="https://sage-lume.vercel.app/about/">About</a>
+      <a href="https://sage-lume.vercel.app/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <div class="coding-header-accent coding-header-accent--left">
+          <span class="coding-tag-badge"># 菜鸟的coding · Day 010</span>
+        </div>
+        <h1 class="post-title">区间内的真素数</h1>
+        <div class="post-meta">
+          <span>2026-04-04</span>
+          <span> • </span>
+          <span>C++</span>
+          <span> • </span>
+          <span>acm.scu.edu.cn 75 &nbsp;·&nbsp; 函数/素数</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+
+        <!-- 题目描述 -->
+        <h2>题目</h2>
+        <p>
+          小f绕过了对离岛的封锁，来到了稻妻的白狐之野，遇到了带着狐狸面具的花散里。花散里出于某些原因不能够进行一个古老的仪式——神樱大祓，所以她请求小f帮忙，热心的小f答应了下来。在前往神樱大祓的一个地点时，小f遇到了一个镇守者。镇守者要考验小f的智慧，只有拥有大智慧的人才能进入其中，完成仪式。他的问题是这样的：找出区间 [l, r] 内的真素数。
+        </p>
+        <p>
+          真素数的定义为：如果一个数 p 为素数，而且其反序也为素数，则 p 为真素数。
+        </p>
+        <p>
+          <strong>输入：</strong>两个数 l, r 表示闭区间的范围。<br>
+          <strong>输出：</strong>输出 [l, r] 内的真素数，每个真素数用空格隔开。如果区间内不存在真素数，请输出 <code>No!</code>。<br>
+          <strong>数据范围：</strong>1 ≤ l, r ≤ 10000。
+        </p>
+        <p><strong>样例：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">10 35</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">11 13 17 31</pre>
+          </div>
+        </div>
+
+        <!-- 思路 -->
+        <h2>思路</h2>
+        <p>
+          写两个函数：<code>isPrime</code> 枚举到 √x 判断素数；<code>reverse</code> 用 <span class="cc-highlight-pink">%10 取末位、*10 腾位、/10 移位</span>三步循环求反序数。枚举区间内每个数，两者均为素数即为真素数输出；用 <code>notFound</code> 标记无解，最后决定是否输出 No!。
+        </p>
+
+        <!-- 代码块 -->
+        <div class="cyber-code-block">
+          <div class="cyber-code-header">
+            <div class="cyber-code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="cyber-code-lang">C++ · p75.cpp</span>
+          </div>
+          <div class="cyber-code-body">
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-type">bool</span> <span class="cc-function">isPrime</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">x</span><span class="cc-plain">){</span>
+    <span class="cc-type">bool</span> <span class="cc-variable">prime_flag</span><span class="cc-operator">=</span><span class="cc-keyword">true</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">3</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">*</span><span class="cc-variable">c</span><span class="cc-operator">&lt;=</span><span class="cc-variable">x</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">+=</span><span class="cc-number">2</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-operator">%</span><span class="cc-variable">c</span><span class="cc-operator">==</span><span class="cc-number">0</span><span class="cc-plain">){</span>
+            <span class="cc-variable">prime_flag</span><span class="cc-operator">=</span><span class="cc-keyword">false</span><span class="cc-plain">;</span>
+        <span class="cc-plain">}</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-operator">&lt;</span><span class="cc-number">2</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">return</span> <span class="cc-keyword">false</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span><span class="cc-keyword">else if</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-operator">==</span><span class="cc-number">2</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">return</span> <span class="cc-keyword">true</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span><span class="cc-keyword">else if</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-operator">%</span><span class="cc-number">2</span><span class="cc-operator">==</span><span class="cc-number">0</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">return</span> <span class="cc-keyword">false</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span><span class="cc-keyword">else if</span><span class="cc-plain">(</span><span class="cc-operator">!</span><span class="cc-variable">prime_flag</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">return</span> <span class="cc-keyword">false</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span><span class="cc-keyword">else</span><span class="cc-plain">{</span>
+        <span class="cc-keyword">return</span> <span class="cc-keyword">true</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+<span class="cc-plain">}</span>
+
+<span class="cc-type">int</span> <span class="cc-function">reverse</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">x</span><span class="cc-plain">){</span>
+    <span class="cc-type">int</span> <span class="cc-variable">rev</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">while</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-operator">!=</span><span class="cc-number">0</span><span class="cc-plain">){</span>
+        <span class="cc-variable">rev</span><span class="cc-operator">=</span><span class="cc-variable">rev</span><span class="cc-operator">*</span><span class="cc-number">10</span><span class="cc-operator">+</span><span class="cc-variable">x</span><span class="cc-operator">%</span><span class="cc-number">10</span><span class="cc-plain">;</span>
+        <span class="cc-variable">x</span><span class="cc-operator">/=</span><span class="cc-number">10</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">return</span> <span class="cc-variable">rev</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
+    <span class="cc-type">int</span> <span class="cc-variable">l</span><span class="cc-plain">,</span><span class="cc-variable">r</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">l</span><span class="cc-plain">&gt;&gt;</span><span class="cc-variable">r</span><span class="cc-plain">;</span>
+    <span class="cc-type">bool</span> <span class="cc-variable">notFound</span><span class="cc-operator">=</span><span class="cc-keyword">true</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-variable">l</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;=</span><span class="cc-variable">r</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-type">int</span> <span class="cc-variable">re</span><span class="cc-operator">=</span><span class="cc-function">reverse</span><span class="cc-plain">(</span><span class="cc-variable">c</span><span class="cc-plain">);</span>
+        <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-function">isPrime</span><span class="cc-plain">(</span><span class="cc-variable">c</span><span class="cc-plain">)</span><span class="cc-operator">&amp;&amp;</span><span class="cc-function">isPrime</span><span class="cc-plain">(</span><span class="cc-variable">re</span><span class="cc-plain">)){</span>
+            <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">c</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">" "</span><span class="cc-plain">;</span>
+            <span class="cc-variable">notFound</span><span class="cc-operator">=</span><span class="cc-keyword">false</span><span class="cc-plain">;</span>
+        <span class="cc-plain">}</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">notFound</span><span class="cc-plain">)</span> <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">"No!"</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
+          </div>
+        </div>
+
+        <!-- 复杂度 -->
+        <h2>复杂度分析</h2>
+        <ul>
+          <li><strong>时间复杂度：</strong>O((r−l+1) · √r)，每个数调用一次 isPrime，枚举到 √x。</li>
+          <li><strong>空间复杂度：</strong>O(1)。</li>
+        </ul>
+
+        <!-- 心得 -->
+        <div class="coding-reflection">
+          <span class="coding-reflection-label">今日感受</span>
+          <p class="coding-reflection-text">
+            <!-- PLACEHOLDER: 今日感受 -->
+          </p>
+        </div>
+
+        <!-- 返回 -->
+        <p class="coding-back-wrap">
+          <a href="https://sage-lume.vercel.app/blog/coding/" class="coding-back-link">← 返回菜鸟的coding</a>
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://sage-lume.vercel.app/favicon/logo-footer.png" alt="算海青藜" height="48">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <script src="https://sage-lume.vercel.app/js/coding-particles.js"></script>
+</body>
+</html>
