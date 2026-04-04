@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 012 · 寻找最大质因子 | SageLume</title>
+  <meta name="description" content="acm.scu.edu.cn 77 · 寻找最大质因子——函数/数论，Day 012 菜鸟的coding。">
+
+  <!-- Favicon -->
+  <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://sage-lume.vercel.app/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://sage-lume.vercel.app/favicon/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/coding.css">
+
+  <!-- Scripts -->
+  <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
+  <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+</head>
+
+<body>
+  <!-- 花瓣背景 -->
+  <canvas id="coding-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://sage-lume.vercel.app/">
+        <img src="https://sage-lume.vercel.app/favicon/logo-header.png" alt="算海青藜" height="96">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://sage-lume.vercel.app/">Home</a>
+      <a href="https://sage-lume.vercel.app/about/">About</a>
+      <a href="https://sage-lume.vercel.app/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <div class="coding-header-accent coding-header-accent--left">
+          <span class="coding-tag-badge"># 菜鸟的coding · Day 012</span>
+        </div>
+        <h1 class="post-title">寻找最大质因子</h1>
+        <div class="post-meta">
+          <span>2026-04-04</span>
+          <span> • </span>
+          <span>C++</span>
+          <span> • </span>
+          <span>acm.scu.edu.cn 77 &nbsp;·&nbsp; 函数/数论</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+
+        <!-- 题目描述 -->
+        <h2>题目</h2>
+        <p>
+          小f来到了智慧之神的国度——须弥。在这里，他遇到了可爱的兰那罗。兰那罗们要举办无忧节，需要获取觉堂之树的果实。觉堂之树的果实需要进入觉堂之树的梦境中，帮助它去除污染才能获得。此时的小f已经进入了觉堂之树的梦境，正在它的核心之中去除污染，但是他却遇到了难题。
+        </p>
+        <p>
+          觉堂之树的污染是一段区间 [l, r]，每个位置的污染需要对其打击特定次数才能去除，而这个次数恰好是这个位置序号的最大质因子。对于位置 i，小f需要击打 i 的最大质因子次数才能去除 i 位置的污染。小f由于连续的战斗已经筋疲力尽，于是他找到了你，希望你能帮他计算出每个位置的打击次数。
+        </p>
+        <p>
+          <strong>输入：</strong>两个数 l, r，代表污染区间。<br>
+          <strong>输出：</strong>每个位置的打击次数，用空格隔开。<br>
+          <strong>数据范围：</strong>2 ≤ l, r ≤ 2000。
+        </p>
+        <p><strong>样例：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">5 10</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">5 3 7 2 3 5</pre>
+          </div>
+        </div>
+
+        <!-- 思路 -->
+        <h2>思路</h2>
+        <p>
+          <!-- PLACEHOLDER: 思路 -->
+        </p>
+
+        <!-- 代码块 -->
+        <div class="cyber-code-block">
+          <div class="cyber-code-header">
+            <div class="cyber-code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="cyber-code-lang">C++ · p77.cpp</span>
+          </div>
+          <div class="cyber-code-body">
+            <pre class="cyber-pre"><code class="cyber-code"><!-- PLACEHOLDER: 代码 --></code></pre>
+          </div>
+        </div>
+
+        <!-- 复杂度 -->
+        <h2>复杂度分析</h2>
+        <ul>
+          <li><strong>时间复杂度：</strong><!-- PLACEHOLDER --></li>
+          <li><strong>空间复杂度：</strong><!-- PLACEHOLDER --></li>
+        </ul>
+
+        <!-- 心得 -->
+        <div class="coding-reflection">
+          <span class="coding-reflection-label">今日感受</span>
+          <p class="coding-reflection-text">
+            <!-- PLACEHOLDER: 今日感受 -->
+          </p>
+        </div>
+
+        <!-- 返回 -->
+        <p class="coding-back-wrap">
+          <a href="https://sage-lume.vercel.app/blog/coding/" class="coding-back-link">← 返回菜鸟的coding</a>
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://sage-lume.vercel.app/favicon/logo-footer.png" alt="算海青藜" height="48">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <script src="https://sage-lume.vercel.app/js/coding-particles.js"></script>
+</body>
+</html>
