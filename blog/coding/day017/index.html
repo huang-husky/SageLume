@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 017 · 废话 | SageLume</title>
+  <meta name="description" content="acm.scu.edu.cn 34 · 废话——数组/字符串，Day 017 菜鸟的coding。">
+
+  <!-- Favicon -->
+  <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://sage-lume.vercel.app/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://sage-lume.vercel.app/favicon/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/coding.css">
+
+  <!-- Scripts -->
+  <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
+  <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+</head>
+
+<body>
+  <!-- 花瓣背景 -->
+  <canvas id="coding-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://sage-lume.vercel.app/">
+        <img src="https://sage-lume.vercel.app/favicon/logo-header.png" alt="算海青藜" height="96">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://sage-lume.vercel.app/">Home</a>
+      <a href="https://sage-lume.vercel.app/about/">About</a>
+      <a href="https://sage-lume.vercel.app/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <div class="coding-header-accent coding-header-accent--left">
+          <span class="coding-tag-badge"># 菜鸟的coding · Day 017</span>
+        </div>
+        <h1 class="post-title">废话</h1>
+        <div class="post-meta">
+          <span>2026-04-06</span>
+          <span> • </span>
+          <span>C++</span>
+          <span> • </span>
+          <span>acm.scu.edu.cn 34 &nbsp;·&nbsp; 数组/字符串</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+
+        <!-- 题目描述 -->
+        <h2>题目</h2>
+        <p>
+          小R每天对小J滔滔不绝，小J想证明小R说的内容都是重复的废话。给定一段只含英文字符和数字的字符串（可能含空格），统计数字 0-9 和字母 A-Z（大小写不区分）各出现多少次，并画出柱状统计图。
+        </p>
+        <p>
+          <strong>输入：</strong>共1行，一个字符串，字符数量不超过1000个。<br>
+          <strong>输出：</strong>一个柱状图，每格用空格隔开，<code>*</code> 表示该字符有计数，<code>-</code> 表示没有，最后一行为标签 <code>0 1 2 ... 9 A B ... Z</code>。
+        </p>
+        <p><strong>样例：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">I1think2programming3is4something5that6allows7me8to9achieve0a!great@sense#of$accomplishment.</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">- - - - - - - - - - - - - - * - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - * - - - * - - - * - - - - - - - - - - * - - - - - -
+- - - - - - - - - - * - - - * - - - * - - - * - * - - - * * - - - - - -
+- - - - - - - - - - * - - - * - - * * - - - * * * - - - * * - - - - - -
+- - - - - - - - - - * - - - * - * * * - - - * * * - - - * * - - - - - -
+- - - - - - - - - - * - * - * - * * * - - * * * * - - * * * - - - - - -
+- - - - - - - - - - * - * - * - * * * - - * * * * * - * * * - - - - - -
+* * * * * * * * * * * - * - * * * * * - * * * * * * - * * * - * * - - -
+0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</pre>
+          </div>
+        </div>
+
+        <!-- 思路 -->
+        <h2>思路</h2>
+        <p>
+          用 <span class="cc-highlight-pink">getline</span> 读整行字符串（因为可能含空格）。遍历每个字符，用 <code>isdigit</code> 和 <code>isalpha</code> 判断类型——注意判断的是字符 <code>s[c]</code>，而不是循环索引 <code>c</code>——将结果累计到 <code>cnt[36]</code>：数字映射到下标 <code>s[c]-'0'</code>，字母先 <code>toupper</code> 再映射到 <code>toupper(s[c])-'A'+10</code>。
+        </p>
+        <p>
+          统计完后找最大值 <code>maxVal</code>，再<span class="cc-highlight-pink">倒序</span>从第 <code>maxVal</code> 行到第 1 行输出：内层循环遍历 36 列，<code>cnt[列] &gt;= 当前行</code> 输出 <code>*</code>，否则输出 <code>-</code>，每格后跟一个空格。最后一行直接输出固定标签。
+        </p>
+
+        <!-- 代码块 -->
+        <div class="cyber-code-block">
+          <div class="cyber-code-header">
+            <div class="cyber-code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="cyber-code-lang">C++ · p34.cpp</span>
+          </div>
+          <div class="cyber-code-body">
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
+    <span class="cc-type">string</span> <span class="cc-variable">s</span><span class="cc-plain">;</span>
+    <span class="cc-function">getline</span><span class="cc-plain">(</span><span class="cc-variable">cin</span><span class="cc-plain">,</span><span class="cc-variable">s</span><span class="cc-plain">);</span>
+
+    <span class="cc-type">int</span> <span class="cc-variable">cnt</span><span class="cc-plain">[</span><span class="cc-number">36</span><span class="cc-plain">]</span><span class="cc-operator">=</span><span class="cc-plain">{</span><span class="cc-number">0</span><span class="cc-plain">};</span>
+
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;</span><span class="cc-variable">s</span><span class="cc-plain">.</span><span class="cc-function">size</span><span class="cc-plain">();</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-function">isdigit</span><span class="cc-plain">(</span><span class="cc-variable">s</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-plain">])){</span>
+            <span class="cc-variable">cnt</span><span class="cc-plain">[</span><span class="cc-variable">s</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-plain">]</span><span class="cc-operator">-</span><span class="cc-string">'0'</span><span class="cc-plain">]</span><span class="cc-operator">++</span><span class="cc-plain">;</span>
+        <span class="cc-plain">}</span><span class="cc-keyword">else if</span><span class="cc-plain">(</span><span class="cc-function">isalpha</span><span class="cc-plain">(</span><span class="cc-variable">s</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-plain">])){</span>
+            <span class="cc-variable">cnt</span><span class="cc-plain">[</span><span class="cc-function">toupper</span><span class="cc-plain">(</span><span class="cc-variable">s</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-plain">])</span><span class="cc-operator">-</span><span class="cc-string">'A'</span><span class="cc-operator">+</span><span class="cc-number">10</span><span class="cc-plain">]</span><span class="cc-operator">++</span><span class="cc-plain">;</span>
+        <span class="cc-plain">}</span>
+    <span class="cc-plain">}</span>
+
+    <span class="cc-type">int</span> <span class="cc-variable">maxVal</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;</span><span class="cc-number">36</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">cnt</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-plain">]</span><span class="cc-operator">&gt;</span><span class="cc-variable">maxVal</span><span class="cc-plain">)</span><span class="cc-variable">maxVal</span><span class="cc-operator">=</span><span class="cc-variable">cnt</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-plain">];</span>
+    <span class="cc-plain">}</span>
+
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c1</span><span class="cc-operator">=</span><span class="cc-variable">maxVal</span><span class="cc-plain">;</span><span class="cc-variable">c1</span><span class="cc-operator">&gt;</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c1</span><span class="cc-operator">--</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c2</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c2</span><span class="cc-operator">&lt;</span><span class="cc-number">36</span><span class="cc-plain">;</span><span class="cc-variable">c2</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+            <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">cnt</span><span class="cc-plain">[</span><span class="cc-variable">c2</span><span class="cc-plain">]</span><span class="cc-operator">&gt;=</span><span class="cc-variable">c1</span><span class="cc-plain">)</span><span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">"* "</span><span class="cc-plain">;</span>
+            <span class="cc-keyword">else</span> <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">"- "</span><span class="cc-plain">;</span>
+        <span class="cc-plain">}</span>
+        <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">"0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
+          </div>
+        </div>
+
+        <!-- 复杂度 -->
+        <h2>复杂度分析</h2>
+        <ul>
+          <li><strong>时间复杂度：</strong>O(n + maxVal × 36)，n 为字符串长度，输出部分最多 1000 × 36 次。</li>
+          <li><strong>空间复杂度：</strong>O(1)，cnt 数组固定大小 36。</li>
+        </ul>
+
+        <!-- 心得 -->
+        <div class="coding-reflection">
+          <span class="coding-reflection-label">今日感受</span>
+          <p class="coding-reflection-text">
+            看起来复杂的题，拆开来一步步做也不难。有一个容易踩的坑：用 <code>isdigit</code> 和 <code>isalpha</code> 判断时，传入的应该是字符 <code>s[c]</code>，而不是循环索引 <code>c</code>——索引只是个数字，字符才是真正要判断的内容。输出部分记得倒序遍历行，从最高处往下画才能得到正确的柱状图。
+          </p>
+        </div>
+
+        <!-- 返回 -->
+        <p class="coding-back-wrap">
+          <a href="https://sage-lume.vercel.app/blog/coding/" class="coding-back-link">← 返回菜鸟的coding</a>
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://sage-lume.vercel.app/favicon/logo-footer.png" alt="算海青藜" height="48">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <script src="https://sage-lume.vercel.app/js/coding-particles.js"></script>
+</body>
+</html>
