@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 018 · 海王 | SageLume</title>
+  <meta name="description" content="acm.scu.edu.cn 35 · 海王——字符串，Day 018 菜鸟的coding。">
+
+  <!-- Favicon -->
+  <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://sage-lume.vercel.app/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://sage-lume.vercel.app/favicon/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/coding.css">
+
+  <!-- Scripts -->
+  <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
+  <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+</head>
+
+<body>
+  <!-- 花瓣背景 -->
+  <canvas id="coding-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://sage-lume.vercel.app/">
+        <img src="https://sage-lume.vercel.app/favicon/logo-header.png" alt="算海青藜" height="96">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://sage-lume.vercel.app/">Home</a>
+      <a href="https://sage-lume.vercel.app/about/">About</a>
+      <a href="https://sage-lume.vercel.app/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <div class="coding-header-accent coding-header-accent--left">
+          <span class="coding-tag-badge"># 菜鸟的coding · Day 018</span>
+        </div>
+        <h1 class="post-title">海王</h1>
+        <div class="post-meta">
+          <span>2026-04-06</span>
+          <span> • </span>
+          <span>C++</span>
+          <span> • </span>
+          <span>acm.scu.edu.cn 35 &nbsp;·&nbsp; 字符串</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+
+        <!-- 题目描述 -->
+        <h2>题目</h2>
+        <p>
+          小J是个海王，想把同一句话发给多个人，只需要把称呼替换掉。给定原始字符串 c、需要被替换的子串 x、替换后的字符串 y，把 c 中所有出现的 x 替换为 y（区分大小写，不重叠地从左到右替换）。
+        </p>
+        <p>
+          <strong>输入：</strong>共3行，分别为字符串 c、子串 x、替换串 y。<br>
+          <strong>输出：</strong>替换后的字符串。<br>
+          <strong>数据范围：</strong>c 长度不超过10000，x 长度不超过10，y 长度不超过1000。
+        </p>
+        <p><strong>样例：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">AnandoyouthinkthattalkingtoAnanaboutthingsrelatedtoananisenough
+Anan
+Wangwang</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">WangwangdoyouthinkthattalkingtoWangwangaboutthingsrelatedtoananisenough</pre>
+          </div>
+        </div>
+
+        <!-- 思路 -->
+        <h2>思路</h2>
+        <p>
+          用 <span class="cc-highlight-pink">s.find(x, pos)</span> 从位置 <code>pos</code> 开始在 <code>c</code> 中查找子串 <code>x</code>，返回找到的下标；若找不到则返回 <code>string::npos</code>（一个表示"未找到"的特殊值）。找到后用 <span class="cc-highlight-pink">s.replace(pos, x.size(), y)</span> 把从 <code>pos</code> 开始、长度为 <code>x.size()</code> 的部分替换成 <code>y</code>。
+        </p>
+        <p>
+          替换完后，下一次搜索从 <code>pos + y.size()</code> 开始，跳过刚换进来的 <code>y</code>，避免重复处理。如此循环直到 <code>find</code> 返回 <code>string::npos</code> 为止。整体逻辑：<strong>找到 → 替换 → 跳过 → 再找</strong>，直到找不到。
+        </p>
+
+        <!-- 代码块 -->
+        <div class="cyber-code-block">
+          <div class="cyber-code-header">
+            <div class="cyber-code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="cyber-code-lang">C++ · p35.cpp</span>
+          </div>
+          <div class="cyber-code-body">
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
+    <span class="cc-type">string</span> <span class="cc-variable">c</span><span class="cc-plain">,</span><span class="cc-variable">x</span><span class="cc-plain">,</span><span class="cc-variable">y</span><span class="cc-plain">;</span>
+    <span class="cc-function">getline</span><span class="cc-plain">(</span><span class="cc-variable">cin</span><span class="cc-plain">,</span><span class="cc-variable">c</span><span class="cc-plain">);</span>
+    <span class="cc-function">getline</span><span class="cc-plain">(</span><span class="cc-variable">cin</span><span class="cc-plain">,</span><span class="cc-variable">x</span><span class="cc-plain">);</span>
+    <span class="cc-function">getline</span><span class="cc-plain">(</span><span class="cc-variable">cin</span><span class="cc-plain">,</span><span class="cc-variable">y</span><span class="cc-plain">);</span>
+
+    <span class="cc-type">int</span> <span class="cc-variable">pos</span><span class="cc-operator">=</span><span class="cc-variable">c</span><span class="cc-plain">.</span><span class="cc-function">find</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-plain">,</span><span class="cc-number">0</span><span class="cc-plain">);</span>
+    <span class="cc-keyword">while</span><span class="cc-plain">(</span><span class="cc-variable">pos</span><span class="cc-operator">!=</span><span class="cc-variable">string</span><span class="cc-plain">::</span><span class="cc-variable">npos</span><span class="cc-plain">){</span>
+        <span class="cc-variable">c</span><span class="cc-plain">.</span><span class="cc-function">replace</span><span class="cc-plain">(</span><span class="cc-variable">pos</span><span class="cc-plain">,</span><span class="cc-variable">x</span><span class="cc-plain">.</span><span class="cc-function">size</span><span class="cc-plain">(),</span><span class="cc-variable">y</span><span class="cc-plain">);</span>
+        <span class="cc-variable">pos</span><span class="cc-operator">=</span><span class="cc-variable">c</span><span class="cc-plain">.</span><span class="cc-function">find</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-plain">,</span><span class="cc-variable">pos</span><span class="cc-operator">+</span><span class="cc-variable">y</span><span class="cc-plain">.</span><span class="cc-function">size</span><span class="cc-plain">());</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">c</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
+          </div>
+        </div>
+
+        <!-- 复杂度 -->
+        <h2>复杂度分析</h2>
+        <ul>
+          <li><strong>时间复杂度：</strong>O(n × m)，n 为 c 的长度，m 为 x 的长度，每次 find 最坏扫描整串。</li>
+          <li><strong>空间复杂度：</strong>O(1)，直接在原串上修改。</li>
+        </ul>
+
+        <!-- 心得 -->
+        <div class="coding-reflection">
+          <span class="coding-reflection-label">今日感受</span>
+          <p class="coding-reflection-text">
+            学会了几个常用的字符串函数：<code>find</code> 用来定位子串，<code>replace</code> 用来替换指定区间。最容易绕的是替换后的 <code>pos</code> 更新——替换完不能从原位置继续找，要跳过整个 <code>y</code> 的长度，从 <code>pos + y.size()</code> 重新开始，同时把 <code>find</code> 的结果直接赋回 <code>pos</code>，让 while 条件自然判断是否结束。
+          </p>
+        </div>
+
+        <!-- 返回 -->
+        <p class="coding-back-wrap">
+          <a href="https://sage-lume.vercel.app/blog/coding/" class="coding-back-link">← 返回菜鸟的coding</a>
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://sage-lume.vercel.app/favicon/logo-footer.png" alt="算海青藜" height="48">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <script src="https://sage-lume.vercel.app/js/coding-particles.js"></script>
+</body>
+</html>
