@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 019 · 玩游戏 | SageLume</title>
+  <meta name="description" content="acm.scu.edu.cn 36 · 玩游戏——vector/模拟，Day 019 菜鸟的coding。">
+
+  <!-- Favicon -->
+  <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://sage-lume.vercel.app/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://sage-lume.vercel.app/favicon/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/coding.css">
+
+  <!-- Scripts -->
+  <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
+  <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+</head>
+
+<body>
+  <!-- 花瓣背景 -->
+  <canvas id="coding-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://sage-lume.vercel.app/">
+        <img src="https://sage-lume.vercel.app/favicon/logo-header.png" alt="算海青藜" height="96">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://sage-lume.vercel.app/">Home</a>
+      <a href="https://sage-lume.vercel.app/about/">About</a>
+      <a href="https://sage-lume.vercel.app/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <div class="coding-header-accent coding-header-accent--left">
+          <span class="coding-tag-badge"># 菜鸟的coding · Day 019</span>
+        </div>
+        <h1 class="post-title">玩游戏</h1>
+        <div class="post-meta">
+          <span>2026-04-06</span>
+          <span> • </span>
+          <span>C++</span>
+          <span> • </span>
+          <span>acm.scu.edu.cn 36 &nbsp;·&nbsp; vector/模拟</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+
+        <!-- 题目描述 -->
+        <h2>题目</h2>
+        <p>
+          n 个同学围成一圈，编号 1 到 n，从1号开始报数。第 i 轮报数到 a<sub>i</sub> 的人被淘汰，下一轮从被淘汰者的下一个人开始，输出淘汰顺序。
+        </p>
+        <p>
+          <strong>输入：</strong>第1行为 n，第2行为 n 个整数 a<sub>1</sub>, a<sub>2</sub>, …, a<sub>n</sub>。<br>
+          <strong>输出：</strong>n 个整数，表示每轮被淘汰的编号。<br>
+          <strong>数据范围：</strong>n ≤ 1000，a<sub>i</sub> ≤ 10<sup>8</sup>。
+        </p>
+        <p><strong>样例：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">10
+3 3 3 3 3 3 3 3 3 3</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">3 6 9 2 7 1 8 5 10 4</pre>
+          </div>
+        </div>
+
+        <!-- 思路 -->
+        <h2>思路</h2>
+        <p>
+          （借助AI）用 <span class="cc-highlight-pink">vector</span> 模拟这个不断缩小的圈：初始存入编号 1 到 n，用变量 <code>cur</code> 记录每轮报数的起始位置（0-indexed）。
+        </p>
+        <p>
+          每轮淘汰位置为 <code>pos = (cur + a[c] - 1) % v.size()</code>——从 <code>cur</code> 数 <code>a[c]</code> 个人，减1是因为 <code>cur</code> 本身算第1个，取模处理绕圈。输出 <code>v[pos]</code> 后用 <span class="cc-highlight-pink">v.erase(v.begin() + pos)</span> 删除该元素，圈自动缩小。更新 <code>cur = pos % v.size()</code>，即下一轮从被淘汰者的后一位开始，最后一轮特判 <code>v.size() &gt; 0</code> 防止除零。
+        </p>
+
+        <!-- 代码块 -->
+        <div class="cyber-code-block">
+          <div class="cyber-code-header">
+            <div class="cyber-code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="cyber-code-lang">C++ · p36.cpp</span>
+          </div>
+          <div class="cyber-code-body">
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
+    <span class="cc-type">int</span> <span class="cc-variable">n</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">n</span><span class="cc-plain">;</span>
+
+    <span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">int</span><span class="cc-plain">&gt;</span> <span class="cc-variable">a</span><span class="cc-plain">(</span><span class="cc-variable">n</span><span class="cc-plain">);</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;</span><span class="cc-variable">n</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">)</span> <span class="cc-variable">cin</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">a</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-plain">];</span>
+
+    <span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">int</span><span class="cc-plain">&gt;</span> <span class="cc-variable">v</span><span class="cc-plain">(</span><span class="cc-variable">n</span><span class="cc-plain">);</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;</span><span class="cc-variable">n</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">)</span> <span class="cc-variable">v</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-plain">]</span><span class="cc-operator">=</span><span class="cc-variable">c</span><span class="cc-operator">+</span><span class="cc-number">1</span><span class="cc-plain">;</span>
+
+    <span class="cc-type">int</span> <span class="cc-variable">cur</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span>
+
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;</span><span class="cc-variable">n</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-type">int</span> <span class="cc-variable">pos</span><span class="cc-operator">=</span><span class="cc-plain">(</span><span class="cc-variable">cur</span><span class="cc-operator">+</span><span class="cc-variable">a</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-plain">]</span><span class="cc-operator">-</span><span class="cc-number">1</span><span class="cc-plain">)</span><span class="cc-operator">%</span><span class="cc-variable">v</span><span class="cc-plain">.</span><span class="cc-function">size</span><span class="cc-plain">();</span>
+        <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">v</span><span class="cc-plain">[</span><span class="cc-variable">pos</span><span class="cc-plain">]</span><span class="cc-operator">&lt;&lt;</span><span class="cc-string">" "</span><span class="cc-plain">;</span>
+        <span class="cc-variable">v</span><span class="cc-plain">.</span><span class="cc-function">erase</span><span class="cc-plain">(</span><span class="cc-variable">v</span><span class="cc-plain">.</span><span class="cc-function">begin</span><span class="cc-plain">()</span><span class="cc-operator">+</span><span class="cc-variable">pos</span><span class="cc-plain">);</span>
+        <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">v</span><span class="cc-plain">.</span><span class="cc-function">size</span><span class="cc-plain">()</span><span class="cc-operator">&gt;</span><span class="cc-number">0</span><span class="cc-plain">)</span> <span class="cc-variable">cur</span><span class="cc-operator">=</span><span class="cc-variable">pos</span><span class="cc-operator">%</span><span class="cc-variable">v</span><span class="cc-plain">.</span><span class="cc-function">size</span><span class="cc-plain">();</span>
+    <span class="cc-plain">}</span>
+
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
+          </div>
+        </div>
+
+        <!-- 复杂度 -->
+        <h2>复杂度分析</h2>
+        <ul>
+          <li><strong>时间复杂度：</strong>O(n²)，每轮 erase 最坏移动 n 个元素，共 n 轮。</li>
+          <li><strong>空间复杂度：</strong>O(n)，vector 存储 n 个编号。</li>
+        </ul>
+
+        <!-- 心得 -->
+        <div class="coding-reflection">
+          <span class="coding-reflection-label">今日感受</span>
+          <p class="coding-reflection-text">
+            重新捡起了 vector 的基本知识：声明、初始化、下标访问、erase 删除元素。这道题有点绕，关键是理清楚 <code>pos</code>、<code>cur</code>、<code>v.size()</code> 三者在每轮之间的更新关系——淘汰前用旧的 <code>v.size()</code> 算位置，淘汰后用新的 <code>v.size()</code> 更新 <code>cur</code>，顺序不能乱。
+          </p>
+        </div>
+
+        <!-- 返回 -->
+        <p class="coding-back-wrap">
+          <a href="https://sage-lume.vercel.app/blog/coding/" class="coding-back-link">← 返回菜鸟的coding</a>
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://sage-lume.vercel.app/favicon/logo-footer.png" alt="算海青藜" height="48">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <script src="https://sage-lume.vercel.app/js/coding-particles.js"></script>
+</body>
+</html>
