@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 016 · 画棋盘 | SageLume</title>
+  <meta name="description" content="acm.scu.edu.cn 81 · 画棋盘——数组，Day 016 菜鸟的coding。">
+
+  <!-- Favicon -->
+  <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://sage-lume.vercel.app/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://sage-lume.vercel.app/favicon/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/coding.css">
+
+  <!-- Scripts -->
+  <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
+  <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+</head>
+
+<body>
+  <!-- 花瓣背景 -->
+  <canvas id="coding-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://sage-lume.vercel.app/">
+        <img src="https://sage-lume.vercel.app/favicon/logo-header.png" alt="算海青藜" height="96">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://sage-lume.vercel.app/">Home</a>
+      <a href="https://sage-lume.vercel.app/about/">About</a>
+      <a href="https://sage-lume.vercel.app/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <div class="coding-header-accent coding-header-accent--left">
+          <span class="coding-tag-badge"># 菜鸟的coding · Day 016</span>
+        </div>
+        <h1 class="post-title">画棋盘</h1>
+        <div class="post-meta">
+          <span>2026-04-06</span>
+          <span> • </span>
+          <span>C++</span>
+          <span> • </span>
+          <span>acm.scu.edu.cn 81 &nbsp;·&nbsp; 数组</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+
+        <!-- 题目描述 -->
+        <h2>题目</h2>
+        <p>
+          小J和小R喜欢在课间玩井字棋。小R拿出一张 n×m 的纸，让小J指定哪些行和列需要画线，再由小R来画。小J想提前看到结果，于是请你暗中帮忙。
+        </p>
+        <p>
+          给定一个 n×m 的棋盘，在指定的行画横线，在指定的列画竖线。没有画线的格子用 <code>0</code> 表示，横线用 <code>-</code>，竖线用 <code>|</code>，交叉处用 <code>+</code>。
+        </p>
+        <p>
+          <strong>输入：</strong>第1行，整数 n、m、q、k，分别为行数、列数、画横线的行数、画竖线的列数。第2行，q 个整数表示画横线的行号。第3行，k 个整数表示画竖线的列号。<br>
+          <strong>输出：</strong>输出 n 行 m 列的方阵，表示画线后的棋盘。<br>
+          <strong>数据范围：</strong>n, m ≤ 1000，q, k ≤ 1,000,000。需要画线的行列在合法范围内，不保证不重复。
+        </p>
+        <p><strong>样例：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">5 5 2 2
+1 3
+4 5</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">---++
+000||
+---++
+000||
+000||</pre>
+          </div>
+        </div>
+
+        <!-- 思路 -->
+        <h2>思路</h2>
+        <p>
+          注意提示：n, m ≤ 1000，但 q, k 最大可达 1,000,000——输入的行列编号可能大量重复。因此用两个 <span class="cc-highlight-pink">bool 数组</span> <code>rowLine[1001]</code> 和 <code>colLine[1001]</code> 来记录哪些行/列需要画线。读入时直接 <code>rowLine[行号] = true</code>，不管重复多少次都只是反复标记同一个位置，不会浪费空间。
+        </p>
+        <p>
+          主逻辑是双重循环遍历每个格子 (i, j)，用 if-else 判断四种情况：<code>rowLine[i] &amp;&amp; colLine[j]</code> 输出 <code>+</code>，只有 <code>rowLine[i]</code> 输出 <code>-</code>，只有 <code>colLine[j]</code> 输出 <code>|</code>，否则输出 <code>0</code>。
+        </p>
+
+        <!-- 代码块 -->
+        <div class="cyber-code-block">
+          <div class="cyber-code-header">
+            <div class="cyber-code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="cyber-code-lang">C++ · p81.cpp</span>
+          </div>
+          <div class="cyber-code-body">
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
+    <span class="cc-type">int</span> <span class="cc-variable">n</span><span class="cc-plain">,</span><span class="cc-variable">m</span><span class="cc-plain">,</span><span class="cc-variable">q</span><span class="cc-plain">,</span><span class="cc-variable">k</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">n</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">m</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">q</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">k</span><span class="cc-plain">;</span>
+
+    <span class="cc-type">bool</span> <span class="cc-variable">rowLine</span><span class="cc-plain">[</span><span class="cc-number">1001</span><span class="cc-plain">]</span><span class="cc-operator">=</span><span class="cc-plain">{</span><span class="cc-number">false</span><span class="cc-plain">};</span>
+    <span class="cc-type">bool</span> <span class="cc-variable">colLine</span><span class="cc-plain">[</span><span class="cc-number">1001</span><span class="cc-plain">]</span><span class="cc-operator">=</span><span class="cc-plain">{</span><span class="cc-number">false</span><span class="cc-plain">};</span>
+
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;</span><span class="cc-variable">q</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-type">int</span> <span class="cc-variable">row</span><span class="cc-plain">;</span>
+        <span class="cc-variable">cin</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">row</span><span class="cc-plain">;</span>
+        <span class="cc-variable">rowLine</span><span class="cc-plain">[</span><span class="cc-variable">row</span><span class="cc-plain">]</span><span class="cc-operator">=</span><span class="cc-number">true</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;</span><span class="cc-variable">k</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-type">int</span> <span class="cc-variable">col</span><span class="cc-plain">;</span>
+        <span class="cc-variable">cin</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">col</span><span class="cc-plain">;</span>
+        <span class="cc-variable">colLine</span><span class="cc-plain">[</span><span class="cc-variable">col</span><span class="cc-plain">]</span><span class="cc-operator">=</span><span class="cc-number">true</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c1</span><span class="cc-operator">=</span><span class="cc-number">1</span><span class="cc-plain">;</span><span class="cc-variable">c1</span><span class="cc-operator">&lt;=</span><span class="cc-variable">n</span><span class="cc-plain">;</span><span class="cc-variable">c1</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c2</span><span class="cc-operator">=</span><span class="cc-number">1</span><span class="cc-plain">;</span><span class="cc-variable">c2</span><span class="cc-operator">&lt;=</span><span class="cc-variable">m</span><span class="cc-plain">;</span><span class="cc-variable">c2</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+            <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">rowLine</span><span class="cc-plain">[</span><span class="cc-variable">c1</span><span class="cc-plain">]</span><span class="cc-operator">&amp;&amp;</span><span class="cc-variable">colLine</span><span class="cc-plain">[</span><span class="cc-variable">c2</span><span class="cc-plain">]){</span>
+                <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">"+"</span><span class="cc-plain">;</span>
+            <span class="cc-plain">}</span><span class="cc-keyword">else if</span><span class="cc-plain">(</span><span class="cc-variable">rowLine</span><span class="cc-plain">[</span><span class="cc-variable">c1</span><span class="cc-plain">]){</span>
+                <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">"-"</span><span class="cc-plain">;</span>
+            <span class="cc-plain">}</span><span class="cc-keyword">else if</span><span class="cc-plain">(</span><span class="cc-variable">colLine</span><span class="cc-plain">[</span><span class="cc-variable">c2</span><span class="cc-plain">]){</span>
+                <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">"|"</span><span class="cc-plain">;</span>
+            <span class="cc-plain">}</span><span class="cc-keyword">else</span><span class="cc-plain">{</span>
+                <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-string">"0"</span><span class="cc-plain">;</span>
+            <span class="cc-plain">}</span>
+        <span class="cc-plain">}</span>
+        <span class="cc-variable">cout</span><span class="cc-plain">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
+          </div>
+        </div>
+
+        <!-- 复杂度 -->
+        <h2>复杂度分析</h2>
+        <ul>
+          <li><strong>时间复杂度：</strong>O(q + k + n×m)，读入标记各一次线性扫描，输出双重循环最多 1000×1000 = 10⁶ 次。</li>
+          <li><strong>空间复杂度：</strong>O(n + m)，两个 bool 数组各长 1001。</li>
+        </ul>
+
+        <!-- 心得 -->
+        <div class="coding-reflection">
+          <span class="coding-reflection-label">今日感受</span>
+          <p class="coding-reflection-text">
+            看起来难的题，仔细分析也没那么难。关键是注意提示里的数据范围——q、k 最大百万，但行列数只有千级，所以用 bool 数组标记而不是逐个查找，把输入和输出完全分开处理。主逻辑只是 if-else 的四种组合，拆开来每一步都很清楚。
+          </p>
+        </div>
+
+        <!-- 返回 -->
+        <p class="coding-back-wrap">
+          <a href="https://sage-lume.vercel.app/blog/coding/" class="coding-back-link">← 返回菜鸟的coding</a>
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://sage-lume.vercel.app/favicon/logo-footer.png" alt="算海青藜" height="48">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <script src="https://sage-lume.vercel.app/js/coding-particles.js"></script>
+</body>
+</html>
