@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 021 · 排队动物 | SageLume</title>
+  <meta name="description" content="acm.scu.edu.cn 41 · 排队动物——栈/模拟，Day 021 菜鸟的coding。">
+
+  <!-- Favicon -->
+  <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://sage-lume.vercel.app/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://sage-lume.vercel.app/favicon/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/coding.css">
+
+  <!-- Scripts -->
+  <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
+  <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+</head>
+
+<body>
+  <!-- 花瓣背景 -->
+  <canvas id="coding-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://sage-lume.vercel.app/">
+        <img src="https://sage-lume.vercel.app/favicon/logo-header.png" alt="算海青藜" height="96">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://sage-lume.vercel.app/">Home</a>
+      <a href="https://sage-lume.vercel.app/about/">About</a>
+      <a href="https://sage-lume.vercel.app/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <div class="coding-header-accent coding-header-accent--left">
+          <span class="coding-tag-badge"># 菜鸟的coding · Day 021</span>
+        </div>
+        <h1 class="post-title">排队动物</h1>
+        <div class="post-meta">
+          <span>2026-04-07</span>
+          <span> • </span>
+          <span>C++</span>
+          <span> • </span>
+          <span>acm.scu.edu.cn 41 &nbsp;·&nbsp; 栈/模拟</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+
+        <!-- 题目描述 -->
+        <h2>题目</h2>
+        <p>
+          人其实是一种"排队动物"。
+        </p>
+        <p>
+          新学期到了，同学们都需要去排队注册，小J和小R相约一起去了二基楼。到了二基楼，发现由于堆放了杂物，走廊变得特别狭窄，只能站下一个人，同学们已经排起了长队。想要离开队伍的同学只能从队尾离开。
+        </p>
+        <p>
+          小R问小J："你说要是有同学不断前来，他们如果突然不想排队了，能以怎样的顺序离开呢？"
+        </p>
+        <p>
+          小J这一次学聪明了，他没急着答应小R："我可以告诉你我猜是怎样的，你来看看对不对吧。"
+        </p>
+        <p>
+          所有同学都拥有一个数字编号，他们将以特定的顺序进入队伍，每一次只有在队尾的同学才可以离开，请你帮助小R判断他们是否可以以小J猜测的顺序离开。
+        </p>
+        <p>
+          <strong>输入：</strong>第一行一个整数 q，询问次数。接下来 q 个询问，对于每个询问：第一行一个整数 n 表示队伍长度；第二行 n 个整数表示入队序列；第三行 n 个整数表示出队序列。<br>
+          <strong>输出：</strong>对于每个询问，可以输出 <code>YES</code>，不可以输出 <code>N0</code>。
+        </p>
+        <p><strong>样例1：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">2
+5
+1 2 3 4 5
+5 4 3 2 1
+4
+1 2 3 4
+2 4 1 3</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">YES
+N0</pre>
+          </div>
+        </div>
+        <p><strong>样例2：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">2
+6
+1 2 3 4 5 6
+4 6 5 3 2 1
+5
+1 2 3 4 5
+3 5 4 1 2</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">YES
+N0</pre>
+          </div>
+        </div>
+
+        <!-- 思路 -->
+        <h2>思路</h2>
+        <p>
+          用栈模拟入队过程：先把入队序列和出队序列都读进来，然后逐个压栈，每压入一个元素就立刻检查栈顶是否等于当前待出队的目标——等于就弹出并移动指针，不等于就继续压。全部压完后若栈为空则输出 <code>YES</code>，否则输出 <code>N0</code>。
+        </p>
+
+        <!-- 代码块 -->
+        <div class="cyber-code-block">
+          <div class="cyber-code-header">
+            <div class="cyber-code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="cyber-code-lang">C++ · p41.cpp</span>
+          </div>
+          <div class="cyber-code-body">
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
+    <span class="cc-type">int</span> <span class="cc-variable">q</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">q</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;</span><span class="cc-variable">q</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-type">int</span> <span class="cc-variable">n</span><span class="cc-plain">;</span>
+        <span class="cc-type">stack</span><span class="cc-plain">&lt;</span><span class="cc-type">int</span><span class="cc-plain">&gt;</span> <span class="cc-variable">s</span><span class="cc-plain">;</span>
+        <span class="cc-type">int</span> <span class="cc-variable">order</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span>
+
+        <span class="cc-variable">cin</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">n</span><span class="cc-plain">;</span>
+        <span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">int</span><span class="cc-plain">&gt;</span> <span class="cc-variable">in</span><span class="cc-plain">(</span><span class="cc-variable">n</span><span class="cc-plain">);</span>
+        <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c1</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c1</span><span class="cc-operator">&lt;</span><span class="cc-variable">n</span><span class="cc-plain">;</span><span class="cc-variable">c1</span><span class="cc-operator">++</span><span class="cc-plain">)</span>
+            <span class="cc-variable">cin</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">in</span><span class="cc-plain">[</span><span class="cc-variable">c1</span><span class="cc-plain">];</span>
+        <span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">int</span><span class="cc-plain">&gt;</span> <span class="cc-variable">out</span><span class="cc-plain">(</span><span class="cc-variable">n</span><span class="cc-plain">);</span>
+        <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c2</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c2</span><span class="cc-operator">&lt;</span><span class="cc-variable">n</span><span class="cc-plain">;</span><span class="cc-variable">c2</span><span class="cc-operator">++</span><span class="cc-plain">)</span>
+            <span class="cc-variable">cin</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">out</span><span class="cc-plain">[</span><span class="cc-variable">c2</span><span class="cc-plain">];</span>
+
+        <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c1</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c1</span><span class="cc-operator">&lt;</span><span class="cc-variable">n</span><span class="cc-plain">;</span><span class="cc-variable">c1</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+            <span class="cc-variable">s</span><span class="cc-plain">.</span><span class="cc-function">push</span><span class="cc-plain">(</span><span class="cc-variable">in</span><span class="cc-plain">[</span><span class="cc-variable">c1</span><span class="cc-plain">]);</span>
+            <span class="cc-keyword">while</span><span class="cc-plain">(!</span><span class="cc-variable">s</span><span class="cc-plain">.</span><span class="cc-function">empty</span><span class="cc-plain">()&amp;&amp;</span><span class="cc-variable">s</span><span class="cc-plain">.</span><span class="cc-function">top</span><span class="cc-plain">()==</span><span class="cc-variable">out</span><span class="cc-plain">[</span><span class="cc-variable">order</span><span class="cc-plain">]){</span>
+                <span class="cc-variable">s</span><span class="cc-plain">.</span><span class="cc-function">pop</span><span class="cc-plain">();</span>
+                <span class="cc-variable">order</span><span class="cc-operator">++</span><span class="cc-plain">;</span>
+            <span class="cc-plain">}</span>
+        <span class="cc-plain">}</span>
+        <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">s</span><span class="cc-plain">.</span><span class="cc-function">empty</span><span class="cc-plain">())</span> <span class="cc-variable">cout</span><span class="cc-operator">&lt;&lt;</span><span class="cc-string">"YES"</span><span class="cc-operator">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+        <span class="cc-keyword">else</span> <span class="cc-variable">cout</span><span class="cc-operator">&lt;&lt;</span><span class="cc-string">"N0"</span><span class="cc-operator">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
+          </div>
+        </div>
+
+        <!-- 复杂度 -->
+        <h2>复杂度分析</h2>
+        <ul>
+          <li><strong>时间复杂度：</strong>O(q × n)，每个元素最多入栈、出栈各一次。</li>
+          <li><strong>空间复杂度：</strong>O(n)，栈和两个数组的额外空间。</li>
+        </ul>
+
+        <!-- 心得 -->
+        <div class="coding-reflection">
+          <span class="coding-reflection-label">今日感受</span>
+          <p class="coding-reflection-text">
+            关键是读入顺序和模拟顺序都要理清楚：两个序列都先存好，再边压栈边检查出队。另外输出是 <code>N0</code>（数字零）不是 <code>NO</code>，差点被这个坑掉！
+          </p>
+        </div>
+
+        <!-- 返回 -->
+        <p class="coding-back-wrap">
+          <a href="https://sage-lume.vercel.app/blog/coding/" class="coding-back-link">← 返回菜鸟的coding</a>
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://sage-lume.vercel.app/favicon/logo-footer.png" alt="算海青藜" height="48">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <script src="https://sage-lume.vercel.app/js/coding-particles.js"></script>
+</body>
+</html>
