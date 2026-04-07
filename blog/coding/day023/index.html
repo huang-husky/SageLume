@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 023 · 朋友 | SageLume</title>
+  <meta name="description" content="acm.scu.edu.cn 43 · 朋友——并查集，Day 023 菜鸟的coding。">
+
+  <!-- Favicon -->
+  <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://sage-lume.vercel.app/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://sage-lume.vercel.app/favicon/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/coding.css">
+
+  <!-- Scripts -->
+  <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
+  <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+</head>
+
+<body>
+  <!-- 花瓣背景 -->
+  <canvas id="coding-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://sage-lume.vercel.app/">
+        <img src="https://sage-lume.vercel.app/favicon/logo-header.png" alt="算海青藜" height="96">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://sage-lume.vercel.app/">Home</a>
+      <a href="https://sage-lume.vercel.app/about/">About</a>
+      <a href="https://sage-lume.vercel.app/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <div class="coding-header-accent coding-header-accent--left">
+          <span class="coding-tag-badge"># 菜鸟的coding · Day 023</span>
+        </div>
+        <h1 class="post-title">朋友</h1>
+        <div class="post-meta">
+          <span>2026-04-07</span>
+          <span> • </span>
+          <span>C++</span>
+          <span> • </span>
+          <span>acm.scu.edu.cn 43 &nbsp;·&nbsp; 并查集</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+
+        <!-- 题目描述 -->
+        <h2>题目</h2>
+        <p>
+          据说最多通过6个人就可以认识世界上的所有人。
+        </p>
+        <p>
+          小J和小R想知道，朋友关系具有可传递性——只要可以通过多人相互认识，就认为他们是朋友。小R不断告诉小J谁和谁互相认识，同时不定期询问谁和谁是否认识，请注意一个人和自己一定是朋友。
+        </p>
+        <p>
+          <strong>输入：</strong>第一行两个整数 q、n，q 表示询问次数，n 表示总人数。接下来 q 个询问：操作编号 a 及 x、y；a 为 1 表示 x、y 互相认识；a 为 2 表示查询 x、y 是否认识。<br>
+          <strong>输出：</strong>对于每个操作 2，认识输出 <code>YES</code>，不认识输出 <code>NO</code>。
+        </p>
+        <p><strong>样例1：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">5 5
+1 1 2
+1 3 4
+2 1 3
+2 3 5
+2 3 4</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">NO
+NO
+YES</pre>
+          </div>
+        </div>
+        <p><strong>样例2：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">5 6
+1 1 2
+1 2 3
+2 1 3
+1 4 5
+2 1 6</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">YES
+NO</pre>
+          </div>
+        </div>
+
+        <!-- 思路 -->
+        <h2>思路</h2>
+        <p>
+          用<strong>并查集</strong>维护朋友关系：初始每个人的 <span class="cc-highlight-pink">parent</span> 指向自己；合并时让 x 的根认 y 的根为老大；查询时比较两人的根是否相同。<code>find</code> 使用路径压缩（<code>parent[x] = find(parent[x])</code>），将沿途节点直接指向根，避免链式退化导致超时。
+        </p>
+
+        <!-- 代码块 -->
+        <div class="cyber-code-block">
+          <div class="cyber-code-header">
+            <div class="cyber-code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="cyber-code-lang">C++ · p43.cpp</span>
+          </div>
+          <div class="cyber-code-body">
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-type">int</span> <span class="cc-variable">parent</span><span class="cc-plain">[</span><span class="cc-number">100001</span><span class="cc-plain">];</span>
+
+<span class="cc-type">int</span> <span class="cc-function">find</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">x</span><span class="cc-plain">){</span>
+    <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">parent</span><span class="cc-plain">[</span><span class="cc-variable">x</span><span class="cc-plain">]</span><span class="cc-operator">==</span><span class="cc-variable">x</span><span class="cc-plain">)</span> <span class="cc-keyword">return</span> <span class="cc-variable">x</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">return</span> <span class="cc-variable">parent</span><span class="cc-plain">[</span><span class="cc-variable">x</span><span class="cc-plain">]</span><span class="cc-operator">=</span><span class="cc-function">find</span><span class="cc-plain">(</span><span class="cc-variable">parent</span><span class="cc-plain">[</span><span class="cc-variable">x</span><span class="cc-plain">]);</span>
+<span class="cc-plain">}</span>
+
+<span class="cc-type">void</span> <span class="cc-function">unite</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">x</span><span class="cc-plain">,</span><span class="cc-type">int</span> <span class="cc-variable">y</span><span class="cc-plain">){</span>
+    <span class="cc-variable">parent</span><span class="cc-plain">[</span><span class="cc-function">find</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-plain">)]</span><span class="cc-operator">=</span><span class="cc-function">find</span><span class="cc-plain">(</span><span class="cc-variable">y</span><span class="cc-plain">);</span>
+<span class="cc-plain">}</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
+    <span class="cc-type">int</span> <span class="cc-variable">q</span><span class="cc-plain">,</span><span class="cc-variable">n</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">q</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">n</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">1</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;=</span><span class="cc-variable">n</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">)</span>
+        <span class="cc-variable">parent</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-plain">]</span><span class="cc-operator">=</span><span class="cc-variable">c</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;</span><span class="cc-variable">q</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">){</span>
+        <span class="cc-type">int</span> <span class="cc-variable">a</span><span class="cc-plain">,</span><span class="cc-variable">x</span><span class="cc-plain">,</span><span class="cc-variable">y</span><span class="cc-plain">;</span>
+        <span class="cc-variable">cin</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">a</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">x</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">y</span><span class="cc-plain">;</span>
+        <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-variable">a</span><span class="cc-operator">==</span><span class="cc-number">1</span><span class="cc-plain">){</span>
+            <span class="cc-function">unite</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-plain">,</span><span class="cc-variable">y</span><span class="cc-plain">);</span>
+        <span class="cc-plain">}</span><span class="cc-keyword">else if</span><span class="cc-plain">(</span><span class="cc-variable">a</span><span class="cc-operator">==</span><span class="cc-number">2</span><span class="cc-plain">){</span>
+            <span class="cc-keyword">if</span><span class="cc-plain">(</span><span class="cc-function">find</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-plain">)</span><span class="cc-operator">==</span><span class="cc-function">find</span><span class="cc-plain">(</span><span class="cc-variable">y</span><span class="cc-plain">))</span>
+                <span class="cc-variable">cout</span><span class="cc-operator">&lt;&lt;</span><span class="cc-string">"YES"</span><span class="cc-operator">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+            <span class="cc-keyword">else</span>
+                <span class="cc-variable">cout</span><span class="cc-operator">&lt;&lt;</span><span class="cc-string">"NO"</span><span class="cc-operator">&lt;&lt;</span><span class="cc-variable">endl</span><span class="cc-plain">;</span>
+        <span class="cc-plain">}</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
+          </div>
+        </div>
+
+        <!-- 复杂度 -->
+        <h2>复杂度分析</h2>
+        <ul>
+          <li><strong>时间复杂度：</strong>O(q · α(n))，α 为反阿克曼函数，路径压缩后近似 O(1)。</li>
+          <li><strong>空间复杂度：</strong>O(n)，parent 数组。</li>
+        </ul>
+
+        <!-- 心得 -->
+        <div class="coding-reflection">
+          <span class="coding-reflection-label">今日感受</span>
+          <p class="coding-reflection-text">
+            并查集的思路不难，但光会基本实现还不够——不加路径压缩直接 TLE。<code>parent[x] = find(parent[x])</code> 这一行，找根的同时把沿途节点全部压平，是并查集能跑满分的关键。
+          </p>
+        </div>
+
+        <!-- 返回 -->
+        <p class="coding-back-wrap">
+          <a href="https://sage-lume.vercel.app/blog/coding/" class="coding-back-link">← 返回菜鸟的coding</a>
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://sage-lume.vercel.app/favicon/logo-footer.png" alt="算海青藜" height="48">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <script src="https://sage-lume.vercel.app/js/coding-particles.js"></script>
+</body>
+</html>
