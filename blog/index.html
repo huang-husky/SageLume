@@ -23,6 +23,28 @@
   <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
   <link rel="stylesheet" href="https://sage-lume.vercel.app/blog-enhanced.css">
   
+  <style>
+    .stat-tip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 14px;
+      height: 14px;
+      margin-left: 4px;
+      border-radius: 50%;
+      border: 1px solid currentColor;
+      font-size: 10px;
+      line-height: 1;
+      opacity: 0.5;
+      cursor: default;
+      vertical-align: middle;
+      position: relative;
+    }
+    .stat-tip:hover {
+      opacity: 1;
+    }
+  </style>
+
   <!-- Scripts -->
   <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
   <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
@@ -231,7 +253,7 @@
               <span class="stat-value" id="total-words">-</span>
             </div>
             <div class="stat-item">
-              <span class="stat-label">本站访客数</span>
+              <span class="stat-label">本站访客数<span class="stat-tip" title="由于技术限制，实际显示每日不同访客数之和">?</span></span>
               <span class="stat-value" id="busuanzi_value_site_uv">-</span>
             </div>
             <div class="stat-item">
