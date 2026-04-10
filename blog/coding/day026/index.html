@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 026 · 下山 | SageLume</title>
+  <meta name="description" content="acm.scu.edu.cn 46 · 下山——[TODO]，Day 026 菜鸟的coding。">
+
+  <!-- Favicon -->
+  <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://sage-lume.vercel.app/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://sage-lume.vercel.app/favicon/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/coding.css">
+
+  <!-- Scripts -->
+  <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
+  <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+</head>
+
+<body>
+  <!-- 花瓣背景 -->
+  <canvas id="coding-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://sage-lume.vercel.app/">
+        <img src="https://sage-lume.vercel.app/favicon/logo-header.png" alt="算海青藜" height="96">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://sage-lume.vercel.app/">Home</a>
+      <a href="https://sage-lume.vercel.app/about/">About</a>
+      <a href="https://sage-lume.vercel.app/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <div class="coding-header-accent coding-header-accent--left">
+          <span class="coding-tag-badge"># 菜鸟的coding · Day 026</span>
+        </div>
+        <h1 class="post-title">下山</h1>
+        <div class="post-meta">
+          <span>2026-04-10</span>
+          <span> • </span>
+          <span>C++</span>
+          <span> • </span>
+          <span>acm.scu.edu.cn 46 &nbsp;·&nbsp; 记忆化DFS</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+
+        <!-- 题目描述 -->
+        <h2>题目</h2>
+        <p>
+          人要一直往上走，除非你在山顶要回家。
+        </p>
+        <p>
+          很快到了郊游的日子，这一次小J和小R来到了龙泉山。很快他们爬到了山顶，他们发现龙泉山变成了 n 行 m 列的矩形，每一个方块上都有它的高度。
+        </p>
+        <p>
+          小R这个时候并不是很想回家："小J，你可以帮我找到最长的下山路径吗？"
+        </p>
+        <p>
+          小J想了想，决定还是需要请你来帮忙。
+        </p>
+        <p>
+          在一片 n 行 m 列的山地上，每一块土地都有自己的高度，小J和小R需要回家，每一次只能走向相邻的土地，并且只能向下走或者向高度一样的土地走，请你帮助小J找到不管从哪个地方出发他们最多可以走过多少块土地。
+        </p>
+        <p>
+          <strong>输入：</strong>第一行两个整数 n, m，n 表示有多少行，m 表示有多少列。接下来 n 行，每行 m 个数，表示每块土地的高度。<br>
+          <strong>输出：</strong>一个整数，表示最长的下山距离。
+        </p>
+        <p><strong>样例1：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">5 5
+1 2 3 4 5
+16 17 18 19 6
+15 24 25 20 7
+14 23 22 21 8
+13 12 11 10 9</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">25</pre>
+          </div>
+        </div>
+        <p><strong>样例2：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">3 4
+1 2 3 4
+4 3 2 1
+5 6 7 8</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">8</pre>
+          </div>
+        </div>
+        <p>
+          <strong>提示：</strong>对于 30% 的数据，保证 n≤10, m≤10。对于 60% 的数据，保证 n≤100, m≤100。对于 100% 的数据，保证 n≤500, m≤500。
+        </p>
+
+        <!-- 思路 -->
+        <h2>思路</h2>
+        <p>
+          对每个格子 <span class="cc-highlight-pink">f(r,c)</span> 表示从该格子出发能走过的最多格子数。
+          转移为 <code>f(r,c) = 1 + max(f(nr,nc))</code>，其中 <code>(nr,nc)</code> 是四方向中高度 ≤ 当前的邻居。
+          用记忆化 DFS：每次计算前先查 <code>memo[r][c]</code>，算过了直接返回，避免重复搜索。
+          对所有格子跑一遍 DFS，取最大值即为答案。
+        </p>
+
+        <!-- 代码块 -->
+        <div class="cyber-code-block">
+          <div class="cyber-code-header">
+            <div class="cyber-code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="cyber-code-lang">C++ · p46.cpp</span>
+          </div>
+          <div class="cyber-code-body">
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-type">int</span> <span class="cc-variable">n</span><span class="cc-plain">,</span> <span class="cc-variable">m</span><span class="cc-plain">;</span>
+<span class="cc-type">int</span> <span class="cc-variable">h</span><span class="cc-plain">[</span><span class="cc-number">505</span><span class="cc-plain">][</span><span class="cc-number">505</span><span class="cc-plain">];</span>
+<span class="cc-type">int</span> <span class="cc-variable">memo</span><span class="cc-plain">[</span><span class="cc-number">505</span><span class="cc-plain">][</span><span class="cc-number">505</span><span class="cc-plain">];</span>
+<span class="cc-type">int</span> <span class="cc-variable">dx</span><span class="cc-plain">[]</span> <span class="cc-operator">=</span> <span class="cc-plain">{</span><span class="cc-number">0</span><span class="cc-plain">,</span><span class="cc-number">0</span><span class="cc-plain">,</span><span class="cc-number">1</span><span class="cc-plain">,</span><span class="cc-operator">-</span><span class="cc-number">1</span><span class="cc-plain">};</span>
+<span class="cc-type">int</span> <span class="cc-variable">dy</span><span class="cc-plain">[]</span> <span class="cc-operator">=</span> <span class="cc-plain">{</span><span class="cc-number">1</span><span class="cc-plain">,</span><span class="cc-operator">-</span><span class="cc-number">1</span><span class="cc-plain">,</span><span class="cc-number">0</span><span class="cc-plain">,</span><span class="cc-number">0</span><span class="cc-plain">};</span>
+
+<span class="cc-type">int</span> <span class="cc-function">dfs</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">r</span><span class="cc-plain">,</span> <span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-plain">) {</span>
+    <span class="cc-keyword">if</span> <span class="cc-plain">(</span><span class="cc-variable">memo</span><span class="cc-plain">[</span><span class="cc-variable">r</span><span class="cc-plain">][</span><span class="cc-variable">c</span><span class="cc-plain">]</span> <span class="cc-operator">!=</span> <span class="cc-number">0</span><span class="cc-plain">)</span> <span class="cc-keyword">return</span> <span class="cc-variable">memo</span><span class="cc-plain">[</span><span class="cc-variable">r</span><span class="cc-plain">][</span><span class="cc-variable">c</span><span class="cc-plain">];</span>
+
+    <span class="cc-variable">memo</span><span class="cc-plain">[</span><span class="cc-variable">r</span><span class="cc-plain">][</span><span class="cc-variable">c</span><span class="cc-plain">]</span> <span class="cc-operator">=</span> <span class="cc-number">1</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">k</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span> <span class="cc-variable">k</span> <span class="cc-operator">&lt;</span> <span class="cc-number">4</span><span class="cc-plain">;</span> <span class="cc-variable">k</span><span class="cc-operator">++</span><span class="cc-plain">) {</span>
+        <span class="cc-type">int</span> <span class="cc-variable">nr</span> <span class="cc-operator">=</span> <span class="cc-variable">r</span> <span class="cc-operator">+</span> <span class="cc-variable">dx</span><span class="cc-plain">[</span><span class="cc-variable">k</span><span class="cc-plain">];</span>
+        <span class="cc-type">int</span> <span class="cc-variable">nc</span> <span class="cc-operator">=</span> <span class="cc-variable">c</span> <span class="cc-operator">+</span> <span class="cc-variable">dy</span><span class="cc-plain">[</span><span class="cc-variable">k</span><span class="cc-plain">];</span>
+        <span class="cc-keyword">if</span> <span class="cc-plain">(</span><span class="cc-variable">nr</span><span class="cc-operator">&gt;=</span><span class="cc-number">0</span><span class="cc-operator">&amp;&amp;</span><span class="cc-variable">nr</span><span class="cc-operator">&lt;</span><span class="cc-variable">n</span><span class="cc-operator">&amp;&amp;</span><span class="cc-variable">nc</span><span class="cc-operator">&gt;=</span><span class="cc-number">0</span><span class="cc-operator">&amp;&amp;</span><span class="cc-variable">nc</span><span class="cc-operator">&lt;</span><span class="cc-variable">m</span><span class="cc-operator">&amp;&amp;</span><span class="cc-variable">h</span><span class="cc-plain">[</span><span class="cc-variable">nr</span><span class="cc-plain">][</span><span class="cc-variable">nc</span><span class="cc-plain">]</span><span class="cc-operator">&lt;=</span><span class="cc-variable">h</span><span class="cc-plain">[</span><span class="cc-variable">r</span><span class="cc-plain">][</span><span class="cc-variable">c</span><span class="cc-plain">])</span> <span class="cc-plain">{</span>
+            <span class="cc-variable">memo</span><span class="cc-plain">[</span><span class="cc-variable">r</span><span class="cc-plain">][</span><span class="cc-variable">c</span><span class="cc-plain">]</span> <span class="cc-operator">=</span> <span class="cc-function">max</span><span class="cc-plain">(</span><span class="cc-variable">memo</span><span class="cc-plain">[</span><span class="cc-variable">r</span><span class="cc-plain">][</span><span class="cc-variable">c</span><span class="cc-plain">],</span> <span class="cc-number">1</span><span class="cc-operator">+</span><span class="cc-function">dfs</span><span class="cc-plain">(</span><span class="cc-variable">nr</span><span class="cc-plain">,</span><span class="cc-variable">nc</span><span class="cc-plain">));</span>
+        <span class="cc-plain">}</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">return</span> <span class="cc-variable">memo</span><span class="cc-plain">[</span><span class="cc-variable">r</span><span class="cc-plain">][</span><span class="cc-variable">c</span><span class="cc-plain">];</span>
+<span class="cc-plain">}</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">() {</span>
+    <span class="cc-variable">cin</span> <span class="cc-operator">&gt;&gt;</span> <span class="cc-variable">n</span> <span class="cc-operator">&gt;&gt;</span> <span class="cc-variable">m</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c1</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span> <span class="cc-variable">c1</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">n</span><span class="cc-plain">;</span> <span class="cc-variable">c1</span><span class="cc-operator">++</span><span class="cc-plain">)</span>
+        <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c2</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span> <span class="cc-variable">c2</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">m</span><span class="cc-plain">;</span> <span class="cc-variable">c2</span><span class="cc-operator">++</span><span class="cc-plain">)</span>
+            <span class="cc-variable">cin</span> <span class="cc-operator">&gt;&gt;</span> <span class="cc-variable">h</span><span class="cc-plain">[</span><span class="cc-variable">c1</span><span class="cc-plain">][</span><span class="cc-variable">c2</span><span class="cc-plain">];</span>
+
+    <span class="cc-type">int</span> <span class="cc-variable">ans</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c1</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span> <span class="cc-variable">c1</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">n</span><span class="cc-plain">;</span> <span class="cc-variable">c1</span><span class="cc-operator">++</span><span class="cc-plain">)</span>
+        <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c2</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span> <span class="cc-variable">c2</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">m</span><span class="cc-plain">;</span> <span class="cc-variable">c2</span><span class="cc-operator">++</span><span class="cc-plain">)</span>
+            <span class="cc-variable">ans</span> <span class="cc-operator">=</span> <span class="cc-function">max</span><span class="cc-plain">(</span><span class="cc-variable">ans</span><span class="cc-plain">,</span> <span class="cc-function">dfs</span><span class="cc-plain">(</span><span class="cc-variable">c1</span><span class="cc-plain">,</span><span class="cc-variable">c2</span><span class="cc-plain">));</span>
+
+    <span class="cc-variable">cout</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-variable">ans</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-string">"\n"</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
+          </div>
+        </div>
+
+        <!-- 复杂度 -->
+        <h2>复杂度分析</h2>
+        <ul>
+          <li><strong>时间复杂度：</strong>O(nm)，每个格子最多计算一次。</li>
+          <li><strong>空间复杂度：</strong>O(nm)，memo 数组与递归栈。</li>
+        </ul>
+
+        <!-- 心得 -->
+        <div class="coding-reflection">
+          <span class="coding-reflection-label">今日感受</span>
+          <p class="coding-reflection-text">
+            dfs 函数里的判断条件和对 memo 的操作很重要，一不小心就会出错。
+          </p>
+        </div>
+
+        <!-- 返回 -->
+        <p class="coding-back-wrap">
+          <a href="https://sage-lume.vercel.app/blog/coding/" class="coding-back-link">← 返回菜鸟的coding</a>
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://sage-lume.vercel.app/favicon/logo-footer.png" alt="算海青藜" height="48">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <script src="https://sage-lume.vercel.app/js/coding-particles.js"></script>
+</body>
+</html>
