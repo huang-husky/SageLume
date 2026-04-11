@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Day 028 · 站岗 | SageLume</title>
-  <meta name="description" content="acm.scu.edu.cn 48 · 站岗——[TODO]，Day 028 菜鸟的coding。">
+  <meta name="description" content="acm.scu.edu.cn 48 · 站岗——二分答案，Day 028 菜鸟的coding。">
 
   <!-- Favicon -->
   <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
@@ -64,7 +64,7 @@
           <span> • </span>
           <span>C++</span>
           <span> • </span>
-          <span>acm.scu.edu.cn 48 &nbsp;·&nbsp; [TODO]</span>
+          <span>acm.scu.edu.cn 48 &nbsp;·&nbsp; 二分答案</span>
         </div>
       </header>
 
@@ -125,7 +125,7 @@
         <!-- 思路 -->
         <h2>思路</h2>
         <p>
-          [TODO]
+          对"最小不安全指数"做二分答案。设候选答案为 <code>mid</code>，验证它是否可行：遍历所有相邻摄像头间距 <code>gap</code>，若 <code>gap &gt; mid</code>，则这段需要插入 <code>ceil(gap/mid) - 1</code> 个摄像头（上取整用 <code>(gap + mid - 1) / mid</code> 实现），累加所有间距的需求量，若总数 ≤ K 则 <code>mid</code> 可行。二分范围取 <code>[1, 现有最大间距]</code>，每次找到可行的 <code>mid</code> 就收缩右边界，最终得到最小可行值。
         </p>
 
         <!-- 代码块 -->
@@ -137,22 +137,65 @@
             <span class="cyber-code-lang">C++ · p48.cpp</span>
           </div>
           <div class="cyber-code-body">
-            <pre class="cyber-pre"><code class="cyber-code">[TODO]</code></pre>
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-type">bool</span> <span class="cc-function">canAchieve</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">d</span><span class="cc-plain">,</span> <span class="cc-keyword">const</span> <span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">int</span><span class="cc-plain">&gt;&amp;</span> <span class="cc-variable">pos</span><span class="cc-plain">,</span> <span class="cc-type">int</span> <span class="cc-variable">K</span><span class="cc-plain">) {</span>
+    <span class="cc-type">int</span> <span class="cc-variable">needed</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;</span><span class="cc-variable">pos</span><span class="cc-plain">.</span><span class="cc-function">size</span><span class="cc-plain">()</span><span class="cc-operator">-</span><span class="cc-number">1</span><span class="cc-plain">;++</span><span class="cc-variable">c</span><span class="cc-plain">) {</span>
+        <span class="cc-type">int</span> <span class="cc-variable">gap</span> <span class="cc-operator">=</span> <span class="cc-variable">pos</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-operator">+</span><span class="cc-number">1</span><span class="cc-plain">]</span> <span class="cc-operator">-</span> <span class="cc-variable">pos</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-plain">];</span>
+        <span class="cc-keyword">if</span> <span class="cc-plain">(</span><span class="cc-variable">gap</span><span class="cc-operator">&gt;</span><span class="cc-variable">d</span><span class="cc-plain">) {</span>
+            <span class="cc-comment">// 需要在这段中间加摄像头</span>
+            <span class="cc-variable">needed</span><span class="cc-operator">+=</span><span class="cc-plain">(</span><span class="cc-variable">gap</span><span class="cc-operator">+</span><span class="cc-variable">d</span><span class="cc-operator">-</span><span class="cc-number">1</span><span class="cc-plain">)/</span><span class="cc-variable">d</span><span class="cc-operator">-</span><span class="cc-number">1</span><span class="cc-plain">;</span> <span class="cc-comment">// ceil(gap/d)-1</span>
+            <span class="cc-keyword">if</span> <span class="cc-plain">(</span><span class="cc-variable">needed</span><span class="cc-operator">&gt;</span><span class="cc-variable">K</span><span class="cc-plain">)</span> <span class="cc-keyword">return</span> <span class="cc-number">false</span><span class="cc-plain">;</span>
+        <span class="cc-plain">}</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">return</span> <span class="cc-variable">needed</span> <span class="cc-operator">&lt;=</span> <span class="cc-variable">K</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">() {</span>
+    <span class="cc-type">int</span> <span class="cc-variable">L</span><span class="cc-plain">,</span> <span class="cc-variable">N</span><span class="cc-plain">,</span> <span class="cc-variable">K</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span> <span class="cc-operator">&gt;&gt;</span> <span class="cc-variable">L</span> <span class="cc-operator">&gt;&gt;</span> <span class="cc-variable">N</span> <span class="cc-operator">&gt;&gt;</span> <span class="cc-variable">K</span><span class="cc-plain">;</span>
+    <span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">int</span><span class="cc-plain">&gt;</span> <span class="cc-variable">pos</span><span class="cc-plain">(</span><span class="cc-variable">N</span><span class="cc-plain">);</span>
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">i</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span> <span class="cc-variable">i</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">N</span><span class="cc-plain">;</span> <span class="cc-operator">++</span><span class="cc-variable">i</span><span class="cc-plain">) {</span>
+        <span class="cc-variable">cin</span> <span class="cc-operator">&gt;&gt;</span> <span class="cc-variable">pos</span><span class="cc-plain">[</span><span class="cc-variable">i</span><span class="cc-plain">];</span>
+    <span class="cc-plain">}</span>
+
+    <span class="cc-comment">// 找最大间隔作为右边界</span>
+    <span class="cc-type">int</span> <span class="cc-variable">max_gap</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">i</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span> <span class="cc-variable">i</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">N</span> <span class="cc-operator">-</span> <span class="cc-number">1</span><span class="cc-plain">;</span> <span class="cc-operator">++</span><span class="cc-variable">i</span><span class="cc-plain">) {</span>
+        <span class="cc-variable">max_gap</span><span class="cc-operator">=</span><span class="cc-function">max</span><span class="cc-plain">(</span><span class="cc-variable">max_gap</span><span class="cc-plain">,</span><span class="cc-variable">pos</span><span class="cc-plain">[</span><span class="cc-variable">i</span><span class="cc-operator">+</span><span class="cc-number">1</span><span class="cc-plain">]</span><span class="cc-operator">-</span><span class="cc-variable">pos</span><span class="cc-plain">[</span><span class="cc-variable">i</span><span class="cc-plain">]);</span>
+    <span class="cc-plain">}</span>
+
+    <span class="cc-type">int</span> <span class="cc-variable">left</span><span class="cc-operator">=</span><span class="cc-number">1</span><span class="cc-plain">,</span><span class="cc-variable">right</span><span class="cc-operator">=</span><span class="cc-variable">max_gap</span><span class="cc-plain">,</span><span class="cc-variable">ans</span><span class="cc-operator">=</span><span class="cc-variable">max_gap</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">while</span> <span class="cc-plain">(</span><span class="cc-variable">left</span> <span class="cc-operator">&lt;=</span> <span class="cc-variable">right</span><span class="cc-plain">) {</span>
+        <span class="cc-type">int</span> <span class="cc-variable">mid</span> <span class="cc-operator">=</span> <span class="cc-plain">(</span><span class="cc-variable">left</span> <span class="cc-operator">+</span> <span class="cc-variable">right</span><span class="cc-plain">)</span> <span class="cc-operator">/</span> <span class="cc-number">2</span><span class="cc-plain">;</span>
+        <span class="cc-keyword">if</span> <span class="cc-plain">(</span><span class="cc-function">canAchieve</span><span class="cc-plain">(</span><span class="cc-variable">mid</span><span class="cc-plain">,</span> <span class="cc-variable">pos</span><span class="cc-plain">,</span> <span class="cc-variable">K</span><span class="cc-plain">)) {</span>
+            <span class="cc-variable">ans</span> <span class="cc-operator">=</span> <span class="cc-variable">mid</span><span class="cc-plain">;</span>
+            <span class="cc-variable">right</span> <span class="cc-operator">=</span> <span class="cc-variable">mid</span> <span class="cc-operator">-</span> <span class="cc-number">1</span><span class="cc-plain">;</span>
+        <span class="cc-plain">}</span> <span class="cc-keyword">else</span> <span class="cc-plain">{</span>
+            <span class="cc-variable">left</span> <span class="cc-operator">=</span> <span class="cc-variable">mid</span> <span class="cc-operator">+</span> <span class="cc-number">1</span><span class="cc-plain">;</span>
+        <span class="cc-plain">}</span>
+    <span class="cc-plain">}</span>
+
+    <span class="cc-variable">cout</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-variable">ans</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-variable">endl</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
           </div>
         </div>
 
         <!-- 复杂度 -->
         <h2>复杂度分析</h2>
         <ul>
-          <li><strong>时间复杂度：</strong>[TODO]</li>
-          <li><strong>空间复杂度：</strong>[TODO]</li>
+          <li><strong>时间复杂度：</strong>O(N log L)，二分 O(log L) 次，每次验证遍历 N 个间距。</li>
+          <li><strong>空间复杂度：</strong>O(N)，存储摄像头位置数组。</li>
         </ul>
 
         <!-- 心得 -->
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
           <p class="coding-reflection-text">
-            [TODO]
+            第一次写二分答案——原来不只是在排好序的数组里找目标值，只要能设计出"猜一个答案，验证它是否可行"的判断函数，二分就能用上。
           </p>
         </div>
 
