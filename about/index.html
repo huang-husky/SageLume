@@ -34,10 +34,10 @@
             transition:transform 0.3s ease, box-shadow 0.3s ease;
         }
         .about-avatar:hover { transform:scale(1.04); box-shadow:0 6px 28px rgba(0,0,0,0.45); }
-        .about-sidebar-name { font-family:'Noto Serif',serif; font-size:1rem; color:var(--color-accent,#c8d96e); letter-spacing:0.1em; text-align:center; }
+        .about-sidebar-name { font-family:'Seventeen','Noto Serif',serif; font-size:1rem; color:var(--color-accent,#c8d96e); letter-spacing:0.1em; text-align:center; }
         .about-sidebar-divider { width:60%; height:1px; background:rgba(180,200,120,0.2); }
-        .about-sidebar-hint { font-size:0.78rem; color:var(--color-text-muted,#9aaa70); text-align:center; margin:0; opacity:0.8; letter-spacing:0.05em; }
-        .about-email-link { display:flex; align-items:center; gap:0.4rem; font-size:0.82rem; color:var(--color-text-muted,#9aaa70); text-decoration:none; word-break:break-all; text-align:center; transition:color 0.2s ease; }
+        .about-sidebar-hint { font-family:'Seventeen','Noto Serif',serif; font-size:0.78rem; color:var(--color-text-muted,#9aaa70); text-align:center; margin:0; opacity:0.8; letter-spacing:0.05em; }
+        .about-email-link { display:flex; align-items:center; gap:0.4rem; font-family:'Seventeen','Noto Serif',serif; font-size:0.82rem; color:var(--color-text-muted,#9aaa70); text-decoration:none; word-break:break-all; text-align:center; transition:color 0.2s ease; }
         .about-email-link:hover { color:var(--color-accent,#c8d96e); }
         .about-email-link .email-icon { font-size:1rem; flex-shrink:0; }
         .about-main { flex:1; min-width:0; }
@@ -151,6 +151,14 @@
             font-family: 'DaofengKaishu';
             src: url('../fonts/daofengkaishupinyin.TTF') format('truetype');
         }
+        @font-face {
+            font-family: 'Seventeen';
+            src: url('../fonts/seventeen.TTF') format('truetype');
+        }
+        @font-face {
+            font-family: 'Xingkai';
+            src: url('../fonts/xingkai.TTF') format('truetype');
+        }
 
         /* 头部 */
         .xueni-header { text-align:center; margin-bottom:0.4rem; }
@@ -169,7 +177,7 @@
         /* 卡片网格 */
         .xueni-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1.2rem; margin-top:1rem; }
         .xueni-card {
-            padding:1.4rem 1.5rem; border-radius:10px;
+            padding:0.6rem 1.2rem; border-radius:10px;
             background:rgba(255,255,255,0.03);
             border:1px solid rgba(180,200,120,0.13);
             -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px);
@@ -179,23 +187,23 @@
         .xueni-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(135deg,var(--color-accent,#c8d96e),transparent); opacity:0.35; border-radius:10px 10px 0 0; }
         .xueni-card:hover { border-color:rgba(180,200,120,0.32); background:rgba(255,255,255,0.055); transform:translateY(-2px); }
         .xueni-card-tag { font-size:0.68rem; letter-spacing:0.18em; color:var(--color-accent,#c8d96e); opacity:0.55; margin-bottom:0.6rem; }
-        .xueni-card-quote { font-family:'Noto Serif',serif; font-size:0.9rem; line-height:1.9; color:var(--color-text,#c8cfa0); margin:0 0 0.6rem; letter-spacing:0.04em; }
+        .xueni-card-quote { font-family:'Xingkai','Noto Serif',serif; font-size:0.95rem; line-height:1.9; color:var(--color-text,#c8cfa0); margin:0 0 0.6rem; letter-spacing:0.04em; }
         .xueni-card-source { font-size:0.72rem; color:var(--color-text-muted,#9aaa70); opacity:0.65; text-align:right; }
 
         /* ===== 浅色模式覆写 ===== */
-        html[data-theme="light"] .xueni-title, body.light .xueni-title,
-        html[data-theme="light"] #xueni-title, body.light #xueni-title { color:#1a4a1a; opacity:1; font-weight:700; }
-        html[data-theme="light"] .xueni-epigraph, body.light .xueni-epigraph { border-top-color:rgba(60,90,15,0.45); border-bottom-color:rgba(60,90,15,0.45); background:rgba(230,242,200,0.55); border-radius:6px; padding:1.2rem 1.8rem; }
-        html[data-theme="light"] .xueni-epigraph p, body.light .xueni-epigraph p { color:#1a4a1a; opacity:1; font-weight:600; }
-        html[data-theme="light"] .xueni-epigraph cite, body.light .xueni-epigraph cite { color:#1a4a1a; opacity:1; font-weight:500; }
-        html[data-theme="light"] .xueni-card, body.light .xueni-card { background:#f3f8e8; border:1px solid rgba(65,100,15,0.30); box-shadow:0 2px 12px rgba(50,85,8,0.10); -webkit-backdrop-filter:none; backdrop-filter:none; }
-        html[data-theme="light"] .xueni-card:hover, body.light .xueni-card:hover { background:#eaf4d2; border-color:rgba(65,100,15,0.55); }
-        html[data-theme="light"] .xueni-card::before, body.light .xueni-card::before { background:linear-gradient(135deg,#5a9a10,transparent); opacity:0.6; }
-        html[data-theme="light"] .xueni-card-tag, body.light .xueni-card-tag { color:#1a4a1a; opacity:1; font-weight:700; }
-        html[data-theme="light"] .xueni-card-quote, body.light .xueni-card-quote { color:#1a4a1a; opacity:1; font-weight:600; }
-        html[data-theme="light"] .xueni-card-source, body.light .xueni-card-source { color:#3a5a0a; opacity:1; }
+        html:not([data-theme="dark"]) .xueni-title,
+        html:not([data-theme="dark"]) #xueni-title { color:#1a4a1a; opacity:1; font-weight:700; }
+        html:not([data-theme="dark"]) .xueni-epigraph { border-top-color:rgba(60,90,15,0.45); border-bottom-color:rgba(60,90,15,0.45); background:rgba(230,242,200,0.55); border-radius:6px; padding:1.2rem 1.8rem; }
+        html:not([data-theme="dark"]) .xueni-epigraph p { color:#1a4a1a; opacity:1; font-weight:600; }
+        html:not([data-theme="dark"]) .xueni-epigraph cite { color:#1a4a1a; opacity:1; font-weight:500; }
+        html:not([data-theme="dark"]) .xueni-card { background:#f3f8e8; border:1px solid rgba(65,100,15,0.30); box-shadow:0 2px 12px rgba(50,85,8,0.10); -webkit-backdrop-filter:none; backdrop-filter:none; }
+        html:not([data-theme="dark"]) .xueni-card:hover { background:#eaf4d2; border-color:rgba(65,100,15,0.55); }
+        html:not([data-theme="dark"]) .xueni-card::before { background:linear-gradient(135deg,#5a9a10,transparent); opacity:0.6; }
+        html:not([data-theme="dark"]) .xueni-card-tag { color:#1a4a1a; opacity:1; font-weight:700; }
+        html:not([data-theme="dark"]) .xueni-card-quote { color:#1a4a1a; opacity:1; font-weight:600; }
+        html:not([data-theme="dark"]) .xueni-card-source { color:#1a4a1a; opacity:1; }
         /* 浅色下植物适当降透，不抢眼 */
-        html[data-theme="light"] .xueni-side, body.light .xueni-side { opacity:0.70; }
+        html:not([data-theme="dark"]) .xueni-side { opacity:0.70; }
 
         /* ===== 叶片动画 ===== */
         .leaf-sway-a { animation:leaf-a 4s   ease-in-out infinite;       transform-box:fill-box; transform-origin:50% 100%; }
