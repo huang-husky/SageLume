@@ -25,7 +25,9 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(where:*)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Read(//mnt/d/vue-for-you/cc-blog/**)",
+      "Bash(find . -name *.md -path */coding/*)"
     ]
   }
 }
