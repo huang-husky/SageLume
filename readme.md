@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Typing SVG Banner -->
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&pause=1000&color=6EE7B7&center=true&vCenter=true&width=600&lines=Hi+there%2C+I'm+Sage+Lume+%F0%9F%8C%9F;Welcome+to+my+digital+garden+%F0%9F%8C%BF;Where+code+meets+curiosity+%E2%9C%A8;Always+learning%2C+always+building+%F0%9F%9A%80" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&pause=1000&color=6EE7B7&center=true&vCenter=true&width=600&lines=Hi+there%2C+I'm+Huang+Husky+%F0%9F%8C%9F;Welcome+to+my+digital+garden+%F0%9F%8C%BF;Where+code+meets+curiosity+%E2%9C%A8;Always+learning%2C+always+building+%F0%9F%9A%80" alt="Typing SVG" />
 
 <br/>
 
@@ -15,9 +15,9 @@
 <!-- Profile Views + Social -->
 <div align="center">
 
-[![Profile Views](https://komarev.com/ghpvc/?username=sage-lume&color=6EE7B7&style=flat-square&label=Visitors)](https://sage-lume.vercel.app)
+[![Profile Views](https://komarev.com/ghpvc/?username=huang-husky&color=6EE7B7&style=flat-square&label=Visitors)](https://sage-lume.vercel.app)
 [![Blog](https://img.shields.io/badge/📖_Blog-sage--lume.vercel.app-6EE7B7?style=flat-square)](https://sage-lume.vercel.app)
-[![GitHub](https://img.shields.io/badge/GitHub-sage--lume-181717?style=flat-square&logo=github)](https://github.com/sage-lume)
+[![GitHub](https://img.shields.io/badge/GitHub-huang--husky-181717?style=flat-square&logo=github)](https://github.com/huang-husky)
 
 </div>
 
@@ -77,14 +77,14 @@ sage-lume.vercel.app/
 
 <div align="center">
 
-<img height="160" src="https://github-readme-stats.vercel.app/api?username=sage-lume&show_icons=true&theme=nord&hide_border=true&count_private=true" />
-<img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=sage-lume&layout=compact&theme=nord&hide_border=true" />
+<img height="160" src="https://github-readme-stats.vercel.app/api?username=huang-husky&show_icons=true&theme=nord&hide_border=true&count_private=true" />
+<img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=huang-husky&layout=compact&theme=nord&hide_border=true" />
 
 </div>
 
 <div align="center">
 
-<img width="80%" src="https://github-readme-activity-graph.vercel.app/graph?username=sage-lume&theme=nord&hide_border=true&area=true" />
+<img width="80%" src="https://github-readme-activity-graph.vercel.app/graph?username=huang-husky&theme=nord&hide_border=true&area=true" />
 
 </div>
 
