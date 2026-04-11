@@ -249,7 +249,7 @@ b,strong{color:var(--yukima-strong)}
 .site-footer{margin-top:var(--yukima-size-12);padding-top:var(--yukima-size-6);border-top-width:var(--yukima-size-border-width, 1px);border-top-style:solid;border-top-color:var(--yukima-border);text-align:center;font-size:var(--yukima-size-font-sm)}
 .site-footer .sakura-separator{font-size:var(--yukima-size-font-md);margin:var(--yukima-size-2) 0}
 @font-face{font-family:'Seventeen';src:url('./fonts/seventeen.TTF') format('truetype')}
-.main-nav{margin-top:var(--yukima-size-4);display:flex;justify-content:center;gap:var(--yukima-size-6);font-size:var(--yukima-size-font-md);font-family:'Seventeen',sans-serif}
+.main-nav{margin-top:var(--yukima-size-4);display:flex;justify-content:center;gap:var(--yukima-size-6);font-size:clamp(1.45rem, 1.2rem + 1vw, 1.7rem);font-family:'Seventeen',sans-serif}
 .post-navigation{display:flex;justify-content:space-between;margin-top:var(--yukima-size-12)}
 .post-navigation a{display:block;max-width:48%;padding:var(--yukima-size-4);border-radius:var(--yukima-radius-md);transition:all .3s ease;background-color:var(--yukima-component-bg);border-width:var(--yukima-size-border-width);border-style:solid;border-color:var(--yukima-component-border)}
 .post-navigation a:hover{background-color:var(--yukima-component-bg-hover);border-color:var(--yukima-component-border-hover);transform:translateY(calc(var(--yukima-size-1)*-1));box-shadow:var(--yukima-component-shadow-hover)}
