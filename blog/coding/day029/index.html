@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Day 029 · 土豪 | SageLume</title>
-  <meta name="description" content="acm.scu.edu.cn 49 · 土豪——[TODO]，Day 029 菜鸟的coding。">
+  <meta name="description" content="acm.scu.edu.cn 49 · 土豪——单调队列，Day 029 菜鸟的coding。">
 
   <!-- Favicon -->
   <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
@@ -64,7 +64,7 @@
           <span> • </span>
           <span>C++</span>
           <span> • </span>
-          <span>acm.scu.edu.cn 49 &nbsp;·&nbsp; [TODO]</span>
+          <span>acm.scu.edu.cn 49 &nbsp;·&nbsp; 单调队列</span>
         </div>
       </header>
 
@@ -128,7 +128,7 @@
         <!-- 思路 -->
         <h2>思路</h2>
         <p>
-          [TODO]
+          用单调递减队列维护滑动窗口的最大值。队列存下标，需要管理两个边界：队头下标若小于 <code>i - k + 1</code>，说明已滑出窗口，弹出；新元素入队前，将队尾所有比它小的元素弹出，保持队列单调递减。这样队头始终是当前窗口的最大值，每次 O(1) 取得。
         </p>
 
         <!-- 代码块 -->
@@ -140,22 +140,50 @@
             <span class="cyber-code-lang">C++ · p49.cpp</span>
           </div>
           <div class="cyber-code-body">
-            <pre class="cyber-pre"><code class="cyber-code">[TODO]</code></pre>
+            <pre class="cyber-pre"><code class="cyber-code">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main(){
+    int n,k; // 总人数，k个中找max
+    cin&gt;&gt;n&gt;&gt;k;
+
+    vector&lt;int&gt; wealth(n);
+    for(int c=0;c&lt;n;c++){
+        cin&gt;&gt;wealth[c];
+    }
+
+    deque&lt;int&gt; dq;
+    for(int i=0;i&lt;n;i++){
+        // 弹出窗口外的下标
+        while(!dq.empty() &amp;&amp; dq.front() &lt;= i-k) dq.pop_front();
+        // 弹出所有比当前元素小的元素
+        while(!dq.empty() &amp;&amp; wealth[dq.back()] &lt; wealth[i]) dq.pop_back();
+        dq.push_back(i);
+
+        // 当窗口形成后，输出当前窗口的最大值（队首）
+        if(i &gt;= k-1){
+            cout&lt;&lt;wealth[dq.front()];
+            if(i!=n-1) cout&lt;&lt;' ';
+        }
+    }
+    cout &lt;&lt; '\n';
+    return 0;
+}</code></pre>
           </div>
         </div>
 
         <!-- 复杂度 -->
         <h2>复杂度分析</h2>
         <ul>
-          <li><strong>时间复杂度：</strong>[TODO]</li>
-          <li><strong>空间复杂度：</strong>[TODO]</li>
+          <li><strong>时间复杂度：</strong>O(n)，每个元素最多入队、出队各一次</li>
+          <li><strong>空间复杂度：</strong>O(k)，队列最多存 k 个下标</li>
         </ul>
 
         <!-- 心得 -->
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
           <p class="coding-reflection-text">
-            [TODO]
+            单调队列的想法很巧妙，关键是同时管理好两个边界：队头控制窗口范围，队尾维护单调性。
           </p>
         </div>
 
