@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 030 · 方程 | SageLume</title>
+  <meta name="description" content="acm.scu.edu.cn 50 · 方程——杨辉三角 DP，Day 030 菜鸟的coding。">
+
+  <!-- Favicon -->
+  <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://sage-lume.vercel.app/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://sage-lume.vercel.app/favicon/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/coding.css">
+
+  <!-- Scripts -->
+  <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
+  <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+</head>
+
+<body>
+  <!-- 花瓣背景 -->
+  <canvas id="coding-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://sage-lume.vercel.app/">
+        <img src="https://sage-lume.vercel.app/favicon/logo-header.png" alt="算海青藜" height="96">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://sage-lume.vercel.app/">Home</a>
+      <a href="https://sage-lume.vercel.app/about/">About</a>
+      <a href="https://sage-lume.vercel.app/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <div class="coding-header-accent coding-header-accent--left">
+          <span class="coding-tag-badge"># 菜鸟的coding · Day 030</span>
+        </div>
+        <h1 class="post-title">方程</h1>
+        <div class="post-meta">
+          <span>2026-04-12</span>
+          <span> • </span>
+          <span>C++</span>
+          <span> • </span>
+          <span>acm.scu.edu.cn 50 &nbsp;·&nbsp; 杨辉三角 DP</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+
+        <!-- 题目描述 -->
+        <h2>题目</h2>
+        <p>
+          什么是多项式？我数学不好不太会。
+        </p>
+        <p>
+          还是数学课，小J和小R在数学课上遇到了 (x+y)²=x²+2xy+y²，小J继续推导 (x+y)³=x³+3x²y+3y²x+y³。
+        </p>
+        <p>
+          小J和小R把其中的系数拿出来排成了一个序列，发现是1 2 1和1 3 3 1。
+        </p>
+        <p>
+          小R："你可以告诉我如果是 (x+y)ⁿ 他们的系数会是什么样子吗？"
+        </p>
+        <p>
+          小J："比起问我不如问问正在做题的同学们。"
+        </p>
+        <p>
+          下面交给你了！
+        </p>
+        <p>
+          小J和小R想知道多项式 (x+y)ⁿ 分解后每一项的系数分别是多少，现在请你来帮助他们！
+        </p>
+        <p>
+          <strong>输入：</strong>第一行1个整数 n。<br>
+          <strong>输出：</strong>依次输出 (x+y)ⁿ 每一项的系数。（由于数据可能较大，答案请取模 998244353 输出）
+        </p>
+        <p><strong>样例1：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">2</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">1 2 1</pre>
+          </div>
+        </div>
+        <p><strong>样例2：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">3</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">1 3 3 1</pre>
+          </div>
+        </div>
+        <p>
+          <strong>提示：</strong>对于 30% 的数据，保证 n≤100。对于 60% 的数据，保证 n≤1000。对于 100% 的数据，保证 n≤10000。
+        </p>
+
+        <!-- 思路 -->
+        <h2>思路</h2>
+        <p>
+          (x+y)ⁿ 展开后第 k 项的系数是二项式系数 C(n,k)，恰好对应杨辉三角第 n 行。用一维 DP 滚动更新：只保留一行，每轮从右往左推，<code>c[d] = c[d] + c[d-1]</code>，避免用到已更新的值。需要注意三个边界：
+        </p>
+        <ul>
+          <li><strong>内层从右往左</strong>：若从左往右，<code>c[d-1]</code> 已被本轮更新，计算结果错误。</li>
+          <li><strong>内层起点是 <code>c+1</code>，不是 <code>c</code></strong>：第 c 轮新增的最右边那个 1 在位置 c+1，起点是 c 会漏掉它。</li>
+          <li><strong>输出循环到 <code>e&lt;=n</code>，不是 <code>e&lt;n</code></strong>：(x+y)ⁿ 有 n+1 项（从 C(n,0) 到 C(n,n)），少一位会丢掉最后的 1。</li>
+        </ul>
+
+        <!-- 代码块 -->
+        <div class="cyber-code-block">
+          <div class="cyber-code-header">
+            <div class="cyber-code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="cyber-code-lang">C++ · p50.cpp</span>
+          </div>
+          <div class="cyber-code-body">
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-keyword">const</span> <span class="cc-type">long long</span> <span class="cc-variable">MOD</span> <span class="cc-operator">=</span> <span class="cc-number">998244353</span><span class="cc-plain">;</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">(){</span>
+    <span class="cc-type">int</span> <span class="cc-variable">n</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">n</span><span class="cc-plain">;</span>
+
+    <span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">long long</span><span class="cc-plain">&gt;</span> <span class="cc-variable">yh_triangle</span><span class="cc-plain">(</span><span class="cc-variable">n</span><span class="cc-operator">+</span><span class="cc-number">1</span><span class="cc-plain">,</span><span class="cc-number">0</span><span class="cc-plain">);</span>
+    <span class="cc-variable">yh_triangle</span><span class="cc-plain">[</span><span class="cc-number">0</span><span class="cc-plain">]</span><span class="cc-operator">=</span><span class="cc-number">1</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-operator">&lt;</span><span class="cc-variable">n</span><span class="cc-plain">;</span><span class="cc-variable">c</span><span class="cc-plain">++){</span>
+        <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">d</span><span class="cc-operator">=</span><span class="cc-variable">c</span><span class="cc-operator">+</span><span class="cc-number">1</span><span class="cc-plain">;</span><span class="cc-variable">d</span><span class="cc-operator">&gt;</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">d</span><span class="cc-plain">--){</span>
+            <span class="cc-variable">yh_triangle</span><span class="cc-plain">[</span><span class="cc-variable">d</span><span class="cc-plain">]</span><span class="cc-operator">=</span><span class="cc-plain">(</span><span class="cc-variable">yh_triangle</span><span class="cc-plain">[</span><span class="cc-variable">d</span><span class="cc-plain">]</span><span class="cc-operator">+</span><span class="cc-variable">yh_triangle</span><span class="cc-plain">[</span><span class="cc-variable">d</span><span class="cc-operator">-</span><span class="cc-number">1</span><span class="cc-plain">])</span><span class="cc-operator">%</span><span class="cc-variable">MOD</span><span class="cc-plain">;</span>
+        <span class="cc-plain">}</span>
+    <span class="cc-plain">}</span>
+
+    <span class="cc-keyword">for</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">e</span><span class="cc-operator">=</span><span class="cc-number">0</span><span class="cc-plain">;</span><span class="cc-variable">e</span><span class="cc-operator">&lt;=</span><span class="cc-variable">n</span><span class="cc-plain">;</span><span class="cc-variable">e</span><span class="cc-plain">++){</span>
+        <span class="cc-variable">cout</span><span class="cc-operator">&lt;&lt;</span><span class="cc-variable">yh_triangle</span><span class="cc-plain">[</span><span class="cc-variable">e</span><span class="cc-plain">]</span><span class="cc-operator">&lt;&lt;</span><span class="cc-string">" "</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
+          </div>
+        </div>
+
+        <!-- 复杂度 -->
+        <h2>复杂度分析</h2>
+        <ul>
+          <li><strong>时间复杂度：</strong>O(n²)，双层循环各跑 n 次</li>
+          <li><strong>空间复杂度：</strong>O(n)，只用一维数组滚动更新</li>
+        </ul>
+
+        <!-- 心得 -->
+        <div class="coding-reflection">
+          <span class="coding-reflection-label">今日感受</span>
+          <p class="coding-reflection-text">
+            要考虑各种边界：更新方向、起点、输出范围，每一个边界错了结果就不对。
+          </p>
+        </div>
+
+        <!-- 返回 -->
+        <p class="coding-back-wrap">
+          <a href="https://sage-lume.vercel.app/blog/coding/" class="coding-back-link">← 返回菜鸟的coding</a>
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://sage-lume.vercel.app/favicon/logo-footer.png" alt="算海青藜" height="48">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <script src="https://sage-lume.vercel.app/js/coding-particles.js"></script>
+</body>
+</html>
