@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 031 · 成绩单 | SageLume</title>
+  <meta name="description" content="acm.scu.edu.cn 51 · 成绩单——排序 + 格式化输出，Day 031 菜鸟的coding。">
+
+  <!-- Favicon -->
+  <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://sage-lume.vercel.app/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://sage-lume.vercel.app/favicon/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/coding.css">
+
+  <!-- Scripts -->
+  <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
+  <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+</head>
+
+<body>
+  <!-- 花瓣背景 -->
+  <canvas id="coding-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://sage-lume.vercel.app/">
+        <img src="https://sage-lume.vercel.app/favicon/logo-header.png" alt="算海青藜" height="96">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://sage-lume.vercel.app/">Home</a>
+      <a href="https://sage-lume.vercel.app/about/">About</a>
+      <a href="https://sage-lume.vercel.app/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <div class="coding-header-accent coding-header-accent--left">
+          <span class="coding-tag-badge"># 菜鸟的coding · Day 031</span>
+        </div>
+        <h1 class="post-title">成绩单</h1>
+        <div class="post-meta">
+          <span>2026-04-19</span>
+          <span> • </span>
+          <span>C++</span>
+          <span> • </span>
+          <span>acm.scu.edu.cn 51 &nbsp;·&nbsp; 排序 + 格式化输出</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+
+        <!-- 题目描述 -->
+        <h2>题目</h2>
+        <p>
+          成绩单和薛定谔的猫一样，打开他之前你都不知道你会不会完蛋。
+        </p>
+        <p>
+          小J和小R刚刚经历了半期考试，刚刚拿到了成绩单。
+        </p>
+        <p>
+          小R："这么多成绩，感觉都不好对比，我想看看更加格式化一点的成绩单"
+        </p>
+        <p>
+          小J："这还不简单，看我的。"
+        </p>
+        <p>
+          起初，小J以为只有几个人的成绩以为很快就可以手动排好，当他看到小R拿出的整个年级的成绩时陷入了深深的绝望，而现在只能请你来帮帮他了！
+        </p>
+        <p>
+          现在小J拿到了每个人对应的姓名和三个科目的成绩，现在需要你帮助他按照样例的格式完成排版，按照成绩总分从高到低排序，如果一样则依次考虑计算机网络、程序设计、数据结构和姓名字典序高到低排序。
+        </p>
+        <p>
+          <strong>输入：</strong>第一行一个整数 N，学生人数。接下来 N 行，对于每行：一个字符串，表示学生姓名，不超过10个字符；三个数字，表示计算机网络、程序设计、数据结构的成绩。<br>
+          <strong>输出：</strong>按照格式输出成绩单，姓名栏占位10字符，其余栏目占位8字符，均使用右对齐。
+        </p>
+        <p><strong>样例1：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">2
+wangwang 90 100 90
+anan 99 99 99</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">------------------------------------------------
+|      name| Network| Program|    Date|     Sum|
+------------------------------------------------
+|      anan|      99|      99|      99|     297|
+|  wangwang|      90|     100|      90|     280|
+------------------------------------------------</pre>
+          </div>
+        </div>
+        <p><strong>样例2：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">3
+wangwang 99 100 60
+anan 100 100 100
+zhangSan 60 60 70</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">------------------------------------------------
+|      name| Network| Program|    Date|     Sum|
+------------------------------------------------
+|      anan|     100|     100|     100|     300|
+|  wangwang|      99|     100|      60|     259|
+|  zhangsan|      60|      60|      70|     190|
+------------------------------------------------</pre>
+          </div>
+        </div>
+        <p>
+          <strong>提示：</strong>对于 30% 的数据，保证 n≤100。对于 70% 的数据，保证 n≤1000。对于 100% 的数据，保证 n≤20000。
+        </p>
+
+        <!-- 思路 -->
+        <h2>思路</h2>
+        <p><!-- 待填写 --></p>
+
+        <!-- 代码块 -->
+        <div class="cyber-code-block">
+          <div class="cyber-code-header">
+            <div class="cyber-code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="cyber-code-lang">C++ · p51.cpp</span>
+          </div>
+          <div class="cyber-code-body">
+            <pre class="cyber-pre"><code class="cyber-code"><!-- 代码待填写 --></code></pre>
+          </div>
+        </div>
+
+        <!-- 复杂度 -->
+        <h2>复杂度分析</h2>
+        <ul>
+          <li><strong>时间复杂度：</strong><!-- 待填写 --></li>
+          <li><strong>空间复杂度：</strong><!-- 待填写 --></li>
+        </ul>
+
+        <!-- 心得 -->
+        <div class="coding-reflection">
+          <span class="coding-reflection-label">今日感受</span>
+          <p class="coding-reflection-text"><!-- 待填写 --></p>
+        </div>
+
+        <!-- 返回 -->
+        <p class="coding-back-wrap">
+          <a href="https://sage-lume.vercel.app/blog/coding/" class="coding-back-link">← 返回菜鸟的coding</a>
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://sage-lume.vercel.app/favicon/logo-footer.png" alt="算海青藜" height="48">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <script src="https://sage-lume.vercel.app/js/coding-particles.js"></script>
+</body>
+</html>
