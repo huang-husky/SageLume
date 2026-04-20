@@ -138,7 +138,9 @@ zhangSan 60 60 70</pre>
 
         <!-- 思路 -->
         <h2>思路</h2>
-        <p><!-- 待填写 --></p>
+        <p>
+          用一个结构体存储每位学生的姓名和三门成绩（以及预先算好的总分）。自定义 <code>cmp</code> 函数，依次按总分、计算机网络、程序设计、数据结构、姓名字典序降序排列——每一级只要不相等就直接返回，不用写嵌套 if-else。输出时用 <code>setw</code> 控制列宽（姓名 10、其余各 8），分隔线恰好 48 个 <code>-</code>。
+        </p>
 
         <!-- 代码块 -->
         <div class="cyber-code-block">
@@ -149,21 +151,77 @@ zhangSan 60 60 70</pre>
             <span class="cyber-code-lang">C++ · p51.cpp</span>
           </div>
           <div class="cyber-code-body">
-            <pre class="cyber-pre"><code class="cyber-code"><!-- 代码待填写 --></code></pre>
+            <pre class="cyber-pre"><code class="cyber-code">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+struct Student {
+    string name;
+    int net, prog, data, sum;
+};
+
+// 排序规则
+bool cmp(const Student &amp;a, const Student &amp;b) {
+    if (a.sum != b.sum) return a.sum &gt; b.sum;
+    if (a.net != b.net) return a.net &gt; b.net;
+    if (a.prog != b.prog) return a.prog &gt; b.prog;
+    if (a.data != b.data) return a.data &gt; b.data;
+    return a.name &gt; b.name; // 字典序降序
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n;
+    cin &gt;&gt; n;
+
+    vector&lt;Student&gt; v(n);
+
+    for (int i = 0; i &lt; n; i++) {
+        cin &gt;&gt; v[i].name &gt;&gt; v[i].net &gt;&gt; v[i].prog &gt;&gt; v[i].data;
+        v[i].sum = v[i].net + v[i].prog + v[i].data;
+    }
+
+    sort(v.begin(), v.end(), cmp);
+
+    // 表头
+    cout &lt;&lt; "------------------------------------------------\n";
+    cout &lt;&lt; "|" &lt;&lt; setw(10) &lt;&lt; "name"
+         &lt;&lt; "|" &lt;&lt; setw(8) &lt;&lt; "Network"
+         &lt;&lt; "|" &lt;&lt; setw(8) &lt;&lt; "Program"
+         &lt;&lt; "|" &lt;&lt; setw(8) &lt;&lt; "Date"
+         &lt;&lt; "|" &lt;&lt; setw(8) &lt;&lt; "Sum"
+         &lt;&lt; "|\n";
+    cout &lt;&lt; "------------------------------------------------\n";
+
+    // 数据
+    for (auto &amp;s : v) {
+        cout &lt;&lt; "|" &lt;&lt; setw(10) &lt;&lt; s.name
+             &lt;&lt; "|" &lt;&lt; setw(8) &lt;&lt; s.net
+             &lt;&lt; "|" &lt;&lt; setw(8) &lt;&lt; s.prog
+             &lt;&lt; "|" &lt;&lt; setw(8) &lt;&lt; s.data
+             &lt;&lt; "|" &lt;&lt; setw(8) &lt;&lt; s.sum
+             &lt;&lt; "|\n";
+    }
+
+    cout &lt;&lt; "------------------------------------------------\n";
+
+    return 0;
+}</code></pre>
           </div>
         </div>
 
         <!-- 复杂度 -->
         <h2>复杂度分析</h2>
         <ul>
-          <li><strong>时间复杂度：</strong><!-- 待填写 --></li>
-          <li><strong>空间复杂度：</strong><!-- 待填写 --></li>
+          <li><strong>时间复杂度：</strong>O(n log n)，排序主导</li>
+          <li><strong>空间复杂度：</strong>O(n)，存储 n 个学生</li>
         </ul>
 
         <!-- 心得 -->
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
-          <p class="coding-reflection-text"><!-- 待填写 --></p>
+          <p class="coding-reflection-text">cmp 函数里的简洁判断很好用——每一级直接 return，不用一堆嵌套的 if-else，清晰很多。另外这道题温习了结构体的使用，把相关数据打包在一起确实比散装变量好管理。</p>
         </div>
 
         <!-- 返回 -->
