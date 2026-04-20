@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 033 · 黑白格 | SageLume</title>
+  <meta name="description" content="acm.scu.edu.cn 53 · 黑白格——分治/递归，Day 033 菜鸟的coding。">
+
+  <!-- Favicon -->
+  <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://sage-lume.vercel.app/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://sage-lume.vercel.app/favicon/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/coding.css">
+
+  <!-- Scripts -->
+  <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
+  <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+</head>
+
+<body>
+  <!-- 花瓣背景 -->
+  <canvas id="coding-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://sage-lume.vercel.app/">
+        <img src="https://sage-lume.vercel.app/favicon/logo-header.png" alt="算海青藜" height="96">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://sage-lume.vercel.app/">Home</a>
+      <a href="https://sage-lume.vercel.app/about/">About</a>
+      <a href="https://sage-lume.vercel.app/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <div class="coding-header-accent coding-header-accent--left">
+          <span class="coding-tag-badge"># 菜鸟的coding · Day 033</span>
+        </div>
+        <h1 class="post-title">黑白格</h1>
+        <div class="post-meta">
+          <span>2026-04-20</span>
+          <span> • </span>
+          <span>C++</span>
+          <span> • </span>
+          <span>acm.scu.edu.cn 53 &nbsp;·&nbsp; 分治/递归</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+
+        <!-- 题目描述 -->
+        <h2>题目</h2>
+        <p>
+          上课不许下五子棋！
+        </p>
+        <p>
+          小J和小R今天在下课时在手机上开始下五子棋，他们看着这个棋盘，陷入了沉思。
+        </p>
+        <p>
+          小J："这个棋盘黑白间隔太单调了，能不能来玩一点有意思的呀。"
+        </p>
+        <p>
+          小R："那我们来改变一下，给一个空棋盘上色，每一次我将棋盘分为四份，对其中的左上，右上，右下三个部分进行处理，划分结束后再一次将其分成四份，同样处理左上，右上，右下三个部分，直到只剩下了边长为2的方格时，为左上，右上，右下三个部分填入1。这样完成上色。"
+        </p>
+        <p>
+          小J："听起来有点意思，让我来试试。"
+        </p>
+        <p>
+          尝试的过程中小J发现好像有一点困难，想要请你一起来帮助他，现在到你动手了！
+        </p>
+        <p>
+          请根据小J和小R的目标，根据输入的棋盘边长完成上色，之后输出整个棋盘。
+        </p>
+        <p>
+          <strong>输入：</strong>第一行一个整数 N，表示棋盘边长。<br>
+          <strong>输出：</strong>按照要求输出对应的棋盘样式。
+        </p>
+        <p><strong>样例1：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">2</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">1 1
+0 1</pre>
+          </div>
+        </div>
+        <p><strong>样例2：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">8</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">1 1 1 1 1 1 1 1
+0 1 0 1 0 1 0 1
+0 0 1 1 0 0 1 1
+0 0 0 1 0 0 0 1
+0 0 0 0 1 1 1 1
+0 0 0 0 0 1 0 1
+0 0 0 0 0 0 1 1
+0 0 0 0 0 0 0 1</pre>
+          </div>
+        </div>
+        <p>
+          <strong>提示：</strong>对于 60% 的数据，保证 N≤500。对于 100% 的数据，保证 N≤5000，N保证为2的方幂。
+        </p>
+
+        <!-- 思路 -->
+        <h2>思路</h2>
+        <p><!-- 待填写 --></p>
+
+        <!-- 代码块 -->
+        <div class="cyber-code-block">
+          <div class="cyber-code-header">
+            <div class="cyber-code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="cyber-code-lang">C++ · p53.cpp</span>
+          </div>
+          <div class="cyber-code-body">
+            <pre class="cyber-pre"><code class="cyber-code"><!-- 代码待填写 --></code></pre>
+          </div>
+        </div>
+
+        <!-- 复杂度 -->
+        <h2>复杂度分析</h2>
+        <ul>
+          <li><strong>时间复杂度：</strong><!-- 待填写 --></li>
+          <li><strong>空间复杂度：</strong><!-- 待填写 --></li>
+        </ul>
+
+        <!-- 心得 -->
+        <div class="coding-reflection">
+          <span class="coding-reflection-label">今日感受</span>
+          <p class="coding-reflection-text"><!-- 待填写 --></p>
+        </div>
+
+        <!-- 返回 -->
+        <p class="coding-back-wrap">
+          <a href="https://sage-lume.vercel.app/blog/coding/" class="coding-back-link">← 返回菜鸟的coding</a>
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://sage-lume.vercel.app/favicon/logo-footer.png" alt="算海青藜" height="48">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <script src="https://sage-lume.vercel.app/js/coding-particles.js"></script>
+</body>
+</html>
