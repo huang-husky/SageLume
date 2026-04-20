@@ -133,7 +133,9 @@
 
         <!-- 思路 -->
         <h2>思路</h2>
-        <p><!-- 待填写 --></p>
+        <p>
+          递归构造：将 n×n 棋盘四等分，左上、右上、右下三块各复制 n/2 规模的子问题结果，左下始终保持0，直到 2×2 的基础块直接返回。
+        </p>
 
         <!-- 代码块 -->
         <div class="cyber-code-block">
@@ -144,21 +146,63 @@
             <span class="cyber-code-lang">C++ · p53.cpp</span>
           </div>
           <div class="cyber-code-body">
-            <pre class="cyber-pre"><code class="cyber-code"><!-- 代码待填写 --></code></pre>
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-comment">// 返回一个n*n的棋盘</span>
+<span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">int</span><span class="cc-plain">&gt;&gt;</span> <span class="cc-function">build</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">n</span><span class="cc-plain">) {</span>
+    <span class="cc-keyword">if</span> <span class="cc-plain">(</span><span class="cc-variable">n</span> <span class="cc-operator">==</span> <span class="cc-number">2</span><span class="cc-plain">) {</span> <span class="cc-comment">// 递归终点</span>
+        <span class="cc-keyword">return</span> <span class="cc-plain">{</span>
+            <span class="cc-plain">{</span><span class="cc-number">1</span><span class="cc-plain">,</span> <span class="cc-number">1</span><span class="cc-plain">},</span>
+            <span class="cc-plain">{</span><span class="cc-number">0</span><span class="cc-plain">,</span> <span class="cc-number">1</span><span class="cc-plain">}</span>
+        <span class="cc-plain">};</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-comment">// 构造一个更小的棋盘</span>
+    <span class="cc-keyword">auto</span> <span class="cc-variable">half</span> <span class="cc-operator">=</span> <span class="cc-function">build</span><span class="cc-plain">(</span><span class="cc-variable">n</span> <span class="cc-operator">/</span> <span class="cc-number">2</span><span class="cc-plain">);</span>
+    <span class="cc-comment">// 创建一个全0的棋盘</span>
+    <span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">int</span><span class="cc-plain">&gt;&gt;</span> <span class="cc-variable">res</span><span class="cc-plain">(</span><span class="cc-variable">n</span><span class="cc-plain">,</span> <span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">int</span><span class="cc-plain">&gt;(</span><span class="cc-variable">n</span><span class="cc-plain">,</span> <span class="cc-number">0</span><span class="cc-plain">));</span>
+
+    <span class="cc-comment">// 遍历小棋盘，并复制到大棋盘左上右上右下</span>
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">i</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span> <span class="cc-variable">i</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">n</span> <span class="cc-operator">/</span> <span class="cc-number">2</span><span class="cc-plain">;</span> <span class="cc-variable">i</span><span class="cc-operator">++</span><span class="cc-plain">) {</span>
+        <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">j</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span> <span class="cc-variable">j</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">n</span> <span class="cc-operator">/</span> <span class="cc-number">2</span><span class="cc-plain">;</span> <span class="cc-variable">j</span><span class="cc-operator">++</span><span class="cc-plain">) {</span>
+            <span class="cc-variable">res</span><span class="cc-plain">[</span><span class="cc-variable">i</span><span class="cc-plain">][</span><span class="cc-variable">j</span><span class="cc-plain">]</span> <span class="cc-operator">=</span> <span class="cc-variable">half</span><span class="cc-plain">[</span><span class="cc-variable">i</span><span class="cc-plain">][</span><span class="cc-variable">j</span><span class="cc-plain">];</span> <span class="cc-comment">// 左上</span>
+            <span class="cc-variable">res</span><span class="cc-plain">[</span><span class="cc-variable">i</span><span class="cc-plain">][</span><span class="cc-variable">j</span> <span class="cc-operator">+</span> <span class="cc-variable">n</span><span class="cc-operator">/</span><span class="cc-number">2</span><span class="cc-plain">]</span> <span class="cc-operator">=</span> <span class="cc-variable">half</span><span class="cc-plain">[</span><span class="cc-variable">i</span><span class="cc-plain">][</span><span class="cc-variable">j</span><span class="cc-plain">];</span> <span class="cc-comment">// 右上</span>
+            <span class="cc-variable">res</span><span class="cc-plain">[</span><span class="cc-variable">i</span> <span class="cc-operator">+</span> <span class="cc-variable">n</span><span class="cc-operator">/</span><span class="cc-number">2</span><span class="cc-plain">][</span><span class="cc-variable">j</span> <span class="cc-operator">+</span> <span class="cc-variable">n</span><span class="cc-operator">/</span><span class="cc-number">2</span><span class="cc-plain">]</span> <span class="cc-operator">=</span> <span class="cc-variable">half</span><span class="cc-plain">[</span><span class="cc-variable">i</span><span class="cc-plain">][</span><span class="cc-variable">j</span><span class="cc-plain">];</span> <span class="cc-comment">// 右下</span>
+            <span class="cc-comment">// 左下默认0</span>
+        <span class="cc-plain">}</span>
+    <span class="cc-plain">}</span>
+
+    <span class="cc-keyword">return</span> <span class="cc-variable">res</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">() {</span>
+    <span class="cc-type">int</span> <span class="cc-variable">n</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span> <span class="cc-operator">&gt;&gt;</span> <span class="cc-variable">n</span><span class="cc-plain">;</span>
+
+    <span class="cc-keyword">auto</span> <span class="cc-variable">ans</span> <span class="cc-operator">=</span> <span class="cc-function">build</span><span class="cc-plain">(</span><span class="cc-variable">n</span><span class="cc-plain">);</span>
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-keyword">auto</span> <span class="cc-operator">&amp;</span><span class="cc-variable">row</span> <span class="cc-plain">:</span> <span class="cc-variable">ans</span><span class="cc-plain">) {</span>
+        <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">i</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span> <span class="cc-variable">i</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">n</span><span class="cc-plain">;</span> <span class="cc-variable">i</span><span class="cc-operator">++</span><span class="cc-plain">) {</span>
+            <span class="cc-variable">cout</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-variable">row</span><span class="cc-plain">[</span><span class="cc-variable">i</span><span class="cc-plain">];</span>
+            <span class="cc-keyword">if</span> <span class="cc-plain">(</span><span class="cc-variable">i</span> <span class="cc-operator">!=</span> <span class="cc-variable">n</span> <span class="cc-operator">-</span> <span class="cc-number">1</span><span class="cc-plain">)</span> <span class="cc-variable">cout</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-string">" "</span><span class="cc-plain">;</span>
+        <span class="cc-plain">}</span>
+        <span class="cc-variable">cout</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-string">"\n"</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
           </div>
         </div>
 
         <!-- 复杂度 -->
         <h2>复杂度分析</h2>
         <ul>
-          <li><strong>时间复杂度：</strong><!-- 待填写 --></li>
-          <li><strong>空间复杂度：</strong><!-- 待填写 --></li>
+          <li><strong>时间复杂度：</strong>O(n²)，每个格子恰好被填写一次</li>
+          <li><strong>空间复杂度：</strong>O(n²)，递归各层棋盘总大小为等比级数，收敛于 O(n²)</li>
         </ul>
 
         <!-- 心得 -->
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
-          <p class="coding-reflection-text"><!-- 待填写 --></p>
+          <p class="coding-reflection-text">本质是分形递归与结构复制，理解"构造规则"比公式更直观，逐层展开就不难。</p>
         </div>
 
         <!-- 返回 -->
