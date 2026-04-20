@@ -125,7 +125,9 @@
 
         <!-- 思路 -->
         <h2>思路</h2>
-        <p><!-- 待填写 --></p>
+        <p>
+          第n层节点数就是 b<sup>n</sup>（满b叉树每层扩大b倍）。b 和 n 最大接近 2<sup>31</sup>，暴力连乘 O(n) 会超时。用快速幂：把指数不断折半，若当前位为1就乘进答案，每轮底数自乘，O(log n) 搞定。注意底数和中间结果都要及时对 mod 取余防溢出，同时 <code>ans</code> 初始化为 <code>1%mod</code> 处理 mod=1 的边界。
+        </p>
 
         <!-- 代码块 -->
         <div class="cyber-code-block">
@@ -136,21 +138,43 @@
             <span class="cyber-code-lang">C++ · p52.cpp</span>
           </div>
           <div class="cyber-code-body">
-            <pre class="cyber-pre"><code class="cyber-code"><!-- 代码待填写 --></code></pre>
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-comment">// 快速幂</span>
+<span class="cc-type">int</span> <span class="cc-function">qpow</span><span class="cc-plain">(</span><span class="cc-type">long long</span> <span class="cc-variable">b</span><span class="cc-plain">,</span> <span class="cc-type">long long</span> <span class="cc-variable">n</span><span class="cc-plain">,</span> <span class="cc-type">long long</span> <span class="cc-variable">mod</span><span class="cc-plain">) {</span>
+    <span class="cc-variable">b</span><span class="cc-operator">%=</span><span class="cc-variable">mod</span><span class="cc-plain">;</span>
+    <span class="cc-type">long long</span> <span class="cc-variable">ans</span><span class="cc-operator">=</span><span class="cc-number">1</span><span class="cc-operator">%</span><span class="cc-variable">mod</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">while</span> <span class="cc-plain">(</span><span class="cc-variable">n</span><span class="cc-plain">) {</span>
+        <span class="cc-keyword">if</span> <span class="cc-plain">(</span><span class="cc-variable">n</span> <span class="cc-operator">&amp;</span> <span class="cc-number">1</span><span class="cc-plain">) {</span>
+            <span class="cc-variable">ans</span> <span class="cc-operator">=</span> <span class="cc-variable">ans</span> <span class="cc-operator">*</span> <span class="cc-variable">b</span> <span class="cc-operator">%</span> <span class="cc-variable">mod</span><span class="cc-plain">;</span>
+        <span class="cc-plain">}</span>
+        <span class="cc-variable">n</span> <span class="cc-operator">&gt;&gt;=</span> <span class="cc-number">1</span><span class="cc-plain">;</span>
+        <span class="cc-variable">b</span> <span class="cc-operator">=</span> <span class="cc-variable">b</span> <span class="cc-operator">*</span> <span class="cc-variable">b</span> <span class="cc-operator">%</span> <span class="cc-variable">mod</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">return</span> <span class="cc-variable">ans</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">() {</span>
+    <span class="cc-type">long long</span> <span class="cc-variable">b</span><span class="cc-plain">,</span><span class="cc-variable">n</span><span class="cc-plain">,</span><span class="cc-variable">k</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">b</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">n</span><span class="cc-operator">&gt;&gt;</span><span class="cc-variable">k</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cout</span><span class="cc-operator">&lt;&lt;</span><span class="cc-function">qpow</span><span class="cc-plain">(</span><span class="cc-variable">b</span><span class="cc-plain">,</span><span class="cc-variable">n</span><span class="cc-plain">,</span><span class="cc-variable">k</span><span class="cc-plain">);</span>
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
           </div>
         </div>
 
         <!-- 复杂度 -->
         <h2>复杂度分析</h2>
         <ul>
-          <li><strong>时间复杂度：</strong><!-- 待填写 --></li>
-          <li><strong>空间复杂度：</strong><!-- 待填写 --></li>
+          <li><strong>时间复杂度：</strong>O(log n)，指数每轮折半</li>
+          <li><strong>空间复杂度：</strong>O(1)</li>
         </ul>
 
         <!-- 心得 -->
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
-          <p class="coding-reflection-text"><!-- 待填写 --></p>
+          <p class="coding-reflection-text">快速幂是经典模板，要记住：底数自乘、指数右移、奇数位乘进答案，三步一循环。</p>
         </div>
 
         <!-- 返回 -->
