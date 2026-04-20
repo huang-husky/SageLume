@@ -1,40 +1,57 @@
-// p51.cpp — 成绩单
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-struct Stu{
+struct Student {
     string name;
-    int Network,Program,Date,sum;
+    int net, prog, data, sum;
 };
 
-bool cmp(Stu a,Stu b){
-    if(a.sum!=b.sum) return a.sum>b.sum;
-    if(a.Network!=b.Network) return a.Network>b.Network;
-    if(a.Program!=b.Program) return a.Program>b.Program;
-    if(a.Date!=b.Date) return a.Date>b.Date;
-    return a.name>b.name;
+// 排序规则
+bool cmp(const Student &a, const Student &b) {
+    if (a.sum != b.sum) return a.sum > b.sum;
+    if (a.net != b.net) return a.net > b.net;
+    if (a.prog != b.prog) return a.prog > b.prog;
+    if (a.data != b.data) return a.data > b.data;
+    return a.name > b.name; // 字典序降序
 }
 
-int main(){
-    vector<Stu> stus;
-    int N;
-    cin>>N;
-    for(int c=0;c<N;c++){
-        Stu stu;
-        cin>>stu.name>>stu.Network>>stu.Program>>stu.Date;
-        stu.sum=stu.Network+stu.Program+stu.Date;
-        transform(stu.name.begin(),stu.name.end(),stu.name.begin(),::tolower);
-        stus.push_back(stu);
-    }
-    sort(stus.begin(),stus.end(),cmp);
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    printf("------------------------------------------------\n");
-    printf("|      name| Network| Program|    Date|     Sum|\n");
-    printf("------------------------------------------------\n");
-    for(int c=0;c<N;c++){
-        printf("|%10s|%8d|%8d|%8d|%8d|\n",
-            stus[c].name.c_str(),stus[c].Network,stus[c].Program,stus[c].Date,stus[c].sum);
+    int n;
+    cin >> n;
+
+    vector<Student> v(n);
+
+    for (int i = 0; i < n; i++) {
+        cin >> v[i].name >> v[i].net >> v[i].prog >> v[i].data;
+        v[i].sum = v[i].net + v[i].prog + v[i].data;
     }
-    printf("------------------------------------------------\n");
+
+    sort(v.begin(), v.end(), cmp);
+
+    // 表头
+    cout << "------------------------------------------------\n";
+    cout << "|" << setw(10) << "name"
+         << "|" << setw(8) << "Network"
+         << "|" << setw(8) << "Program"
+         << "|" << setw(8) << "Date"
+         << "|" << setw(8) << "Sum"
+         << "|\n";
+    cout << "------------------------------------------------\n";
+
+    // 数据
+    for (auto &s : v) {
+        cout << "|" << setw(10) << s.name
+             << "|" << setw(8) << s.net
+             << "|" << setw(8) << s.prog
+             << "|" << setw(8) << s.data
+             << "|" << setw(8) << s.sum
+             << "|\n";
+    }
+
+    cout << "------------------------------------------------\n";
+
     return 0;
 }
