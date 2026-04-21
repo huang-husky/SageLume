@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 034 · 大事件 | SageLume</title>
+  <meta name="description" content="acm.scu.edu.cn 54 · 大事件——动态规划，Day 034 菜鸟的coding。">
+
+  <!-- Favicon -->
+  <link rel="manifest" href="https://sage-lume.vercel.app/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="https://sage-lume.vercel.app/favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="算海青藜">
+  <link rel="icon" type="image/svg+xml" href="https://sage-lume.vercel.app/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://sage-lume.vercel.app/favicon/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
+  <link rel="stylesheet" href="https://sage-lume.vercel.app/coding.css">
+
+  <!-- Scripts -->
+  <script src="https://sage-lume.vercel.app/js/theme-toggle.js"></script>
+  <script defer src="https://sage-lume.vercel.app/js/remap-headings.js"></script>
+</head>
+
+<body>
+  <!-- 花瓣背景 -->
+  <canvas id="coding-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" aria-label="切换深浅模式">
+    <span class="icon sun">☀️</span>
+    <span class="icon moon">🌙</span>
+  </button>
+
+  <a class="skip-to-content" href="#main-content">跳至内容</a>
+
+  <header class="site-header">
+    <div class="site-title">
+      <a href="https://sage-lume.vercel.app/">
+        <img src="https://sage-lume.vercel.app/favicon/logo-header.png" alt="算海青藜" height="96">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="https://sage-lume.vercel.app/">Home</a>
+      <a href="https://sage-lume.vercel.app/about/">About</a>
+      <a href="https://sage-lume.vercel.app/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="post">
+      <header class="post-header">
+        <div class="coding-header-accent coding-header-accent--left">
+          <span class="coding-tag-badge"># 菜鸟的coding · Day 034</span>
+        </div>
+        <h1 class="post-title">大事件</h1>
+        <div class="post-meta">
+          <span>2026-04-21</span>
+          <span> • </span>
+          <span>C++</span>
+          <span> • </span>
+          <span>acm.scu.edu.cn 54 &nbsp;·&nbsp; 动态规划</span>
+        </div>
+      </header>
+
+      <div class="post-content">
+
+        <!-- 题目描述 -->
+        <h2>题目</h2>
+        <p>
+          爱看热闹是人的本性。
+        </p>
+        <p>
+          小J和小R听说江安校区发生了很多大事件，作为计算机小喇叭的他们想要第一时间去打现场看看到底发生了什么。
+        </p>
+        <p>
+          小J："这么多事件都发生在了不同的地方，每一件都去打听我的精力也不够啊。"
+        </p>
+        <p>
+          小R："那你必须要放弃其中的一些事件了。"
+        </p>
+        <p>
+          小J："那我让想想我最多可以打听到多少件事情呢。"
+        </p>
+        <p>
+          这一天，在江安校区发生了N起大事件，第i起大事件发生在坐标(Xi,Yi)处。
+        </p>
+        <p>
+          小J从坐标(0,0)处出发，按照事件发生的时间顺序前往各个事件发生地收集资料，最后回到坐标(0,0)处。
+        </p>
+        <p>
+          虽然小J的速度很快，但是小J只会横冲直撞，换句话说，小J的移动必须平行于某条坐标轴。而且小J的力量是有限的，小J移动的总距离不能超过D。
+        </p>
+        <p>
+          所以小J不得不放弃一些大新闻的资料收集。请帮小R预测一下，小J最多可以收集多少起大事件的资料？
+        </p>
+        <p>
+          <strong>输入：</strong>第一行一个非负整数N，表示大事件的数量。接下来N行，每行两个整数Xi和Yi，表示第i起大事件发生地的坐标。按照大事件发生的时间顺序给出各个坐标。接下来一行一个非负整数D，表示小J移动的总距离的限制。<br>
+          <strong>输出：</strong>输出一个整数，表示小J最多能收集多少起大新闻的资料。
+        </p>
+        <p><strong>样例1：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">3
+1 1
+2 2
+1 1
+7</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">2</pre>
+          </div>
+        </div>
+        <p style="font-size:0.9rem;opacity:0.75;">说明：如果小J收集3起大事件的资料，移动的总距离为8。小J可以选择收集事件1和事件3的资料，移动的总距离为4。</p>
+        <p><strong>样例2：</strong></p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输入</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">6
+-1 0
+1 0
+-1 0
+1 0
+-1 0
+1 0
+4</pre>
+          </div>
+          <div>
+            <p style="margin:0 0 0.3rem;font-size:0.85rem;opacity:0.6;">输出</p>
+            <pre style="margin:0;padding:0.6rem 1rem;background:var(--code-bg,#f5f5f5);border-radius:6px;font-size:0.9rem;line-height:1.6;">4</pre>
+          </div>
+        </div>
+        <p style="font-size:0.9rem;opacity:0.75;">说明：小J可以选择收集事件1、事件2、事件4和事件6的资料，移动的总距离为4。</p>
+        <p>
+          <strong>提示：</strong>对于 50% 的数据，保证 N≤20。对于 100% 的数据，保证 N≤100，D≤10<sup>18</sup>，|Xi|≤10<sup>9</sup>，|Yi|≤10<sup>9</sup>。
+        </p>
+
+        <!-- 思路 -->
+        <h2>思路</h2>
+        <p>
+          选事件的顺序固定，只能跳过不能倒序，属于"有序子集最优化"。定义 dp[i][k] = 最后停在事件 i、共选 k 个时从原点到 i 的最小路程，枚举上一个事件 j &lt; i 转移，最终找最大 k 使得所有终点中最优路程加回程 ≤ D。
+        </p>
+
+        <!-- 代码块 -->
+        <div class="cyber-code-block">
+          <div class="cyber-code-header">
+            <div class="cyber-code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="cyber-code-lang">C++ · p54.cpp</span>
+          </div>
+          <div class="cyber-code-body">
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">() {</span>
+    <span class="cc-type">int</span> <span class="cc-variable">n</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span> <span class="cc-operator">&gt;&gt;</span> <span class="cc-variable">n</span><span class="cc-plain">;</span>
+    <span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">long long</span><span class="cc-plain">&gt;</span> <span class="cc-variable">x</span><span class="cc-plain">(</span><span class="cc-variable">n</span><span class="cc-operator">+</span><span class="cc-number">1</span><span class="cc-plain">),</span> <span class="cc-variable">y</span><span class="cc-plain">(</span><span class="cc-variable">n</span><span class="cc-operator">+</span><span class="cc-number">1</span><span class="cc-plain">);</span>
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span> <span class="cc-operator">=</span> <span class="cc-number">1</span><span class="cc-plain">;</span> <span class="cc-variable">c</span> <span class="cc-operator">&lt;=</span> <span class="cc-variable">n</span><span class="cc-plain">;</span> <span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">)</span> <span class="cc-variable">cin</span> <span class="cc-operator">&gt;&gt;</span> <span class="cc-variable">x</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-plain">]</span> <span class="cc-operator">&gt;&gt;</span> <span class="cc-variable">y</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-plain">];</span>
+    <span class="cc-type">long long</span> <span class="cc-variable">d</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span> <span class="cc-operator">&gt;&gt;</span> <span class="cc-variable">d</span><span class="cc-plain">;</span>
+
+    <span class="cc-keyword">auto</span> <span class="cc-variable">dist</span> <span class="cc-operator">=</span> <span class="cc-plain">[&amp;](</span><span class="cc-type">int</span> <span class="cc-variable">a</span><span class="cc-plain">,</span> <span class="cc-type">int</span> <span class="cc-variable">b</span><span class="cc-plain">)</span> <span class="cc-operator">-&gt;</span> <span class="cc-type">long long</span> <span class="cc-plain">{</span>
+        <span class="cc-type">long long</span> <span class="cc-variable">ax</span> <span class="cc-operator">=</span> <span class="cc-plain">(</span><span class="cc-variable">a</span> <span class="cc-operator">==</span> <span class="cc-number">0</span><span class="cc-plain">)</span> <span class="cc-operator">?</span> <span class="cc-number">0</span> <span class="cc-plain">:</span> <span class="cc-variable">x</span><span class="cc-plain">[</span><span class="cc-variable">a</span><span class="cc-plain">];</span>
+        <span class="cc-type">long long</span> <span class="cc-variable">ay</span> <span class="cc-operator">=</span> <span class="cc-plain">(</span><span class="cc-variable">a</span> <span class="cc-operator">==</span> <span class="cc-number">0</span><span class="cc-plain">)</span> <span class="cc-operator">?</span> <span class="cc-number">0</span> <span class="cc-plain">:</span> <span class="cc-variable">y</span><span class="cc-plain">[</span><span class="cc-variable">a</span><span class="cc-plain">];</span>
+        <span class="cc-keyword">return</span> <span class="cc-function">abs</span><span class="cc-plain">(</span><span class="cc-variable">x</span><span class="cc-plain">[</span><span class="cc-variable">b</span><span class="cc-plain">]</span><span class="cc-operator">-</span><span class="cc-variable">ax</span><span class="cc-plain">)</span> <span class="cc-operator">+</span> <span class="cc-function">abs</span><span class="cc-plain">(</span><span class="cc-variable">y</span><span class="cc-plain">[</span><span class="cc-variable">b</span><span class="cc-plain">]</span><span class="cc-operator">-</span><span class="cc-variable">ay</span><span class="cc-plain">);</span>
+    <span class="cc-plain">};</span>
+
+    <span class="cc-keyword">const</span> <span class="cc-type">long long</span> <span class="cc-variable">INF</span> <span class="cc-operator">=</span> <span class="cc-number">1e18</span><span class="cc-plain">;</span>
+    <span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">long long</span><span class="cc-plain">&gt;&gt;</span> <span class="cc-variable">dp</span><span class="cc-plain">(</span><span class="cc-variable">n</span><span class="cc-operator">+</span><span class="cc-number">1</span><span class="cc-plain">,</span> <span class="cc-type">vector</span><span class="cc-plain">&lt;</span><span class="cc-type">long long</span><span class="cc-plain">&gt;(</span><span class="cc-variable">n</span><span class="cc-operator">+</span><span class="cc-number">1</span><span class="cc-plain">,</span> <span class="cc-variable">INF</span><span class="cc-plain">));</span>
+
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span> <span class="cc-operator">=</span> <span class="cc-number">1</span><span class="cc-plain">;</span> <span class="cc-variable">c</span> <span class="cc-operator">&lt;=</span> <span class="cc-variable">n</span><span class="cc-plain">;</span> <span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">)</span>
+        <span class="cc-variable">dp</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-plain">][</span><span class="cc-number">1</span><span class="cc-plain">]</span> <span class="cc-operator">=</span> <span class="cc-function">dist</span><span class="cc-plain">(</span><span class="cc-number">0</span><span class="cc-plain">,</span> <span class="cc-variable">c</span><span class="cc-plain">);</span>
+
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">k</span> <span class="cc-operator">=</span> <span class="cc-number">2</span><span class="cc-plain">;</span> <span class="cc-variable">k</span> <span class="cc-operator">&lt;=</span> <span class="cc-variable">n</span><span class="cc-plain">;</span> <span class="cc-variable">k</span><span class="cc-operator">++</span><span class="cc-plain">)</span>
+        <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c1</span> <span class="cc-operator">=</span> <span class="cc-number">1</span><span class="cc-plain">;</span> <span class="cc-variable">c1</span> <span class="cc-operator">&lt;=</span> <span class="cc-variable">n</span><span class="cc-plain">;</span> <span class="cc-variable">c1</span><span class="cc-operator">++</span><span class="cc-plain">)</span>
+            <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c2</span> <span class="cc-operator">=</span> <span class="cc-variable">c1</span><span class="cc-operator">+</span><span class="cc-number">1</span><span class="cc-plain">;</span> <span class="cc-variable">c2</span> <span class="cc-operator">&lt;=</span> <span class="cc-variable">n</span><span class="cc-plain">;</span> <span class="cc-variable">c2</span><span class="cc-operator">++</span><span class="cc-plain">)</span>
+                <span class="cc-keyword">if</span> <span class="cc-plain">(</span><span class="cc-variable">dp</span><span class="cc-plain">[</span><span class="cc-variable">c1</span><span class="cc-plain">][</span><span class="cc-variable">k</span><span class="cc-operator">-</span><span class="cc-number">1</span><span class="cc-plain">]</span> <span class="cc-operator">!=</span> <span class="cc-variable">INF</span><span class="cc-plain">)</span>
+                    <span class="cc-variable">dp</span><span class="cc-plain">[</span><span class="cc-variable">c2</span><span class="cc-plain">][</span><span class="cc-variable">k</span><span class="cc-plain">]</span> <span class="cc-operator">=</span> <span class="cc-function">min</span><span class="cc-plain">(</span><span class="cc-variable">dp</span><span class="cc-plain">[</span><span class="cc-variable">c2</span><span class="cc-plain">][</span><span class="cc-variable">k</span><span class="cc-plain">],</span> <span class="cc-variable">dp</span><span class="cc-plain">[</span><span class="cc-variable">c1</span><span class="cc-plain">][</span><span class="cc-variable">k</span><span class="cc-operator">-</span><span class="cc-number">1</span><span class="cc-plain">]</span> <span class="cc-operator">+</span> <span class="cc-function">dist</span><span class="cc-plain">(</span><span class="cc-variable">c1</span><span class="cc-plain">,</span> <span class="cc-variable">c2</span><span class="cc-plain">));</span>
+
+    <span class="cc-type">int</span> <span class="cc-variable">ans</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">k</span> <span class="cc-operator">=</span> <span class="cc-number">1</span><span class="cc-plain">;</span> <span class="cc-variable">k</span> <span class="cc-operator">&lt;=</span> <span class="cc-variable">n</span><span class="cc-plain">;</span> <span class="cc-variable">k</span><span class="cc-operator">++</span><span class="cc-plain">) {</span>
+        <span class="cc-type">long long</span> <span class="cc-variable">best</span> <span class="cc-operator">=</span> <span class="cc-variable">INF</span><span class="cc-plain">;</span>
+        <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">c</span> <span class="cc-operator">=</span> <span class="cc-number">1</span><span class="cc-plain">;</span> <span class="cc-variable">c</span> <span class="cc-operator">&lt;=</span> <span class="cc-variable">n</span><span class="cc-plain">;</span> <span class="cc-variable">c</span><span class="cc-operator">++</span><span class="cc-plain">)</span>
+            <span class="cc-variable">best</span> <span class="cc-operator">=</span> <span class="cc-function">min</span><span class="cc-plain">(</span><span class="cc-variable">best</span><span class="cc-plain">,</span> <span class="cc-variable">dp</span><span class="cc-plain">[</span><span class="cc-variable">c</span><span class="cc-plain">][</span><span class="cc-variable">k</span><span class="cc-plain">]</span> <span class="cc-operator">+</span> <span class="cc-function">dist</span><span class="cc-plain">(</span><span class="cc-variable">c</span><span class="cc-plain">,</span> <span class="cc-number">0</span><span class="cc-plain">));</span>
+        <span class="cc-keyword">if</span> <span class="cc-plain">(</span><span class="cc-variable">best</span> <span class="cc-operator">&lt;=</span> <span class="cc-variable">d</span><span class="cc-plain">)</span> <span class="cc-variable">ans</span> <span class="cc-operator">=</span> <span class="cc-variable">k</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+
+    <span class="cc-variable">cout</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-variable">ans</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-variable">endl</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
+          </div>
+        </div>
+
+        <!-- 复杂度 -->
+        <h2>复杂度分析</h2>
+        <ul>
+          <li><strong>时间复杂度：</strong>O(N³)，三层循环枚举 k、c1、c2</li>
+          <li><strong>空间复杂度：</strong>O(N²)，dp 数组</li>
+        </ul>
+
+        <!-- 心得 -->
+        <div class="coding-reflection">
+          <span class="coding-reflection-label">今日感受</span>
+          <p class="coding-reflection-text">关键是把"最多选几个"转化成"固定选 k 个时最短能走多远"，方向一反问题就清晰了。</p>
+        </div>
+
+        <!-- 返回 -->
+        <p class="coding-back-wrap">
+          <a href="https://sage-lume.vercel.app/blog/coding/" class="coding-back-link">← 返回菜鸟的coding</a>
+        </p>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="lume-separator">
+        <img class="lume-image" src="https://sage-lume.vercel.app/favicon/logo-footer.png" alt="算海青藜" height="48">
+      </p>
+      <p>© 2026 z-o-s</p>
+    </div>
+  </footer>
+
+  <script src="https://sage-lume.vercel.app/js/coding-particles.js"></script>
+</body>
+</html>
