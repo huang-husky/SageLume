@@ -61,30 +61,30 @@
       text-indent: 0;
     }
 
-    /* 分隔符——线条夹菱形 */
+    /* 分隔符——渐变线条夹菱形 */
     .divider {
       display: flex;
       align-items: center;
       margin: 3rem 0;
-      gap: 0.8rem;
+      gap: 1rem;
       user-select: none;
     }
-    .divider::before,
+    .divider::before {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #6b8e23, #d4a574);
+    }
     .divider::after {
       content: '';
       flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--sage-green));
-      opacity: 0.4;
-    }
-    .divider::after {
-      background: linear-gradient(to left, transparent, var(--sage-green));
+      height: 2px;
+      background: linear-gradient(to left, transparent, #6b8e23, #d4a574);
     }
     .divider span {
-      font-size: 0.55em;
-      color: var(--sage-green);
-      opacity: 0.6;
-      letter-spacing: 0;
+      font-size: 0.75em;
+      color: #d4a574;
+      flex-shrink: 0;
     }
 
     /* 引用块 */
