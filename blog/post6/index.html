@@ -37,7 +37,7 @@
     .post-content div,
     .post-content blockquote {
       font-family: 'Shouxie', 'Noto Serif', serif !important;
-      font-size: 1.15em;
+      font-size: 1.05em;
       line-height: 2;
     }
 
@@ -61,14 +61,30 @@
       text-indent: 0;
     }
 
-    /* 轻量分隔符——只用一次，对应原文唯一的 --- */
+    /* 分隔符——线条夹菱形 */
     .divider {
-      text-align: center;
+      display: flex;
+      align-items: center;
       margin: 3rem 0;
-      letter-spacing: 0.7em;
-      opacity: 0.35;
-      font-size: 0.85em;
+      gap: 0.8rem;
       user-select: none;
+    }
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--sage-green));
+      opacity: 0.4;
+    }
+    .divider::after {
+      background: linear-gradient(to left, transparent, var(--sage-green));
+    }
+    .divider span {
+      font-size: 0.55em;
+      color: var(--sage-green);
+      opacity: 0.6;
+      letter-spacing: 0;
     }
 
     /* 引用块 */
@@ -175,7 +191,7 @@
 
         <p>我以为我在学东西，但我只是在用功利的尺子量自己愿意学什么。</p>
 
-        <p class="divider">· · ·</p>
+        <div class="divider"><span>◆</span></div>
 
         <p>突然想起自己在形策课上分享过这样一句话：</p>
 
