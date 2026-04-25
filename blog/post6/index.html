@@ -23,18 +23,69 @@
   <link rel="stylesheet" href="https://sage-lume.vercel.app/style.css">
 
   <style>
-    .post-content blockquote {
-      margin: 2rem 0;
-      padding: 1.2rem 1.5rem;
-      border-left: 3px solid var(--sage-green);
-      font-style: italic;
-      opacity: 0.9;
-      line-height: 1.9;
+    @font-face {
+      font-family: 'Shouxie';
+      src: url('../../fonts/shouxie.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
     }
 
+    .post-content {
+      font-family: 'Shouxie', 'Noto Serif', serif;
+      font-size: 1.15em;
+      line-height: 2;
+    }
+
+    /* 枢纽问句——居中悬停，作为叙事转折的视觉锚点 */
+    .pivot-q {
+      text-align: center;
+      font-style: italic;
+      margin: 3rem auto;
+      opacity: 0.7;
+      letter-spacing: 0.3px;
+    }
+
+    /* 三行排比——左边框列表，让递进感逐行落地 */
+    .parallel-group {
+      margin: 1.5rem 0;
+      padding: 0.4rem 0 0.4rem 1.2rem;
+      border-left: 2px solid var(--sage-green);
+    }
+    .parallel-group p {
+      margin: 0.55rem 0;
+      text-indent: 0;
+    }
+
+    /* 轻量分隔符——只用一次，对应原文唯一的 --- */
+    .divider {
+      text-align: center;
+      margin: 3rem 0;
+      letter-spacing: 0.7em;
+      opacity: 0.35;
+      font-size: 0.85em;
+      user-select: none;
+    }
+
+    /* 引用块 */
+    .post-content blockquote {
+      margin: 2rem 0;
+      padding: 1.2rem 1.6rem;
+      border-left: 3px solid var(--sage-green);
+      font-style: italic;
+      line-height: 2;
+      opacity: 0.85;
+    }
     .post-content blockquote p {
       margin: 0;
       text-indent: 0;
+    }
+
+    /* 结尾主题句——全文的重量落在这里 */
+    .final-line {
+      margin-top: 2.5rem;
+      font-size: 1.05em;
+      font-weight: 600;
+      line-height: 2;
     }
   </style>
 
@@ -87,7 +138,7 @@
         <p>然后第二位上台了。<br>
         我不记得是哪句话触发了我，但我忽然愣了一下。脑子里闪过一个念头，像一根刺扎进来：<strong>我是什么时候开始把"听讲座"当成任务的？</strong></p>
 
-        <p>我想起初中。</p>
+        <p style="margin-top: 2.5rem;">我想起初中。</p>
 
         <p>那时候能在学校听到一场讲座，其实是挺罕见的事——哪个初中愿意花钱花精力，给一群十三四岁的孩子请大拿来做分享？所以每一次都是惊喜，每一次我都真的很兴奋。</p>
 
@@ -95,21 +146,19 @@
 
         <p>那时候没有"综测加分"这个词，但我会主动去坐到前面。</p>
 
-        <p>那个拿着本子的孩子，去哪儿了？</p>
+        <p class="pivot-q">那个拿着本子的孩子，去哪儿了？</p>
 
-        <hr style="margin: 2.5rem 0; border: none; border-top: 2px solid; border-image: linear-gradient(to right, #6b8e23, #d4a574, #6b8e23) 1;">
+        <p style="margin-top: 2.5rem;">大二了，学了不少东西。专业课、通识课、各种比赛……知识在脑子里慢慢填满，但我发现自己同时也在悄悄地<strong>窄化</strong>。</p>
 
-        <p>大二了，学了不少东西。专业课、通识课、各种比赛……知识在脑子里慢慢填满，但我发现自己同时也在悄悄地<strong>窄化</strong>。</p>
-
-        <p>开始用"这和我专业没关系"来过滤信息。<br>
-        开始用"这对我有没有用"来衡量每一小时。<br>
-        开始觉得，对专业以外的事物保持好奇，是一件有点浪费时间的事。</p>
+        <div class="parallel-group">
+          <p>开始用"这和我专业没关系"来过滤信息。</p>
+          <p>开始用"这对我有没有用"来衡量每一小时。</p>
+          <p>开始觉得，对专业以外的事物保持好奇，是一件有点浪费时间的事。</p>
+        </div>
 
         <p>说好听点这叫<strong>看起来懂得多</strong>。我坐在水上报告厅的椅子上，突然意识到，这不是在成长，这是在<strong>慢慢硬化</strong>。</p>
 
-        <hr style="margin: 2.5rem 0; border: none; border-top: 2px solid; border-image: linear-gradient(to right, #6b8e23, #d4a574, #6b8e23) 1;">
-
-        <p>后来，我认真听完了剩下的内容。</p>
+        <p style="margin-top: 2.5rem;">后来，我认真听完了剩下的内容。</p>
 
         <p>讲遥感的院士谈到了中国遥感技术这些年的飞速发展——从无到有，从跟跑到并跑再到某些领域的领跑，卫星的分辨率、覆盖范围、应用场景……那一刻我才意识到，原来这片天空里发生了这么多事，它们离我一点都不遥远，并且正在发生着，而我对此几乎一无所知，却从没觉得这是一种缺失。</p>
 
@@ -121,7 +170,7 @@
 
         <p>我以为我在学东西，但我只是在用功利的尺子量自己愿意学什么。</p>
 
-        <hr style="margin: 2.5rem 0; border: none; border-top: 2px solid; border-image: linear-gradient(to right, #6b8e23, #d4a574, #6b8e23) 1;">
+        <p class="divider">· · ·</p>
 
         <p>突然想起自己在形策课上分享过这样一句话：</p>
 
@@ -132,10 +181,9 @@
         <p>说这句话的时候，我大概以为自己是懂的。<br>
         但昨天，我才第一次被它真正刺了一下。</p>
 
-        <p style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
-        所以标题的答案，其实并不复杂。</p>
+        <p style="margin-top: 2.5rem;">所以标题的答案，其实并不复杂。</p>
 
-        <p><strong>我是在某一天，开始用"有没有用"替代"有没有意思"的那一刻，停止生长的。</strong></p>
+        <p class="final-line"><strong>我是在某一天，开始用"有没有用"替代"有没有意思"的那一刻，停止生长的。</strong></p>
 
       </div>
 
