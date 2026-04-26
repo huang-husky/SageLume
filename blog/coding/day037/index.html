@@ -64,7 +64,7 @@
           <span> • </span>
           <span>C++</span>
           <span> • </span>
-          <span>acm.scu.edu.cn 58 &nbsp;·&nbsp; <!-- TODO: 算法标签 --></span>
+          <span>acm.scu.edu.cn 58 &nbsp;·&nbsp; 稀疏表/RMQ</span>
         </div>
       </header>
 
@@ -133,7 +133,7 @@
         <!-- 思路 -->
         <h2>思路</h2>
         <p>
-          <!-- TODO: 填写思路 -->
+          每个位置 i 要查询区间 [i−B[i]+1, i] 的最小值和最大值，B[i] 各不相同，是变长区间 RMQ 问题。用稀疏表（Sparse Table）预处理：st_min[k][i] 和 st_max[k][i] 分别存储从 i 开始长度为 2<sup>k</sup> 的区间最值，利用区间可重叠的性质，查询时取 k = ⌊log₂(r−l+1)⌋，用两段长度为 2<sup>k</sup> 的区间覆盖 [l, r] 即可 O(1) 完成。最终输出 min × max。
         </p>
 
         <!-- 代码块 -->
@@ -145,21 +145,75 @@
             <span class="cyber-code-lang">C++ · p58.cpp</span>
           </div>
           <div class="cyber-code-body">
-            <pre class="cyber-pre"><code class="cyber-code"><!-- TODO: 填写代码 --></code></pre>
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-keyword">const</span> <span class="cc-type">int</span> <span class="cc-variable">MAXN</span> <span class="cc-operator">=</span> <span class="cc-number">100005</span><span class="cc-plain">;</span>
+<span class="cc-keyword">const</span> <span class="cc-type">int</span> <span class="cc-variable">LOG</span> <span class="cc-operator">=</span> <span class="cc-number">17</span><span class="cc-plain">;</span>  <span class="cc-comment">// 2^17 = 131072 &gt; 1e5</span>
+
+<span class="cc-type">int</span> <span class="cc-variable">n</span><span class="cc-plain">;</span>
+<span class="cc-type">long long</span> <span class="cc-variable">A</span><span class="cc-plain">[</span><span class="cc-variable">MAXN</span><span class="cc-plain">];</span>
+<span class="cc-type">int</span> <span class="cc-variable">B</span><span class="cc-plain">[</span><span class="cc-variable">MAXN</span><span class="cc-plain">];</span>
+<span class="cc-type">long long</span> <span class="cc-variable">st_min</span><span class="cc-plain">[</span><span class="cc-variable">LOG</span><span class="cc-plain">][</span><span class="cc-variable">MAXN</span><span class="cc-plain">],</span> <span class="cc-variable">st_max</span><span class="cc-plain">[</span><span class="cc-variable">LOG</span><span class="cc-plain">][</span><span class="cc-variable">MAXN</span><span class="cc-plain">];</span>
+
+<span class="cc-comment">// 构建稀疏表：st[k][i] = 区间 [i, i+2^k-1] 的最值</span>
+<span class="cc-type">void</span> <span class="cc-function">build</span><span class="cc-plain">() {</span>
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">i</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span> <span class="cc-variable">i</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">n</span><span class="cc-plain">;</span> <span class="cc-operator">++</span><span class="cc-variable">i</span><span class="cc-plain">) {</span>
+        <span class="cc-variable">st_min</span><span class="cc-plain">[</span><span class="cc-number">0</span><span class="cc-plain">][</span><span class="cc-variable">i</span><span class="cc-plain">]</span> <span class="cc-operator">=</span> <span class="cc-variable">A</span><span class="cc-plain">[</span><span class="cc-variable">i</span><span class="cc-plain">];</span>
+        <span class="cc-variable">st_max</span><span class="cc-plain">[</span><span class="cc-number">0</span><span class="cc-plain">][</span><span class="cc-variable">i</span><span class="cc-plain">]</span> <span class="cc-operator">=</span> <span class="cc-variable">A</span><span class="cc-plain">[</span><span class="cc-variable">i</span><span class="cc-plain">];</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">k</span> <span class="cc-operator">=</span> <span class="cc-number">1</span><span class="cc-plain">;</span> <span class="cc-plain">(</span><span class="cc-number">1</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-variable">k</span><span class="cc-plain">)</span> <span class="cc-operator">&lt;=</span> <span class="cc-variable">n</span><span class="cc-plain">;</span> <span class="cc-operator">++</span><span class="cc-variable">k</span><span class="cc-plain">)</span>
+        <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">i</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span> <span class="cc-variable">i</span> <span class="cc-operator">+</span> <span class="cc-plain">(</span><span class="cc-number">1</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-variable">k</span><span class="cc-plain">)</span> <span class="cc-operator">-</span> <span class="cc-number">1</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">n</span><span class="cc-plain">;</span> <span class="cc-operator">++</span><span class="cc-variable">i</span><span class="cc-plain">) {</span>
+            <span class="cc-variable">st_min</span><span class="cc-plain">[</span><span class="cc-variable">k</span><span class="cc-plain">][</span><span class="cc-variable">i</span><span class="cc-plain">]</span> <span class="cc-operator">=</span> <span class="cc-function">min</span><span class="cc-plain">(</span><span class="cc-variable">st_min</span><span class="cc-plain">[</span><span class="cc-variable">k</span><span class="cc-operator">-</span><span class="cc-number">1</span><span class="cc-plain">][</span><span class="cc-variable">i</span><span class="cc-plain">],</span> <span class="cc-variable">st_min</span><span class="cc-plain">[</span><span class="cc-variable">k</span><span class="cc-operator">-</span><span class="cc-number">1</span><span class="cc-plain">][</span><span class="cc-variable">i</span> <span class="cc-operator">+</span> <span class="cc-plain">(</span><span class="cc-number">1</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-plain">(</span><span class="cc-variable">k</span><span class="cc-operator">-</span><span class="cc-number">1</span><span class="cc-plain">))]);</span>
+            <span class="cc-variable">st_max</span><span class="cc-plain">[</span><span class="cc-variable">k</span><span class="cc-plain">][</span><span class="cc-variable">i</span><span class="cc-plain">]</span> <span class="cc-operator">=</span> <span class="cc-function">max</span><span class="cc-plain">(</span><span class="cc-variable">st_max</span><span class="cc-plain">[</span><span class="cc-variable">k</span><span class="cc-operator">-</span><span class="cc-number">1</span><span class="cc-plain">][</span><span class="cc-variable">i</span><span class="cc-plain">],</span> <span class="cc-variable">st_max</span><span class="cc-plain">[</span><span class="cc-variable">k</span><span class="cc-operator">-</span><span class="cc-number">1</span><span class="cc-plain">][</span><span class="cc-variable">i</span> <span class="cc-operator">+</span> <span class="cc-plain">(</span><span class="cc-number">1</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-plain">(</span><span class="cc-variable">k</span><span class="cc-operator">-</span><span class="cc-number">1</span><span class="cc-plain">))]);</span>
+        <span class="cc-plain">}</span>
+<span class="cc-plain">}</span>
+
+<span class="cc-comment">// 查询 [l, r] 最小值：两段 2^k 区间重叠覆盖</span>
+<span class="cc-type">long long</span> <span class="cc-function">query_min</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">l</span><span class="cc-plain">,</span> <span class="cc-type">int</span> <span class="cc-variable">r</span><span class="cc-plain">) {</span>
+    <span class="cc-type">int</span> <span class="cc-variable">k</span> <span class="cc-operator">=</span> <span class="cc-function">log2</span><span class="cc-plain">(</span><span class="cc-variable">r</span> <span class="cc-operator">-</span> <span class="cc-variable">l</span> <span class="cc-operator">+</span> <span class="cc-number">1</span><span class="cc-plain">);</span>
+    <span class="cc-keyword">return</span> <span class="cc-function">min</span><span class="cc-plain">(</span><span class="cc-variable">st_min</span><span class="cc-plain">[</span><span class="cc-variable">k</span><span class="cc-plain">][</span><span class="cc-variable">l</span><span class="cc-plain">],</span> <span class="cc-variable">st_min</span><span class="cc-plain">[</span><span class="cc-variable">k</span><span class="cc-plain">][</span><span class="cc-variable">r</span> <span class="cc-operator">-</span> <span class="cc-plain">(</span><span class="cc-number">1</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-variable">k</span><span class="cc-plain">)</span> <span class="cc-operator">+</span> <span class="cc-number">1</span><span class="cc-plain">]);</span>
+<span class="cc-plain">}</span>
+
+<span class="cc-comment">// 查询 [l, r] 最大值</span>
+<span class="cc-type">long long</span> <span class="cc-function">query_max</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">l</span><span class="cc-plain">,</span> <span class="cc-type">int</span> <span class="cc-variable">r</span><span class="cc-plain">) {</span>
+    <span class="cc-type">int</span> <span class="cc-variable">k</span> <span class="cc-operator">=</span> <span class="cc-function">log2</span><span class="cc-plain">(</span><span class="cc-variable">r</span> <span class="cc-operator">-</span> <span class="cc-variable">l</span> <span class="cc-operator">+</span> <span class="cc-number">1</span><span class="cc-plain">);</span>
+    <span class="cc-keyword">return</span> <span class="cc-function">max</span><span class="cc-plain">(</span><span class="cc-variable">st_max</span><span class="cc-plain">[</span><span class="cc-variable">k</span><span class="cc-plain">][</span><span class="cc-variable">l</span><span class="cc-plain">],</span> <span class="cc-variable">st_max</span><span class="cc-plain">[</span><span class="cc-variable">k</span><span class="cc-plain">][</span><span class="cc-variable">r</span> <span class="cc-operator">-</span> <span class="cc-plain">(</span><span class="cc-number">1</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-variable">k</span><span class="cc-plain">)</span> <span class="cc-operator">+</span> <span class="cc-number">1</span><span class="cc-plain">]);</span>
+<span class="cc-plain">}</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">() {</span>
+    <span class="cc-variable">ios</span><span class="cc-plain">::</span><span class="cc-function">sync_with_stdio</span><span class="cc-plain">(</span><span class="cc-keyword">false</span><span class="cc-plain">);</span>
+    <span class="cc-variable">cin</span><span class="cc-plain">.</span><span class="cc-function">tie</span><span class="cc-plain">(</span><span class="cc-number">0</span><span class="cc-plain">);</span>
+
+    <span class="cc-variable">cin</span> <span class="cc-operator">&gt;&gt;</span> <span class="cc-variable">n</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">i</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span> <span class="cc-variable">i</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">n</span><span class="cc-plain">;</span> <span class="cc-operator">++</span><span class="cc-variable">i</span><span class="cc-plain">)</span> <span class="cc-variable">cin</span> <span class="cc-operator">&gt;&gt;</span> <span class="cc-variable">A</span><span class="cc-plain">[</span><span class="cc-variable">i</span><span class="cc-plain">];</span>
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">i</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span> <span class="cc-variable">i</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">n</span><span class="cc-plain">;</span> <span class="cc-operator">++</span><span class="cc-variable">i</span><span class="cc-plain">)</span> <span class="cc-variable">cin</span> <span class="cc-operator">&gt;&gt;</span> <span class="cc-variable">B</span><span class="cc-plain">[</span><span class="cc-variable">i</span><span class="cc-plain">];</span>
+
+    <span class="cc-function">build</span><span class="cc-plain">();</span>
+
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">i</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span> <span class="cc-variable">i</span> <span class="cc-operator">&lt;</span> <span class="cc-variable">n</span><span class="cc-plain">;</span> <span class="cc-operator">++</span><span class="cc-variable">i</span><span class="cc-plain">) {</span>
+        <span class="cc-type">int</span> <span class="cc-variable">l</span> <span class="cc-operator">=</span> <span class="cc-variable">i</span> <span class="cc-operator">-</span> <span class="cc-variable">B</span><span class="cc-plain">[</span><span class="cc-variable">i</span><span class="cc-plain">]</span> <span class="cc-operator">+</span> <span class="cc-number">1</span><span class="cc-plain">;</span>
+        <span class="cc-type">int</span> <span class="cc-variable">r</span> <span class="cc-operator">=</span> <span class="cc-variable">i</span><span class="cc-plain">;</span>
+        <span class="cc-type">long long</span> <span class="cc-variable">mn</span> <span class="cc-operator">=</span> <span class="cc-function">query_min</span><span class="cc-plain">(</span><span class="cc-variable">l</span><span class="cc-plain">,</span> <span class="cc-variable">r</span><span class="cc-plain">);</span>
+        <span class="cc-type">long long</span> <span class="cc-variable">mx</span> <span class="cc-operator">=</span> <span class="cc-function">query_max</span><span class="cc-plain">(</span><span class="cc-variable">l</span><span class="cc-plain">,</span> <span class="cc-variable">r</span><span class="cc-plain">);</span>
+        <span class="cc-variable">cout</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-variable">mn</span> <span class="cc-operator">*</span> <span class="cc-variable">mx</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-string">'\n'</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
           </div>
         </div>
 
         <!-- 复杂度 -->
         <h2>复杂度分析</h2>
         <ul>
-          <li><strong>时间复杂度：</strong><!-- TODO --></li>
-          <li><strong>空间复杂度：</strong><!-- TODO --></li>
+          <li><strong>时间复杂度：</strong>O(n log n) 预处理，O(1) 每次查询</li>
+          <li><strong>空间复杂度：</strong>O(n log n)，稀疏表两张</li>
         </ul>
 
         <!-- 心得 -->
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
-          <p class="coding-reflection-text"><!-- TODO: 填写感受 --></p>
+          <p class="coding-reflection-text">这题好难。稀疏表的核心是"区间可重叠"——min 和 max 不怕重复计算，两段 2<sup>k</sup> 长的区间合起来盖住整个查询区间，O(1) 就搞定了。想出这个是最难的一步。</p>
         </div>
 
         <!-- 返回 -->
