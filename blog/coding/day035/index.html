@@ -126,7 +126,7 @@
         <!-- 思路 -->
         <h2>思路</h2>
         <p>
-          <!-- TODO: 填写思路 -->
+          试除法逐一判断 [L, R] 内每个数是否为素数，统计总数。因为 2 是唯一的偶素数，奇素数 = 所有素数 − 2，所以最后若区间包含 2（即 L ≤ 2 且 R ≥ 2），答案减 1。
         </p>
 
         <!-- 代码块 -->
@@ -138,21 +138,54 @@
             <span class="cyber-code-lang">C++ · p56.cpp</span>
           </div>
           <div class="cyber-code-body">
-            <pre class="cyber-pre"><code class="cyber-code"><!-- TODO: 填写代码 --></code></pre>
+            <pre class="cyber-pre"><code class="cyber-code"><span class="cc-keyword">#include</span><span class="cc-string">&lt;bits/stdc++.h&gt;</span>
+<span class="cc-keyword">using namespace</span> <span class="cc-type">std</span><span class="cc-plain">;</span>
+
+<span class="cc-comment">// 试除法判断素数</span>
+<span class="cc-type">bool</span> <span class="cc-function">isPrime</span><span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">n</span><span class="cc-plain">) {</span>
+    <span class="cc-keyword">if</span> <span class="cc-plain">(</span><span class="cc-variable">n</span> <span class="cc-operator">&lt;</span> <span class="cc-number">2</span><span class="cc-plain">)</span> <span class="cc-keyword">return</span> <span class="cc-keyword">false</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">if</span> <span class="cc-plain">(</span><span class="cc-variable">n</span> <span class="cc-operator">==</span> <span class="cc-number">2</span><span class="cc-plain">)</span> <span class="cc-keyword">return</span> <span class="cc-keyword">true</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">if</span> <span class="cc-plain">(</span><span class="cc-variable">n</span> <span class="cc-operator">%</span> <span class="cc-number">2</span> <span class="cc-operator">==</span> <span class="cc-number">0</span><span class="cc-plain">)</span> <span class="cc-keyword">return</span> <span class="cc-keyword">false</span><span class="cc-plain">;</span>
+    <span class="cc-type">int</span> <span class="cc-variable">limit</span> <span class="cc-operator">=</span> <span class="cc-function">sqrt</span><span class="cc-plain">(</span><span class="cc-variable">n</span><span class="cc-plain">);</span>
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">i</span> <span class="cc-operator">=</span> <span class="cc-number">3</span><span class="cc-plain">;</span> <span class="cc-variable">i</span> <span class="cc-operator">&lt;=</span> <span class="cc-variable">limit</span><span class="cc-plain">;</span> <span class="cc-variable">i</span> <span class="cc-operator">+=</span> <span class="cc-number">2</span><span class="cc-plain">) {</span>
+        <span class="cc-keyword">if</span> <span class="cc-plain">(</span><span class="cc-variable">n</span> <span class="cc-operator">%</span> <span class="cc-variable">i</span> <span class="cc-operator">==</span> <span class="cc-number">0</span><span class="cc-plain">)</span> <span class="cc-keyword">return</span> <span class="cc-keyword">false</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+    <span class="cc-keyword">return</span> <span class="cc-keyword">true</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span>
+
+<span class="cc-type">int</span> <span class="cc-function">main</span><span class="cc-plain">() {</span>
+    <span class="cc-type">int</span> <span class="cc-variable">L</span><span class="cc-plain">,</span> <span class="cc-variable">R</span><span class="cc-plain">;</span>
+    <span class="cc-variable">cin</span> <span class="cc-operator">&gt;&gt;</span> <span class="cc-variable">L</span> <span class="cc-operator">&gt;&gt;</span> <span class="cc-variable">R</span><span class="cc-plain">;</span>
+
+    <span class="cc-type">int</span> <span class="cc-variable">count</span> <span class="cc-operator">=</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">for</span> <span class="cc-plain">(</span><span class="cc-type">int</span> <span class="cc-variable">i</span> <span class="cc-operator">=</span> <span class="cc-variable">L</span><span class="cc-plain">;</span> <span class="cc-variable">i</span> <span class="cc-operator">&lt;=</span> <span class="cc-variable">R</span><span class="cc-plain">;</span> <span class="cc-variable">i</span><span class="cc-operator">++</span><span class="cc-plain">) {</span>
+        <span class="cc-keyword">if</span> <span class="cc-plain">(</span><span class="cc-function">isPrime</span><span class="cc-plain">(</span><span class="cc-variable">i</span><span class="cc-plain">)) {</span>
+            <span class="cc-variable">count</span><span class="cc-operator">++</span><span class="cc-plain">;</span>
+        <span class="cc-plain">}</span>
+    <span class="cc-plain">}</span>
+
+    <span class="cc-comment">// 如果区间包含 2，则将其从统计结果中减去（因为题目只要求奇素数）</span>
+    <span class="cc-keyword">if</span> <span class="cc-plain">(</span><span class="cc-variable">L</span> <span class="cc-operator">&lt;=</span> <span class="cc-number">2</span> <span class="cc-operator">&amp;&amp;</span> <span class="cc-variable">R</span> <span class="cc-operator">&gt;=</span> <span class="cc-number">2</span><span class="cc-plain">) {</span>
+        <span class="cc-variable">count</span><span class="cc-operator">--</span><span class="cc-plain">;</span>
+    <span class="cc-plain">}</span>
+
+    <span class="cc-variable">cout</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-variable">count</span> <span class="cc-operator">&lt;&lt;</span> <span class="cc-variable">endl</span><span class="cc-plain">;</span>
+    <span class="cc-keyword">return</span> <span class="cc-number">0</span><span class="cc-plain">;</span>
+<span class="cc-plain">}</span></code></pre>
           </div>
         </div>
 
         <!-- 复杂度 -->
         <h2>复杂度分析</h2>
         <ul>
-          <li><strong>时间复杂度：</strong><!-- TODO --></li>
-          <li><strong>空间复杂度：</strong><!-- TODO --></li>
+          <li><strong>时间复杂度：</strong>O((R−L+1)·√R)，对区间内每个数试除到其平方根</li>
+          <li><strong>空间复杂度：</strong>O(1)</li>
         </ul>
 
         <!-- 心得 -->
         <div class="coding-reflection">
           <span class="coding-reflection-label">今日感受</span>
-          <p class="coding-reflection-text"><!-- TODO: 填写感受 --></p>
+          <p class="coding-reflection-text">两个细节让代码更漂亮：循环步长用 <code>i += 2</code> 跳过所有偶数，判断速度直接翻倍；边界条件写 <code>L &lt;= 2 &amp;&amp; R &gt;= 2</code> 而不只是 <code>L &lt;= 2</code>，考虑到了 R 也可能不到 2 的极端情况，严谨很重要。</p>
         </div>
 
         <!-- 返回 -->
